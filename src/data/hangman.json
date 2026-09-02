@@ -1,0 +1,309 @@
+{
+  "game": {
+    "id": "1",
+    "code": "hangman",
+    "name": "Jogo da Forca"
+  },
+  "words": [
+    {
+      "id": "29",
+      "gameId": "1",
+      "word": "CLIENTE",
+      "imageUrl": null,
+      "meta": null,
+      "createdat": "2026-05-05T17:37:17.027Z",
+      "updatedat": "2026-05-05T17:37:17.027Z"
+    },
+    {
+      "id": "30",
+      "gameId": "1",
+      "word": "OFERTA",
+      "imageUrl": null,
+      "meta": null,
+      "createdat": "2026-05-05T17:37:17.228Z",
+      "updatedat": "2026-05-05T17:37:17.228Z"
+    },
+    {
+      "id": "31",
+      "gameId": "1",
+      "word": "VITRINE",
+      "imageUrl": null,
+      "meta": null,
+      "createdat": "2026-05-05T17:37:17.426Z",
+      "updatedat": "2026-05-05T17:37:17.426Z"
+    },
+    {
+      "id": "32",
+      "gameId": "1",
+      "word": "DESCONTO",
+      "imageUrl": null,
+      "meta": null,
+      "createdat": "2026-05-05T17:37:17.858Z",
+      "updatedat": "2026-05-05T17:37:17.858Z"
+    },
+    {
+      "id": "33",
+      "gameId": "1",
+      "word": "PROMOÇÃO",
+      "imageUrl": null,
+      "meta": null,
+      "createdat": "2026-05-05T17:37:18.055Z",
+      "updatedat": "2026-05-05T17:37:18.055Z"
+    },
+    {
+      "id": "34",
+      "gameId": "1",
+      "word": "VENDEDOR",
+      "imageUrl": null,
+      "meta": null,
+      "createdat": "2026-05-05T17:37:18.255Z",
+      "updatedat": "2026-05-05T17:37:18.255Z"
+    },
+    {
+      "id": "35",
+      "gameId": "1",
+      "word": "ESTOQUE",
+      "imageUrl": null,
+      "meta": null,
+      "createdat": "2026-05-05T17:37:18.482Z",
+      "updatedat": "2026-05-05T17:37:18.482Z"
+    },
+    {
+      "id": "36",
+      "gameId": "1",
+      "word": "QUALIDADE",
+      "imageUrl": null,
+      "meta": null,
+      "createdat": "2026-05-05T17:37:18.671Z",
+      "updatedat": "2026-05-05T17:37:18.671Z"
+    },
+    {
+      "id": "37",
+      "gameId": "1",
+      "word": "ATENDIMENTO",
+      "imageUrl": null,
+      "meta": null,
+      "createdat": "2026-05-05T17:37:18.863Z",
+      "updatedat": "2026-05-05T17:37:18.863Z"
+    },
+    {
+      "id": "38",
+      "gameId": "1",
+      "word": "COMÉRCIO",
+      "imageUrl": null,
+      "meta": null,
+      "createdat": "2026-05-05T17:37:19.076Z",
+      "updatedat": "2026-05-05T17:37:19.076Z"
+    },
+    {
+      "id": "39",
+      "gameId": "1",
+      "word": "COMPRA",
+      "imageUrl": null,
+      "meta": null,
+      "createdat": "2026-05-05T17:37:19.255Z",
+      "updatedat": "2026-05-05T17:37:19.255Z"
+    },
+    {
+      "id": "40",
+      "gameId": "1",
+      "word": "VENDA",
+      "imageUrl": null,
+      "meta": null,
+      "createdat": "2026-05-05T17:37:19.447Z",
+      "updatedat": "2026-05-05T17:37:19.447Z"
+    },
+    {
+      "id": "41",
+      "gameId": "1",
+      "word": "PARAÍBA",
+      "imageUrl": null,
+      "meta": null,
+      "createdat": "2026-05-05T17:37:19.648Z",
+      "updatedat": "2026-05-05T17:37:19.648Z"
+    },
+    {
+      "id": "42",
+      "gameId": "1",
+      "word": "CULTURA",
+      "imageUrl": null,
+      "meta": null,
+      "createdat": "2026-05-05T17:37:19.863Z",
+      "updatedat": "2026-05-05T17:37:19.863Z"
+    },
+    {
+      "id": "43",
+      "gameId": "1",
+      "word": "TURISMO",
+      "imageUrl": null,
+      "meta": null,
+      "createdat": "2026-05-05T17:37:20.037Z",
+      "updatedat": "2026-05-05T17:37:20.037Z"
+    },
+    {
+      "id": "44",
+      "gameId": "1",
+      "word": "INOVAÇÃO",
+      "imageUrl": null,
+      "meta": null,
+      "createdat": "2026-05-05T17:37:20.225Z",
+      "updatedat": "2026-05-05T17:37:20.225Z"
+    },
+    {
+      "id": "45",
+      "gameId": "1",
+      "word": "FUTURO",
+      "imageUrl": null,
+      "meta": null,
+      "createdat": "2026-05-05T17:37:20.439Z",
+      "updatedat": "2026-05-05T17:37:20.439Z"
+    },
+    {
+      "id": "46",
+      "gameId": "1",
+      "word": "TECNOLOGIA",
+      "imageUrl": null,
+      "meta": null,
+      "createdat": "2026-05-05T17:37:20.628Z",
+      "updatedat": "2026-05-05T17:37:20.628Z"
+    },
+    {
+      "id": "47",
+      "gameId": "1",
+      "word": "DIGITAL",
+      "imageUrl": null,
+      "meta": null,
+      "createdat": "2026-05-05T17:37:20.823Z",
+      "updatedat": "2026-05-05T17:37:20.823Z"
+    },
+    {
+      "id": "48",
+      "gameId": "1",
+      "word": "LOJA",
+      "imageUrl": null,
+      "meta": null,
+      "createdat": "2026-05-05T17:37:21.004Z",
+      "updatedat": "2026-05-05T17:37:21.004Z"
+    },
+    {
+      "id": "49",
+      "gameId": "1",
+      "word": "NOTA",
+      "imageUrl": null,
+      "meta": null,
+      "createdat": "2026-05-05T17:37:21.181Z",
+      "updatedat": "2026-05-05T17:37:21.181Z"
+    },
+    {
+      "id": "50",
+      "gameId": "1",
+      "word": "PAGO",
+      "imageUrl": null,
+      "meta": null,
+      "createdat": "2026-05-05T17:37:21.406Z",
+      "updatedat": "2026-05-05T17:37:21.406Z"
+    },
+    {
+      "id": "51",
+      "gameId": "1",
+      "word": "CABO",
+      "imageUrl": null,
+      "meta": null,
+      "createdat": "2026-05-05T17:37:21.589Z",
+      "updatedat": "2026-05-05T17:37:21.589Z"
+    },
+    {
+      "id": "52",
+      "gameId": "1",
+      "word": "MODA",
+      "imageUrl": null,
+      "meta": null,
+      "createdat": "2026-05-05T17:37:21.792Z",
+      "updatedat": "2026-05-05T17:37:21.792Z"
+    },
+    {
+      "id": "53",
+      "gameId": "1",
+      "word": "LOGO",
+      "imageUrl": null,
+      "meta": null,
+      "createdat": "2026-05-05T17:37:21.991Z",
+      "updatedat": "2026-05-05T17:37:21.991Z"
+    },
+    {
+      "id": "54",
+      "gameId": "1",
+      "word": "CAIXA",
+      "imageUrl": null,
+      "meta": null,
+      "createdat": "2026-05-05T17:37:22.184Z",
+      "updatedat": "2026-05-05T17:37:22.184Z"
+    },
+    {
+      "id": "55",
+      "gameId": "1",
+      "word": "SALDO",
+      "imageUrl": null,
+      "meta": null,
+      "createdat": "2026-05-05T17:37:22.383Z",
+      "updatedat": "2026-05-05T17:37:22.383Z"
+    },
+    {
+      "id": "56",
+      "gameId": "1",
+      "word": "LUCRO",
+      "imageUrl": null,
+      "meta": null,
+      "createdat": "2026-05-05T17:37:22.580Z",
+      "updatedat": "2026-05-05T17:37:22.580Z"
+    },
+    {
+      "id": "57",
+      "gameId": "1",
+      "word": "VENDA",
+      "imageUrl": null,
+      "meta": null,
+      "createdat": "2026-05-05T17:37:22.777Z",
+      "updatedat": "2026-05-05T17:37:22.777Z"
+    },
+    {
+      "id": "58",
+      "gameId": "1",
+      "word": "VALOR",
+      "imageUrl": null,
+      "meta": null,
+      "createdat": "2026-05-05T17:37:22.990Z",
+      "updatedat": "2026-05-05T17:37:22.990Z"
+    },
+    {
+      "id": "119",
+      "gameId": "1",
+      "word": "SKU",
+      "imageUrl": null,
+      "meta": null,
+      "createdat": "2026-05-28T16:41:59.662Z",
+      "updatedat": "2026-05-28T16:41:59.662Z"
+    },
+    {
+      "id": "120",
+      "gameId": "1",
+      "word": "PIX",
+      "imageUrl": null,
+      "meta": null,
+      "createdat": "2026-05-28T16:41:59.854Z",
+      "updatedat": "2026-05-28T16:41:59.854Z"
+    },
+    {
+      "id": "121",
+      "gameId": "1",
+      "word": "PDV",
+      "imageUrl": null,
+      "meta": null,
+      "createdat": "2026-05-28T16:42:00.045Z",
+      "updatedat": "2026-05-28T16:42:00.045Z"
+    }
+  ],
+  "quiz": [],
+  "rounds": [],
+  "alreadyPlayed": false
+}

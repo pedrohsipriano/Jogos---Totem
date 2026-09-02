@@ -1,0 +1,32 @@
+/* ==========================================================================
+   ESTILOS DO FORMULÁRIO DO JOGADOR (playerForm.style.css)
+   Define o layout em grade responsiva para os campos de identificação (telefone e nome)
+   e o alinhamento dos rótulos explicativos.
+   ========================================================================== */
+
+/* ── Grade de alinhamento dos campos do formulário ─────────────────────── */
+.form-grid {
+    display: grid;
+    /* Colunas flexíveis com largura mínima de 240px, adaptando-se ao espaço disponível */
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 12px;
+}
+
+/* ── Contêiner de campo individual (Rótulo + Input) ────────────────────── */
+.field {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    color: #cbd5e1;
+}
+
+/* Estilização do texto do rótulo (label) */
+.field span {
+    font-size: 14px;
+    letter-spacing: 0.03em;
+}
+
+/* Garante que o input ocupe 100% da largura do contêiner do campo */
+.input {
+    width: 100%;
+}

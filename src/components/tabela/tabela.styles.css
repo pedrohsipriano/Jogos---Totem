@@ -1,0 +1,108 @@
+.RankingTabela {
+    display: flex;
+    padding: 40px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 1.875rem;
+    border: 1px solid var(--Color-5, #F60085);
+    gap: 32px;
+}
+
+.RankingTabela tr {
+    display: flex;
+    width: 50.1875rem;
+    align-items: center;
+    padding: 25px 39px 25px 39px;
+}
+
+.RankingTabela th,
+.RankingTabela td {
+    color: var(--Color-9, #FFF);
+    text-align: center;
+    font-size: 2.1875rem;
+    font-style: normal;
+    line-height: 108%;
+    /* 2.3625rem */
+    letter-spacing: -0.02406rem;
+    flex: 1;
+    text-align: center;
+    box-sizing: border-box;
+}
+
+.RankingTabela tbody {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 19px;
+}
+
+.RankingTabela th {
+    font-weight: 700;
+}
+
+/* 1ª Coluna (Nome) - Grudada na ESQUERDA */
+
+.RankingTabela td:nth-child(1) {
+    text-align: left;
+}
+
+/* 2ª Coluna (Número) - no CENTRO */
+.RankingTabela th:nth-child(2),
+td:nth-child(2) {
+    text-align: center;
+    padding-left: 60px;
+}
+
+/* 3ª Coluna (Pontos) - Grudada na DIREITA */
+.RankingTabela th:nth-child(3),
+.RankingTabela td:nth-child(3) {
+    flex: 0 0 9rem;
+    text-align: right;
+}
+
+/* 1ª linha inteira do corpo da tabela */
+.RankingTabela tbody tr:nth-child(1) {
+    border-radius: 20px;
+    background: var(--Color-5, #F60085);
+    box-sizing: border-box;
+}
+
+/* 2ª linha inteira do corpo da tabela */
+.RankingTabela tbody tr:nth-child(2) {
+    border-radius: 20px;
+    background: rgba(246, 0, 133, 0.50);
+    box-sizing: border-box;
+}
+
+/* 3ª linha inteira do corpo da tabela */
+.RankingTabelatbody tr:nth-child(3) {
+    border-radius: 20px;
+    background: rgba(246, 0, 133, 0.25);
+    box-sizing: border-box;
+}
+
+.ranking-avatar-img {
+    width: 4rem;
+    height: 4rem;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    display: inline-block;
+}
+
+.user-name-cell {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: flex-start !important;
+    gap: 1.2rem !important;
+    text-align: left !important;
+}
+
+.ranking-avatar-emoji {
+    font-size: 3rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}

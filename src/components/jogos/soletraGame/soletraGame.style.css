@@ -1,0 +1,377 @@
+/* ==========================================================================
+   ESTILOS DO JOGO SOLETRA (soletraGame.style.css)
+   Define as variáveis de tema, estilização dos alvos de palavras, status
+   (resolvido, ativo, bloqueado), slots de entrada e posicionamento em grade
+   da colmeia hexagonal.
+   ========================================================================== */
+
+/* ── Variáveis locais de escopo do componente ─────────────────────────────── */
+.soletra-game {
+    --sg-gap: 14px;
+    display: flex;
+    flex-direction: column;
+    gap: var(--sg-gap);
+}
+
+/* ── Alvos de Palavras (Lista de progresso) ────────────────────────────── */
+.soletra-game .soletra-targets {
+    display: grid;
+    gap: 10px;
+}
+
+/* Linha individual representando uma palavra-alvo e sua dica */
+.soletra-game .soletra-target-row {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 10px;
+    align-items: center;
+    text-align: start;
+    border: 1px solid var(--sg-target-border);
+    background: var(--sg-target-bg);
+    border-radius: 12px;
+    padding: 10px;
+    transition: all 200ms ease-in-out;
+    background: white;
+}
+
+/* Destaque visual para palavras já encontradas (resolvidas) */
+.soletra-game .soletra-target-row.solved-word {
+    border-radius: 20px;
+    border: 1px solid var(--Color-5, #F60085);
+    background: rgba(110, 0, 108, 0.50);
+    opacity: 0.80;
+}
+
+/* Destaque visual para a palavra ativa no momento */
+.soletra-game .soletra-target-row.current-word {
+    border-radius: 20px;
+    border: 1px solid var(--Color-5, #F60085);
+    background: transparent;
+}
+
+/* Estado visual para palavras bloqueadas (que aguardam a resolução da atual) */
+.soletra-game .soletra-target-row.locked-word {
+    border-radius: 20px;
+    border: 1px solid var(--Color-5, #F60085);
+    background: rgba(110, 0, 108, 0.50);
+    opacity: 0.30;
+}
+
+/* Slot contendo as letras ou underlines da palavra */
+.soletra-game .soletra-target-slot {
+    display: flex;
+    height: 100px;
+    padding: 15px;
+    align-items: center;
+    gap: 10px;
+    flex: 1 0 0;
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.20);
+    background: rgba(246, 0, 133, 0.20);
+    color: #FFF;
+    text-align: center;
+    font-family: Grift;
+    font-size: 45px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 108%;
+    /* 48.6px */
+    letter-spacing: -0.495px;
+}
+
+.soletra-game .soletra-target-slot.solved {
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.20);
+    background: rgba(246, 0, 133, 0.20);
+}
+
+/* Destaque para palavras não resolvidas ao esgotar o tempo da partida */
+.soletra-game .soletra-target-slot.unsolved-timeout {
+    border-style: solid;
+    border-color: var(--sg-failed-border);
+    border-width: 2px;
+    color: var(--sg-failed-color);
+}
+
+.soletra-game .soletra-target-slot.locked {
+    opacity: 0.5;
+    background: rgba(30, 41, 59, 0.6);
+}
+
+/* Botão de solicitação de dica (Lâmpada) */
+.soletra-game .soletra-hint-btn {
+    display: flex;
+    height: 100px;
+    padding: 15px;
+    align-items: center;
+    gap: 10px;
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.20);
+    background: #F60085;
+    color: #FFF;
+    text-align: center;
+    font-family: Grift;
+    font-size: 45px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 108%;
+    /* 48.6px */
+    letter-spacing: -0.495px;
+}
+
+/* Textos explicativos e dicas abaixo de cada palavra */
+.soletra-game .soletra-target-hint {
+    grid-column: 1 / -1;
+    display: flex;
+    padding: 15px;
+    align-items: center;
+    gap: 10px;
+    align-self: stretch;
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.20);
+    background: rgba(246, 0, 133, 0.20);
+    color: #FFF;
+    text-align: center;
+    font-family: Grift;
+    font-size: 1.8125rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 108%;
+    /* 1.9575rem */
+    letter-spacing: -0.01994rem;
+}
+
+.soletra-game .soletra-current-hint {
+    color: var(--sg-solved-border);
+    font-weight: 600;
+    color: #FFF;
+    text-align: center;
+    font-family: Grift;
+    font-size: 1.8125rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 108%;
+    /* 1.9575rem */
+    letter-spacing: -0.01994rem;
+}
+
+.soletra-game .soletra-locked-msg {
+    color: var(--sg-failed-border);
+    font-size: 12px;
+    color: #FFF;
+    text-align: center;
+    font-family: Grift;
+    font-size: 1.8125rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 108%;
+    /* 1.9575rem */
+    letter-spacing: -0.01994rem;
+}
+
+/* ── Slots de Entrada (Letras digitadas pelo usuário) ──────────────────── */
+.soletra-game .soletra-input {
+    display: flex;
+    height: 138px;
+    flex-direction: column;
+    align-items: center;
+    gap: 47px;
+    flex: 1 0 0;
+    padding: 15px 67px;
+    align-content: center;
+    gap: 21px;
+    flex-wrap: wrap;
+    border-radius: 20px;
+    border: 1px solid var(--Color-5, #F60085);
+}
+
+.soletra-game .soletra-input-slot {
+    display: flex;
+    width: 80px;
+    height: 80px;
+    padding: 15px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    border-radius: 10px;
+    border: 1px solid var(--Color-5, #F60085);
+    color: #FFF;
+    text-align: center;
+    font-family: Grift;
+    font-size: 35px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 108%;
+    /* 37.8px */
+    letter-spacing: -0.385px;
+}
+
+/* Cores de feedback ao enviar uma palavra (estilo Wordle/Termo) */
+.soletra-game .soletra-input-slot.correct {
+    border-radius: 10px;
+    background: #F60085;
+}
+
+.soletra-game .soletra-input-slot.exists {
+    border-radius: 10px;
+    background: rgba(246, 0, 133, 0.40);
+}
+
+.soletra-game .soletra-input-slot.wrong {
+    opacity: 0.6;
+}
+
+/* ── Colmeia de Letras (Posicionamento em grade 5x5 simulando hexágonos) ── */
+.soletra-game .soletra-honeycomb {
+    display: grid;
+    justify-items: center;
+    align-items: center;
+    gap: 12px 18px;
+    padding: 40px 50px;
+    border-radius: 20px;
+    border: 1px solid var(--Color-5, #F60085);
+
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    /* Força as 3 linhas a terem o mesmo tamanho */
+    grid-template-areas:
+        ".     top         top         top-right   top-right   ."
+        "left  left        center      center      right       right"
+        ".     bottom-left bottom-left bottom  bottom  .";
+}
+
+.soletra-game .soletra-hex-btn {
+    width: min(100%, 195px);
+    height: 80px;
+    padding: 15px;
+    border-radius: 44px;
+    border: 1px solid var(--Color-8, #FFF7F1);
+    background: #F60085;
+    margin: 0;
+    color: #FFF;
+    text-align: center;
+    font-family: Grift;
+    font-size: 35px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 108%;
+    /* 37.8px */
+    letter-spacing: -0.385px;
+}
+
+/* Botão central em destaque na colmeia */
+.soletra-game .soletra-hex-btn.center {
+    background: var(--sg-hex-center-bg);
+    color: var(--sg-hex-center-color);
+}
+
+/* Posicionamento exato de cada botão na grade 3x3 para formar a colmeia 2-3-2 */
+.soletra-game .soletra-hex-btn.top {
+    grid-area: top;
+    justify-self: end;
+}
+
+.soletra-game .soletra-hex-btn.top-right {
+    grid-area: top-right;
+    justify-self: start;
+}
+
+.soletra-game .soletra-hex-btn.left {
+    grid-area: left;
+    justify-self: end;
+    position: relative;
+    right: -40px;
+}
+
+.soletra-game .soletra-hex-btn.center {
+    grid-area: center;
+}
+
+.soletra-game .soletra-hex-btn.right {
+    position: relative;
+    left: -40px;
+    grid-area: right;
+    justify-self: start;
+}
+
+.soletra-game .soletra-hex-btn.bottom-left {
+    grid-area: bottom-left;
+    justify-self: end;
+}
+
+.soletra-game .soletra-hex-btn.bottom {
+    grid-area: bottom;
+    justify-self: start;
+}
+
+/* ── Ações e Feedback Textual ──────────────────────────────────────────── */
+.soletra-game .soletra-actions {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+}
+
+.soletra-game .soletra-actions button {
+    display: flex;
+    padding: 22px 0;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 47px;
+    flex: 1 0 0;
+    border-radius: 20px;
+    border: 1px solid var(--Color-5, #F60085);
+}
+
+.soletra-game .soletra-feedback {
+    min-height: 20px;
+    color: var(--sg-feedback-color);
+    font-weight: 700;
+    text-align: center;
+}
+
+/* ── Caixa de Resultado Final ──────────────────────────────────────────── */
+.soletra-game .soletra-result-box {
+    background: var(--sg-result-bg);
+    border: 1px solid var(--sg-target-border);
+    border-radius: 12px;
+    padding: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.btnEnviar {
+    background: #F60085;
+    color: #FFF;
+    text-align: center;
+    font-family: Grift;
+    font-size: 35px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 108%;
+    /* 37.8px */
+    letter-spacing: -0.385px;
+}
+
+.btnApagar {
+    display: flex;
+    padding: 22px 0;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 47px;
+    flex: 1 0 0;
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.80);
+    color: var(--Color-5, #F60085);
+    text-align: center;
+    font-family: Grift;
+    font-size: 35px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 108%;
+    /* 37.8px */
+    letter-spacing: -0.385px;
+}

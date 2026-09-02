@@ -1,0 +1,150 @@
+/* ==========================================================================
+   ESTILOS DO JOGO CAÇA-PALAVRAS (wordSearchGame.style.css)
+   Define as variáveis de tema, estilização da grade de letras (CSS Grid flexível),
+   aparência das células nos estados normal, selecionado (arraste em andamento)
+   e encontrado (sucesso), além da formatação dos chips de palavras-alvo.
+   ========================================================================== */
+
+.wordsearch-game-mulher {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+.wordsearch-game-mulher::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -1;
+    pointer-events: none;
+    background: url(/images/bg-mulher.png) center / cover no-repeat, linear-gradient(0deg, #00112A 0%, #00112A 100%);
+    opacity: 0.5;
+}
+
+/* ── Contêiner da Grade de Letras ──────────────────────────────────────── */
+.wordsearch-game-mulher .ws-grid {
+    /* Tornar o container da grade um bloco de largura automática para
+       garantir que cada `.ws-row` seja empilhada verticalmente e não
+       alinhada lado-a-lado como em um flex-wrap. */
+    display: inline-block;
+    width: auto;
+    padding: 20px 15px;
+    margin: 0;
+    border-radius: 10px;
+    border: 1px solid rgba(246, 0, 133, 0.50);
+    box-sizing: border-box;
+    background: rgba(0, 0, 0, 0.30);
+    touch-action: none;
+    -webkit-user-select: none;
+    /* Safáfri support */
+    user-select: none;
+}
+
+/* Linha da grade configurada dinamicamente via variável CSS (--ws-cols) */
+.wordsearch-game-mulher .ws-row {
+    display: grid;
+    grid-template-columns: repeat(var(--ws-cols, 10), minmax(0, 1fr));
+    gap: 6px;
+    margin-bottom: 8px;
+    /* Garantir que cada linha ocupe sua própria linha de fluxo */
+    width: 100%;
+}
+
+/* ── Estilização da Célula Individual (Letra) ──────────────────────────── */
+.wordsearch-game-mulher .ws-cell {
+    display: flex;
+    width: 85px;
+    height: 85px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    flex-shrink: 0;
+    border-radius: 10px;
+    border: 1px solid rgba(246, 0, 133, 0.50);
+    background: transparent;
+    color: #FFF;
+    text-align: center;
+    font-family: Grift;
+    font-size: 40px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 108%;
+    /* 43.2px */
+    letter-spacing: -0.44px;
+    touch-action: none;
+    -webkit-user-select: none;
+    user-select: none;
+}
+
+/* Estado visual durante o arraste de seleção (destaque ciano e leve ampliação) */
+.wordsearch-game-mulher .ws-cell.selected {
+    border-color: var(--ws-accent-primary);
+    transform: scale(1.05);
+}
+
+/* Estado visual permanente para células que pertencem a palavras encontradas (verde) */
+.wordsearch-game-mulher .ws-cell.found {
+    border-radius: 10px;
+    border: 1px solid rgba(246, 0, 133, 0.50);
+    background: rgba(246, 0, 133, 0.50);
+}
+
+/* ── Contêiner e Chips da Lista de Palavras-Alvo ───────────────────────── */
+.wordsearch-game-mulher .ws-words {
+    display: flex;
+    width: auto;
+    padding: 20px;
+    align-items: center;
+    align-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    border-radius: 20px;
+    border: 1px solid rgba(246, 0, 133, 0.50);
+    margin-top: 33px;
+}
+
+/* Chip individual representando uma palavra a ser encontrada */
+.wordsearch-game-mulher .ws-word-chip {
+    display: flex;
+    padding: 20px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    border-radius: 20px;
+    background: rgba(0, 0, 0, 0.20);
+    color: #FFF;
+    text-align: center;
+    font-family: Grift;
+    font-size: 40px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 108%;
+    /* 43.2px */
+    letter-spacing: -0.44px;
+}
+
+/* Destaque visual para palavras já encontradas*/
+.wordsearch-game-mulher .ws-word-chip.done {
+    display: flex;
+    padding: 20px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    border-radius: 20px;
+    background: var(--Color-5, #F60085);
+}
+
+/* ── Caixa de Resultado Final e Avisos ─────────────────────────────────── */
+.wordsearch-game-mulher .ws-result-box {
+    background: var(--ws-result-bg);
+    border: 1px solid var(--ws-border-default);
+    border-radius: 12px;
+    padding: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-top: 16px;
+}

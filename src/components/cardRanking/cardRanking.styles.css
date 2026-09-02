@@ -1,0 +1,25 @@
+.cardRankingSection {
+    display: flex;
+    padding: 4.3125rem 2.6875rem 7.625rem 2.625rem;
+    margin: 3.94rem 0;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2.5625rem;
+    border-radius: 2.5rem;
+    border: 1px solid var(--Color-5, #F60085);
+    background: rgba(2, 18, 41, 0.50);
+    box-shadow: 0 0 13.9px 0 rgba(0, 0, 0, 0.72);
+}
+
+.subtituloRanking {
+    color: #FFF;
+    font-family: Grift;
+    font-size: 30px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: 119%;
+    /* 35.7px */
+    letter-spacing: -0.33px;
+    text-align: start;
+}

@@ -1,0 +1,6 @@
+{
+  "appId": "com.cndl.totem",
+  "appName": "jogosconvecao",
+  "webDir": "dist", 
+  "bundledWebRuntime": false
+}

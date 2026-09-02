@@ -1,0 +1,508 @@
+/* ==========================================================================
+   ESTILOS DO HUB ADMINISTRATIVO (adminHubV2.style.css)
+   Otimizado para resolução 1920x1080 (Full HD).
+   ========================================================================== */
+
+/* ── Estrutura principal do painel ─────────────────────────────────────── */
+.admin-hub {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    max-width: 1840px;
+    margin: 0 auto;
+    width: 100%;
+    padding: 0 16px;
+    box-sizing: border-box;
+}
+
+/* ── Tabs de navegação (Dados / Personalização) ─────────────────────────── */
+.admin-tabs {
+    display: flex;
+    gap: 8px;
+    margin-top: 16px;
+    border-bottom: 1px solid rgba(148, 163, 184, 0.12);
+    padding-bottom: 0;
+}
+
+.admin-tab {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 20px;
+    border: none;
+    border-bottom: 2px solid transparent;
+    background: transparent;
+    color: #64748b;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: color 0.2s, border-color 0.2s;
+    border-radius: 0;
+    margin-bottom: -1px;
+}
+
+.admin-tab:hover {
+    color: #e2e8f0;
+}
+
+.admin-tab.active {
+    color: var(--accent, #38bdf8);
+    border-bottom-color: var(--accent, #38bdf8);
+    font-weight: 700;
+}
+
+.admin-tab svg {
+    flex-shrink: 0;
+}
+
+/* Garante que o cabeçalho, seções e barra de ações ocupem 100% da largura */
+.admin-hero,
+.admin-actions,
+.admin-section {
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* ── Cartões de resumo estatístico (Hero) ──────────────────────────────── */
+.admin-summary {
+    display: flex;
+    flex-wrap: wrap;
+    box-sizing: border-box;
+    gap: 14px;
+}
+
+.admin-summary-card {
+    border: 1px solid rgba(148, 163, 184, 0.2);
+    border-radius: 10px;
+    padding: 10px 14px;
+    background: rgba(15, 23, 42, 0.42);
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+
+.admin-summary-card span {
+    color: #94a3b8;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+}
+
+.admin-summary-card strong {
+    color: #f8fafc;
+    font-size: 18px;
+}
+
+/* ── Contêiner das seções de tabelas ───────────────────────────────────── */
+.admin-sections {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+/* Ações no cabeçalho de cada seção (contagem de itens e botões) */
+.admin-section-actions {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+/* ── Filtros e barra de busca ──────────────────────────────────────────── */
+.admin-filters {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.admin-filter-wide {
+    grid-column: span 2;
+}
+
+/* Estilização unificada de inputs, selects e textareas do painel e modais */
+.admin-filter input,
+.admin-filter select,
+.time-field input,
+.time-field select,
+.time-field textarea {
+    width: 100%;
+    min-height: 36px;
+    border-radius: 8px;
+    border: 1px solid rgba(148, 163, 184, 0.18);
+    background: rgba(15, 23, 42, 0.72);
+    color: #f8fafc;
+    padding: 6px 10px;
+    font-size: 13px;
+    box-sizing: border-box;
+}
+
+.time-field textarea {
+    min-height: 80px;
+    resize: vertical;
+}
+
+/* ── Barra de seleção em lote (Ações em massa) ─────────────────────────── */
+.admin-selection-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    margin: 8px 0 10px;
+    padding: 10px 12px;
+    border: 1px solid rgba(56, 189, 248, 0.28);
+    border-radius: 10px;
+    background: rgba(8, 47, 73, 0.35);
+    color: #e0f2fe;
+}
+
+.admin-selection-summary {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.admin-selection-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+}
+
+.admin-selection-chip {
+    display: inline-flex;
+    align-items: center;
+    min-height: 24px;
+    padding: 0 8px;
+    border-radius: 999px;
+    background: rgba(14, 165, 233, 0.2);
+    color: #e0f2fe;
+    border: 1px solid rgba(56, 189, 248, 0.35);
+    font-size: 11px;
+    font-weight: 700;
+}
+
+/* ── Tabelas de dados CRUD ─────────────────────────────────────────────── */
+.admin-table-wrap {
+    overflow-x: auto;
+    border-radius: 10px;
+    border: 1px solid rgba(148, 163, 184, 0.16);
+}
+
+.admin-table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 600px;
+    background: rgba(15, 23, 42, 0.55);
+}
+
+.admin-table th,
+.admin-table td {
+    padding: 8px 12px;
+    border-bottom: 1px solid rgba(148, 163, 184, 0.12);
+    text-align: left;
+    vertical-align: middle;
+    font-size: 13px;
+}
+
+.admin-table th {
+    color: #cbd5e1;
+    background: rgba(15, 23, 42, 0.95);
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+}
+
+.admin-table td {
+    color: #e2e8f0;
+}
+
+.admin-section tbody tr {
+    cursor: pointer;
+}
+
+.admin-section tbody tr:hover {
+    background: rgba(56, 189, 248, 0.05);
+}
+
+/* Destaque visual para linhas selecionadas via checkbox */
+.admin-table tbody tr.is-selected {
+    background: rgba(56, 189, 248, 0.14);
+    box-shadow: inset 4px 0 0 #38bdf8;
+}
+
+/* Alinhamento de colunas de seleção e ações */
+.admin-select-head,
+.admin-select-cell {
+    width: 60px;
+    min-width: 60px;
+    text-align: center;
+}
+
+.admin-actions-head {
+    text-align: end !important;
+    padding-right: 16px !important;
+}
+
+.admin-actions-cell {
+    min-width: 160px;
+}
+
+/* ── Estilização customizada de Checkbox ───────────────────────────────── */
+.admin-checkbox-wrap {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 34px;
+    min-width: 34px;
+    padding: 0;
+    border-radius: 10px;
+    border: 1px solid rgba(148, 163, 184, 0.18);
+    background: linear-gradient(180deg, rgba(15, 23, 42, 0.96), rgba(15, 23, 42, 0.72));
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04), 0 6px 16px rgba(2, 6, 23, 0.15);
+    user-select: none;
+    cursor: pointer;
+    transition:
+        transform 160ms ease,
+        border-color 160ms ease,
+        box-shadow 160ms ease,
+        background 160ms ease;
+}
+
+.admin-checkbox-wrap:hover {
+    transform: translateY(-1px);
+    border-color: rgba(56, 189, 248, 0.32);
+}
+
+.admin-select-checkbox {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    margin: 0;
+    cursor: pointer;
+}
+
+.admin-checkbox-box {
+    width: 18px;
+    height: 18px;
+    border-radius: 5px;
+    border: 1.5px solid rgba(125, 211, 252, 0.55);
+    background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.12), rgba(14, 165, 233, 0.16) 40%, rgba(15, 23, 42, 0.94) 100%);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08);
+    position: relative;
+    flex: 0 0 auto;
+    transition:
+        transform 160ms ease,
+        border-color 160ms ease,
+        background 160ms ease,
+        box-shadow 160ms ease;
+}
+
+.admin-checkbox-box::after {
+    content: "";
+    position: absolute;
+    left: 5px;
+    top: 1px;
+    width: 5px;
+    height: 9px;
+    border-right: 2.5px solid transparent;
+    border-bottom: 2.5px solid transparent;
+    transform: rotate(45deg) scale(0.4);
+    transform-origin: center;
+    opacity: 0;
+    transition:
+        opacity 160ms ease,
+        transform 160ms ease,
+        border-color 160ms ease;
+}
+
+.admin-select-checkbox:focus-visible+.admin-checkbox-box {
+    outline: 2px solid rgba(56, 189, 248, 0.75);
+    outline-offset: 2px;
+}
+
+.admin-select-checkbox:checked+.admin-checkbox-box {
+    border-color: rgba(56, 189, 248, 0.95);
+    background: linear-gradient(180deg, #38bdf8, #0ea5e9);
+    box-shadow:
+        0 0 0 3px rgba(56, 189, 248, 0.18),
+        0 6px 14px rgba(14, 165, 233, 0.25),
+        inset 0 1px 0 rgba(255, 255, 255, 0.18);
+    transform: scale(1.05);
+}
+
+.admin-select-checkbox:checked+.admin-checkbox-box::after {
+    opacity: 1;
+    border-right-color: #f8fafc;
+    border-bottom-color: #f8fafc;
+    transform: rotate(45deg) scale(1);
+}
+
+.admin-select-checkbox:checked~.admin-checkbox-copy {
+    color: #f8fafc;
+}
+
+/* ── Botões de ação e modais ───────────────────────────────────────────── */
+.admin-form-actions {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    grid-column: 1 / -1;
+    margin-top: 8px;
+    align-items: flex-end;
+}
+
+.admin-row-actions {
+    display: flex;
+    gap: 6px;
+    flex-wrap: nowrap;
+    justify-content: flex-end;
+    width: 100%;
+}
+
+.admin-row-actions .danger {
+    color: #fca5a5;
+    border-color: rgba(248, 113, 113, 0.3);
+}
+
+.admin-error {
+    color: #fca5a5;
+    margin-top: 6px;
+    font-size: 13px;
+}
+
+/* ── Modal de Formulário (Backdrop e painel interno) ───────────────────── */
+.admin-modal-backdrop {
+    position: fixed;
+    inset: 0;
+    background: rgba(2, 6, 23, 0.78);
+    -webkit-backdrop-filter: blur(6px);
+    backdrop-filter: blur(6px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 16px;
+    z-index: 1000;
+}
+
+.admin-modal {
+    width: min(1100px, 96vw);
+    max-height: min(88vh, 860px);
+    overflow: auto;
+}
+
+.admin-form {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 10px;
+}
+
+/* ── Agrupamento de palavras por jogo ──────────────────────────────────── */
+.admin-words-group {
+    margin-top: 14px;
+}
+
+.admin-words-group:first-of-type {
+    margin-top: 6px;
+}
+
+.admin-words-group-title {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    font-weight: 700;
+    color: #38bdf8;
+    margin: 0 0 8px 0;
+    padding: 8px 12px;
+    border-radius: 8px;
+    background: rgba(56, 189, 248, 0.08);
+    border: 1px solid rgba(56, 189, 248, 0.18);
+}
+
+.admin-words-group-count {
+    font-size: 11px;
+    font-weight: 600;
+    color: #94a3b8;
+    margin-left: auto;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+/* ── Opções customizadas de resposta para o Quiz ── */
+.quiz-options-group {
+    grid-column: 1 / -1;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 8px;
+    padding: 12px;
+}
+
+.quiz-options-title {
+    font-size: 13px;
+    font-weight: 700;
+    color: #e2e8f0;
+    margin: 0;
+}
+
+.quiz-options-subtitle {
+    font-size: 11px;
+    color: #94a3b8;
+    margin: 0 0 6px 0;
+}
+
+.quiz-option-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.quiz-option-radio-label {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 12px;
+    color: #f1f5f9;
+    cursor: pointer;
+    white-space: nowrap;
+    min-width: 90px;
+}
+
+.quiz-option-radio {
+    accent-color: #38bdf8;
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+}
+
+.quiz-option-input {
+    flex: 1;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 6px;
+    padding: 8px 12px;
+    color: #fff;
+    font-size: 13px;
+}
+
+.quiz-option-input:focus {
+    border-color: #38bdf8;
+    outline: none;
+}
+
+.quiz-bulk-field {
+    grid-column: 1 / -1;
+}
+
+.quiz-bulk-textarea {
+    min-height: 140px;
+    font-family: monospace;
+    font-size: 12px;
+}

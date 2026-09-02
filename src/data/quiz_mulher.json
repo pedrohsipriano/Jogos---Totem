@@ -1,0 +1,334 @@
+{
+  "questions": [
+    {
+      "question": "Qual é a idade média das mulheres empreendedoras entrevistadas na pesquisa CNDL/SPC/Sebrae?",
+      "options": [
+        "35 anos",
+        "38 anos",
+        "41 anos",
+        "45 anos"
+      ],
+      "answer": "41 anos",
+      "hint": "Nível fácil"
+    },
+    {
+      "question": "Em média, com quantos anos as entrevistadas abriram sua empresa?",
+      "options": [
+        "25 anos",
+        "28 anos",
+        "32 anos",
+        "36 anos"
+      ],
+      "answer": "32 anos",
+      "hint": "Nível fácil"
+    },
+    {
+      "question": "Que percentual das empreendedoras se considera uma profissional de sucesso?",
+      "options": [
+        "76%",
+        "85%",
+        "91%",
+        "97%"
+      ],
+      "answer": "97%",
+      "hint": "Nível fácil"
+    },
+    {
+      "question": "Qual é o faturamento médio mensal do negócio das empreendedoras entrevistadas?",
+      "options": [
+        "R$ 1.500",
+        "R$ 2.741",
+        "R$ 4.200",
+        "R$ 6.000"
+      ],
+      "answer": "R$ 2.741",
+      "hint": "Nível fácil"
+    },
+    {
+      "question": "Qual foi o principal motivo declarado para começar a empreender?",
+      "options": [
+        "Sonho pessoal",
+        "Estava desempregada e precisava sobreviver",
+        "Herança de negócio familiar",
+        "Percebeu uma boa oportunidade"
+      ],
+      "answer": "Estava desempregada e precisava sobreviver",
+      "hint": "Nível fácil"
+    },
+    {
+      "question": "Em média, quantas horas por dia as empreendedoras dedicam ao negócio?",
+      "options": [
+        "6,5 horas",
+        "7 horas",
+        "8,3 horas",
+        "10 horas"
+      ],
+      "answer": "8,3 horas",
+      "hint": "Nível fácil"
+    },
+    {
+      "question": "Em média, quantos dias de férias por ano as empreendedoras tiram?",
+      "options": [
+        "8 dias",
+        "12 dias",
+        "16 dias",
+        "22 dias"
+      ],
+      "answer": "16 dias",
+      "hint": "Nível fácil"
+    },
+    {
+      "question": "No setor de comércio, qual segmento é o mais citado entre os negócios liderados por mulheres?",
+      "options": [
+        "Vestuário",
+        "Alimentação (bar, restaurante, padaria etc.)",
+        "Cosméticos e perfumaria",
+        "Artesanato"
+      ],
+      "answer": "Alimentação (bar, restaurante, padaria etc.)",
+      "hint": "Nível fácil"
+    },
+    {
+      "question": "No setor de serviços, qual segmento concentra a maioria dos negócios femininos?",
+      "options": [
+        "Beleza e estética",
+        "Educação",
+        "Consultoria",
+        "Tecnologia"
+      ],
+      "answer": "Beleza e estética",
+      "hint": "Nível fácil"
+    },
+    {
+      "question": "Qual foi a principal fonte de capital usada para abrir o negócio?",
+      "options": [
+        "Empréstimo bancário",
+        "Cartão de crédito",
+        "Capital próprio / economias pessoais",
+        "Investidores"
+      ],
+      "answer": "Capital próprio / economias pessoais",
+      "hint": "Nível fácil"
+    },
+    {
+      "question": "Apenas qual percentual das empreendedoras se sente preparada para lidar com TODAS as áreas do negócio?",
+      "options": [
+        "10%",
+        "24%",
+        "45%",
+        "60%"
+      ],
+      "answer": "10%",
+      "hint": "Nível médio"
+    },
+    {
+      "question": "Qual é a prática de gestão mais adotada pelas empreendedoras?",
+      "options": [
+        "Planejamento estratégico",
+        "Controle de caixa",
+        "CRM (gestão de relacionamento com cliente)",
+        "Balanço gerencial"
+      ],
+      "answer": "Controle de caixa",
+      "hint": "Nível médio"
+    },
+    {
+      "question": "Que percentual das empresárias afirma ser ela mesma a responsável pelo marketing do negócio?",
+      "options": [
+        "65%",
+        "78%",
+        "88%",
+        "95%"
+      ],
+      "answer": "95%",
+      "hint": "Nível médio"
+    },
+    {
+      "question": "Qual canal digital de vendas é o mais utilizado pelas empreendedoras?",
+      "options": [
+        "Site próprio",
+        "Marketplace",
+        "WhatsApp",
+        "Telemarketing"
+      ],
+      "answer": "WhatsApp",
+      "hint": "Nível médio"
+    },
+    {
+      "question": "Que percentual das empresárias administra o negócio sozinha, sem sócios?",
+      "options": [
+        "60%",
+        "70%",
+        "86%",
+        "95%"
+      ],
+      "answer": "86%",
+      "hint": "Nível médio"
+    },
+    {
+      "question": "Qual é o principal desafio PESSOAL relatado pelas empreendedoras?",
+      "options": [
+        "Preconceito de gênero",
+        "Conciliar vida profissional com as tarefas domésticas",
+        "Falta de acesso a crédito",
+        "Concorrência no mercado"
+      ],
+      "answer": "Conciliar vida profissional com as tarefas domésticas",
+      "hint": "Nível médio"
+    },
+    {
+      "question": "Segundo as próprias empreendedoras, qual é a principal vantagem das mulheres ao empreender?",
+      "options": [
+        "Mais paciência",
+        "Fazer várias coisas ao mesmo tempo",
+        "Melhor uso de tecnologia",
+        "Menos medo de correr riscos"
+      ],
+      "answer": "Fazer várias coisas ao mesmo tempo",
+      "hint": "Nível médio"
+    },
+    {
+      "question": "Que percentual das empresárias considera difícil ou muito difícil conseguir crédito no Brasil?",
+      "options": [
+        "35%",
+        "45%",
+        "55%",
+        "70%"
+      ],
+      "answer": "55%",
+      "hint": "Nível médio"
+    },
+    {
+      "question": "Qual foi o principal desafio de GESTÃO mais citado pelas empresárias?",
+      "options": [
+        "Relacionamento com fornecedores",
+        "Gestão financeira / controle de caixa",
+        "Gestão de pessoas",
+        "Diversificação de produtos"
+      ],
+      "answer": "Gestão financeira / controle de caixa",
+      "hint": "Nível médio"
+    },
+    {
+      "question": "Que percentual das empresárias acredita que a dificuldade de empreender no Brasil é A MESMA para homens e mulheres?",
+      "options": [
+        "35%",
+        "45%",
+        "55%",
+        "60%"
+      ],
+      "answer": "60%",
+      "hint": "Nível médio"
+    },
+    {
+      "question": "Segundo dados recentes do Sebrae, quantas mulheres estão à frente de negócios no Brasil hoje?",
+      "options": [
+        "6,4 milhões",
+        "8,6 milhões",
+        "10,4 milhões",
+        "14 milhões"
+      ],
+      "answer": "10,4 milhões",
+      "hint": "Nível difícil"
+    },
+    {
+      "question": "Qual foi o crescimento do número de mulheres donas de negócio no Brasil na última década, segundo o Sebrae?",
+      "options": [
+        "10%",
+        "Quase 30%",
+        "50%",
+        "75%"
+      ],
+      "answer": "Quase 30%",
+      "hint": "Nível difícil"
+    },
+    {
+      "question": "Qual setor concentra hoje a maior parte dos negócios liderados por mulheres no Brasil?",
+      "options": [
+        "Indústria",
+        "Serviços",
+        "Comércio",
+        "Agronegócio"
+      ],
+      "answer": "Serviços",
+      "hint": "Nível difícil"
+    },
+    {
+      "question": "Em 2025, os novos negócios liderados por mulheres representaram qual percentual do total de aberturas de MEIs e micro/pequenas empresas no Brasil?",
+      "options": [
+        "28%",
+        "35%",
+        "42%",
+        "50%"
+      ],
+      "answer": "42%",
+      "hint": "Nível difícil"
+    },
+    {
+      "question": "Segundo o Sebrae, qual é o percentual de mulheres donas de negócio com ensino superior, em comparação aos homens?",
+      "options": [
+        "29% mulheres x 21% homens",
+        "20% x 25%",
+        "35% x 35%",
+        "15% x 30%"
+      ],
+      "answer": "29% mulheres x 21% homens",
+      "hint": "Nível difícil"
+    },
+    {
+      "question": "Qual linha de crédito do Sebrae, com garantia exclusiva, é voltada para negócios liderados por mulheres?",
+      "options": [
+        "Pronampe",
+        "Fampe",
+        "BNDES Mulher",
+        "Crediamigo"
+      ],
+      "answer": "Fampe",
+      "hint": "Nível difícil"
+    },
+    {
+      "question": "Qual faixa etária concentra a maioria das donas de negócio no Brasil atualmente?",
+      "options": [
+        "18 a 29 anos",
+        "30 a 49 anos",
+        "50 a 65 anos",
+        "Acima de 65 anos"
+      ],
+      "answer": "30 a 49 anos",
+      "hint": "Nível difícil"
+    },
+    {
+      "question": "Em qual cidade da Paraíba acontece a 58ª Convenção Nacional do Comércio, em agosto de 2026?",
+      "options": [
+        "Campina Grande",
+        "João Pessoa",
+        "Patos",
+        "Sousa"
+      ],
+      "answer": "João Pessoa",
+      "hint": "Nível difícil"
+    },
+    {
+      "question": "A Convenção Nacional do Comércio é organizada por qual confederação?",
+      "options": [
+        "CNI",
+        "CNC",
+        "CNDL",
+        "FIESP"
+      ],
+      "answer": "CNDL",
+      "hint": "Nível difícil"
+    },
+    {
+      "question": "Que marco histórico esta edição representa para a Paraíba?",
+      "options": [
+        "É a segunda vez que o estado sedia o evento",
+        "É a primeira vez que o estado sedia o evento",
+        "É a décima edição realizada no estado",
+        "Será a última edição do evento"
+      ],
+      "answer": "É a primeira vez que o estado sedia o evento",
+      "hint": "Nível difícil"
+    }
+  ]
+}

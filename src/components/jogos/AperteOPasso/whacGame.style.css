@@ -1,0 +1,401 @@
+/* ==========================================================================
+   ESTILOS DO JOGO OMNI-CATCH / WHAC-A-MOLE (whacGame.style.css)
+   Define as variáveis de tema em estilo Neon/Futurista (Cyberpunk), layout da
+   grade de slots circulares, efeitos de pulso e brilho (Glow) para alvos
+   e distratores, e animações de surgimento e clique.
+   ========================================================================== */
+
+/* ── Variáveis Neon e Paleta de Cores do Componente ────────────────────── */
+.whac-game {
+    --wg-primary: #f60085;
+    /* Rosa Neon vibrante para os alvos */
+    --wg-secondary: #0ea5e9;
+    /* Azul Ciano para bordas e distratores */
+    --wg-bg-dark: #021229;
+    /* Azul Escuro profundo de fundo */
+    --wg-bg-slot: rgba(2, 18, 41, 0.8);
+    --wg-bg-active: rgba(14, 165, 233, 0.1);
+    --wg-icon-color: #f8fafc;
+    --wg-font: "Grift", "Courier New", monospace;
+}
+
+/* ── Contêiner Principal do Jogo ───────────────────────────────────────── */
+.whac-game {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    font-family: var(--wg-font);
+}
+
+/* ── Tela Inicial de Preparação (Intro) ────────────────────────────────── */
+.whac-game .whac-intro {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 24px;
+    padding: 40px 20px;
+    background: rgba(2, 18, 41, 0.6);
+    border-radius: 20px;
+    border: 1px solid var(--Color-5, #F60085);
+    border-radius: 16px;
+    text-align: center;
+}
+
+.whac-game .whac-intro-text {
+    font-size: 18px;
+    color: #cbd5e1;
+    font-weight: 600;
+    letter-spacing: 2px;
+}
+
+/* Exibição gigante do ícone alvo com efeito de pulso neon */
+.whac-game .whac-target-display {
+    font-size: 120px;
+    filter: drop-shadow(0 0 20px var(--wg-primary)) drop-shadow(0 0 40px rgba(246, 0, 133, 0.5));
+    animation: neon-pulse 1.5s infinite;
+}
+
+.whac-game .whac-intro-hint {
+    font-size: 14px;
+    color: #94a3b8;
+    font-style: italic;
+}
+
+/* Botão de início estilizado */
+.whac-game .whac-start-btn {
+    padding: 12px 40px;
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+/* ── Barra de Informação do Alvo (Durante a partida) ───────────────────── */
+.whac-game .whac-target-info {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    padding: 16px;
+    background: rgba(2, 18, 41, 0.7);
+    border-radius: 20px;
+    border: 1px solid var(--Color-5, #F60085);
+}
+
+.whac-game .whac-target-label {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--wg-primary);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.whac-game .whac-target-icon {
+    font-size: 48px;
+    filter: drop-shadow(0 0 15px var(--wg-primary));
+    animation: neon-pulse 1.5s infinite;
+}
+
+/* ── Grade de Slots Dinâmica ───────────────────────────────────────────── */
+.whac-game .whac-grid {
+    display: grid;
+    /* Colunas flexíveis definidas dinamicamente via style inline no JSX */
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 16px;
+    padding: 20px;
+    background: rgba(2, 18, 41, 0.6);
+    border-radius: 20px;
+    border: 1px solid var(--Color-5, #F60085);
+}
+
+/* ── Estilização do Slot Individual (Buraco) ───────────────────────────── */
+.whac-game .whac-slot {
+    aspect-ratio: 1;
+    /* Garante formato perfeitamente circular */
+    border-radius: 50%;
+    background: var(--wg-bg-slot);
+    border: 2px solid var(--wg-secondary);
+    color: var(--wg-icon-color);
+    display: grid;
+    place-items: center;
+    font-size: 36px;
+    cursor: pointer;
+    transition: all 0.15s ease;
+    touch-action: manipulation;
+    /* Otimização para toques rápidos no mobile */
+    user-select: none;
+    box-shadow: inset 0 0 10px rgba(14, 165, 233, 0.3);
+    outline: none;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.whac-game .whac-slot:focus,
+.whac-game .whac-slot:focus-visible {
+    outline: none;
+}
+
+/* Slots desabilitados (vazios ou em fim de jogo) */
+.whac-game .whac-slot:disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+    animation: none;
+    animation-fill-mode: none;
+}
+
+/* ── Estado do Slot Ativo (Contendo um item) ───────────────────────────── */
+.whac-game .whac-slot.active {
+    background: var(--wg-bg-active);
+    box-shadow: 0 0 20px rgba(14, 165, 233, 0.6), inset 0 0 15px rgba(14, 165, 233, 0.4);
+    /* Animação sincronizada com a duração aleatória do item */
+    animation: popInAndOut 1s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+/* ── Estado do Slot Alvo (Com brilho rosa intenso) ─────────────────────── */
+.whac-game .whac-slot.target {
+    border-color: var(--wg-primary);
+    box-shadow: 0 0 30px rgba(246, 0, 133, 0.8), inset 0 0 20px rgba(246, 0, 133, 0.3);
+    background: rgba(246, 0, 133, 0.1);
+}
+
+/* ── Estado do Slot Clicado (Flash verde/vermelho de confirmação) ─────── */
+.whac-game .whac-slot.clicked {
+    transform: scale(0.9);
+    opacity: 0.8;
+    transition: all 0.1s ease;
+    animation: none;
+    /* Interrompe a animação de pop para dar feedback imediato */
+}
+
+/* Feedback verde para acerto (item correto) */
+.whac-game .whac-slot.target.clicked {
+    border-color: #22c55e;
+    background: rgba(34, 197, 94, 0.3);
+    box-shadow: 0 0 30px rgba(34, 197, 94, 0.8), inset 0 0 20px rgba(34, 197, 94, 0.4);
+}
+
+/* Feedback vermelho para erro (item incorreto) */
+.whac-game .whac-slot.clicked:not(.target) {
+    border-color: #ef4444;
+    background: rgba(239, 68, 68, 0.3);
+    box-shadow: 0 0 30px rgba(239, 68, 68, 0.8), inset 0 0 20px rgba(239, 68, 68, 0.4);
+}
+
+/* Efeito de afundamento ao pressionar o alvo */
+.whac-game .whac-slot.target:active {
+    transform: scale(0.95);
+    box-shadow: 0 0 40px rgba(246, 0, 133, 1), inset 0 0 25px rgba(246, 0, 133, 0.5);
+}
+
+/* ── Animação e escala do ícone interno ────────────────────────────────── */
+.whac-game .whac-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: iconScale 0.3s ease-out;
+}
+
+.whac-game .whac-slot.target .whac-icon {
+    animation: iconScale 0.3s ease-out, targetGlow 1s ease-in-out;
+}
+
+/* ── Caixa de Resultado Final ──────────────────────────────────────────── */
+.whac-game .whac-result-box {
+    background: rgba(2, 18, 41, 0.9);
+    border: 2px solid var(--wg-primary);
+    border-radius: 16px;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    text-align: center;
+    box-shadow: 0 0 30px rgba(246, 0, 133, 0.4);
+}
+
+.whac-game .whac-result-box p {
+    color: #e2e8f0;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.whac-game .whac-result-box h3 {
+    color: var(--wg-secondary);
+    font-size: 32px;
+    text-shadow: 0 0 20px rgba(14, 165, 233, 0.6);
+    margin: 12px 0;
+}
+
+.whac-game .whac-result-box button {
+    margin-top: 12px;
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+/* ── Seção de Mini-ranking ─────────────────────────────────────────────── */
+.whac-game .mini-ranking {
+    margin-top: 20px;
+    padding-top: 16px;
+    border-top: 1px dashed #334155;
+}
+
+.whac-game .mini-ranking .eyebrow {
+    color: #94a3b8;
+    font-size: 12px;
+    letter-spacing: 1px;
+    margin-bottom: 8px;
+}
+
+.whac-game .mini-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 0;
+    color: #cbd5e1;
+    font-size: 14px;
+    border-bottom: 1px solid rgba(52, 81, 104, 0.4);
+}
+
+.whac-game .mini-row span:last-child {
+    color: var(--wg-secondary);
+    font-weight: 700;
+}
+
+.whac-intro1 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.whac-intro-text1 {
+    font-size: 25px;
+    color: #cbd5e1;
+    font-weight: 600;
+    letter-spacing: 2px;
+}
+
+/* ── Definições de Keyframes (Animações CSS) ───────────────────────────── */
+
+/* Animação de surgimento (pop-in) e desaparecimento (pop-out) do item no slot */
+@keyframes popInAndOut {
+    0% {
+        transform: scale(0);
+        opacity: 0;
+    }
+
+    20% {
+        transform: scale(1.15);
+        opacity: 1;
+    }
+
+    80% {
+        transform: scale(1);
+        opacity: 1;
+    }
+
+    100% {
+        transform: scale(0);
+        opacity: 0;
+    }
+}
+
+/* Escala inicial do ícone ao aparecer */
+@keyframes iconScale {
+    0% {
+        transform: scale(0.5);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+/* Efeito de brilho pulsante específico para o ícone alvo */
+@keyframes targetGlow {
+    0% {
+        filter: drop-shadow(0 0 5px var(--wg-primary));
+        transform: scale(0.9);
+    }
+
+    50% {
+        filter: drop-shadow(0 0 30px var(--wg-primary));
+        transform: scale(1.05);
+    }
+
+    100% {
+        filter: drop-shadow(0 0 15px var(--wg-primary));
+        transform: scale(1);
+    }
+}
+
+/* Pulso de sombra neon para os displays de destaque */
+@keyframes neon-pulse {
+
+    0%,
+    100% {
+        filter: drop-shadow(0 0 20px var(--wg-primary)) drop-shadow(0 0 40px rgba(246, 0, 133, 0.5));
+    }
+
+    50% {
+        filter: drop-shadow(0 0 30px var(--wg-primary)) drop-shadow(0 0 60px rgba(246, 0, 133, 0.8));
+    }
+}
+
+/* Imagens da logo OmniVarejo dentro do display de alvo */
+.whac-game .whac-logo-img {
+    width: auto;
+    height: 120px;
+    object-fit: contain;
+    display: block;
+    margin: 0 auto;
+}
+
+.whac-game .whac-logo-img-small {
+    width: auto;
+    height: 48px;
+    object-fit: contain;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.whac-game .whac-logo-img-cell {
+    width: auto;
+    height: 44px;
+    object-fit: contain;
+    display: block;
+    transform: translateY(3px);
+}
+
+/* ── Responsividade para Telas Menores (Mobile) ────────────────────────── */
+@media (max-width: 720px) {
+    .whac-game .whac-grid {
+        gap: 12px;
+        padding: 12px;
+    }
+
+    .whac-game .whac-target-display {
+        font-size: 80px;
+    }
+
+    .whac-game .whac-logo-img {
+        height: 80px;
+    }
+
+    .whac-game .whac-logo-img-small {
+        height: 36px;
+    }
+
+    .whac-game .whac-logo-img-cell {
+        height: 32px;
+        transform: translateY(2px);
+    }
+
+    .whac-game .whac-slot {
+        font-size: 28px;
+    }
+
+    .whac-game .whac-intro {
+        padding: 30px 16px;
+        gap: 20px;
+    }
+}

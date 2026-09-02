@@ -1,0 +1,166 @@
+/* ==========================================================================
+   ESTILOS DA CESTA DE OFERTAS (catchGame.style.css)
+   Define as variáveis de tema, estilização da área interativa do Canvas (Stage)
+   com grade de fundo futurista, destaque de instruções e painel de resultados.
+   ========================================================================== */
+
+/* ── Variáveis locais de escopo do componente ─────────────────────────────── */
+.catch-game {
+    position: relative;
+    overflow: hidden;
+    background: var(--cg-bg);
+    border: 1px solid var(--cg-border);
+    border-radius: 16px;
+    padding: 12px;
+}
+
+/* ── Área interativa do Jogo (Stage contêiner do Canvas) ───────────────── */
+.catch-game .catch-stage {
+    position: relative;
+    display: flex;
+    min-height: 974px;
+    padding: 16px;
+    justify-content: center;
+    align-items: flex-end;
+    gap: 10px;
+    flex: 1 0 0;
+    align-self: stretch;
+    overflow: hidden;
+    touch-action: none;
+    /* Desativa comportamentos de rolagem nativa no mobile ao arrastar a cesta */
+    user-select: none;
+    /* Fundo com padrão de grade futurista (Cyberpunk grid) */
+    border-radius: 10px;
+    border: 1px solid var(--Color-5, #F60085);
+
+}
+
+/* O elemento <canvas> ocupa 100% do espaço do seu contêiner */
+.catch-game .catch-canvas {
+    width: 100%;
+    display: block;
+    border-radius: 10px;
+    border: 1px solid var(--Color-5, #F60085);
+    background-color: rgba(0, 0, 0, 0.50);
+}
+
+/* ── Área de instruções textuais ───────────────────────────────────────── */
+.catch-game .catch-instructions {
+    margin-top: 10px;
+    color: var(--cg-instruction-color);
+    font-size: 14px;
+}
+
+/* SVG overlay for the basket */
+.catch-game .catch-basket-svg {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    pointer-events: none;
+    transform-origin: 0 0;
+    will-change: left, top, width, height;
+    display: block;
+    width: 242px;
+}
+
+/* Destaque visual para termos importantes nas instruções */
+.catch-game .catch-instructions strong {
+    color: var(--cg-highlight-color);
+}
+
+/* ── Caixa de exibição do resultado final (Modal interno) ──────────────── */
+.catch-game .catch-result-box {
+    background: var(--cg-result-bg);
+    border: 1px solid var(--cg-border);
+    border-radius: 12px;
+    padding: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-top: 16px;
+}
+
+.estantePontos {
+    display: flex;
+    padding: 21px 30px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    flex: 1 0 0;
+    align-self: stretch;
+    border-radius: 20px;
+    border: 1px solid var(--Color-5, #F60085);
+}
+
+.estantePontos1 {
+    display: flex;
+    margin-top: 30px;
+    padding: 21px 30px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    flex: 1 0 0;
+    align-self: stretch;
+    border-radius: 20px;
+    border: 1px solid var(--Color-5, #F60085);
+}
+
+.itensLegenda {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 53px;
+    align-self: stretch;
+}
+
+.itensLegenda1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    align-self: stretch;
+}
+
+.pontuacao1 {
+    display: flex;
+    padding: 9px 29px;
+    align-items: center;
+    gap: 10px;
+    align-self: stretch;
+    border-radius: 10px;
+    border: 1px solid var(--Color-5, #F60085);
+}
+
+.pontuacao1 span {
+    color: #FFF;
+    font-family: Grift;
+    font-size: 44px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 108%;
+    /* 47.52px */
+    letter-spacing: -0.484px;
+}
+
+.imgdiv {
+    display: flex;
+    padding: 15px 10px;
+    justify-content: center;
+    align-items: center;
+    gap: 14px;
+    flex: 1 0 0;
+    align-self: stretch;
+    border-radius: 10px;
+    border: 1px solid var(--Color-5, #F60085);
+    color: #FFF;
+    font-family: Grift;
+    font-size: 44px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 108%;
+    /* 47.52px */
+    letter-spacing: -0.484px;
+}

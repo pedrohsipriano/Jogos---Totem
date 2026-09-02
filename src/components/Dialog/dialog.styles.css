@@ -1,0 +1,328 @@
+.dialog {
+    position: fixed;
+    top: 25%;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 9999;
+    display: flex;
+    width: min(959px, 96vw);
+    max-width: 959px;
+    padding: 25px 20px;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 29px;
+    flex-shrink: 0;
+    border-radius: 10px;
+    border: 1px solid #F60085;
+    margin: 0 auto;
+    background: transparent;
+    box-sizing: border-box;
+    /* ensure dialog content can scroll when viewport is small */
+    max-height: calc(100vh - 48px);
+    overflow-y: auto;
+}
+
+.pontuacaoTempo {
+    display: block;
+    width: 100%;
+    padding: 20px 100px;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 10px;
+    border: 1px solid var(--Color-5, #F60085);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: #FFF;
+    text-align: center;
+    font-family: Grift;
+    font-size: 50px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 108%;
+    /* 54px */
+    letter-spacing: -0.55px;
+}
+
+.frase {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.voltar-ao-menu {
+    display: flex;
+    padding: 25px 20px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    align-self: stretch;
+    border-radius: 10px;
+    background: #F60085;
+    color: #FFF;
+    text-align: center;
+    font-family: Grift;
+    font-size: 50px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 108%;
+    /* 54px */
+    letter-spacing: -0.55px;
+}
+
+.pontuacaoSpan {
+    color: #FFF;
+    text-align: center;
+    font-family: Grift;
+    font-size: 50px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 108%;
+    /* 54px */
+    letter-spacing: -0.55px;
+    display: flex;
+    height: 104px;
+    padding: 25px 20px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    border-radius: 10px;
+    background: var(--Color-5, #F60085);
+    box-sizing: border-box;
+    min-width: 270px;
+}
+
+.venceu {
+    color: var(--Color-5, #F60085);
+    font-family: Grift;
+    font-size: 100px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 108%;
+    letter-spacing: -1.1px;
+}
+
+.voce {
+    color: #FFF;
+    text-align: center;
+    font-family: Grift;
+    font-size: 100px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 108%;
+    /* 108px */
+    letter-spacing: -1.1px;
+}
+
+.gabaritoFullSection {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.8125rem;
+    align-self: stretch;
+}
+
+.resposta-target-row {
+    display: grid;
+    grid-template-columns: auto;
+    gap: 1rem;
+    padding: 0.625rem 1.25rem;
+    align-self: stretch;
+    border-radius: 1.25rem;
+    border: 1px solid var(--Color-5, #F60085);
+    background: rgba(0, 4, 11, 0.80);
+}
+
+/* When solved (acertou) use 2 rows (2 x 2 = 4 cells) */
+.resposta-target-row.solved-word1 {
+    /* make rows proportional so 'pergunta' is half the height of 'status' which spans both rows */
+    grid-template-rows: auto;
+    grid-template-areas:
+        "pergunta pergunta status"
+        "sua  resposta resposta";
+}
+
+/* When not solved (errou) use 3 rows (3 x 2 = 6 cells). The class "1" is used in JSX for the unsolved state, so select via attribute */
+.resposta-target-row[class~="1"] {
+    /* unsolved: 3 proportional rows, status spans all three */
+    grid-template-rows: auto;
+    grid-template-areas:
+        "pergunta pergunta status"
+        "sua respostaErrada respostaErrada"
+        "correta respostaCorreta respostaCorreta";
+}
+
+/* Make direct children fill their grid cell */
+.resposta-target-row>* {
+    width: 100%;
+}
+
+.resposta-pergunta {
+    display: flex;
+    height: 6.25rem;
+    padding: 0.9375rem;
+    align-items: center;
+    justify-content: start;
+    text-align: start;
+    gap: 0.625rem;
+    flex: 1 0 0;
+    border-radius: 0.625rem;
+    border: 1px solid rgba(255, 255, 255, 0.20);
+    background: rgba(246, 0, 133, 0.20);
+    color: #FFF;
+    font-family: Grift;
+    font-size: 1.9375rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 108%;
+    /* 2.0925rem */
+    letter-spacing: -0.02131rem;
+}
+
+.resposta-erradoCerto {
+    display: flex;
+    height: 6.25rem;
+    padding: 0.9375rem;
+    align-items: center;
+    gap: 0.625rem;
+    color: #FFF;
+    text-align: center;
+    font-family: Grift;
+    font-size: 2.8125rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 108%;
+    /* 3.0375rem */
+    letter-spacing: -0.03094rem;
+}
+
+.suaResposta {
+    display: flex;
+    width: 260px;
+    height: auto;
+    padding: 0.9375rem;
+    justify-content: center;
+    align-items: center;
+    gap: 0.625rem;
+    color: #FFF;
+    text-align: center;
+    font-family: Grift;
+    font-size: 1.8125rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 108%;
+    /* 1.9575rem */
+    letter-spacing: -0.01994rem;
+}
+
+.suaRespostaCorreta {
+    border-radius: 0.625rem;
+    border: 1px solid rgba(255, 255, 255, 0.20);
+    background: rgba(246, 0, 133, 0.84);
+}
+
+.suaRespostaErrado {
+    border-radius: 0.625rem;
+    border: 1px solid rgba(255, 255, 255, 0.20);
+    background: #F00;
+}
+
+.respostaCorreta {
+    display: flex;
+    height: auto;
+    padding: 0.9375rem;
+    justify-content: center;
+    align-items: center;
+    gap: 0.625rem;
+    border-radius: 0.625rem;
+    border: 1px solid rgba(255, 255, 255, 0.20);
+    background: rgba(246, 0, 133, 0.84);
+    color: #FFF;
+    text-align: center;
+    font-family: Grift;
+    font-size: 1.8125rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 108%;
+    /* 1.9575rem */
+    letter-spacing: -0.01994rem;
+}
+
+.errado1 {
+    border-radius: 0.625rem;
+    border: 1px solid rgba(255, 255, 255, 0.20);
+    background: #F00;
+}
+
+.certo1 {
+    border-radius: 0.625rem;
+    border: 1px solid rgba(255, 255, 255, 0.20);
+    background: var(--correto, #00C14D);
+}
+
+.resposta-resposta {
+    display: flex;
+    height: auto;
+    padding: 0.9375rem;
+    align-items: center;
+    justify-content: start;
+    text-align: start;
+    gap: 0.625rem;
+    border-radius: 0.625rem;
+    border: 1px solid rgba(255, 255, 255, 0.20);
+    background: rgba(246, 0, 133, 0.20);
+    color: #FFF;
+    font-family: Grift;
+    font-size: 1.8125rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 108%;
+    /* 1.9575rem */
+    letter-spacing: -0.01994rem;
+}
+
+/* Map existing elements to grid areas */
+.resposta-pergunta {
+    grid-area: pergunta;
+}
+
+.resposta-erradoCerto {
+    grid-area: status;
+}
+
+.suaResposta {
+    grid-area: sua;
+}
+
+.respostaCorreta {
+    grid-area: correta;
+}
+
+.resposta-resposta {
+    grid-area: resposta;
+    /* default for solved layout */
+}
+
+.resposta-resposta.solved {
+    grid-area: resposta;
+}
+
+/* unsolved: map the user's answer to respostaErrada area */
+.resposta-target-row[class~="1"] .resposta-resposta {
+    grid-area: respostaErrada;
+}
+
+/* The label .respostaCorreta maps to the 'correta' area (defined above); no per-state override needed */
+
+/* Place the actual correct answer text into the respostaCorreta area (overrides respostaErrada mapping for .solved) */
+.resposta-target-row[class~="1"] .resposta-resposta.solved {
+    grid-area: respostaCorreta;
+}
+
+/* make status span the rows so it is visually taller than pergunta */
+.resposta-target-row.solved-word1 .resposta-erradoCerto {
+    grid-row: 1 / span 2;
+}
+
+.resposta-target-row[class~="1"] .resposta-erradoCerto {
+    grid-row: 1 / span 3;
+}

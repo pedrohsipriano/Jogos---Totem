@@ -1,0 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wdth,wght@0,75..100,300..800;1,75..100,300..800&display=swap');
+
+/* Configuração global da fonte Open Sans para todo o projeto */
+:root {
+    --font-family: 'Open Sans', sans-serif;
+}
+
+body, html, input, select, textarea, button, h1, h2, h3, h4, p, span, div, strong, label, th, td {
+    font-family: 'Open Sans', sans-serif !important;
+}

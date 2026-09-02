@@ -1,0 +1,244 @@
+{
+  "game": {
+    "id": "6",
+    "code": "labirinto",
+    "name": "Labirinto"
+  },
+  "words": [
+    {
+      "id": 1,
+      "gameId": 6,
+      "word": "CLIENTE",
+      "hint": "A pessoa que realiza as compras no varejo.",
+      "createdat": "2026-06-22T16:55:06.123Z",
+      "updatedat": "2026-06-22T16:55:06.123Z"
+    },
+    {
+      "id": 2,
+      "gameId": 6,
+      "word": "OFERTA",
+      "hint": "Preço ou condição promocional imperdível por tempo limitado.",
+      "createdat": "2026-06-22T16:55:06.435Z",
+      "updatedat": "2026-06-22T16:55:06.435Z"
+    },
+    {
+      "id": 3,
+      "gameId": 6,
+      "word": "VITRINE",
+      "hint": "Local visível na frente da loja onde são exibidos os produtos.",
+      "createdat": "2026-06-22T16:55:06.731Z",
+      "updatedat": "2026-06-22T16:55:06.731Z"
+    },
+    {
+      "id": 4,
+      "gameId": 6,
+      "word": "DESCONTO",
+      "hint": "Redução no preço original de venda de um item.",
+      "createdat": "2026-06-22T16:55:07.027Z",
+      "updatedat": "2026-06-22T16:55:07.027Z"
+    },
+    {
+      "id": 5,
+      "gameId": 6,
+      "word": "PROMOÇÃO",
+      "hint": "Ação comercial para impulsionar as vendas de produtos.",
+      "createdat": "2026-06-22T16:55:07.331Z",
+      "updatedat": "2026-06-22T16:55:07.331Z"
+    },
+    {
+      "id": 6,
+      "gameId": 6,
+      "word": "VENDEDOR",
+      "hint": "O profissional dedicado a atender e realizar vendas na loja.",
+      "createdat": "2026-06-22T16:55:07.628Z",
+      "updatedat": "2026-06-22T16:55:07.628Z"
+    },
+    {
+      "id": 7,
+      "gameId": 6,
+      "word": "ESTOQUE",
+      "hint": "Quantidade de produtos guardados e disponíveis para comercialização.",
+      "createdat": "2026-06-22T16:55:07.922Z",
+      "updatedat": "2026-06-22T16:55:07.922Z"
+    },
+    {
+      "id": 8,
+      "gameId": 6,
+      "word": "QUALIDADE",
+      "hint": "Atributo de excelência de um produto ou serviço.",
+      "createdat": "2026-06-22T16:55:08.218Z",
+      "updatedat": "2026-06-22T16:55:08.218Z"
+    },
+    {
+      "id": 9,
+      "gameId": 6,
+      "word": "ATENDIMENTO",
+      "hint": "Ação de receber, escutar e ajudar o cliente.",
+      "createdat": "2026-06-22T16:55:08.512Z",
+      "updatedat": "2026-06-22T16:55:08.512Z"
+    },
+    {
+      "id": 10,
+      "gameId": 6,
+      "word": "COMÉRCIO",
+      "hint": "Atividade de compra, venda e troca de produtos.",
+      "createdat": "2026-06-22T16:55:08.808Z",
+      "updatedat": "2026-06-22T16:55:08.808Z"
+    },
+    {
+      "id": 11,
+      "gameId": 6,
+      "word": "COMPRA",
+      "hint": "Ação de adquirir um bem ou produto mediante pagamento.",
+      "createdat": "2026-06-22T16:55:09.103Z",
+      "updatedat": "2026-06-22T16:55:09.103Z"
+    },
+    {
+      "id": 12,
+      "gameId": 6,
+      "word": "VENDA",
+      "hint": "Ação de comercializar um produto recebendo o pagamento correspondente.",
+      "createdat": "2026-06-22T16:55:09.399Z",
+      "updatedat": "2026-06-22T16:55:09.399Z"
+    },
+    {
+      "id": 13,
+      "gameId": 6,
+      "word": "PARAÍBA",
+      "hint": "O estado anfitrião do nosso grande evento.",
+      "createdat": "2026-06-22T16:55:09.695Z",
+      "updatedat": "2026-06-22T16:55:09.695Z"
+    },
+    {
+      "id": 14,
+      "gameId": 6,
+      "word": "CULTURA",
+      "hint": "Conjunto de tradições, arte e costumes de um povo.",
+      "createdat": "2026-06-22T16:55:09.991Z",
+      "updatedat": "2026-06-22T16:55:09.991Z"
+    },
+    {
+      "id": 15,
+      "gameId": 6,
+      "word": "TURISMO",
+      "hint": "Atividade de viajar por lazer, negócios ou eventos.",
+      "createdat": "2026-06-22T16:55:10.287Z",
+      "updatedat": "2026-06-22T16:55:10.287Z"
+    },
+    {
+      "id": 16,
+      "gameId": 6,
+      "word": "INOVAÇÃO",
+      "hint": "Ação de introduzir novidades e soluções inovadoras no mercado.",
+      "createdat": "2026-06-22T16:55:10.582Z",
+      "updatedat": "2026-06-22T16:55:10.582Z"
+    },
+    {
+      "id": 17,
+      "gameId": 6,
+      "word": "FUTURO",
+      "hint": "O horizonte do comércio que estamos construindo hoje.",
+      "createdat": "2026-06-22T16:55:10.878Z",
+      "updatedat": "2026-06-22T16:55:10.878Z"
+    },
+    {
+      "id": 18,
+      "gameId": 6,
+      "word": "TECNOLOGIA",
+      "hint": "Aplicação prática do conhecimento científico no varejo.",
+      "createdat": "2026-06-22T16:55:11.174Z",
+      "updatedat": "2026-06-22T16:55:11.174Z"
+    },
+    {
+      "id": 19,
+      "gameId": 6,
+      "word": "DIGITAL",
+      "hint": "O meio virtual integrado à experiência de consumo moderna.",
+      "createdat": "2026-06-22T16:55:11.470Z",
+      "updatedat": "2026-06-22T16:55:11.470Z"
+    },
+    {
+      "id": 20,
+      "gameId": 6,
+      "word": "LOJA",
+      "hint": "O estabelecimento comercial físico de vendas.",
+      "createdat": "2026-06-22T16:55:11.766Z",
+      "updatedat": "2026-06-22T16:55:11.766Z"
+    },
+    {
+      "id": 21,
+      "gameId": 6,
+      "word": "NOTA",
+      "hint": "Documento fiscal emitido no momento da compra.",
+      "createdat": "2026-06-22T16:55:12.063Z",
+      "updatedat": "2026-06-22T16:55:12.063Z"
+    },
+    {
+      "id": 22,
+      "gameId": 6,
+      "word": "PAGO",
+      "hint": "Estado de uma transação finalizada com sucesso.",
+      "createdat": "2026-06-22T16:55:12.359Z",
+      "updatedat": "2026-06-22T16:55:12.359Z"
+    },
+    {
+      "id": 23,
+      "gameId": 6,
+      "word": "CABO",
+      "hint": "Equipamento físico usado para conexão de redes ou energia.",
+      "createdat": "2026-06-22T16:55:12.655Z",
+      "updatedat": "2026-06-22T16:55:12.655Z"
+    },
+    {
+      "id": 24,
+      "gameId": 6,
+      "word": "MODA",
+      "hint": "Estilo ou tendência de vestuário no varejo de moda.",
+      "createdat": "2026-06-22T16:55:12.950Z",
+      "updatedat": "2026-06-22T16:55:12.950Z"
+    },
+    {
+      "id": 25,
+      "gameId": 6,
+      "word": "LOGO",
+      "hint": "Representação visual ou marca de uma empresa.",
+      "createdat": "2026-06-22T16:55:13.244Z",
+      "updatedat": "2026-06-22T16:55:13.244Z"
+    },
+    {
+      "id": 26,
+      "gameId": 6,
+      "word": "CAIXA",
+      "hint": "Local da loja onde são processados os pagamentos.",
+      "createdat": "2026-06-22T16:55:13.538Z",
+      "updatedat": "2026-06-22T16:55:13.538Z"
+    },
+    {
+      "id": 27,
+      "gameId": 6,
+      "word": "SALDO",
+      "hint": "A diferença positiva ou negativa no balanço financeiro.",
+      "createdat": "2026-06-22T16:55:13.834Z",
+      "updatedat": "2026-06-22T16:55:13.834Z"
+    },
+    {
+      "id": 28,
+      "gameId": 6,
+      "word": "LUCRO",
+      "hint": "Ganho financeiro obtido em uma operação comercial.",
+      "createdat": "2026-06-22T16:55:14.130Z",
+      "updatedat": "2026-06-22T16:55:14.130Z"
+    },
+    {
+      "id": 29,
+      "gameId": 6,
+      "word": "VALOR",
+      "hint": "O benefício percebido pelo cliente em relação ao preço.",
+      "createdat": "2026-06-22T16:55:14.575Z",
+      "updatedat": "2026-06-22T16:55:14.575Z"
+    }
+  ],
+  "quiz": [],
+  "rounds": [],
+  "alreadyPlayed": false
+}

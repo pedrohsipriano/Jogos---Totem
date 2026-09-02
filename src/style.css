@@ -1,0 +1,969 @@
+@import './fonts.css';
+
+/* ==========================================================================
+   ESTILOS GLOBAIS DA APLICAÇÃO (style.css)
+   Contém as variáveis de cores (CSS Variables), reset básico de margens,
+   fontes, classes utilitárias de botões, painéis e tabelas de ranking.
+   ========================================================================== */
+
+/* Definição das variáveis de cores na raiz do documento (:root) */
+:root {
+    /* Fundo principal da aplicação com gradiente escuro vibrante */
+    --bg: linear-gradient(180deg, #00112A 75.48%, var(--Color-5, #F60085) 100%);
+    /* Cor de fundo dos cartões e painéis (azul escuro/cinza) */
+    --card: #111827;
+    /* Cor para textos secundários e legendas */
+    --muted: #94a3b8;
+    /* Cores de destaque — controláveis pelo themeManager */
+    --accent: #38bdf8;
+    --accent-strong: #0ea5e9;
+    --Color-5: #F60085;
+    /* Cor do texto principal (branco/cinza claro) */
+    --text: #e2e8f0;
+    /* Cores de status (sucesso e aviso) */
+    --success: #22c55e;
+    --warning: #f97316;
+    /* Tipografia — controlável pelo themeManager */
+    --font-family: 'Grift', sans-serif;
+    --font-size-base: 16px;
+    font-family: var(--font-family);
+    font-size: var(--font-size-base);
+}
+
+/* Otimização de interação para dispositivos móveis (evita zoom de pinça e duplo clique) */
+html {
+    touch-action: pan-x pan-y;
+    background: linear-gradient(180deg, #00112A 75.48%, var(--Color-5, #F60085) 100%);
+    background-attachment: fixed;
+    box-sizing: border-box;
+    min-height: 100%;
+}
+
+html.no-html-gradient {
+    background: #00112A;
+}
+
+/* Reset do modelo de caixa para garantir que padding e border não aumentem a largura total */
+* {
+    box-sizing: border-box;
+}
+
+/* Configuração do corpo da página (body) */
+body {
+    margin: 0;
+    padding: 0;
+    color: var(--text);
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    box-sizing: border-box;
+    font-family: var(--font-family, 'Grift', sans-serif);
+    font-size: var(--font-size-base, 16px);
+    color: #FFF;
+    font-weight: 400;
+    min-height: 100vh;
+}
+
+/* Shell principal — espaçamento responsivo */
+.app-shell {
+    box-sizing: border-box;
+    width: 100%;
+    min-height: 100vh;
+    text-align: center;
+    padding: clamp(12px, 3vw, 60px) clamp(12px, 4vw, 80px) 40px;
+}
+
+/* Contêiner flexível para caixas de resultado e feedback */
+.result-box {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+/* Barra superior de navegação e cabeçalho */
+.topbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+}
+
+/* Estilo de legenda superior (eyebrow) em maiúsculas e espaçada */
+.eyebrow {
+    margin: 0;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-size: 12px;
+}
+
+/* Reset de margem nativa para cabeçalhos e parágrafos */
+h1,
+h2,
+h3,
+h4,
+p,
+span {
+    margin: 0;
+    padding: 0;
+}
+
+/* WebKit browsers */
+*::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+}
+
+/* Classe utilitária para texto com cor secundária */
+.muted {
+    color: var(--muted);
+}
+
+/* Efeito tátil (feedback de clique) ao pressionar o botão */
+button:active {
+    transform: scale(0.98);
+}
+
+/* Estado desativado para botões (bloqueio de interação) */
+button:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+}
+
+/* Botão com estilo primário (gradiente azul ciano vibrante) */
+.primary {
+    background: linear-gradient(135deg, var(--accent), var(--accent-strong));
+    color: #0b172a;
+}
+
+/* Botão fantasma (fundo transparente com borda discreta) */
+.ghost {
+    background: transparent;
+    color: var(--text);
+    border: 1px solid #1f2937;
+}
+
+/* Cabeçalho do painel alinhando título e ações/pílulas */
+.panel-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-top: 50px;
+}
+
+/* Pílula informativa (indicadores de tempo, pontos, status) */
+.pill {
+    padding: 8px 12px;
+    border-radius: 999px;
+    background: #1f2937;
+    color: var(--text);
+    font-size: 14px;
+}
+
+/* Pílula com destaque de sucesso (verde) */
+.pill.success {
+    background: var(--success);
+    color: #0b172a;
+}
+
+/* Pílula com destaque de aviso (laranja) */
+.pill.warning {
+    background: var(--warning);
+    color: #0b172a;
+}
+
+/* Contêiner da área de jogo ativa */
+.game-area {
+    display: grid;
+    gap: 12px;
+    pointer-events: auto;
+}
+
+/* Campos de entrada de texto (inputs de formulário) */
+.input {
+    padding: 14px 12px;
+    border-radius: 12px;
+    border: 1px solid #1f2937;
+    background: #0b1220;
+    color: var(--text);
+    font-size: 16px;
+    min-height: 60px;
+}
+
+/* Mini tabela de ranking exibida nos painéis ou menu */
+.mini-ranking {
+    margin-top: 8px;
+    padding: 12px;
+    border-radius: 12px;
+    border: 1px solid #1f2937;
+    background: linear-gradient(135deg, rgba(56, 189, 248, 0.08), rgba(14, 165, 233, 0.06));
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+/* Linha individual do mini ranking organizando Nome, Telefone e Pontos */
+.mini-row {
+    display: grid;
+    grid-template-columns: 1fr 90px 60px;
+    align-items: center;
+    padding: 10px 12px;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.02);
+    font-size: 14px;
+    gap: 10px;
+}
+
+/* Alinhamento à direita para números (telefone e pontos) com espaçamento tabular */
+.mini-row span:nth-child(2),
+.mini-row span:nth-child(3) {
+    text-align: right;
+    color: var(--muted);
+    font-variant-numeric: tabular-nums;
+}
+
+/* Destaque especial para o primeiro colocado (topo do ranking) */
+.mini-row:first-of-type {
+    background: rgba(56, 189, 248, 0.12);
+    color: #0b172a;
+    font-weight: 700;
+}
+
+/* ==========================================================================
+   RESPONSIVIDADE GLOBAL (Telas menores que 768px)
+   ========================================================================== */
+@media (max-width: 768px) {
+    .app-shell {
+        padding: 16px;
+    }
+
+    .mini-row {
+        grid-template-columns: 1fr 80px 50px;
+        padding: 8px 10px;
+    }
+}
+
+/* ==========================================================================
+   ALERTA DE REGRAS OBSOLETAS NA TELA DE CADASTRO
+   ========================================================================== */
+.alert-rules-outdated {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 9999;
+    width: 90%;
+    max-width: 800px;
+    background: rgba(239, 68, 68, 0.15);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 2px solid rgba(239, 68, 68, 0.5);
+    border-radius: 12px;
+    padding: 40px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    align-items: center;
+    box-shadow: 0 8px 32px rgba(239, 68, 68, 0.25);
+    animation: slideDownOutdated 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    text-align: center;
+}
+
+@keyframes slideDownOutdated {
+    from {
+        opacity: 0;
+        transform: translate(-50%, -40px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translate(-50%, 0);
+    }
+}
+
+.alert-rules-outdated p {
+    color: #fca5a5;
+    font-size: 35px;
+    font-weight: 500;
+    margin: 0;
+    line-height: 1.4;
+}
+
+.alert-rules-outdated button {
+    background: #ef4444;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 6px;
+    font-weight: 600;
+    font-size: 40px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    box-shadow: 0 4px 12px rgba(239, 68, 68, 0.3);
+    margin-top: 20px;
+}
+
+.alert-rules-outdated button:hover {
+    background: #dc2626;
+    transform: translate(-50%, 0) translateY(-1px) !important;
+    /* Mantém transform horizontal */
+    box-shadow: 0 6px 16px rgba(239, 68, 68, 0.4);
+}
+
+.alert-rules-outdated button:active {
+    transform: translate(-50%, 0) translateY(0) !important;
+}
+
+/* Ajuste específico para hover de botão flutuante */
+.alert-rules-outdated button {
+    transform: none !important;
+    position: relative !important;
+}
+
+.alert-rules-outdated button:hover {
+    transform: translateY(-1px) !important;
+}
+
+.alert-rules-outdated button:active {
+    transform: translateY(0) !important;
+}
+
+.alert-rules-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(11, 18, 32, 0.85);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    z-index: 9998;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    pointer-events: auto;
+}
+
+/* ==========================================================================
+   DASHBOARD DE ESTATÍSTICAS DOS JOGOS
+   ========================================================================== */
+.dashboard-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    pointer-events: auto;
+}
+
+.dashboard-games-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 20px;
+}
+
+.dashboard-game-card {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    background: rgba(15, 23, 42, 0.45);
+    border: 1px solid rgba(148, 163, 184, 0.16);
+    border-radius: 16px;
+    padding: 20px;
+}
+
+.game-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid rgba(148, 163, 184, 0.12);
+    padding-bottom: 12px;
+}
+
+.game-card-header h3 {
+    margin: 0;
+    font-size: 24px;
+    color: var(--primary);
+}
+
+.game-trend-badge {
+    padding: 4px 10px;
+    border-radius: 999px;
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.game-trend-badge.ganhando {
+    background: rgba(16, 185, 129, 0.15);
+    color: #34d399;
+    border: 1px solid rgba(16, 185, 129, 0.3);
+}
+
+.game-trend-badge.perdendo {
+    background: rgba(239, 68, 68, 0.15);
+    color: #fca5a5;
+    border: 1px solid rgba(239, 68, 68, 0.3);
+}
+
+.game-stats-row {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    background: rgba(15, 23, 42, 0.3);
+    padding: 12px;
+    border-radius: 12px;
+    border: 1px solid rgba(148, 163, 184, 0.08);
+}
+
+.game-stat-item {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.game-stat-item span {
+    font-size: 12px;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.game-stat-item strong {
+    font-size: 20px;
+    color: var(--text);
+}
+
+.game-top-players {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.game-top-players h4 {
+    margin: 0 0 4px 0;
+    font-size: 16px;
+    color: #cbd5e1;
+}
+
+.top-players-list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.top-player-item {
+    display: flex;
+    align-items: center;
+    padding: 8px 12px;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.02);
+    font-size: 15px;
+    gap: 8px;
+}
+
+.player-rank {
+    font-size: 16px;
+    width: 24px;
+    text-align: center;
+}
+
+.player-name {
+    flex: 1;
+    color: #e2e8f0;
+}
+
+.player-points {
+    font-weight: 700;
+    color: var(--primary);
+    font-variant-numeric: tabular-nums;
+}
+
+.top-player-item.position-1 {
+    background: rgba(245, 158, 11, 0.12);
+    border: 1.5px solid rgba(245, 158, 11, 0.25);
+}
+
+.top-player-item.position-1 .player-name {
+    color: #fbbf24;
+    font-weight: 600;
+}
+
+.admin-summary-card.highlighted {
+    border: 1.5px solid rgba(246, 0, 133, 0.35);
+    background: rgba(246, 0, 133, 0.08);
+}
+
+/* Botão de perigo/exclusão da Dashboard */
+.btn-danger {
+    background-color: #ef4444 !important;
+    border-color: #ef4444 !important;
+    color: #fff !important;
+    margin-left: 10px;
+}
+
+.btn-danger:hover {
+    background-color: #dc2626 !important;
+    border-color: #dc2626 !important;
+}
+
+/* ── Popularidade dos Jogos (Engajamento) ────────────────────────────────── */
+.engagement-panel {
+    background: rgba(15, 23, 42, 0.45);
+    border: 1px solid rgba(148, 163, 184, 0.16);
+    border-radius: 16px;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.engagement-panel .panel-head {
+    margin-top: 0 !important;
+}
+
+.engagement-bars-container {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    margin-top: 15px;
+}
+
+.engagement-bar-row {
+    display: grid;
+    grid-template-columns: 180px 1fr;
+    align-items: center;
+    gap: 15px;
+}
+
+.engagement-game-name {
+    font-size: 16px;
+    color: #cbd5e1;
+    text-align: left;
+    font-weight: 600;
+}
+
+.engagement-bar-track {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 999px;
+    height: 24px;
+    width: 100%;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.engagement-bar-fill {
+    background: linear-gradient(90deg, var(--Color-5, #F60085), var(--accent));
+    height: 100%;
+    border-radius: 999px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding-right: 12px;
+    box-shadow: 0 0 10px rgba(56, 189, 248, 0.3);
+    transition: width 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    min-width: 30px;
+}
+
+.engagement-bar-value {
+    font-size: 11px;
+    color: #0b172a;
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+/* ── Barra de Taxa de Sucesso no Card de Jogo ──────────────────────────────── */
+.game-stats-row .rate-item {
+    flex: 1.5;
+}
+
+.success-rate-container {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 4px;
+}
+
+.success-rate-track {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 4px;
+    height: 10px;
+    flex: 1;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.success-rate-fill {
+    height: 100%;
+    border-radius: 4px;
+    transition: width 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.success-rate-fill.high {
+    background: #22c55e;
+    box-shadow: 0 0 8px rgba(34, 197, 94, 0.5);
+}
+
+.success-rate-fill.medium {
+    background: #f97316;
+    box-shadow: 0 0 8px rgba(249, 115, 22, 0.5);
+}
+
+.success-rate-fill.low {
+    background: #ef4444;
+    box-shadow: 0 0 8px rgba(239, 68, 68, 0.5);
+}
+
+.success-rate-value {
+    font-size: 16px !important;
+    font-weight: 700;
+    color: var(--text) !important;
+    min-width: 45px;
+    text-align: right;
+}
+
+@media (max-width: 768px) {
+    .engagement-bar-row {
+        grid-template-columns: 1fr;
+        gap: 6px;
+        align-items: flex-start;
+    }
+    .engagement-game-name {
+        font-size: 14px;
+    }
+}
+
+/* Tema da Mulher para a página de Cadastro */
+.cadastro-page {
+    position: relative;
+}
+
+.cadastro-page.mulher-theme::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -1;
+    pointer-events: none;
+    background: url(/images/bg-mulher.png) center / cover no-repeat, linear-gradient(0deg, #00112A 0%, #00112A 100%);
+    opacity: 0.5;
+}
+
+/* ── Tela de Bloqueio (LockScreen) ────────────────────────────────────────── */
+.lock-screen-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(2, 12, 27, 0.9);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 99999;
+}
+
+.lock-screen-card {
+    background: rgba(2, 18, 41, 0.95);
+    border: 1px solid rgba(7, 188, 238, 0.2);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6), 0 0 20px rgba(7, 188, 238, 0.15);
+    border-radius: 2rem;
+    width: 90%;
+    max-width: 460px;
+    padding: 40px;
+    text-align: center;
+    animation: lockCardEntrance 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes lockCardEntrance {
+    from {
+        opacity: 0;
+        transform: scale(0.95) translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+.lock-screen-header {
+    margin-bottom: 30px;
+}
+
+.lock-icon-container {
+    width: 70px;
+    height: 70px;
+    background: rgba(7, 188, 238, 0.1);
+    border: 1.5px solid rgba(7, 188, 238, 0.3);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto 20px auto;
+    color: var(--primary, #07bcee);
+    box-shadow: 0 0 15px rgba(7, 188, 238, 0.2);
+}
+
+.lock-icon {
+    width: 32px;
+    height: 32px;
+}
+
+.lock-screen-header h2 {
+    font-size: 24px;
+    color: var(--text, #fff);
+    margin: 0 0 8px 0;
+    font-weight: 700;
+}
+
+.lock-screen-header p {
+    font-size: 14px;
+    color: var(--muted, #94a3b8);
+    margin: 0;
+}
+
+.lock-screen-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.lock-screen-form .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    text-align: left;
+}
+
+.lock-screen-form label {
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: #94a3b8;
+}
+
+.lock-screen-form input {
+    background: rgba(15, 23, 42, 0.5);
+    border: 1.5px solid rgba(148, 163, 184, 0.15);
+    border-radius: 12px;
+    padding: 14px 16px;
+    color: #fff;
+    font-size: 16px;
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+.lock-screen-form input:focus {
+    border-color: var(--primary, #07bcee);
+    box-shadow: 0 0 10px rgba(7, 188, 238, 0.25);
+    background: rgba(15, 23, 42, 0.8);
+}
+
+.lock-screen-error {
+    background: rgba(239, 68, 68, 0.1);
+    border: 1px solid rgba(239, 68, 68, 0.25);
+    color: #fca5a5;
+    border-radius: 10px;
+    padding: 10px 14px;
+    font-size: 13.5px;
+    text-align: left;
+}
+
+.btn-unlock {
+    background: linear-gradient(135deg, var(--primary, #07bcee), #0598c2);
+    color: #fff;
+    border: none;
+    border-radius: 12px;
+    padding: 14px;
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 4px 12px rgba(7, 188, 238, 0.25);
+}
+
+.btn-unlock:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(7, 188, 238, 0.4);
+    background: linear-gradient(135deg, #0ac9ff, #0598c2);
+}
+
+.btn-unlock:active:not(:disabled) {
+    transform: translateY(0);
+}
+
+.btn-unlock:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+/* Spinner Animação */
+.spinner {
+    width: 20px;
+    height: 20px;
+    border: 3px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    border-top-color: #fff;
+    animation: spin 1s ease-in-out infinite;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+/* ── Dashboard Gifts Panel Styles ──────────────────────────────────────── */
+.dashboard-gifts-content {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    margin-top: 20px;
+    padding: 0 20px 20px 20px;
+}
+
+.dashboard-gifts-stats-col {
+    flex: 1 1 300px;
+}
+
+.dashboard-gifts-form-col {
+    flex: 2 1 400px;
+}
+
+.dashboard-gifts-title {
+    margin: 0 0 15px 0;
+    color: var(--text);
+    font-size: 1.1rem;
+}
+
+.gifts-summary {
+    grid-template-columns: 1fr;
+    gap: 10px;
+}
+
+.gifts-given-value {
+    color: var(--primary);
+}
+
+.gifts-empty {
+    color: var(--danger, #ef4444);
+}
+
+.gifts-available {
+    color: var(--success, #22c55e);
+}
+
+.dashboard-gifts-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.gifts-label {
+    display: block;
+    margin-bottom: 8px;
+    color: var(--text-muted);
+}
+
+.dashboard-gifts-form-actions {
+    margin-top: 10px;
+}
+
+/* ==========================================================================
+   RESPONSIVIDADE COMPLETA
+   Breakpoints: 480px (mobile), 768px (tablet), 1024px (TV pequena),
+                1280px (TV), 1920px (Full HD / TV grande)
+   ========================================================================== */
+
+/* ── Mobile ────────────────────────────────────────────── */
+@media (max-width: 480px) {
+    .app-shell {
+        padding: 12px 12px 32px;
+        text-align: left;
+    }
+
+    .mini-row {
+        grid-template-columns: 1fr 60px;
+        font-size: 12px;
+    }
+
+    .mini-row span:nth-child(2) { display: none; }
+
+    .dashboard-games-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .engagement-bar-row {
+        grid-template-columns: 1fr;
+        gap: 4px;
+    }
+
+    .admin-hub {
+        padding: 0 8px;
+    }
+
+    .admin-tabs {
+        overflow-x: auto;
+    }
+}
+
+/* ── Tablet ─────────────────────────────────────────────── */
+@media (min-width: 481px) and (max-width: 768px) {
+    .app-shell {
+        padding: 20px 20px 40px;
+    }
+
+    .mini-row {
+        grid-template-columns: 1fr 80px 50px;
+        padding: 8px 10px;
+    }
+
+    .dashboard-games-grid {
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    }
+
+    .engagement-bar-row {
+        grid-template-columns: 120px 1fr;
+        gap: 10px;
+    }
+}
+
+/* ── TV pequena / Landscape ─────────────────────────────── */
+@media (min-width: 769px) and (max-width: 1280px) {
+    .app-shell {
+        padding: clamp(20px, 2vw, 40px) clamp(20px, 3vw, 60px) 40px;
+    }
+
+    .dashboard-games-grid {
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    }
+}
+
+/* ── Full HD / TV grande ────────────────────────────────── */
+@media (min-width: 1281px) {
+    .app-shell {
+        padding: clamp(40px, 3vw, 68px) clamp(40px, 4vw, 80px) 60px;
+    }
+
+    .dashboard-games-grid {
+        grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+    }
+}
+
+/* ── 4K / Ultra Wide ────────────────────────────────────── */
+@media (min-width: 2560px) {
+    .app-shell {
+        max-width: 2400px;
+        margin: 0 auto;
+        padding: 80px 120px 80px;
+    }
+
+    :root {
+        --font-size-base: 20px;
+    }
+}

@@ -1,0 +1,268 @@
+{
+  "game": {
+    "id": "3",
+    "code": "soletra",
+    "name": "Soletrando"
+  },
+  "words": [],
+  "quiz": [],
+  "rounds": [
+    {
+      "id": "1",
+      "gameId": "3",
+      "word": "PREÇO",
+      "hint": "O valor em dinheiro de um produto",
+      "createdat": "2026-05-05T18:06:07.578Z",
+      "updatedat": "2026-05-05T18:06:07.578Z"
+    },
+    {
+      "id": "2",
+      "gameId": "3",
+      "word": "ESTOQUE",
+      "hint": "Lugar onde as mercadorias ficam guardadas",
+      "createdat": "2026-05-05T18:06:07.733Z",
+      "updatedat": "2026-05-05T18:06:07.733Z"
+    },
+    {
+      "id": "3",
+      "gameId": "3",
+      "word": "PECHINCHA",
+      "hint": "Quando o cliente pede para baixar o valor",
+      "createdat": "2026-05-05T18:06:07.902Z",
+      "updatedat": "2026-05-05T18:06:07.902Z"
+    },
+    {
+      "id": "4",
+      "gameId": "3",
+      "word": "DINHEIRO",
+      "hint": "Notas e moedas usadas para pagar a conta",
+      "createdat": "2026-05-05T18:06:08.084Z",
+      "updatedat": "2026-05-05T18:06:08.084Z"
+    },
+    {
+      "id": "5",
+      "gameId": "3",
+      "word": "ATACADO",
+      "hint": "Venda de mercadorias em grandes quantidades",
+      "createdat": "2026-05-05T18:06:08.251Z",
+      "updatedat": "2026-05-05T18:06:08.251Z"
+    },
+    {
+      "id": "6",
+      "gameId": "3",
+      "word": "SUCESSO",
+      "hint": "O resultado esperado de um bom negócio",
+      "createdat": "2026-05-05T18:06:08.418Z",
+      "updatedat": "2026-05-05T18:06:08.418Z"
+    },
+    {
+      "id": "7",
+      "gameId": "3",
+      "word": "LIQUIDAÇÃO",
+      "hint": "Quando a loja queima o estoque com preços baixos",
+      "createdat": "2026-05-05T18:06:08.605Z",
+      "updatedat": "2026-05-05T18:06:08.605Z"
+    },
+    {
+      "id": "8",
+      "gameId": "3",
+      "word": "PARAÍBA",
+      "hint": "O estado onde o sol nasce primeiro",
+      "createdat": "2026-05-05T18:06:08.779Z",
+      "updatedat": "2026-05-05T18:06:08.779Z"
+    },
+    {
+      "id": "9",
+      "gameId": "3",
+      "word": "DIGITAL",
+      "hint": "O mundo conectado pela internet e dispositivos",
+      "createdat": "2026-05-05T18:06:08.955Z",
+      "updatedat": "2026-05-05T18:06:08.955Z"
+    },
+    {
+      "id": "10",
+      "gameId": "3",
+      "word": "CONEXÃO",
+      "hint": "O que une o lojista ao cliente moderno",
+      "createdat": "2026-05-05T18:06:09.130Z",
+      "updatedat": "2026-05-05T18:06:09.130Z"
+    },
+    {
+      "id": "11",
+      "gameId": "3",
+      "word": "AGILIDADE",
+      "hint": "Rapidez para resolver problemas e vender",
+      "createdat": "2026-05-05T18:06:09.311Z",
+      "updatedat": "2026-05-05T18:06:09.311Z"
+    },
+    {
+      "id": "12",
+      "gameId": "3",
+      "word": "TELA",
+      "hint": "Onde você está tocando para jogar agora",
+      "createdat": "2026-05-05T18:06:09.479Z",
+      "updatedat": "2026-05-05T18:06:09.479Z"
+    },
+    {
+      "id": "13",
+      "gameId": "3",
+      "word": "INOVAÇÃO",
+      "hint": "Criar algo novo e diferente para o mercado",
+      "createdat": "2026-05-05T18:06:09.643Z",
+      "updatedat": "2026-05-05T18:06:09.643Z"
+    },
+    {
+      "id": "14",
+      "gameId": "3",
+      "word": "VIRTUAL",
+      "hint": "Aquilo que existe no ambiente dos computadores",
+      "createdat": "2026-05-05T18:06:09.888Z",
+      "updatedat": "2026-05-05T18:06:09.888Z"
+    },
+    {
+      "id": "15",
+      "gameId": "3",
+      "word": "ITEM",
+      "hint": "Produto único que faz parte de uma lista ou pedido",
+      "createdat": "2026-05-05T18:06:10.067Z",
+      "updatedat": "2026-05-05T18:06:10.067Z"
+    },
+    {
+      "id": "16",
+      "gameId": "3",
+      "word": "CUPOM",
+      "hint": "Código que garante um benefício ou desconto extra",
+      "createdat": "2026-05-05T18:06:10.237Z",
+      "updatedat": "2026-05-05T18:06:10.237Z"
+    },
+    {
+      "id": "17",
+      "gameId": "3",
+      "word": "OFERTA",
+      "hint": "Preço especial ou condição vantajosa por tempo limitado",
+      "createdat": "2026-05-05T18:06:10.418Z",
+      "updatedat": "2026-05-05T18:06:10.418Z"
+    },
+    {
+      "id": "18",
+      "gameId": "3",
+      "word": "CLIENTE",
+      "hint": "A pessoa que compra e consome na sua loja",
+      "createdat": "2026-05-05T18:06:10.604Z",
+      "updatedat": "2026-05-05T18:06:10.604Z"
+    },
+    {
+      "id": "19",
+      "gameId": "3",
+      "word": "ENTREGA",
+      "hint": "O ato de levar o produto até a casa do comprador",
+      "createdat": "2026-05-05T18:06:10.778Z",
+      "updatedat": "2026-05-05T18:06:10.778Z"
+    },
+    {
+      "id": "20",
+      "gameId": "3",
+      "word": "BALCÃO",
+      "hint": "Onde o vendedor e o cliente conversam na loja física",
+      "createdat": "2026-05-05T18:06:10.939Z",
+      "updatedat": "2026-05-05T18:06:10.939Z"
+    },
+    {
+      "id": "21",
+      "gameId": "3",
+      "word": "PEDIDO",
+      "hint": "Solicitação de compra feita pelo cliente",
+      "createdat": "2026-05-05T18:06:11.106Z",
+      "updatedat": "2026-05-05T18:06:11.106Z"
+    },
+    {
+      "id": "22",
+      "gameId": "3",
+      "word": "BOLETO",
+      "hint": "Forma de pagamento por papel ou código de barras",
+      "createdat": "2026-05-05T18:06:11.274Z",
+      "updatedat": "2026-05-05T18:06:11.274Z"
+    },
+    {
+      "id": "23",
+      "gameId": "3",
+      "word": "CARTÃO",
+      "hint": "Objeto de plástico usado para pagar compras no crédito",
+      "createdat": "2026-05-05T18:06:11.440Z",
+      "updatedat": "2026-05-05T18:06:11.440Z"
+    },
+    {
+      "id": "24",
+      "gameId": "3",
+      "word": "BRINDE",
+      "hint": "Presente dado pela loja para agradar o cliente",
+      "createdat": "2026-05-05T18:06:11.621Z",
+      "updatedat": "2026-05-05T18:06:11.621Z"
+    },
+    {
+      "id": "25",
+      "gameId": "3",
+      "word": "COMPRA",
+      "hint": "O ato de adquirir um produto pagando por ele",
+      "createdat": "2026-05-05T18:06:11.778Z",
+      "updatedat": "2026-05-05T18:06:11.778Z"
+    },
+    {
+      "id": "26",
+      "gameId": "3",
+      "word": "CUSTO",
+      "hint": "O valor gasto para produzir ou adquirir um item",
+      "createdat": "2026-05-05T18:06:11.951Z",
+      "updatedat": "2026-05-05T18:06:11.951Z"
+    },
+    {
+      "id": "27",
+      "gameId": "3",
+      "word": "VAREJO",
+      "hint": "Venda direta de produtos para o consumidor final",
+      "createdat": "2026-05-05T18:06:12.112Z",
+      "updatedat": "2026-05-05T18:06:12.112Z"
+    },
+    {
+      "id": "28",
+      "gameId": "3",
+      "word": "PRODUTO",
+      "hint": "Aquilo que está à venda na prateleira",
+      "createdat": "2026-05-05T18:06:12.278Z",
+      "updatedat": "2026-05-05T18:06:12.278Z"
+    },
+    {
+      "id": "29",
+      "gameId": "3",
+      "word": "METAS",
+      "hint": "Objetivos de venda que a equipe precisa bater",
+      "createdat": "2026-05-05T18:06:12.482Z",
+      "updatedat": "2026-05-05T18:06:12.482Z"
+    },
+    {
+      "id": "30",
+      "gameId": "3",
+      "word": "QRCODE",
+      "hint": "Código quadrado que pode ser lido pelo celular para pagar",
+      "createdat": "2026-05-05T18:06:12.661Z",
+      "updatedat": "2026-05-05T18:06:12.661Z"
+    },
+    {
+      "id": "31",
+      "gameId": "3",
+      "word": "REVENDA",
+      "hint": "Comprar um produto para vender novamente ao consumidor",
+      "createdat": "2026-05-05T18:06:12.833Z",
+      "updatedat": "2026-05-05T18:06:12.833Z"
+    },
+    {
+      "id": "32",
+      "gameId": "3",
+      "word": "MIMO",
+      "hint": "Pequeno agrado ou presente enviado para o cliente",
+      "createdat": "2026-05-05T18:06:13.015Z",
+      "updatedat": "2026-05-05T18:06:13.015Z"
+    }
+  ],
+  "alreadyPlayed": false
+}

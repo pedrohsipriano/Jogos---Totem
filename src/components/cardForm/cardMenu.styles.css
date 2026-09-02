@@ -1,0 +1,133 @@
+.CardFormSection {
+    display: flex;
+    padding: 4.3125rem 2.6875rem 7.625rem 2.625rem;
+    margin-top: 20%;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2.5625rem;
+    border-radius: 2.5rem;
+    border: 1px solid var(--Color-5, #F60085);
+    background: rgba(2, 18, 41, 0.50);
+    box-shadow: 0 0 13.9px 0 rgba(0, 0, 0, 0.72);
+}
+
+.formSection {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.9375rem;
+    align-self: stretch;
+}
+
+.inputCardForm {
+    padding: 1.875rem 1.5625rem;
+    box-sizing: border-box;
+    align-self: stretch;
+    border-radius: 1.25rem;
+    border: 1px solid #FFF7F1;
+    background-color: transparent;
+    color: #FFF;
+    font-size: 1.875rem;
+    font-style: normal;
+    font-weight: 300;
+    line-height: 119%;
+    /* 2.23125rem */
+    letter-spacing: -0.02063rem;
+    text-align: start;
+}
+
+.inputCardForm::placeholder {
+    color: #FFF;
+    font-size: 1.875rem;
+    font-style: normal;
+    font-weight: 300;
+    letter-spacing: -0.02063rem;
+}
+
+.tituloJogo {
+    color: #FFF;
+    text-align: center;
+    font-size: 4.0625rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 108%;
+    /* 4.3875rem */
+    letter-spacing: -0.04469rem;
+}
+
+.subtituloJogo {
+    color: #FFF;
+    font-size: 1.875rem;
+    font-style: normal;
+    font-weight: 300;
+    line-height: 119%;
+    /* 2.23125rem */
+    letter-spacing: -0.02063rem;
+}
+
+.instrucoes-container {
+    width: 100%;
+    padding: 1.5rem;
+    box-sizing: border-box;
+    border-radius: 1.25rem;
+    border: 1px dashed rgba(246, 0, 133, 0.4);
+    background: rgba(246, 0, 133, 0.05);
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+    align-self: stretch;
+    text-align: left;
+}
+
+.instrucoes-titulo {
+    color: var(--Color-5, #F60085);
+    font-size: 1.875rem;
+    font-weight: 700;
+    margin-bottom: 0.75rem;
+    margin-top: 0;
+}
+
+.instrucoes-texto {
+    color: #FFF;
+    font-size: 1.625rem;
+    font-weight: 300;
+    line-height: 140%;
+    margin: 0;
+}
+
+.inputCardForm:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+    border-color: rgba(255, 255, 255, 0.2);
+    background-color: rgba(0, 0, 0, 0.15);
+}
+
+/* Redução da legenda de pontuação do jogo da cesta nas instruções do Cadastro */
+.instrucoes-container .estantePontos1 {
+    padding: 10px 15px;
+    border-radius: 12px;
+}
+
+.instrucoes-container .pontuacao1 {
+    padding: 5px 15px;
+    justify-content: center;
+}
+
+.instrucoes-container .pontuacao1 span {
+    font-size: 3rem;
+    font-family: inherit;
+}
+
+.instrucoes-container .imgdiv {
+    padding: 6px 10px;
+    font-size: 2.5rem;
+    font-family: inherit;
+    gap: 6px;
+    border-radius: 6px;
+}
+
+.instrucoes-container .imgdiv img {
+    height: 48px;
+    width: auto;
+    object-fit: contain;
+}

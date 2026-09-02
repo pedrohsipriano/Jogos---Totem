@@ -1,0 +1,11 @@
+{
+  "game": {
+    "id": "7",
+    "code": "whac",
+    "name": "Aperte o Passo"
+  },
+  "words": [],
+  "quiz": [],
+  "rounds": [],
+  "alreadyPlayed": false
+}

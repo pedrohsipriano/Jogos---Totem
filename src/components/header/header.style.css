@@ -1,0 +1,30 @@
+.header-main {
+    position: relative;
+}
+
+.sectionLogo {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    margin-bottom: 3.75rem;
+}
+
+.logo {
+    width: 16rem;
+}
+
+.barraSombra {
+    position: relative;
+    width: 100vw;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
+    margin-top: 2.56rem;
+    position: relative;
+    z-index: 10;
+    height: 1px;
+    background-color: #F60085;
+    box-shadow: 0 5px 10px 3px #F60085;
+    pointer-events: none;
+}

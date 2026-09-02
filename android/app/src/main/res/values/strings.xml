@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">jogosconvecao</string>
+    <string name="title_activity_main">jogosconvecao</string>
+    <string name="package_name">com.cndl.totem</string>
+    <string name="custom_url_scheme">com.cndl.totem</string>
+</resources>

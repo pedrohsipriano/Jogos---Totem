@@ -1,0 +1,11 @@
+{
+  "game": {
+    "id": "8",
+    "code": "catch",
+    "name": "Cesta de Ofertas"
+  },
+  "words": [],
+  "quiz": [],
+  "rounds": [],
+  "alreadyPlayed": false
+}

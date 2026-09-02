@@ -1,0 +1,200 @@
+/* ==========================================================================
+   ESTILOS DO JOGO DA FORCA (hangmanGame.style.css)
+   Define as variáveis de layout, estilização da caixa da palavra secreta,
+   grid flexível do teclado virtual e responsividade das teclas.
+   ========================================================================== */
+
+/* ── Variáveis locais de escopo do componente ─────────────────────────────── */
+.hangman-game {
+    /* Cores e bordas herdadas do tema global com valores de fallback */
+    --hg-word-font-size: 28px;
+    --hg-word-spacing: 8px;
+    --hg-keyboard-gap: 20px;
+
+}
+
+/* ── Estilização da caixa da palavra mascarada ─────────────────────────── */
+.hangman-game .hangman-word {
+    display: flex;
+    padding-top: 50px;
+    justify-content: center;
+    align-items: center;
+    gap: 47px;
+    align-self: stretch;
+    color: #FFF;
+    text-align: center;
+    font-family: Grift;
+    font-size: 80px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 108%;
+    /* 86.4px */
+    letter-spacing: -0.88px;
+    margin-bottom: 47px;
+}
+
+/* ── Contêiner flexível do teclado virtual ─────────────────────────────── */
+.hangman-game .hangman-keyboard {
+    display: flex;
+    padding: 15px 67px;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    gap: 21px;
+    align-self: stretch;
+    flex-wrap: wrap;
+}
+
+.palavra_teclado {
+    border-radius: 20px;
+    border: 1px solid var(--Color-5, #F60085);
+}
+
+/* ── Estilização individual das teclas do teclado ──────────────────────── */
+.hangman-game .hangman-key {
+    display: flex;
+    width: 100px;
+    height: 80px;
+    padding: 15px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    border-radius: 10px;
+    background: #F6008533;
+    border: none;
+    color: #FFF;
+    text-align: center;
+    font-family: Grift;
+    font-size: 45px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 108%;
+    /* 48.6px */
+    letter-spacing: -0.495px;
+}
+
+/* Estado correto: letra acertada pelo jogador */
+.hangman-game .hangman-key.correct {
+    background: #F60085;
+    opacity: 1;
+    color: #FFF;
+}
+
+/* Estado desativado para teclas já clicadas ou ao fim da partida */
+.hangman-game .hangman-key:disabled {
+    border-radius: 10px;
+    background: rgba(246, 0, 133, 0.00);
+}
+
+/* Mantém o fundo correto mesmo com a tecla desativada após acerto */
+.hangman-game .hangman-key.correct:disabled {
+    background: #F60085;
+    color: #FFF;
+}
+
+.hangman-game .hangman-key:disabled {
+    border-radius: 10px;
+    background: rgba(246, 0, 133, 0.00);
+}
+
+.vidas {
+    display: flex;
+    width: 960px;
+    padding: 30px 0;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    gap: 47px;
+    flex-wrap: wrap;
+    border-radius: 20px;
+    border: 1px solid var(--Color-5, #F60085);
+    margin-bottom: 33px;
+}
+
+.vidas_info {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 47px;
+}
+
+.vidas_icons {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 47px;
+    flex-wrap: wrap;
+}
+
+.vida_icon {
+    display: inline-flex;
+}
+
+.vidas_span {
+    color: #FFF;
+    text-align: center;
+    font-family: Grift;
+    font-size: 50px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 108%;
+    /* 54px */
+    letter-spacing: -0.55px;
+}
+
+/* ── Caixa de exibição do resultado final (Modal interno) ──────────────── */
+.hangman-game .result-box {
+    background: var(--hg-result-bg);
+    border: 1px solid var(--hg-result-border);
+    border-radius: 8px;
+    padding: 10px 8px;
+    font-weight: 700;
+    font-size: 15px;
+    min-height: 40px;
+    min-width: 40px;
+}
+
+.selecionadas {
+    display: flex;
+    width: 960px;
+    padding: 50px 0;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 21px;
+    flex-wrap: wrap;
+    border-radius: 20px;
+    border: 1px solid var(--Color-5, #F60085);
+    margin-top: 33px;
+}
+
+.selecionada_letter {
+    display: flex;
+    width: 80px;
+    height: 60px;
+    padding: 15px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    color: #FFF;
+    text-align: center;
+    font-family: Grift;
+    font-size: 35px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 108%;
+    /* 37.8px */
+    letter-spacing: -0.385px;
+}
+
+.selecionada_letter.correct {
+    border-radius: 10px;
+    background: #F60085;
+}
+
+.selecionada_letter.wrong {
+    border-radius: 10px;
+    background: rgba(246, 0, 133, 0.20);
+}
