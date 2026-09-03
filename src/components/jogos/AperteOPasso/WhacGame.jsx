@@ -1,3 +1,4 @@
+import { useMemo } from "react";
 import useWhacGameLogic from "./useWhacGameLogic";
 import "./whacGame.style.css";
 import HeaderJogo from "../../headerJogo/HeaderJogo";
@@ -18,8 +19,51 @@ import { Dialog } from "../../Dialog/Dialog";
  * @param {Array} props.ranking - Lista de top jogadores para exibição no mini-ranking final.
  * @param {Function} props.onScore - Callback disparada ao finalizar a partida para registrar a pontuação.
  * @param {Function} props.onGameOver - Callback disparada ao término do jogo.
- * @param {Function} props.onPlayAgain - Callback disparada ao clicar em "Novo Jogo".
  */
+function renderWhacIcon(icon) {
+  if (icon === "OMNI") {
+    return (
+      <img
+        src="/images/logo.png"
+        alt="Alvo"
+        className="whac-logo-img-cell"
+      />
+    );
+  }
+  if (icon === "DECOY_X") {
+    return (
+      <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#ef4444" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
+        <line x1="18" y1="6" x2="6" y2="18"></line>
+        <line x1="6" y1="6" x2="18" y2="18"></line>
+      </svg>
+    );
+  }
+  if (icon === "DECOY_DOWN") {
+    return (
+      <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#ef4444" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
+        <line x1="12" y1="5" x2="12" y2="19"></line>
+        <polyline points="19 12 12 19 5 12"></polyline>
+      </svg>
+    );
+  }
+  if (icon === "DECOY_WARN") {
+    return (
+      <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#f59e0b" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path>
+        <line x1="12" y1="9" x2="12" y2="13"></line>
+        <line x1="12" y1="17" x2="12.01" y2="17"></line>
+      </svg>
+    );
+  }
+  return (
+    <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#ef4444" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+      <circle cx="12" cy="12" r="10"></circle>
+      <line x1="15" y1="9" x2="9" y2="15"></line>
+      <line x1="9" y1="9" x2="15" y2="15"></line>
+    </svg>
+  );
+}
+
 export default function WhacGame({
   data = {},
   config = {},
@@ -46,6 +90,20 @@ export default function WhacGame({
     Math.min(6, Math.ceil(Math.sqrt(logic.gridSize))),
   );
 
+  // Memoiza os índices de slots e o mapa de busca O(1) para máxima performance
+  const slotIndices = useMemo(
+    () => Array.from({ length: logic.gridSize }, (_, i) => i),
+    [logic.gridSize],
+  );
+
+  const activeSlotsMap = useMemo(() => {
+    const map = new Map();
+    for (const item of logic.activeSlots) {
+      map.set(item.index, item);
+    }
+    return map;
+  }, [logic.activeSlots]);
+
   return (
     // Contêiner principal do painel do Jogo Omni-Catch
     <div className="whac-game panel">
@@ -67,12 +125,9 @@ export default function WhacGame({
               gridTemplateColumns: `repeat(${gridColumns}, minmax(0, 1fr))`,
             }}
           >
-            {/* Itera sobre o número total de slots configurados (gridSize) */}
-            {Array.from({ length: logic.gridSize }).map((_, index) => {
-              // Busca se há um item ativo posicionado neste índice de slot
-              const slot = logic.activeSlots.find(
-                (item) => item.index === index,
-              );
+            {/* Itera sobre os slots com busca instantânea em tempo O(1) */}
+            {slotIndices.map((index) => {
+              const slot = activeSlotsMap.get(index);
               const isActive = Boolean(slot);
               const isClicked = slot ? logic.clickedIds.has(slot.id) : false;
               const icon = slot?.icon ?? null;
@@ -81,11 +136,16 @@ export default function WhacGame({
               return (
                 <button
                   key={index}
+                  type="button"
                   className={`whac-slot ${isActive ? "active" : ""} ${
                     slot?.isTarget ? "target" : ""
                   } ${isClicked ? "clicked" : ""}`}
+                  onPointerDown={(e) => {
+                    e.preventDefault();
+                    logic.handleSlotClick(index);
+                  }}
                   onClick={() => logic.handleSlotClick(index)}
-                  disabled={!isActive || isClicked} // Desabilita slots vazios ou já clicados
+                  disabled={!logic.gameActive || isClicked}
                   style={
                     isActive && itemDuration
                       ? { animationDuration: itemDuration } // Sincroniza a animação CSS com a duração do item
@@ -95,15 +155,7 @@ export default function WhacGame({
                   {/* RENDERIZA O ÍCONE (ALVO OU DISTRATOR) CASO O SLOT ESTEJA ATIVO */}
                   {isActive && (
                     <span className="whac-icon">
-                      {icon === "OMNI" ? (
-                        <img
-                          src="/images/logo.png"
-                          alt="OmniVarejo"
-                          className="whac-logo-img-cell"
-                        />
-                      ) : (
-                        icon
-                      )}
+                      {renderWhacIcon(icon)}
                     </span>
                   )}
                 </button>

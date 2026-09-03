@@ -60,8 +60,8 @@ export function AdminSecurity() {
       </div>
 
       <div style={{
-        background: '#111111',
-        border: '1px solid #27272a',
+        background: 'rgba(0, 0, 0, 0.35)',
+        border: '1.5px solid rgba(255, 255, 255, 0.2)',
         borderRadius: 12,
         padding: 20,
         marginBottom: 24,
@@ -75,7 +75,7 @@ export function AdminSecurity() {
             width: 40,
             height: 40,
             borderRadius: 10,
-            background: hasPass ? '#27272a' : '#18181b',
+            background: hasPass ? 'rgba(255, 255, 255, 0.2)' : 'rgba(255, 255, 255, 0.1)',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
@@ -97,7 +97,7 @@ export function AdminSecurity() {
             <div style={{ fontSize: 15, fontWeight: 600, color: '#ffffff' }}>
               {hasPass ? 'Totem Protegido por Senha' : 'Acesso Livre (Sem Senha)'}
             </div>
-            <div style={{ fontSize: 13, color: '#a1a1aa' }}>
+            <div style={{ fontSize: 13, color: 'rgba(255, 255, 255, 0.75)' }}>
               {hasPass
                 ? 'A senha é exigida para acessar configurações e navegação restrita.'
                 : 'O aplicativo inicia diretamente e permite acesso livre ao painel.'}
@@ -130,13 +130,22 @@ export function AdminSecurity() {
         </h3>
 
         <div>
-          <label style={{ display: 'block', fontSize: 13, color: '#a1a1aa', marginBottom: 6 }}>
+          <label style={{ display: 'block', fontSize: 13, color: 'rgba(255, 255, 255, 0.85)', marginBottom: 6 }}>
             Nova Senha
           </label>
           <input
             type="password"
             className="input"
-            style={{ width: '100%', minHeight: 48 }}
+            style={{
+              width: '100%',
+              minHeight: 48,
+              background: 'rgba(0, 0, 0, 0.35)',
+              border: '1.5px solid rgba(255, 255, 255, 0.25)',
+              borderRadius: 10,
+              color: '#ffffff',
+              padding: '10px 14px',
+              boxSizing: 'border-box'
+            }}
             placeholder="Digite a nova senha..."
             value={newPass}
             onChange={(e) => setNewPass(e.target.value)}
@@ -144,13 +153,22 @@ export function AdminSecurity() {
         </div>
 
         <div>
-          <label style={{ display: 'block', fontSize: 13, color: '#a1a1aa', marginBottom: 6 }}>
+          <label style={{ display: 'block', fontSize: 13, color: 'rgba(255, 255, 255, 0.85)', marginBottom: 6 }}>
             Confirmar Senha
           </label>
           <input
             type="password"
             className="input"
-            style={{ width: '100%', minHeight: 48 }}
+            style={{
+              width: '100%',
+              minHeight: 48,
+              background: 'rgba(0, 0, 0, 0.35)',
+              border: '1.5px solid rgba(255, 255, 255, 0.25)',
+              borderRadius: 10,
+              color: '#ffffff',
+              padding: '10px 14px',
+              boxSizing: 'border-box'
+            }}
             placeholder="Confirme a nova senha..."
             value={confirmPass}
             onChange={(e) => setConfirmPass(e.target.value)}

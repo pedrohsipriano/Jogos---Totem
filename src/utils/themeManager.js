@@ -23,19 +23,20 @@ export const COLOR_PALETTE = [
   '#ef4444', '#7c3aed', '#ec4899', '#F60085',
 ];
 
-/** Calcula contraste (preto ou branco) para manter legibilidade em botões */
+/** Calcula contraste (preto ou branco) para manter legibilidade em botões e acentos */
 export function getContrastColor(hexColor) {
-  if (!hexColor || typeof hexColor !== 'string') return '#000000';
+  if (!hexColor || typeof hexColor !== 'string') return '#ffffff';
   let hex = hexColor.replace('#', '').trim();
   if (hex.length === 3) {
     hex = hex.split('').map((c) => c + c).join('');
   }
-  if (hex.length !== 6) return '#000000';
+  if (hex.length !== 6) return '#ffffff';
   const r = parseInt(hex.substring(0, 2), 16);
   const g = parseInt(hex.substring(2, 4), 16);
   const b = parseInt(hex.substring(4, 6), 16);
+  // YIQ perceptivo: se for cor muito clara (branco, amarelo pálido), usa preto; senão sempre branco
   const yiq = (r * 299 + g * 587 + b * 114) / 1000;
-  return yiq >= 128 ? '#000000' : '#ffffff';
+  return yiq >= 180 ? '#000000' : '#ffffff';
 }
 
 /** Tema padrão do sistema: 5 cores principais distribuídas pelo sistema */
@@ -51,7 +52,9 @@ export const DEFAULT_THEME = {
   bgMode: 'solid',
   bgColorEnd: '#000000',
   bgDirection: '180deg',
+  bgGradientStop: 50, // Posição/altura da transição do gradiente (0% a 100%)
   bgImage: null,
+  bgImageOpacity: 100, // Opacidade da imagem de fundo (10% a 100%)
 
   // Logotipo customizado
   customLogo: null,
@@ -138,6 +141,7 @@ export function applyTheme(theme = null) {
   root.style.setProperty('--primary', primary);
   root.style.setProperty('--accent-strong', secondary);
   root.style.setProperty('--text-primary', text);
+  root.style.setProperty('--accent-contrast', btnText);
 
   // 2. Cards e Telas (distribuído)
   root.style.setProperty('--card-bg', surface);
@@ -191,12 +195,32 @@ function _applyBackground(t) {
   const html = document.documentElement;
 
   if (t.bgMode === 'image' && t.bgImage) {
-    html.style.background = `url("${t.bgImage}") center / cover no-repeat fixed`;
+    const opacity = Math.min(100, Math.max(10, Number(t.bgImageOpacity ?? 100))) / 100;
+    const overlayAlpha = 1 - opacity;
+    
+    // Converte a cor base de fundo para rgba para criar a fusão de opacidade perfeita
+    let hex = (t.bgColor || '#000000').replace('#', '').trim();
+    if (hex.length === 3) hex = hex.split('').map(c => c + c).join('');
+    let r = 0, g = 0, b = 0;
+    if (hex.length === 6) {
+      r = parseInt(hex.substring(0, 2), 16);
+      g = parseInt(hex.substring(2, 4), 16);
+      b = parseInt(hex.substring(4, 6), 16);
+    }
+    const overlay = `rgba(${r}, ${g}, ${b}, ${overlayAlpha})`;
+
+    html.style.backgroundColor = t.bgColor ?? DEFAULT_THEME.bgColor;
+    html.style.backgroundImage = `linear-gradient(${overlay}, ${overlay}), url("${t.bgImage}")`;
+    html.style.backgroundPosition = 'center';
+    html.style.backgroundSize = 'cover';
+    html.style.backgroundRepeat = 'no-repeat';
     html.style.backgroundAttachment = 'fixed';
     return;
   }
 
   if (t.bgMode === 'solid') {
+    html.style.backgroundColor = t.bgColor ?? DEFAULT_THEME.bgColor;
+    html.style.backgroundImage = 'none';
     html.style.background = t.bgColor ?? DEFAULT_THEME.bgColor;
     return;
   }
@@ -205,7 +229,9 @@ function _applyBackground(t) {
   const dir = t.bgDirection ?? DEFAULT_THEME.bgDirection;
   const start = t.bgColor ?? DEFAULT_THEME.bgColor;
   const end = t.bgColorEnd ?? DEFAULT_THEME.bgColorEnd;
-  html.style.background = `linear-gradient(${dir}, ${start} 0%, ${end} 100%)`;
+  const stop = t.bgGradientStop ?? 50;
+  html.style.backgroundImage = 'none';
+  html.style.background = `linear-gradient(${dir}, ${start} 0%, ${stop}%, ${end} 100%)`;
   html.style.backgroundAttachment = 'fixed';
 }
 

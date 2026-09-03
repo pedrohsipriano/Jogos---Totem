@@ -305,6 +305,26 @@ export function Personalizacao() {
                     ))}
                   </select>
                 </div>
+
+                <div className="theme-field" style={{ gridColumn: '1 / -1', marginTop: 8 }}>
+                  <span className="theme-field-label">
+                    Posição da Transição do Gradiente — {theme.bgGradientStop ?? 50}%
+                  </span>
+                  <input
+                    type="range"
+                    className="theme-slider"
+                    min={5}
+                    max={95}
+                    step={1}
+                    value={theme.bgGradientStop ?? 50}
+                    onChange={(e) => update('bgGradientStop', Number(e.target.value))}
+                  />
+                  <div className="theme-slider-labels">
+                    <span>Mais para Cima (5%)</span>
+                    <span>Meio da Tela (50%)</span>
+                    <span>Mais para Baixo (95%)</span>
+                  </div>
+                </div>
               </div>
             )}
 
@@ -331,17 +351,43 @@ export function Personalizacao() {
                 {imgError && <p className="theme-error">{imgError}</p>}
                 
                 {theme.bgImage && (
-                  <div className="theme-img-preview" style={{ maxWidth: 280, marginTop: 10 }}>
-                    <img src={theme.bgImage} alt="Preview do fundo" />
-                    <button
-                      type="button"
-                      className="theme-img-remove"
-                      onClick={() => { update('bgImage', null); update('bgMode', 'solid'); }}
-                    >
-                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
-                      Remover Imagem
-                    </button>
-                  </div>
+                  <>
+                    <div className="theme-field" style={{ maxWidth: 360, marginTop: 14 }}>
+                      <span className="theme-field-label">
+                        Opacidade da Imagem de Fundo — {theme.bgImageOpacity ?? 100}%
+                      </span>
+                      <input
+                        type="range"
+                        className="theme-slider"
+                        min={10}
+                        max={100}
+                        step={5}
+                        value={theme.bgImageOpacity ?? 100}
+                        onChange={(e) => update('bgImageOpacity', Number(e.target.value))}
+                      />
+                      <div className="theme-slider-labels">
+                        <span>Suave (10%)</span>
+                        <span>Média (50%)</span>
+                        <span>Total (100%)</span>
+                      </div>
+                    </div>
+
+                    <div className="theme-img-preview" style={{ maxWidth: 280, marginTop: 10 }}>
+                      <img 
+                        src={theme.bgImage} 
+                        alt="Preview do fundo" 
+                        style={{ opacity: (theme.bgImageOpacity ?? 100) / 100 }}
+                      />
+                      <button
+                        type="button"
+                        className="theme-img-remove"
+                        onClick={() => { update('bgImage', null); update('bgMode', 'solid'); }}
+                      >
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                        Remover Imagem
+                      </button>
+                    </div>
+                  </>
                 )}
               </div>
             )}
@@ -358,7 +404,11 @@ export function Personalizacao() {
               display: 'grid',
               gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
               gap: 20,
-              background: currentBg,
+              background: theme.bgMode === 'gradient'
+                ? `linear-gradient(${theme.bgDirection || '180deg'}, ${theme.bgColor || '#000000'} 0%, ${theme.bgGradientStop ?? 50}%, ${theme.bgColorEnd || '#000000'} 100%)`
+                : (theme.bgMode === 'image' && theme.bgImage 
+                    ? `linear-gradient(rgba(0,0,0,${1 - (theme.bgImageOpacity ?? 100) / 100}), rgba(0,0,0,${1 - (theme.bgImageOpacity ?? 100) / 100})), url("${theme.bgImage}") center / cover`
+                    : currentBg),
               border: '1px dashed rgba(255, 255, 255, 0.2)',
               borderRadius: 18,
               padding: 24,

@@ -109,10 +109,9 @@
     border: 1px solid var(--Color-5, #F60085);
 }
 
-/* ── Estilização do Slot Individual (Buraco) ───────────────────────────── */
+/* ── Estilização do Slot Individual (Buraco) OTIMIZADO ─────────────────── */
 .whac-game .whac-slot {
     aspect-ratio: 1;
-    /* Garante formato perfeitamente circular */
     border-radius: 50%;
     background: var(--wg-bg-slot);
     border: 2px solid var(--wg-secondary);
@@ -121,13 +120,15 @@
     place-items: center;
     font-size: 36px;
     cursor: pointer;
-    transition: all 0.15s ease;
+    transition: transform 0.1s ease, background-color 0.1s ease, border-color 0.1s ease;
     touch-action: manipulation;
-    /* Otimização para toques rápidos no mobile */
     user-select: none;
-    box-shadow: inset 0 0 10px rgba(14, 165, 233, 0.3);
+    box-shadow: inset 0 0 6px rgba(14, 165, 233, 0.2);
     outline: none;
     -webkit-tap-highlight-color: transparent;
+    transform: translateZ(0);
+    will-change: transform, opacity;
+    backface-visibility: hidden;
 }
 
 .whac-game .whac-slot:focus,
@@ -146,57 +147,55 @@
 /* ── Estado do Slot Ativo (Contendo um item) ───────────────────────────── */
 .whac-game .whac-slot.active {
     background: var(--wg-bg-active);
-    box-shadow: 0 0 20px rgba(14, 165, 233, 0.6), inset 0 0 15px rgba(14, 165, 233, 0.4);
-    /* Animação sincronizada com a duração aleatória do item */
+    box-shadow: 0 0 10px rgba(14, 165, 233, 0.4);
     animation: popInAndOut 1s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
 }
 
-/* ── Estado do Slot Alvo (Com brilho rosa intenso) ─────────────────────── */
+/* ── Estado do Slot Alvo ───────────────────────────────────────────────── */
 .whac-game .whac-slot.target {
     border-color: var(--wg-primary);
-    box-shadow: 0 0 30px rgba(246, 0, 133, 0.8), inset 0 0 20px rgba(246, 0, 133, 0.3);
-    background: rgba(246, 0, 133, 0.1);
+    box-shadow: 0 0 14px rgba(246, 0, 133, 0.6);
+    background: rgba(246, 0, 133, 0.12);
 }
 
-/* ── Estado do Slot Clicado (Flash verde/vermelho de confirmação) ─────── */
+/* ── Estado do Slot Clicado (Feedback imediato) ───────────────────────── */
 .whac-game .whac-slot.clicked {
-    transform: scale(0.9);
-    opacity: 0.8;
-    transition: all 0.1s ease;
+    transform: scale(0.92) translateZ(0);
+    opacity: 0.9;
+    transition: transform 0.08s ease;
     animation: none;
-    /* Interrompe a animação de pop para dar feedback imediato */
 }
 
-/* Feedback verde para acerto (item correto) */
+/* Feedback verde para acerto */
 .whac-game .whac-slot.target.clicked {
     border-color: #22c55e;
-    background: rgba(34, 197, 94, 0.3);
-    box-shadow: 0 0 30px rgba(34, 197, 94, 0.8), inset 0 0 20px rgba(34, 197, 94, 0.4);
+    background: rgba(34, 197, 94, 0.35);
+    box-shadow: 0 0 12px rgba(34, 197, 94, 0.6);
 }
 
-/* Feedback vermelho para erro (item incorreto) */
+/* Feedback vermelho para erro */
 .whac-game .whac-slot.clicked:not(.target) {
     border-color: #ef4444;
-    background: rgba(239, 68, 68, 0.3);
-    box-shadow: 0 0 30px rgba(239, 68, 68, 0.8), inset 0 0 20px rgba(239, 68, 68, 0.4);
+    background: rgba(239, 68, 68, 0.35);
+    box-shadow: 0 0 12px rgba(239, 68, 68, 0.6);
 }
 
-/* Efeito de afundamento ao pressionar o alvo */
+/* Efeito ao pressionar o alvo */
 .whac-game .whac-slot.target:active {
-    transform: scale(0.95);
-    box-shadow: 0 0 40px rgba(246, 0, 133, 1), inset 0 0 25px rgba(246, 0, 133, 0.5);
+    transform: scale(0.95) translateZ(0);
 }
 
-/* ── Animação e escala do ícone interno ────────────────────────────────── */
+/* ── Animação e escala do ícone interno (Sem re-paint pesado) ──────────── */
 .whac-game .whac-icon {
     display: flex;
     align-items: center;
     justify-content: center;
-    animation: iconScale 0.3s ease-out;
+    animation: iconScale 0.2s ease-out;
+    transform: translateZ(0);
 }
 
 .whac-game .whac-slot.target .whac-icon {
-    animation: iconScale 0.3s ease-out, targetGlow 1s ease-in-out;
+    animation: iconScale 0.2s ease-out;
 }
 
 /* ── Caixa de Resultado Final ──────────────────────────────────────────── */
@@ -279,22 +278,22 @@
 /* Animação de surgimento (pop-in) e desaparecimento (pop-out) do item no slot */
 @keyframes popInAndOut {
     0% {
-        transform: scale(0);
+        transform: scale(0) translateZ(0);
         opacity: 0;
     }
 
     20% {
-        transform: scale(1.15);
+        transform: scale(1.08) translateZ(0);
         opacity: 1;
     }
 
-    80% {
-        transform: scale(1);
+    85% {
+        transform: scale(1) translateZ(0);
         opacity: 1;
     }
 
     100% {
-        transform: scale(0);
+        transform: scale(0) translateZ(0);
         opacity: 0;
     }
 }
@@ -302,42 +301,35 @@
 /* Escala inicial do ícone ao aparecer */
 @keyframes iconScale {
     0% {
-        transform: scale(0.5);
+        transform: scale(0.7) translateZ(0);
+        opacity: 0.6;
     }
 
     100% {
-        transform: scale(1);
+        transform: scale(1) translateZ(0);
+        opacity: 1;
     }
 }
 
-/* Efeito de brilho pulsante específico para o ícone alvo */
+/* Efeito de destaque leve sem drop-shadow */
 @keyframes targetGlow {
-    0% {
-        filter: drop-shadow(0 0 5px var(--wg-primary));
-        transform: scale(0.9);
+    0%, 100% {
+        transform: scale(1) translateZ(0);
     }
-
     50% {
-        filter: drop-shadow(0 0 30px var(--wg-primary));
-        transform: scale(1.05);
-    }
-
-    100% {
-        filter: drop-shadow(0 0 15px var(--wg-primary));
-        transform: scale(1);
+        transform: scale(1.04) translateZ(0);
     }
 }
 
-/* Pulso de sombra neon para os displays de destaque */
+/* Pulso leve para displays de destaque */
 @keyframes neon-pulse {
-
-    0%,
-    100% {
-        filter: drop-shadow(0 0 20px var(--wg-primary)) drop-shadow(0 0 40px rgba(246, 0, 133, 0.5));
+    0%, 100% {
+        opacity: 0.92;
+        transform: scale(1) translateZ(0);
     }
-
     50% {
-        filter: drop-shadow(0 0 30px var(--wg-primary)) drop-shadow(0 0 60px rgba(246, 0, 133, 0.8));
+        opacity: 1;
+        transform: scale(1.03) translateZ(0);
     }
 }
 

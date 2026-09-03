@@ -247,11 +247,16 @@ button:disabled {
 .input {
     padding: 14px 12px;
     border-radius: 12px;
-    border: 1px solid #1f2937;
-    background: #0b1220;
-    color: var(--text);
+    border: 1.5px solid rgba(255, 255, 255, 0.25);
+    background: rgba(0, 0, 0, 0.35);
+    color: #ffffff;
     font-size: 16px;
     min-height: 60px;
+    box-sizing: border-box;
+}
+
+.input::placeholder {
+    color: rgba(255, 255, 255, 0.6);
 }
 
 /* Mini tabela de ranking exibida nos painéis ou menu */

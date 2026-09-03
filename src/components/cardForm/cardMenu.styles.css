@@ -7,9 +7,11 @@
     align-items: center;
     gap: 2.5625rem;
     border-radius: 2.5rem;
-    border: 1px solid var(--Color-5, #ffffff);
-    background: #111111;
-    box-shadow: 0 0 13.9px 0 rgba(0, 0, 0, 0.72);
+    border: 1.5px solid var(--card-border, var(--Color-5, rgba(255, 255, 255, 0.4)));
+    background: var(--card-bg, rgba(17, 17, 17, 0.9));
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.45);
 }
 
 .formSection {
@@ -25,20 +27,28 @@
     box-sizing: border-box;
     align-self: stretch;
     border-radius: 1.25rem;
-    border: 1px solid #27272a;
-    background-color: #000000;
+    border: 1.5px solid rgba(255, 255, 255, 0.25);
+    background-color: rgba(0, 0, 0, 0.35);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
     color: #FFF;
     font-size: 1.875rem;
     font-style: normal;
-    font-weight: 300;
+    font-weight: 400;
     line-height: 119%;
-    /* 2.23125rem */
     letter-spacing: -0.02063rem;
     text-align: start;
+    transition: border-color 0.2s, background-color 0.2s;
+}
+
+.inputCardForm:focus {
+    border-color: var(--accent, #ffffff);
+    background-color: rgba(0, 0, 0, 0.5);
+    outline: none;
 }
 
 .inputCardForm::placeholder {
-    color: #a1a1aa;
+    color: rgba(255, 255, 255, 0.6);
     font-size: 1.875rem;
     font-style: normal;
     font-weight: 300;

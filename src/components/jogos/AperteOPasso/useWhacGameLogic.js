@@ -4,11 +4,11 @@ import sanitizeGamePayload from "../../Dialog/sanitizeGamePayload";
 // ─── CONFIGURAÇÕES E CONSTANTES GLOBAIS DO JOGO ──────────────────────────
 const GRID_SIZE = 12; // Quantidade padrão de slots/buracos na grade do jogo
 const ICONS_TARGET = ["OMNI"]; // Ícone que representa o alvo válido (Logo OmniVarejo)
-const ICONS_DECOY = ["📉", "👎", "❌", "⚠️", "💔", "🤮",];  // Ícones de distratores ruins (decoys)
-const MIN_ITEM_TIME = 700;  // Duração mínima que um item permanece ativo no slot (em ms)
-const MAX_ITEM_TIME = 1400; // Duração máxima que um item permanece ativo no slot (em ms)
-const MAX_ACTIVE_ITEMS = 5; // Número máximo de itens (alvos + distratores) ativos simultaneamente
-const SPAWN_INTERVAL = 320; // Intervalo de tempo entre as tentativas de spawn de novos itens (em ms)
+const ICONS_DECOY = ["DECOY_X", "DECOY_DOWN", "DECOY_WARN", "DECOY_ALERT"];  // Distratores (renderizados via SVG sem emojis)
+const MIN_ITEM_TIME = 1400; // Duração mínima que um item permanece ativo no slot (em ms - aumentado para fácil visualização)
+const MAX_ITEM_TIME = 2400; // Duração máxima que um item permanece ativo no slot (em ms)
+const MAX_ACTIVE_ITEMS = 4; // Número máximo de itens simultâneos na tela
+const SPAWN_INTERVAL = 450; // Intervalo entre spawns de novos itens (em ms)
 
 // ── Cotas fixas base (referência: 30 segundos) ────────────────────
 // Targets escalam proporcionalmente ao tempo de partida (base: 50 alvos em 30s); decoys são infinitos.
@@ -105,6 +105,9 @@ export default function useWhacGameLogic({
     // Ref da cota restante de alvos (distratores não consomem cota e surgem infinitamente)
     const targetQuotaRef = useRef(0);
 
+    // Buffer de tolerância de clique: permite validar o acerto caso o dedo toque até 450ms após expirar
+    const recentlyRemovedRef = useRef(new Map());
+
     /**
      * Gera um tempo de permanência aleatório para um item, respeitando os limites mínimo e máximo.
      */
@@ -145,6 +148,7 @@ export default function useWhacGameLogic({
         (item) => {
             clearHideTimer(item.id);
             const timerId = setTimeout(() => {
+                recentlyRemovedRef.current.set(item.index, { ...item, removedAt: Date.now() });
                 activeSlotsRef.current = activeSlotsRef.current.filter((s) => s.id !== item.id);
                 setActiveSlots(activeSlotsRef.current);
                 hideTimersRef.current.delete(item.id);
@@ -231,6 +235,7 @@ export default function useWhacGameLogic({
         setReported(false);
         activeSlotsRef.current = [];
         setActiveSlots([]);
+        recentlyRemovedRef.current.clear();
         nextItemIdRef.current = 1;
         isGameRunningRef.current = true;
     }, [timeLimitSeconds]);
@@ -240,16 +245,18 @@ export default function useWhacGameLogic({
         startGame();
     }, [startGame]);
 
-    // ─── GESTÃO DO CRONÔMETRO REGRESSIVO ─────────────────────────────
+    // ─── GESTÃO DO CRONÔMETRO REGRESSIVO OTIMIZADO ───────────────────
     useEffect(() => {
         if (!gameActive || finished) return;
 
         const tick = () => {
             const end = endTimeRef.current ?? (Date.now() + timeLimitSeconds * 1000);
             const remainingMs = Math.max(0, end - Date.now());
-            const remainingSec = remainingMs / 1000;
+            const remainingSec = Math.max(0, Math.ceil(remainingMs / 1000));
             timeLeftRef.current = remainingSec;
-            setTimeLeft(remainingSec);
+            
+            // Só dispara re-render do React quando o segundo inteiro realmente mudar
+            setTimeLeft((prev) => (prev !== remainingSec ? remainingSec : prev));
 
             // Encerra a partida ao zerar o cronômetro
             if (remainingMs <= 0) {
@@ -261,7 +268,7 @@ export default function useWhacGameLogic({
             }
         };
 
-        countdownRef.current = setInterval(tick, 50);
+        countdownRef.current = setInterval(tick, 200);
         tick();
 
         return () => {
@@ -354,7 +361,17 @@ export default function useWhacGameLogic({
      */
     const handleSlotClick = useCallback(
         (slotIndex) => {
-            const clickedSlot = activeSlotsRef.current.find((s) => s.index === slotIndex);
+            let clickedSlot = activeSlotsRef.current.find((s) => s.index === slotIndex);
+
+            // Tolerância de toque: se o item expirou há menos de 450ms, ainda computa o acerto
+            if (!clickedSlot && recentlyRemovedRef.current.has(slotIndex)) {
+                const recent = recentlyRemovedRef.current.get(slotIndex);
+                if (Date.now() - recent.removedAt <= 450) {
+                    clickedSlot = recent;
+                    recentlyRemovedRef.current.delete(slotIndex);
+                }
+            }
+
             if (!clickedSlot) return;
 
             clearHideTimer(clickedSlot.id);

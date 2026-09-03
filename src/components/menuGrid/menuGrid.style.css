@@ -24,8 +24,10 @@
     align-items: flex-start;
     border-radius: 1.875rem;
     gap: 1.375rem;
-    border: 2px solid var(--Color-5, #ffffff);
-    background: linear-gradient(180deg, var(--Color, #000000) 0%, rgba(255, 255, 255, 0.08) 100%);
+    border: 2px solid var(--card-border, var(--Color-5, #ffffff));
+    background: var(--card-bg, linear-gradient(180deg, var(--Color, #000000) 0%, rgba(255, 255, 255, 0.08) 100%));
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
     box-shadow: 0 0 14.3px 0 rgba(255, 255, 255, 0.15);
 }
 
@@ -39,26 +41,35 @@
 
 /* Estilo unificado para campos de entrada de número */
 .time-field input {
-    background: #111111;
-    color: #e2e8f0;
-    border: 1px solid #27272a;
+    background: rgba(0, 0, 0, 0.35);
+    color: #ffffff;
+    border: 1.5px solid rgba(255, 255, 255, 0.25);
     border-radius: 10px;
     padding: 10px 12px;
     min-height: 54px;
     font-size: 16px;
+    box-sizing: border-box;
+    transition: border-color 0.2s, background 0.2s;
 }
 
 /* Estilo unificado para caixas de seleção (Selects) */
 .time-field select {
-    background: #111111;
-    color: #e2e8f0;
-    border: 1px solid #27272a;
+    background: rgba(0, 0, 0, 0.35);
+    color: #ffffff;
+    border: 1.5px solid rgba(255, 255, 255, 0.25);
     border-radius: 10px;
     padding: 12px;
     min-height: 54px;
     font-size: 16px;
     appearance: none;
     width: 100%;
+    box-sizing: border-box;
+    transition: border-color 0.2s, background 0.2s;
+}
+
+.time-field select option {
+    background: #18181b;
+    color: #ffffff;
 }
 
 /* Destaque de foco acessível para navegação por teclado */
