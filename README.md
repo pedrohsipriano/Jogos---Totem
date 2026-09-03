@@ -93,5 +93,33 @@ Isso gera e atualiza os arquivos nativos e scripts Gradle do Capacitor (como `co
 
 ---
 
+## Sistema de Licenças do Totem
+
+O Totem conta com um sistema híbrido (Online e Offline) de validação e controle de licença:
+
+### 1. Ativação Dinâmica no Primeiro Uso (Padrão)
+A licença não perde dias enquanto o Totem estiver desligado ou em transporte. A contagem dos dias contratados inicia apenas na **primeira abertura do app no dispositivo**.
+```bash
+# Gerar licença dinâmica de 30 dias para o Totem 01:
+node scripts/generate-license.js --id TV-01 --days 30
+
+# Gerar licença para testes rápidos (ex: 5 minutos):
+node scripts/generate-license.js --id TESTE-01 --minutes 5
+```
+
+### 2. Validação Híbrida de Horário
+- **Online**: Se o Totem estiver conectado à internet, o horário real é validado automaticamente via serviço de tempo UTC, eliminando erros de relógio desregulado no Android.
+- **Offline com Proteções**:
+  - **Relógio de Fábrica**: Se o dispositivo estiver com a data resetada (ano anterior a 2025), o app bloqueia e orienta a acertar a data do sistema antes de ativar.
+  - **Proteção Anti-Rollback**: Se o relógio do Totem for retrocedido para tentar estender o período de licença, o sistema detecta e bloqueia o aplicativo.
+
+### 3. Licença com Data Fixa (Opcional)
+Se for necessário determinar uma data de expiração rígida a partir do momento da emissão no computador:
+```bash
+node scripts/generate-license.js --id TV-01 --days 30 --fixed
+```
+
+---
+
 ## PWA
 O Totem está configurado como um Progressive Web App (PWA) e pode ser instalado nativamente via navegador.

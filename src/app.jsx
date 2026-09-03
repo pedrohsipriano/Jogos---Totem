@@ -10,7 +10,7 @@ import { getAdminMenuRecords, getGameRulesVersion, clearAdminPassword, getAdminP
 import { buildGameConfig } from "./utils/gameConfig";
 import LockScreen from "./components/lockScreen/LockScreen.jsx";
 import { LicenseScreen } from "./components/licenseScreen/LicenseScreen.jsx";
-import { validateLicense } from "./utils/licenseValidator.js";
+import { validateLicense, startClockHeartbeat, stopClockHeartbeat } from "./utils/licenseValidator.js";
 import { applyTheme } from "./utils/themeManager.js";
 import { runSeed } from "./lib/db/seeds.js";
 
@@ -47,11 +47,21 @@ export function App() {
       await runSeed();
       // 2. Aplica o tema salvo
       applyTheme();
-      // 3. Valida a licença
+      // 3. Valida a licença e verifica se o horário do aparelho foi alterado
       const status = await validateLicense();
       setLicenseStatus(status);
+
+      if (status.valid) {
+        startClockHeartbeat((updatedStatus) => {
+          setLicenseStatus(updatedStatus);
+        });
+      }
     };
     void bootstrap();
+
+    return () => {
+      stopClockHeartbeat();
+    };
   }, []);
 
   // Validação inicial da senha salva em sessão
