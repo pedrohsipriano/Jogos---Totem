@@ -83,9 +83,7 @@ export function Home({ onSelectGame, onOpenAdmin, onOpenDashboard }) {
     return () => window.removeEventListener("app:adminRecordsChanged", handler);
   }, []);
 
-  const sortedGames = [...games]
-    .filter((g) => g.code !== "quiz_mulher" && g.code !== "wordsearch_mulher")
-    .sort((a, b) => {
+  const sortedGames = [...games].sort((a, b) => {
       if (a.code === "memory") return -1;
       if (b.code === "memory") return 1;
       return String(a.name ?? a.code ?? "").localeCompare(

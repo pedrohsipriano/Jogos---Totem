@@ -334,7 +334,7 @@ const GAME_CONFIG_DEFS = [
     type: "select",
     options: [5, 8, 10, 12],
     defaultValue: 10,
-    games: ["wordsearch", "wordsearch_mulher"],
+    games: ["wordsearch"],
   },
   {
     key: "wordLimit",
@@ -344,14 +344,14 @@ const GAME_CONFIG_DEFS = [
     max: 50,
     step: 1,
     defaultValue: 5,
-    games: ["wordsearch", "wordsearch_mulher"],
+    games: ["wordsearch"],
   },
   {
     key: "wordLimitIsMin",
     label: "Quantidade minima",
     type: "checkbox",
     defaultValue: 0,
-    games: ["wordsearch", "wordsearch_mulher"],
+    games: ["wordsearch"],
   },
   {
     key: "gridSize",
@@ -386,7 +386,7 @@ const GAME_CONFIG_DEFS = [
     max: 50,
     step: 1,
     defaultValue: 5,
-    games: ["quiz", "quiz_mulher"],
+    games: ["quiz"],
   },
   {
     key: "soletraWordLimit",
@@ -1319,7 +1319,7 @@ function WordsByGameSection({
   }
 
   // Jogos que utilizam a tabela de palavras
-  const gamesThatUseWords = ["memory", "wordsearch", "hangman", "wordsearch_mulher"];
+  const gamesThatUseWords = ["memory", "wordsearch", "hangman"];
 
   // Garantir que os jogos que usam palavras apareçam, mesmo sem palavras cadastradas
   const sortedGames = [...games]
@@ -1733,7 +1733,7 @@ function WordsGameTable({
 
 /**
  * COMPONENTE DE SEÇÃO DE PERGUNTAS DO QUIZ AGRUPADAS POR JOGO (QuizByGameSection)
- * Exibe uma tabela por jogo que usa quizQuestions (quiz, quiz_mulher, etc.).
+ * Exibe uma tabela por jogo que usa quizQuestions (quiz).
  */
 function QuizByGameSection({
   records,
@@ -1758,7 +1758,7 @@ function QuizByGameSection({
     questionsByGame.get(gid).push(q);
   }
 
-  const gamesThatUseQuiz = ["quiz", "quiz_mulher"];
+  const gamesThatUseQuiz = ["quiz"];
 
   const sortedGames = [...games]
     .filter((g) => gamesThatUseQuiz.includes(g.code))

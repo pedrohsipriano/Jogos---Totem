@@ -372,6 +372,10 @@ export default function useSoletraGameLogic({
             dialogEntries,
         };
 
+        finalPayload.score = totalScore;
+        finalPayload.points = totalScore;
+        finalPayload.totalScore = totalScore;
+
         onScore?.(finalPayload);
 
         const emitGameEnd = () => {

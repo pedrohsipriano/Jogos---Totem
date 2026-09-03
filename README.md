@@ -169,7 +169,7 @@ node scripts/generate-license.js --id TV-01 --days 30 --fixed
   - O operador pode ajustar o tempo individualmente no painel administrativo conforme a necessidade.
 - **Jogo da Memória no Painel Administrativo e Partida**:
   - *Grade de 4 Colunas Fixas*: O tabuleiro do jogo foi padronizado para exibir estritamente 4 cartas por linha (`repeat(4, 173px)`), expandindo automaticamente o número de linhas conforme a quantidade de pares da partida.
-  - *Novos Ícones Padrão Universais*: Os ícones antigos da convenção anterior foram substituídos por 6 novos ícones vetoriais universais em SVG de alta qualidade (Gamepad, Troféu, Diamante, Foguete, Estrela e Alvo de Precisão), reduzindo o peso do bundle e otimizando a performance do totem.
+  - *12 Novos Ícones Padrão Universais*: Os ícones antigos da convenção anterior foram substituídos por um catálogo completo de 12 ícones vetoriais universais em SVG de alta qualidade (Gamepad, Troféu, Diamante, Foguete, Estrela, Alvo, Lâmpada, Coração, Engrenagem, Raio, Escudo e Medalha), atendendo partidas com até 12 pares (24 cartas). Todos estão embutidos como data URIs (`data:image/svg+xml;base64`) de ~2 KB cada, garantindo exibição 100% offline.
   - *Novo Verso Padrão Sofisticado*: O verso das cartas agora utiliza uma estampa geométrica moderna com relevo minimalista (`card-back-default.svg`), substituindo o olho antigo.
   - *Aba Fotos das Cartas (Frente)*: Gestão das imagens e pares de cartas individuais.
   - *Aba Parte de Trás das Fotos (Verso)*: Permite o upload de estampa personalizada para o verso das cartas (limite de 3 MB) com visualizador ao vivo e botão de restauração do verso padrão original.

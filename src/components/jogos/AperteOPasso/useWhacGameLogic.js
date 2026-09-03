@@ -326,6 +326,10 @@ export default function useWhacGameLogic({
             won: Number(payload.score ?? payload.points ?? 0) >= pointsToWin,
         };
 
+        finalPayload.score = totalScore;
+        finalPayload.points = totalScore;
+        finalPayload.totalScore = totalScore;
+
         onScore?.(finalPayload);
         onGameOver?.(finalPayload);
 

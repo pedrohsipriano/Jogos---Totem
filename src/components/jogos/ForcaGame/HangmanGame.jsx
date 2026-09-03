@@ -5,6 +5,13 @@ import formatSecondsMs from "../../../utils/time";
 import { LifeIcon50, LifeIconFull } from "../../componentsTag/icon/lifeIcon";
 import { wholeSeconds } from "../../../utils/time";
 import { Dialog } from "../../Dialog/Dialog";
+import { normalizeText } from "../../../utils/string";
+
+const HANGMAN_KEYBOARD_ROWS = [
+  ["Q", "W", "E", "R", "T", "Y", "U", "I", "O", "P"],
+  ["A", "S", "D", "F", "G", "H", "J", "K", "L", "Ç"],
+  ["Z", "X", "C", "V", "B", "N", "M"],
+];
 
 /**
  * COMPONENTE VISUAL DO JOGO DA FORCA (HangmanGame.jsx)
@@ -35,6 +42,7 @@ export default function HangmanGame({
   const {
     alphabet, // Lista de letras disponíveis no teclado virtual (A-Z + Ç)
     secret, // Palavra secreta atual (usada na tela final de game over)
+    secretNormalized,
     masked, // String formatada com underlines (_) para letras ocultas e letras reveladas
     guessed, // Set contendo todas as letras já clicadas pelo jogador
     selectedLetters, // Histórico das letras já selecionadas
@@ -58,8 +66,16 @@ export default function HangmanGame({
     onGameOver,
   });
 
-  const isCorrectLetter = (letter) =>
-    secret?.includes?.(letter) && guessed.has(letter);
+  const isCorrectLetter = (letter) => {
+    const norm = normalizeText(letter);
+    return Boolean(secretNormalized?.includes?.(norm) && guessed.has(norm));
+  };
+
+  const isGuessedLetter = (letter) => {
+    const norm = normalizeText(letter);
+    return guessed.has(norm);
+  };
+
   const isBlocked = noWords || configurationIssue;
 
   return (
@@ -103,18 +119,29 @@ export default function HangmanGame({
               : masked}
         </div>
 
-        {/* TECLADO VIRTUAL INTERATIVO */}
+        {/* TECLADO VIRTUAL INTERATIVO QWERTY */}
         <div className={`hangman-keyboard ${isBlocked ? "blocked" : ""}`}>
-          {alphabet.map((letter) => (
-            <button
-              key={letter}
-              className={`hangman-key ${isCorrectLetter(letter) ? "correct" : ""}`}
-              // Desativa a tecla se o jogo terminou, se não houver palavras ou se a letra já foi clicada
-              disabled={won || guessed.has(letter) || finished || isBlocked}
-              onClick={() => pickLetter(letter)}
-            >
-              {letter}
-            </button>
+          {HANGMAN_KEYBOARD_ROWS.map((row, rowIndex) => (
+            <div key={rowIndex} className="hangman-keyboard-row">
+              {row.map((letter) => {
+                const isGuessed = isGuessedLetter(letter);
+                const isCorrect = isCorrectLetter(letter);
+                const isWrong = isGuessed && !isCorrect;
+
+                return (
+                  <button
+                    type="button"
+                    key={letter}
+                    className={`hangman-key ${isCorrect ? "correct" : ""} ${isWrong ? "wrong" : ""} ${isGuessed ? "guessed" : ""}`}
+                    // Desativa a tecla se o jogo terminou, se não houver palavras ou se a letra já foi clicada
+                    disabled={won || isGuessed || finished || isBlocked}
+                    onClick={() => pickLetter(letter)}
+                  >
+                    {letter}
+                  </button>
+                );
+              })}
+            </div>
           ))}
         </div>
       </div>

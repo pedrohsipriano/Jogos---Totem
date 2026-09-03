@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
+  <defs>
+    <linearGradient id="bg-medal" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#2e1065"/>
+      <stop offset="100%" stop-color="#581c87"/>
+    </linearGradient>
+    <linearGradient id="medal-gold" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#fef08a"/>
+      <stop offset="50%" stop-color="#f59e0b"/>
+      <stop offset="100%" stop-color="#b45309"/>
+    </linearGradient>
+    <linearGradient id="ribbon-red" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f43f5e"/>
+      <stop offset="100%" stop-color="#be123c"/>
+    </linearGradient>
+    <linearGradient id="ribbon-blue" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#38bdf8"/>
+      <stop offset="100%" stop-color="#0284c7"/>
+    </linearGradient>
+    <filter id="shadow-medal" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="8" stdDeviation="8" flood-color="#000000" flood-opacity="0.5"/>
+    </filter>
+  </defs>
+  <rect width="200" height="200" rx="28" fill="url(#bg-medal)"/>
+  <rect x="2" y="2" width="196" height="196" rx="26" fill="none" stroke="rgba(255,255,255,0.15)" stroke-width="2"/>
+  
+  <g filter="url(#shadow-medal)">
+    <!-- Ribbons -->
+    <polygon points="76,42 100,82 86,108 58,58" fill="url(#ribbon-red)"/>
+    <polygon points="124,42 100,82 114,108 142,58" fill="url(#ribbon-blue)"/>
+    <!-- Circular Medal -->
+    <circle cx="100" cy="116" r="38" fill="url(#medal-gold)"/>
+    <circle cx="100" cy="116" r="32" fill="none" stroke="#ffffff" stroke-width="2" opacity="0.6"/>
+    <!-- Number 1 -->
+    <path d="M96 102 L104 98 L104 132 L94 132 L110 132" fill="none" stroke="#ffffff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+</svg>

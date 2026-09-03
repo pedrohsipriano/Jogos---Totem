@@ -201,6 +201,10 @@ export default function useQuizGameLogic({
             dialogEntries,
         };
 
+        finalPayload.score = totalScore;
+        finalPayload.points = totalScore;
+        finalPayload.totalScore = totalScore;
+
         onScore?.(finalPayload);
 
         if (timedOut || noQuestions) {

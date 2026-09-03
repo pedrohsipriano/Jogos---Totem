@@ -5,238 +5,56 @@
     "name": "Labirinto"
   },
   "words": [
-    {
-      "id": 1,
-      "gameId": 6,
-      "word": "CLIENTE",
-      "hint": "A pessoa que realiza as compras no varejo.",
-      "createdat": "2026-06-22T16:55:06.123Z",
-      "updatedat": "2026-06-22T16:55:06.123Z"
-    },
-    {
-      "id": 2,
-      "gameId": 6,
-      "word": "OFERTA",
-      "hint": "Preço ou condição promocional imperdível por tempo limitado.",
-      "createdat": "2026-06-22T16:55:06.435Z",
-      "updatedat": "2026-06-22T16:55:06.435Z"
-    },
-    {
-      "id": 3,
-      "gameId": 6,
-      "word": "VITRINE",
-      "hint": "Local visível na frente da loja onde são exibidos os produtos.",
-      "createdat": "2026-06-22T16:55:06.731Z",
-      "updatedat": "2026-06-22T16:55:06.731Z"
-    },
-    {
-      "id": 4,
-      "gameId": 6,
-      "word": "DESCONTO",
-      "hint": "Redução no preço original de venda de um item.",
-      "createdat": "2026-06-22T16:55:07.027Z",
-      "updatedat": "2026-06-22T16:55:07.027Z"
-    },
-    {
-      "id": 5,
-      "gameId": 6,
-      "word": "PROMOÇÃO",
-      "hint": "Ação comercial para impulsionar as vendas de produtos.",
-      "createdat": "2026-06-22T16:55:07.331Z",
-      "updatedat": "2026-06-22T16:55:07.331Z"
-    },
-    {
-      "id": 6,
-      "gameId": 6,
-      "word": "VENDEDOR",
-      "hint": "O profissional dedicado a atender e realizar vendas na loja.",
-      "createdat": "2026-06-22T16:55:07.628Z",
-      "updatedat": "2026-06-22T16:55:07.628Z"
-    },
-    {
-      "id": 7,
-      "gameId": 6,
-      "word": "ESTOQUE",
-      "hint": "Quantidade de produtos guardados e disponíveis para comercialização.",
-      "createdat": "2026-06-22T16:55:07.922Z",
-      "updatedat": "2026-06-22T16:55:07.922Z"
-    },
-    {
-      "id": 8,
-      "gameId": 6,
-      "word": "QUALIDADE",
-      "hint": "Atributo de excelência de um produto ou serviço.",
-      "createdat": "2026-06-22T16:55:08.218Z",
-      "updatedat": "2026-06-22T16:55:08.218Z"
-    },
-    {
-      "id": 9,
-      "gameId": 6,
-      "word": "ATENDIMENTO",
-      "hint": "Ação de receber, escutar e ajudar o cliente.",
-      "createdat": "2026-06-22T16:55:08.512Z",
-      "updatedat": "2026-06-22T16:55:08.512Z"
-    },
-    {
-      "id": 10,
-      "gameId": 6,
-      "word": "COMÉRCIO",
-      "hint": "Atividade de compra, venda e troca de produtos.",
-      "createdat": "2026-06-22T16:55:08.808Z",
-      "updatedat": "2026-06-22T16:55:08.808Z"
-    },
-    {
-      "id": 11,
-      "gameId": 6,
-      "word": "COMPRA",
-      "hint": "Ação de adquirir um bem ou produto mediante pagamento.",
-      "createdat": "2026-06-22T16:55:09.103Z",
-      "updatedat": "2026-06-22T16:55:09.103Z"
-    },
-    {
-      "id": 12,
-      "gameId": 6,
-      "word": "VENDA",
-      "hint": "Ação de comercializar um produto recebendo o pagamento correspondente.",
-      "createdat": "2026-06-22T16:55:09.399Z",
-      "updatedat": "2026-06-22T16:55:09.399Z"
-    },
-    {
-      "id": 13,
-      "gameId": 6,
-      "word": "PARAÍBA",
-      "hint": "O estado anfitrião do nosso grande evento.",
-      "createdat": "2026-06-22T16:55:09.695Z",
-      "updatedat": "2026-06-22T16:55:09.695Z"
-    },
-    {
-      "id": 14,
-      "gameId": 6,
-      "word": "CULTURA",
-      "hint": "Conjunto de tradições, arte e costumes de um povo.",
-      "createdat": "2026-06-22T16:55:09.991Z",
-      "updatedat": "2026-06-22T16:55:09.991Z"
-    },
-    {
-      "id": 15,
-      "gameId": 6,
-      "word": "TURISMO",
-      "hint": "Atividade de viajar por lazer, negócios ou eventos.",
-      "createdat": "2026-06-22T16:55:10.287Z",
-      "updatedat": "2026-06-22T16:55:10.287Z"
-    },
-    {
-      "id": 16,
-      "gameId": 6,
-      "word": "INOVAÇÃO",
-      "hint": "Ação de introduzir novidades e soluções inovadoras no mercado.",
-      "createdat": "2026-06-22T16:55:10.582Z",
-      "updatedat": "2026-06-22T16:55:10.582Z"
-    },
-    {
-      "id": 17,
-      "gameId": 6,
-      "word": "FUTURO",
-      "hint": "O horizonte do comércio que estamos construindo hoje.",
-      "createdat": "2026-06-22T16:55:10.878Z",
-      "updatedat": "2026-06-22T16:55:10.878Z"
-    },
-    {
-      "id": 18,
-      "gameId": 6,
-      "word": "TECNOLOGIA",
-      "hint": "Aplicação prática do conhecimento científico no varejo.",
-      "createdat": "2026-06-22T16:55:11.174Z",
-      "updatedat": "2026-06-22T16:55:11.174Z"
-    },
-    {
-      "id": 19,
-      "gameId": 6,
-      "word": "DIGITAL",
-      "hint": "O meio virtual integrado à experiência de consumo moderna.",
-      "createdat": "2026-06-22T16:55:11.470Z",
-      "updatedat": "2026-06-22T16:55:11.470Z"
-    },
-    {
-      "id": 20,
-      "gameId": 6,
-      "word": "LOJA",
-      "hint": "O estabelecimento comercial físico de vendas.",
-      "createdat": "2026-06-22T16:55:11.766Z",
-      "updatedat": "2026-06-22T16:55:11.766Z"
-    },
-    {
-      "id": 21,
-      "gameId": 6,
-      "word": "NOTA",
-      "hint": "Documento fiscal emitido no momento da compra.",
-      "createdat": "2026-06-22T16:55:12.063Z",
-      "updatedat": "2026-06-22T16:55:12.063Z"
-    },
-    {
-      "id": 22,
-      "gameId": 6,
-      "word": "PAGO",
-      "hint": "Estado de uma transação finalizada com sucesso.",
-      "createdat": "2026-06-22T16:55:12.359Z",
-      "updatedat": "2026-06-22T16:55:12.359Z"
-    },
-    {
-      "id": 23,
-      "gameId": 6,
-      "word": "CABO",
-      "hint": "Equipamento físico usado para conexão de redes ou energia.",
-      "createdat": "2026-06-22T16:55:12.655Z",
-      "updatedat": "2026-06-22T16:55:12.655Z"
-    },
-    {
-      "id": 24,
-      "gameId": 6,
-      "word": "MODA",
-      "hint": "Estilo ou tendência de vestuário no varejo de moda.",
-      "createdat": "2026-06-22T16:55:12.950Z",
-      "updatedat": "2026-06-22T16:55:12.950Z"
-    },
-    {
-      "id": 25,
-      "gameId": 6,
-      "word": "LOGO",
-      "hint": "Representação visual ou marca de uma empresa.",
-      "createdat": "2026-06-22T16:55:13.244Z",
-      "updatedat": "2026-06-22T16:55:13.244Z"
-    },
-    {
-      "id": 26,
-      "gameId": 6,
-      "word": "CAIXA",
-      "hint": "Local da loja onde são processados os pagamentos.",
-      "createdat": "2026-06-22T16:55:13.538Z",
-      "updatedat": "2026-06-22T16:55:13.538Z"
-    },
-    {
-      "id": 27,
-      "gameId": 6,
-      "word": "SALDO",
-      "hint": "A diferença positiva ou negativa no balanço financeiro.",
-      "createdat": "2026-06-22T16:55:13.834Z",
-      "updatedat": "2026-06-22T16:55:13.834Z"
-    },
-    {
-      "id": 28,
-      "gameId": 6,
-      "word": "LUCRO",
-      "hint": "Ganho financeiro obtido em uma operação comercial.",
-      "createdat": "2026-06-22T16:55:14.130Z",
-      "updatedat": "2026-06-22T16:55:14.130Z"
-    },
-    {
-      "id": 29,
-      "gameId": 6,
-      "word": "VALOR",
-      "hint": "O benefício percebido pelo cliente em relação ao preço.",
-      "createdat": "2026-06-22T16:55:14.575Z",
-      "updatedat": "2026-06-22T16:55:14.575Z"
-    }
+    { "id": 1, "gameId": 6, "word": "CASA", "hint": "Construção destinada à moradia das pessoas." },
+    { "id": 2, "gameId": 6, "word": "BOLO", "hint": "Doce assado apreciado em festas de aniversário." },
+    { "id": 3, "gameId": 6, "word": "GATO", "hint": "Animal felino doméstico com bigodes compridos." },
+    { "id": 4, "gameId": 6, "word": "SAPO", "hint": "Anfíbio que emite coaxares próximo a lagoas." },
+    { "id": 5, "gameId": 6, "word": "FOGO", "hint": "Elemento que aquece, queima e ilumina." },
+    { "id": 6, "gameId": 6, "word": "FLOR", "hint": "Parte vistosa e perfumada das plantas." },
+    { "id": 7, "gameId": 6, "word": "VELA", "hint": "Objeto feito de parafina que produz luz com pavio aceso." },
+    { "id": 8, "gameId": 6, "word": "OURO", "hint": "Metal nobre brilhante usado em joias e coroas." },
+    { "id": 9, "gameId": 6, "word": "PRAIA", "hint": "Lugar ensolarado com mar e areia para relaxar." },
+    { "id": 10, "gameId": 6, "word": "LIVRO", "hint": "Obra que guarda histórias, poesias e saberes em páginas." },
+    { "id": 11, "gameId": 6, "word": "PEIXE", "hint": "Animal aquático que nada com o auxílio de nadadeiras." },
+    { "id": 12, "gameId": 6, "word": "NAVIO", "hint": "Veículo marítimo de grande porte para transporte de cargas e passageiros." },
+    { "id": 13, "gameId": 6, "word": "SOLAR", "hint": "Energia limpa proveniente dos raios do Sol." },
+    { "id": 14, "gameId": 6, "word": "NUVEM", "hint": "Conjunto de gotículas de água suspensas no ar do céu." },
+    { "id": 15, "gameId": 6, "word": "PEDRA", "hint": "Fragmento sólido e mineral que compõe as rochas." },
+    { "id": 16, "gameId": 6, "word": "CHUVA", "hint": "Gotas d'água caindo do céu para regar a natureza." },
+    { "id": 17, "gameId": 6, "word": "TIGRE", "hint": "Grande felino asiático famoso por sua força e listras pretas." },
+    { "id": 18, "gameId": 6, "word": "CAMPO", "hint": "Região campestre com pastos, plantações e ar puro." },
+    { "id": 19, "gameId": 6, "word": "BRASIL", "hint": "País conhecido pelo futebol, samba e pela Floresta Amazônica." },
+    { "id": 20, "gameId": 6, "word": "JARDIM", "hint": "Canteiro repleto de flores coloridas e folhas verdes." },
+    { "id": 21, "gameId": 6, "word": "JANELA", "hint": "Vidraça que nos permite contemplar o exterior de casa." },
+    { "id": 22, "gameId": 6, "word": "CIDADE", "hint": "Centro urbano movimentado com prédios e avenidas." },
+    { "id": 23, "gameId": 6, "word": "MUSICA", "hint": "Arte expressada por notas musicais e melodias envolventes." },
+    { "id": 24, "gameId": 6, "word": "FOGUETE", "hint": "Aeronave espacial projetada para alcançar outros planetas e estrelas." },
+    { "id": 25, "gameId": 6, "word": "ESPELHO", "hint": "Objeto polido que reflete a luz e nos permite ver o reflexo." },
+    { "id": 26, "gameId": 6, "word": "BALEIA", "hint": "Gigante das águas profundas do oceano que respira por espiráculo." },
+    { "id": 27, "gameId": 6, "word": "CORUJA", "hint": "Símbolo da sabedoria com hábitos noturnos e visão potente." },
+    { "id": 28, "gameId": 6, "word": "CAVALO", "hint": "Mamífero de crina elegante e passos firmes." },
+    { "id": 29, "gameId": 6, "word": "VIAGEM", "hint": "Jornada que nos leva a conhecer novos destinos e culturas." },
+    { "id": 30, "gameId": 6, "word": "CINEMA", "hint": "Sala escura com grande tela onde são projetados sucessos de bilheteria." },
+    { "id": 31, "gameId": 6, "word": "ESTRELA", "hint": "Astro que ilumina a noite sideral com brilho próprio." },
+    { "id": 32, "gameId": 6, "word": "PLANETA", "hint": "A Terra, Marte e Júpiter são exemplos desse corpo celestial." },
+    { "id": 33, "gameId": 6, "word": "FLORESTA", "hint": "Vegetação densa que abriga incontáveis espécies de animais e plantas." },
+    { "id": 34, "gameId": 6, "word": "GIRAFA", "hint": "Herbívoro africano com manchas marrons e altura admirável." },
+    { "id": 35, "gameId": 6, "word": "OCEANO", "hint": "Imensidão azul de água salgada que cobre a maior parte do planeta." },
+    { "id": 36, "gameId": 6, "word": "DESERTO", "hint": "Paisagem de dunas douradas e clima extremamente seco." },
+    { "id": 37, "gameId": 6, "word": "RELÓGIO", "hint": "Aparelho que não para e nos avisa que horas são." },
+    { "id": 38, "gameId": 6, "word": "TECLADO", "hint": "Dispositivo essencial para digitar comandos e escrever no computador." },
+    { "id": 39, "gameId": 6, "word": "NATUREZA", "hint": "Mãe de todas as paisagens, rios, matas e criaturas vivas." },
+    { "id": 40, "gameId": 6, "word": "CACHOEIRA", "hint": "Torrente de água pura que despenca de uma encosta rochosa." },
+    { "id": 41, "gameId": 6, "word": "UNIVERSO", "hint": "O cosmos infinito que reúne todas as galáxias conhecidas." },
+    { "id": 42, "gameId": 6, "word": "ELEFANTE", "hint": "Animal inteligente e afetuoso que possui presas de marfim e tromba." },
+    { "id": 43, "gameId": 6, "word": "BORBOLETA", "hint": "Criatura que se transforma de lagarta em uma bela voadora." },
+    { "id": 44, "gameId": 6, "word": "DIAMANTE", "hint": "Jóia preciosa de brilho incomparável e dureza lendária." },
+    { "id": 45, "gameId": 6, "word": "ASTRONAUTA", "hint": "Viajante do espaço que usa traje espacial para flutuar sem gravidade." },
+    { "id": 46, "gameId": 6, "word": "TELESCÓPIO", "hint": "Tubo com lentes ou espelhos que aproxima galáxias distantes de nós." },
+    { "id": 47, "gameId": 6, "word": "VELOCIDADE", "hint": "Grande rapidez demonstrada em corridas de carros ou esportes." },
+    { "id": 48, "gameId": 6, "word": "TECNOLOGIA", "hint": "Inovações digitais que transformam a maneira como vivemos e nos conectamos." },
+    { "id": 49, "gameId": 6, "word": "BICICLETA", "hint": "Meio de locomoção com guidão, corrente, pedais e duas rodas." },
+    { "id": 50, "gameId": 6, "word": "FOTOGRAFIA", "hint": "Registro visual de uma lembrança gravada por uma câmera." }
   ],
   "quiz": [],
   "rounds": [],

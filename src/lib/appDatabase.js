@@ -137,7 +137,7 @@ export async function saveGameScore(scoreData) {
     ...(existing ?? {}),
     playerId:     player.id,
     gameId:       game.id,
-    points:       Math.max(existing?.points ?? 0, points ?? 0),
+    points:       (existing?.points ?? 0) + (points ?? 0),
     attempts:     (existing?.attempts ?? 0) + 1,
     lastPlayedAt: now,
   };
@@ -242,7 +242,7 @@ export async function getAdminRecords() {
     dbGetAll('gameSettings'),
   ]);
 
-  const games = allGames.filter((g) => g.code !== 'quiz_mulher' && g.code !== 'wordsearch_mulher');
+  const games = allGames;
 
   // Popular relações (Game e Player) de forma indexada
   const [
@@ -277,7 +277,7 @@ export async function getAdminMenuRecords() {
     dbGetAll('games'),
     dbGetAll('gameSettings'),
   ]);
-  const games = allGames.filter((g) => g.code !== 'quiz_mulher' && g.code !== 'wordsearch_mulher');
+  const games = allGames;
   return { games, gameSettings };
 }
 

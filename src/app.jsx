@@ -178,19 +178,6 @@ export function App() {
     };
   }, []);
 
-  // Controla o degradê de fundo do HTML para os jogos da Mulher (caça-palavras e quiz)
-  useEffect(() => {
-    const isMulherGame = selectedGame?.code === "wordsearch_mulher" || selectedGame?.code === "quiz_mulher";
-    if (isMulherGame) {
-      document.documentElement.classList.add("no-html-gradient");
-    } else {
-      document.documentElement.classList.remove("no-html-gradient");
-    }
-    return () => {
-      document.documentElement.classList.remove("no-html-gradient");
-    };
-  }, [selectedGame?.code]);
-
   const refreshSelectedGameConfig = useCallback(async (gameCode) => {
     const code = String(gameCode ?? "")
       .trim()

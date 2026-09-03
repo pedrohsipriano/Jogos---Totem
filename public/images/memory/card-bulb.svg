@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
+  <defs>
+    <linearGradient id="bg-bulb" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#451a03"/>
+      <stop offset="100%" stop-color="#78350f"/>
+    </linearGradient>
+    <linearGradient id="bulb-glass" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#fef08a"/>
+      <stop offset="50%" stop-color="#f59e0b"/>
+      <stop offset="100%" stop-color="#ea580c"/>
+    </linearGradient>
+    <filter id="shadow-bulb" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="8" stdDeviation="10" flood-color="#f59e0b" flood-opacity="0.45"/>
+    </filter>
+  </defs>
+  <rect width="200" height="200" rx="28" fill="url(#bg-bulb)"/>
+  <rect x="2" y="2" width="196" height="196" rx="26" fill="none" stroke="rgba(255,255,255,0.15)" stroke-width="2"/>
+  
+  <g filter="url(#shadow-bulb)">
+    <!-- Bulb Dome -->
+    <path d="M100 45 C78 45, 62 62, 62 84 C62 98, 70 110, 80 120 L80 134 L120 134 L120 120 C130 110, 138 98, 138 84 C138 62, 122 45, 100 45 Z" fill="url(#bulb-glass)"/>
+    <!-- Filament glow -->
+    <path d="M88 88 Q100 70 112 88" fill="none" stroke="#ffffff" stroke-width="4" stroke-linecap="round"/>
+    <!-- Base Threads -->
+    <rect x="84" y="136" width="32" height="6" rx="3" fill="#cbd5e1"/>
+    <rect x="86" y="144" width="28" height="6" rx="3" fill="#94a3b8"/>
+    <rect x="90" y="152" width="20" height="4" rx="2" fill="#64748b"/>
+  </g>
+</svg>

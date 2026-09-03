@@ -87,6 +87,10 @@ export default function MemoryGame({
                         backgroundPosition: "center",
                         backgroundRepeat: "no-repeat",
                       }
+                    : show
+                    ? {
+                        backgroundImage: "none",
+                      }
                     : {}
                 }
                 onClick={() => handleFlip(card.id)}

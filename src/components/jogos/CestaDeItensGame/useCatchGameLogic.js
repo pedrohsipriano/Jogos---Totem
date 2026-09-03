@@ -725,6 +725,11 @@ export default function useCatchGameLogic({
             targetScore: pointsToWin,
             won: Number(payload.score ?? payload.points ?? 0) >= pointsToWin,
         };
+
+        finalPayload.score = totalScore;
+        finalPayload.points = totalScore;
+        finalPayload.totalScore = totalScore;
+
         onScore?.(finalPayload);
         onGameOver?.(finalPayload);
         // Também notifica o Dialog global via emissor

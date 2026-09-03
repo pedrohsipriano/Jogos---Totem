@@ -1011,6 +1011,10 @@ export default function useLabirintoLogic({
                 correctWord: word,
             };
 
+            finalPayload.score = totalScore;
+            finalPayload.points = totalScore;
+            finalPayload.totalScore = totalScore;
+
             onScore?.(finalPayload);
 
             if (timedOut) {

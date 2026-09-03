@@ -37,8 +37,13 @@ export const API_BASE_URL = getDynamicApiUrl();
 
 export function resolveApiUrl(path = "") {
     if (!path) return API_BASE_URL;
-    if (path.startsWith("http://") || path.startsWith("https://") || path.startsWith("data:")) {
+    if (path.startsWith("http://") || path.startsWith("https://") || path.startsWith("data:") || path.startsWith("blob:")) {
         return path;
+    }
+
+    // Se for asset estático da pasta public (ex: /images/...)
+    if (path.startsWith("/images/") || path.startsWith("images/")) {
+        return path.startsWith("/") ? path : `/${path}`;
     }
 
     const normalizedPath = path.startsWith("/") ? path : `/${path}`;

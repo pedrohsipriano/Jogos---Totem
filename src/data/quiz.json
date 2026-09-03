@@ -9,534 +9,243 @@
     {
       "id": "1",
       "gameId": "4",
-      "question": "Como chamamos o espaço na frente da loja onde os produtos ficam expostos?",
-      "options": [
-        "Vitrine"
-      ],
-      "answer": "Vitrine",
-      "createdat": "2026-05-05T18:00:01.221Z",
-      "updatedat": "2026-05-05T18:00:01.221Z"
+      "question": "Qual é o maior planeta do Sistema Solar?",
+      "options": ["Júpiter", "Marte", "Vênus", "Saturno"],
+      "answer": "Júpiter",
+      "difficulty": "facil"
     },
     {
       "id": "2",
       "gameId": "4",
-      "question": "Qual é o nome do documento que o cliente recebe após realizar uma compra?",
-      "options": [
-        "Nota Fiscal"
-      ],
-      "answer": "Nota Fiscal",
-      "createdat": "2026-05-05T18:00:01.395Z",
-      "updatedat": "2026-05-05T18:00:01.395Z"
+      "question": "Quantos dias tem um ano bissexto?",
+      "options": ["366", "365", "364", "360"],
+      "answer": "366",
+      "difficulty": "facil"
     },
     {
       "id": "3",
       "gameId": "4",
-      "question": "Quando uma loja baixa os preços para vender o estoque parado, chamamos de?",
-      "options": [
-        "Liquidação"
-      ],
-      "answer": "Liquidação",
-      "createdat": "2026-05-05T18:00:01.555Z",
-      "updatedat": "2026-05-05T18:00:01.555Z"
+      "question": "Qual é a capital do Brasil?",
+      "options": ["Brasília", "Rio de Janeiro", "São Paulo", "Salvador"],
+      "answer": "Brasília",
+      "difficulty": "facil"
     },
     {
       "id": "4",
       "gameId": "4",
-      "question": "Como chamamos o desconto dado para quem decide pagar o valor total na hora?",
-      "options": [
-        "Desconto à vista"
-      ],
-      "answer": "Desconto à vista",
-      "createdat": "2026-05-05T18:00:01.733Z",
-      "updatedat": "2026-05-05T18:00:01.733Z"
+      "question": "Qual gás é essencial que os seres humanos inalam para respirar?",
+      "options": ["Oxigênio", "Hélio", "Gás Carbônico", "Nitrogênio"],
+      "answer": "Oxigênio",
+      "difficulty": "facil"
     },
     {
       "id": "5",
       "gameId": "4",
-      "question": "O que significa \"fidelizar\" um cliente no varejo?",
-      "options": [
-        "Fazer o cliente voltar sempre"
-      ],
-      "answer": "Fazer o cliente voltar sempre",
-      "createdat": "2026-05-05T18:00:01.896Z",
-      "updatedat": "2026-05-05T18:00:01.896Z"
+      "question": "Qual é o maior animal mamífero do planeta Terra?",
+      "options": ["Baleia-azul", "Elefante-africano", "Tubarão-branco", "Girafa"],
+      "answer": "Baleia-azul",
+      "difficulty": "facil"
     },
     {
       "id": "6",
       "gameId": "4",
-      "question": "Qual é o principal objetivo de um bom atendimento ao cliente?",
-      "options": [
-        "Satisfação do cliente"
-      ],
-      "answer": "Satisfação do cliente",
-      "createdat": "2026-05-05T18:00:02.059Z",
-      "updatedat": "2026-05-05T18:00:02.059Z"
+      "question": "Qual é a cor resultante da mistura de tinta azul com tinta amarela?",
+      "options": ["Verde", "Roxo", "Laranja", "Marrom"],
+      "answer": "Verde",
+      "difficulty": "facil"
     },
     {
       "id": "7",
       "gameId": "4",
-      "question": "Como chamamos o conjunto de produtos que uma loja tem guardado para vender?",
-      "options": [
-        "Estoque"
-      ],
-      "answer": "Estoque",
-      "createdat": "2026-05-05T18:00:02.233Z",
-      "updatedat": "2026-05-05T18:00:02.233Z"
+      "question": "Qual órgão é responsável por bombear o sangue por todo o corpo humano?",
+      "options": ["Coração", "Pulmão", "Fígado", "Rim"],
+      "answer": "Coração",
+      "difficulty": "facil"
     },
     {
       "id": "8",
       "gameId": "4",
-      "question": "O que é o \"Varejo Digital\"?",
-      "options": [
-        "Vender produtos pela internet e redes sociais"
-      ],
-      "answer": "Vender produtos pela internet e redes sociais",
-      "createdat": "2026-05-05T18:00:02.415Z",
-      "updatedat": "2026-05-05T18:00:02.415Z"
+      "question": "Quantos minutos tem uma hora completa?",
+      "options": ["60 minutos", "50 minutos", "100 minutos", "30 minutos"],
+      "answer": "60 minutos",
+      "difficulty": "facil"
     },
     {
       "id": "9",
       "gameId": "4",
-      "question": "O que significa uma loja ser \"Pet Friendly\"?",
-      "options": [
-        "Que aceita a entrada de animais de estimação"
-      ],
-      "answer": "Que aceita a entrada de animais de estimação",
-      "createdat": "2026-05-05T18:00:02.571Z",
-      "updatedat": "2026-05-05T18:00:02.571Z"
+      "question": "Qual réptil é famoso por alterar a cor de sua pele para se camuflar?",
+      "options": ["Camaleão", "Jacaré", "Tartaruga", "Iguana"],
+      "answer": "Camaleão",
+      "difficulty": "facil"
     },
     {
       "id": "10",
       "gameId": "4",
-      "question": "Qual a vantagem de comprar online e retirar na loja física?",
-      "options": [
-        "Economizar no frete e ter o produto mais rápido"
-      ],
-      "answer": "Economizar no frete e ter o produto mais rápido",
-      "createdat": "2026-05-05T18:00:02.749Z",
-      "updatedat": "2026-05-05T18:00:02.749Z"
+      "question": "Qual é o único satélite natural do planeta Terra?",
+      "options": ["Lua", "Titã", "Europa", "Ganimedes"],
+      "answer": "Lua",
+      "difficulty": "facil"
     },
     {
-      "id": "41",
+      "id": "11",
       "gameId": "4",
-      "question": "Onde será realizada a edição do OmniVarejo 2026?",
-      "options": [
-        "Centro de Convenções de João Pessoa",
-        "Teatro Pedra do Reino",
-        "Espaço Cultural José Lins do Rego",
-        "Centro de Convenções de Campina Grande"
-      ],
-      "answer": "Centro de Convenções de João Pessoa",
-      "createdat": "2026-08-25T17:53:24.654Z",
-      "updatedat": "2026-08-25T17:53:24.654Z"
+      "question": "Quem pintou a obra-prima renascentista 'Mona Lisa'?",
+      "options": ["Leonardo da Vinci", "Vincent van Gogh", "Pablo Picasso", "Michelangelo"],
+      "answer": "Leonardo da Vinci",
+      "difficulty": "medio"
     },
     {
-      "id": "42",
+      "id": "12",
       "gameId": "4",
-      "question": "Em quais datas acontece o evento OmniVarejo 2026 na Paraíba?",
-      "options": [
-        "27 a 29 de agosto",
-        "15 a 17 de setembro",
-        "10 a 12 de outubro",
-        "05 a 07 de novembro"
-      ],
-      "answer": "27 a 29 de agosto",
-      "createdat": "2026-08-25T17:53:24.663Z",
-      "updatedat": "2026-08-25T17:53:24.663Z"
+      "question": "Qual elemento químico é representado pelo símbolo 'Fe' na tabela periódica?",
+      "options": ["Ferro", "Flúor", "Fósforo", "Frâncio"],
+      "answer": "Ferro",
+      "difficulty": "medio"
     },
     {
-      "id": "43",
+      "id": "13",
       "gameId": "4",
-      "question": "Qual entidade é a organizadora nacional do OmniVarejo 2026, representando os dirigentes lojistas?",
-      "options": [
-        "Confederação Nacional de Dirigentes Lojistas (CNDL)",
-        "Confederação Nacional do Comércio (CNC)",
-        "Confederação Nacional da Indústria (CNI)",
-        "Federação Brasileira de Bancos (FEBRABAN)"
-      ],
-      "answer": "Confederação Nacional de Dirigentes Lojistas (CNDL)",
-      "createdat": "2026-08-25T17:53:24.665Z",
-      "updatedat": "2026-08-25T17:53:24.665Z"
+      "question": "Em qual país se localizam as célebres Pirâmides de Gizé?",
+      "options": ["Egito", "México", "Peru", "Grécia"],
+      "answer": "Egito",
+      "difficulty": "medio"
     },
     {
-      "id": "44",
+      "id": "14",
       "gameId": "4",
-      "question": "O OmniVarejo 2026 corresponde a qual edição da Convenção Nacional do Comércio Lojista?",
-      "options": [
-        "58ª Convenção",
-        "50ª Convenção",
-        "55ª Convenção",
-        "60ª Convenção"
-      ],
-      "answer": "58ª Convenção",
-      "createdat": "2026-08-25T17:53:24.668Z",
-      "updatedat": "2026-08-25T17:53:24.668Z"
+      "question": "Quantos ossos compõem o esqueleto de uma pessoa adulta?",
+      "options": ["206", "180", "250", "300"],
+      "answer": "206",
+      "difficulty": "medio"
     },
     {
-      "id": "45",
+      "id": "15",
       "gameId": "4",
-      "question": "Qual é o principal foco de debates e palestras no evento OmniVarejo 2026?",
-      "options": [
-        "Inovação, tendências, tecnologia e o futuro do varejo",
-        "Políticas públicas para a indústria pesada do Brasil",
-        "Exportação de commodities agrícolas e agropecuária",
-        "Legislação trabalhista exclusiva para o setor público"
-      ],
-      "answer": "Inovação, tendências, tecnologia e o futuro do varejo",
-      "createdat": "2026-08-25T17:53:24.670Z",
-      "updatedat": "2026-08-25T17:53:24.670Z"
+      "question": "Qual é o maior oceano em extensão e profundidade do planeta?",
+      "options": ["Oceano Pacífico", "Oceano Atlântico", "Oceano Índico", "Oceano Ártico"],
+      "answer": "Oceano Pacífico",
+      "difficulty": "medio"
     },
     {
-      "id": "46",
+      "id": "16",
       "gameId": "4",
-      "question": "Entre os palestrantes do OmniVarejo 2026, quem é conhecido por ser especialista em inovação e transformação digital?",
-      "options": [
-        "Walter Longo",
-        "Caio Camargo",
-        "Fabiano Zortea",
-        "Luiza Trajano"
-      ],
-      "answer": "Walter Longo",
-      "createdat": "2026-08-25T17:53:24.673Z",
-      "updatedat": "2026-08-25T17:53:24.673Z"
+      "question": "Quantas teclas tem um piano acústico tradicional?",
+      "options": ["88 teclas", "76 teclas", "64 teclas", "100 teclas"],
+      "answer": "88 teclas",
+      "difficulty": "medio"
     },
     {
-      "id": "47",
+      "id": "17",
       "gameId": "4",
-      "question": "Qual ex-executiva global de marcas como Nike e Apple está confirmada como destaque no OmniVarejo 2026?",
-      "options": [
-        "Dafna Blaschkauer",
-        "Rachel Maia",
-        "Sônia Hess",
-        "Chieko Aoki"
-      ],
-      "answer": "Dafna Blaschkauer",
-      "createdat": "2026-08-25T17:53:24.675Z",
-      "updatedat": "2026-08-25T17:53:24.675Z"
+      "question": "Qual é o rio mais extenso e com o maior volume de água do mundo?",
+      "options": ["Rio Amazonas", "Rio Nilo", "Rio Yangtzé", "Rio Mississipi"],
+      "answer": "Rio Amazonas",
+      "difficulty": "medio"
     },
     {
-      "id": "48",
+      "id": "18",
       "gameId": "4",
-      "question": "Qual especialista em tendências de consumo e novos formatos de varejo também faz parte do quadro de palestrantes do OmniVarejo 2026?",
-      "options": [
-        "Caio Camargo",
-        "Mário Sérgio Cortella",
-        "Leandro Karnal",
-        "Max Gehringer"
-      ],
-      "answer": "Caio Camargo",
-      "createdat": "2026-08-25T17:53:24.678Z",
-      "updatedat": "2026-08-25T17:53:24.678Z"
+      "question": "Quantos lados possui uma figura geométrica chamada hexágono?",
+      "options": ["6 lados", "5 lados", "7 lados", "8 lados"],
+      "answer": "6 lados",
+      "difficulty": "medio"
     },
     {
-      "id": "49",
+      "id": "19",
       "gameId": "4",
-      "question": "O evento OmniVarejo 2026 em João Pessoa é considerado qual tipo de marco para o setor no país?",
-      "options": [
-        "O maior encontro de varejo do Brasil",
-        "A primeira feira exclusiva para microempreendedores",
-        "O maior evento focado apenas no atacado sul-americano",
-        "O encontro anual exclusivo de startups financeiras"
-      ],
-      "answer": "O maior encontro de varejo do Brasil",
-      "createdat": "2026-08-25T17:53:24.679Z",
-      "updatedat": "2026-08-25T17:53:24.679Z"
+      "question": "Qual é a velocidade aproximada da luz quando se propaga no vácuo?",
+      "options": ["300.000 km/s", "150.000 km/s", "500.000 km/s", "100.000 km/s"],
+      "answer": "300.000 km/s",
+      "difficulty": "medio"
     },
     {
-      "id": "50",
+      "id": "20",
       "gameId": "4",
-      "question": "Além da CNDL, qual federação estadual atua na realização direta do OmniVarejo 2026 em João Pessoa?",
-      "options": [
-        "FCDL-PB (Federação das Câmaras de Dirigentes Lojistas da Paraíba)",
-        "Fecomércio-PB (Federação do Comércio de Bens, Serviços e Turismo)",
-        "FIEP (Federação das Indústrias do Estado da Paraíba)",
-        "Sebrae Nacional"
-      ],
-      "answer": "FCDL-PB (Federação das Câmaras de Dirigentes Lojistas da Paraíba)",
-      "createdat": "2026-08-25T17:53:24.681Z",
-      "updatedat": "2026-08-25T17:53:24.681Z"
+      "question": "Por meio de qual processo biológico as plantas transformam a luz solar em energia?",
+      "options": ["Fotossíntese", "Respiração", "Fermentação", "Transpiração"],
+      "answer": "Fotossíntese",
+      "difficulty": "medio"
     },
     {
-      "id": "51",
+      "id": "21",
       "gameId": "4",
-      "question": "João Pessoa, cidade-sede do OmniVarejo 2026, é turisticamente conhecida por qual título geográfico?",
-      "options": [
-        "Ponto mais oriental das Américas",
-        "Cidade mais alta do Nordeste brasileiro",
-        "Maior arquipélago costeiro do Brasil",
-        "Única capital brasileira cortada pela Linha do Equador"
-      ],
-      "answer": "Ponto mais oriental das Américas",
-      "createdat": "2026-08-25T17:53:24.683Z",
-      "updatedat": "2026-08-25T17:53:24.683Z"
+      "question": "Em qual ano a humanidade pisou pela primeira vez na superfície da Lua?",
+      "options": ["1969", "1965", "1972", "1961"],
+      "answer": "1969",
+      "difficulty": "dificil"
     },
     {
-      "id": "52",
+      "id": "22",
       "gameId": "4",
-      "question": "Qual é a principal atividade econômica do setor terciário na Paraíba, impulsionando eventos como o OmniVarejo?",
-      "options": [
-        "Comércio e Serviços",
-        "Extrativismo mineral",
-        "Agricultura familiar",
-        "Indústria automobilística"
-      ],
-      "answer": "Comércio e Serviços",
-      "createdat": "2026-08-25T17:53:24.686Z",
-      "updatedat": "2026-08-25T17:53:24.686Z"
+      "question": "Qual é o gás que compõe a maior porcentagem da atmosfera terrestre?",
+      "options": ["Nitrogênio", "Oxigênio", "Gás Carbônico", "Argônio"],
+      "answer": "Nitrogênio",
+      "difficulty": "dificil"
     },
     {
-      "id": "53",
+      "id": "23",
       "gameId": "4",
-      "question": "Qual importante monumento e atração turística fica localizado muito próximo ao Centro de Convenções de João Pessoa?",
-      "options": [
-        "Farol do Cabo Branco",
-        "Forte de Santa Catarina",
-        "Parque da Lagoa",
-        "Mercado de Artesanato Paraibano"
-      ],
-      "answer": "Farol do Cabo Branco",
-      "createdat": "2026-08-25T17:53:24.688Z",
-      "updatedat": "2026-08-25T17:53:24.688Z"
+      "question": "Qual é o menor osso do corpo humano, localizado na orelha interna?",
+      "options": ["Estribo", "Bigorna", "Martelo", "Falange"],
+      "answer": "Estribo",
+      "difficulty": "dificil"
     },
     {
-      "id": "54",
+      "id": "24",
       "gameId": "4",
-      "question": "Qual polo do interior da Paraíba é nacionalmente reconhecido pela sua forte indústria de calçados e ecossistema de tecnologia?",
-      "options": [
-        "Campina Grande",
-        "Patos",
-        "Sousa",
-        "Guarabira"
-      ],
-      "answer": "Campina Grande",
-      "createdat": "2026-08-25T17:53:24.691Z",
-      "updatedat": "2026-08-25T17:53:24.691Z"
+      "question": "Quem é o ilustre autor da clássica obra literária 'Dom Quixote de La Mancha'?",
+      "options": ["Miguel de Cervantes", "William Shakespeare", "Luís de Camões", "Dante Alighieri"],
+      "answer": "Miguel de Cervantes",
+      "difficulty": "dificil"
     },
     {
-      "id": "55",
+      "id": "25",
       "gameId": "4",
-      "question": "Qual produto artesanal paraibano movimenta fortemente o varejo turístico de moda e é reconhecido por seu delicado trabalho manual com fios?",
-      "options": [
-        "Renda Renascença",
-        "Cerâmica marajoara",
-        "Capim dourado",
-        "Escultura de pedra-sabão"
-      ],
-      "answer": "Renda Renascença",
-      "createdat": "2026-08-25T17:53:24.694Z",
-      "updatedat": "2026-08-25T17:53:24.694Z"
+      "question": "Qual nação possui o maior arquipélago com o maior número de ilhas do mundo?",
+      "options": ["Suécia", "Indonésia", "Filipinas", "Canadá"],
+      "answer": "Suécia",
+      "difficulty": "dificil"
     },
     {
-      "id": "56",
+      "id": "26",
       "gameId": "4",
-      "question": "Na economia da Paraíba, qual bebida derivada da cana-de-açúcar possui um forte polo de produção na região do Brejo, aquecendo o varejo local?",
-      "options": [
-        "Cachaça",
-        "Vinho de altitude",
-        "Cerveja artesanal",
-        "Licor de cacau"
-      ],
-      "answer": "Cachaça",
-      "createdat": "2026-08-25T17:53:24.696Z",
-      "updatedat": "2026-08-25T17:53:24.696Z"
+      "question": "Qual é a unidade do Sistema Internacional usada para medir resistência elétrica?",
+      "options": ["Ohm", "Volt", "Ampere", "Watt"],
+      "answer": "Ohm",
+      "difficulty": "dificil"
     },
     {
-      "id": "57",
+      "id": "27",
       "gameId": "4",
-      "question": "Como se chama a gigantesca festividade realizada em Campina Grande que gera um pico de faturamento para o varejo e turismo no meio do ano?",
-      "options": [
-        "O Maior São João do Mundo",
-        "Galo da Madrugada",
-        "Círio de Nazaré",
-        "Festa do Peão de Barretos"
-      ],
-      "answer": "O Maior São João do Mundo",
-      "createdat": "2026-08-25T17:53:24.698Z",
-      "updatedat": "2026-08-25T17:53:24.698Z"
+      "question": "Qual é o ponto mais alto da Terra em altitude acima do nível do mar?",
+      "options": ["Monte Everest", "K2", "Kangchenjunga", "Aconcágua"],
+      "answer": "Monte Everest",
+      "difficulty": "dificil"
     },
     {
-      "id": "58",
+      "id": "28",
       "gameId": "4",
-      "question": "Qual é o nome do principal centro comercial voltado para o turismo de compras de produtos regionais localizado em João Pessoa?",
-      "options": [
-        "Mercado de Artesanato Paraibano (MAP)",
-        "Mercado Central de Tambaú",
-        "Shopping Mangabeira",
-        "Centro Histórico de Compras"
-      ],
-      "answer": "Mercado de Artesanato Paraibano (MAP)",
-      "createdat": "2026-08-25T17:53:24.699Z",
-      "updatedat": "2026-08-25T17:53:24.699Z"
+      "question": "Qual cientista publicou a revolucionária Teoria da Relatividade Geral em 1915?",
+      "options": ["Albert Einstein", "Isaac Newton", "Nikola Tesla", "Max Planck"],
+      "answer": "Albert Einstein",
+      "difficulty": "dificil"
     },
     {
-      "id": "59",
+      "id": "29",
       "gameId": "4",
-      "question": "O que significa o conceito de \"Omnichannel\" (Omnicanalidade) no varejo atual?",
-      "options": [
-        "A integração unificada de todos os canais de venda físicos e digitais do negócio",
-        "A venda exclusiva através de um único canal na internet",
-        "O fechamento das lojas físicas para operar apenas no comércio eletrônico",
-        "A separação total entre o estoque da loja física e o da loja virtual"
-      ],
-      "answer": "A integração unificada de todos os canais de venda físicos e digitais do negócio",
-      "createdat": "2026-08-25T17:53:24.701Z",
-      "updatedat": "2026-08-25T17:53:24.701Z"
+      "question": "Qual camada geológica da Terra fica situada diretamente abaixo da crosta?",
+      "options": ["Manto", "Núcleo Externo", "Núcleo Interno", "Litosfera"],
+      "answer": "Manto",
+      "difficulty": "dificil"
     },
     {
-      "id": "60",
+      "id": "30",
       "gameId": "4",
-      "question": "No varejo, o que é a experiência de compra chamada de \"Phygital\"?",
-      "options": [
-        "A união perfeita do ambiente físico com o digital, oferecendo o melhor dos dois mundos",
-        "A venda de produtos estritamente através de catálogos de papel impresso",
-        "A compra feita apenas por ligações telefônicas de telemarketing",
-        "O processo de compra presencial que recusa qualquer tipo de tecnologia"
-      ],
-      "answer": "A união perfeita do ambiente físico com o digital, oferecendo o melhor dos dois mundos",
-      "createdat": "2026-08-25T17:53:24.703Z",
-      "updatedat": "2026-08-25T17:53:24.703Z"
-    },
-    {
-      "id": "61",
-      "gameId": "4",
-      "question": "O que é a modalidade \"Click and Collect\" (Clique e Retire), essencial no OmniVarejo?",
-      "options": [
-        "Comprar pelo site ou aplicativo e retirar o produto pessoalmente na loja física",
-        "Clicar em um anúncio e receber o produto por correio no mesmo dia da compra",
-        "Tirar fotos do produto na loja física para buscar promoções na internet",
-        "Um programa de fidelidade onde cliques no site geram descontos na loja"
-      ],
-      "answer": "Comprar pelo site ou aplicativo e retirar o produto pessoalmente na loja física",
-      "createdat": "2026-08-25T17:53:24.704Z",
-      "updatedat": "2026-08-25T17:53:24.704Z"
-    },
-    {
-      "id": "62",
-      "gameId": "4",
-      "question": "Qual é o foco principal da estratégia de \"Customer Experience\" (Experiência do Cliente) no varejo?",
-      "options": [
-        "Garantir que toda a jornada de compra seja positiva, memorável e fluida",
-        "Reduzir o custo dos produtos cortando o máximo possível do atendimento humano",
-        "Vender a maior quantidade de produtos em menor tempo, sem se importar com a qualidade",
-        "Investir dinheiro apenas na estética da vitrine da loja física"
-      ],
-      "answer": "Garantir que toda a jornada de compra seja positiva, memorável e fluida",
-      "createdat": "2026-08-25T17:53:24.706Z",
-      "updatedat": "2026-08-25T17:53:24.706Z"
-    },
-    {
-      "id": "63",
-      "gameId": "4",
-      "question": "O que é o \"Social Commerce\", uma tendência que vem ganhando muita força no varejo brasileiro?",
-      "options": [
-        "A venda de produtos e serviços que ocorre diretamente por dentro das redes sociais",
-        "A venda de produtos voltados apenas para eventos sociais de luxo",
-        "Um tipo de comércio que aceita apenas moedas sociais ou virtuais como pagamento",
-        "O formato de feira livre tradicional realizada nas praças do interior"
-      ],
-      "answer": "A venda de produtos e serviços que ocorre diretamente por dentro das redes sociais",
-      "createdat": "2026-08-25T17:53:24.707Z",
-      "updatedat": "2026-08-25T17:53:24.707Z"
-    },
-    {
-      "id": "64",
-      "gameId": "4",
-      "question": "Qual é a principal utilidade do \"Cashback\" como ferramenta de vendas e marketing no varejo?",
-      "options": [
-        "Devolver uma porcentagem do dinheiro da compra para fidelizar e reter o cliente",
-        "Cobrar uma taxa extra disfarçada pelas compras pagas em dinheiro físico",
-        "Reembolsar o cliente apenas quando o produto apresenta algum defeito de fábrica",
-        "Trocar o dinheiro vivo do cliente por vales-compra obrigatórios da própria loja"
-      ],
-      "answer": "Devolver uma porcentagem do dinheiro da compra para fidelizar e reter o cliente",
-      "createdat": "2026-08-25T17:53:24.710Z",
-      "updatedat": "2026-08-25T17:53:24.710Z"
-    },
-    {
-      "id": "65",
-      "gameId": "4",
-      "question": "O que caracteriza a tática de vendas conhecida como \"Cross-selling\" no atendimento varejista?",
-      "options": [
-        "Oferecer produtos complementares e relacionados ao que o cliente já está comprando",
-        "Tentar vender um único produto muito mais caro do que o cliente procurava inicialmente",
-        "Proibir temporariamente o cliente de comprar produtos de duas categorias diferentes",
-        "Cruzar as informações pessoais de dois clientes para criar um desconto em grupo"
-      ],
-      "answer": "Oferecer produtos complementares e relacionados ao que o cliente já está comprando",
-      "createdat": "2026-08-25T17:53:24.712Z",
-      "updatedat": "2026-08-25T17:53:24.712Z"
-    },
-    {
-      "id": "66",
-      "gameId": "4",
-      "question": "O que significa o termo \"Logística Reversa\" no dia a dia do varejo omnichannel?",
-      "options": [
-        "O processo de retorno, devolução ou troca de produtos do consumidor de volta para a loja",
-        "A entrega de produtos feita exclusivamente de madrugada para evitar trânsito nas ruas",
-        "O transporte interno de mercadorias da loja física para o centro de distribuição",
-        "O cancelamento automático da compra pelo sistema antes de o produto sair do estoque"
-      ],
-      "answer": "O processo de retorno, devolução ou troca de produtos do consumidor de volta para a loja",
-      "createdat": "2026-08-25T17:53:24.713Z",
-      "updatedat": "2026-08-25T17:53:24.713Z"
-    },
-    {
-      "id": "67",
-      "gameId": "4",
-      "question": "No varejo físico e estratégico, o que é uma \"Pop-up Store\"?",
-      "options": [
-        "Uma loja temporária montada por um curto período para aproveitar um evento ou data específica",
-        "Uma grande e tradicional loja de departamentos aberta 24 horas por dia",
-        "Um pequeno quiosque que vende exclusivamente alimentos rápidos em shoppings",
-        "Uma loja virtual agressiva que abre várias janelas flutuantes no navegador do cliente"
-      ],
-      "answer": "Uma loja temporária montada por um curto período para aproveitar um evento ou data específica",
-      "createdat": "2026-08-25T17:53:24.715Z",
-      "updatedat": "2026-08-25T17:53:24.715Z"
-    },
-    {
-      "id": "68",
-      "gameId": "4",
-      "question": "O que significa a estratégia de \"Personalização\" na atual era do varejo digital e físico?",
-      "options": [
-        "Oferecer recomendações e ofertas customizadas baseadas no perfil e histórico de cada cliente",
-        "Costurar ou gravar o nome do cliente na etiqueta de todos os produtos que ele comprar",
-        "Fazer com que o cliente atenda a si mesmo na loja sem nenhuma interação com a marca",
-        "Vender apenas produtos que sejam feitos sob medida, de forma 100% artesanal e exclusiva"
-      ],
-      "answer": "Oferecer recomendações e ofertas customizadas baseadas no perfil e histórico de cada cliente",
-      "createdat": "2026-08-25T17:53:24.716Z",
-      "updatedat": "2026-08-25T17:53:24.716Z"
-    },
-    {
-      "id": "69",
-      "gameId": "4",
-      "question": "Como o turismo de negócios e eventos, a exemplo do OmniVarejo, costuma impactar o comércio local de uma cidade como João Pessoa?",
-      "options": [
-        "Aumenta a ocupação hoteleira e gera um forte pico de consumo em restaurantes e lojas",
-        "Reduz o trânsito da cidade fazendo com que o movimento no comércio da orla diminua",
-        "Obriga as lojas a fecharem temporariamente para dar exclusividade total aos congressistas",
-        "Impacta estritamente o setor de transporte aéreo, sem injetar dinheiro no varejo local"
-      ],
-      "answer": "Aumenta a ocupação hoteleira e gera um forte pico de consumo em restaurantes e lojas",
-      "createdat": "2026-08-25T17:53:24.718Z",
-      "updatedat": "2026-08-25T17:53:24.718Z"
-    },
-    {
-      "id": "70",
-      "gameId": "4",
-      "question": "Qual importante recurso tecnológico permite que o vendedor de uma loja física saiba o que o cliente pesquisou no site antes de entrar na loja?",
-      "options": [
-        "CRM (Customer Relationship Management) integrado aos canais digitais",
-        "O uso obrigatório de câmeras de reconhecimento facial com leitura de mentes",
-        "A consulta manual a pesados cadernos de anotações do caixa da loja",
-        "O envio diário de SMS perguntando ao cliente o que ele deseja comprar hoje"
-      ],
-      "answer": "CRM (Customer Relationship Management) integrado aos canais digitais",
-      "createdat": "2026-08-25T17:53:24.719Z",
-      "updatedat": "2026-08-25T17:53:24.719Z"
+      "question": "Em qual continente do globo terrestre se localiza o Deserto do Saara?",
+      "options": ["África", "Ásia", "Oceania", "América do Sul"],
+      "answer": "África",
+      "difficulty": "dificil"
     }
   ],
-  "rounds": [],
   "alreadyPlayed": false
 }

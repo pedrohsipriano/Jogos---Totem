@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
+  <defs>
+    <linearGradient id="bg-gear" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0f172a"/>
+      <stop offset="100%" stop-color="#334155"/>
+    </linearGradient>
+    <linearGradient id="gear-metal" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#e2e8f0"/>
+      <stop offset="50%" stop-color="#94a3b8"/>
+      <stop offset="100%" stop-color="#64748b"/>
+    </linearGradient>
+    <filter id="shadow-gear" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="8" stdDeviation="8" flood-color="#000000" flood-opacity="0.5"/>
+    </filter>
+  </defs>
+  <rect width="200" height="200" rx="28" fill="url(#bg-gear)"/>
+  <rect x="2" y="2" width="196" height="196" rx="26" fill="none" stroke="rgba(255,255,255,0.15)" stroke-width="2"/>
+  
+  <g filter="url(#shadow-gear)">
+    <!-- 8-tooth gear -->
+    <path d="M92 42 L108 42 L112 56 C116 58, 120 60, 124 63 L137 57 L148 68 L142 81 C145 85, 147 89, 149 93 L163 97 L163 113 L149 117 C147 121, 145 125, 142 129 L148 142 L137 153 L124 147 C120 150, 116 152, 112 154 L108 168 L92 168 L88 154 C84 152, 80 150, 76 147 L63 153 L52 142 L58 129 C55 125, 53 121, 51 117 L37 113 L37 97 L51 93 C53 89, 55 85, 58 81 L52 68 L63 57 L76 63 C80 60, 84 58, 88 56 Z" fill="url(#gear-metal)"/>
+    <!-- Center Hole -->
+    <circle cx="100" cy="105" r="22" fill="#0f172a"/>
+    <circle cx="100" cy="105" r="14" fill="url(#gear-metal)" opacity="0.7"/>
+  </g>
+</svg>

@@ -5,7 +5,13 @@
  * Inclui os jogos padrão, palavras de exemplo e perguntas de exemplo.
  */
 
-import { dbPutMany, dbIsSeeded } from './localDB.js';
+import { dbPutMany, dbIsSeeded, dbGetAll, dbPut, dbDelete } from './localDB.js';
+import memoryData from '../../data/memory.json';
+import hangmanData from '../../data/hangman.json';
+import wordsearchData from '../../data/wordsearch.json';
+import soletraData from '../../data/soletra.json';
+import labirintoData from '../../data/labirinto.json';
+import quizData from '../../data/quiz.json';
 
 /** Lista de jogos disponíveis no Totem */
 const SEED_GAMES = [
@@ -20,83 +26,52 @@ const SEED_GAMES = [
 ];
 
 /** Palavras de exemplo para Forca (gameId: 1) */
-const SEED_WORDS_HANGMAN = [
-  { gameId: 1, word: 'CONVECAO',   hint: null, imageUrl: null, meta: null },
-  { gameId: 1, word: 'COMERCIO',   hint: null, imageUrl: null, meta: null },
-  { gameId: 1, word: 'EMPRESA',    hint: null, imageUrl: null, meta: null },
-  { gameId: 1, word: 'INOVACAO',   hint: null, imageUrl: null, meta: null },
-  { gameId: 1, word: 'NEGOCIO',    hint: null, imageUrl: null, meta: null },
-];
+const SEED_WORDS_HANGMAN = hangmanData.words.map((w, idx) => ({
+  id: idx + 1,
+  gameId: 1,
+  word: w.word,
+  hint: null,
+  imageUrl: null,
+  meta: null,
+}));
 
 /** Palavras de exemplo para Caça-Palavras (gameId: 7) */
-const SEED_WORDS_WORDSEARCH = [
-  { gameId: 7, word: 'CONVECAO',  hint: null, imageUrl: null, meta: null },
-  { gameId: 7, word: 'LOJA',      hint: null, imageUrl: null, meta: null },
-  { gameId: 7, word: 'VENDA',     hint: null, imageUrl: null, meta: null },
-  { gameId: 7, word: 'CLIENTE',   hint: null, imageUrl: null, meta: null },
-  { gameId: 7, word: 'PRODUTO',   hint: null, imageUrl: null, meta: null },
-];
+const SEED_WORDS_WORDSEARCH = wordsearchData.words.map((w, idx) => ({
+  id: 1000 + idx + 1,
+  gameId: 7,
+  word: w.word,
+  hint: null,
+  imageUrl: null,
+  meta: null,
+}));
 
 /** Cartas padrão universais para Jogo da Memória (gameId: 5) */
-const SEED_WORDS_MEMORY = [
-  { gameId: 5, word: 'GAMEPAD',   hint: null, imageUrl: '/images/memory/card-gamepad.svg', meta: null },
-  { gameId: 5, word: 'TROFEU',    hint: null, imageUrl: '/images/memory/card-trophy.svg', meta: null },
-  { gameId: 5, word: 'DIAMANTE',  hint: null, imageUrl: '/images/memory/card-diamond.svg', meta: null },
-  { gameId: 5, word: 'FOGUETE',   hint: null, imageUrl: '/images/memory/card-rocket.svg', meta: null },
-  { gameId: 5, word: 'ESTRELA',   hint: null, imageUrl: '/images/memory/card-star.svg', meta: null },
-  { gameId: 5, word: 'ALVO',      hint: null, imageUrl: '/images/memory/card-target.svg', meta: null },
-];
+const SEED_WORDS_MEMORY = memoryData.words;
 
 /** Palavras de exemplo para Soletra (gameId: 10) */
-const SEED_SOLETRA = [
-  { gameId: 10, word: 'CONVECAO',  hint: 'Associação comercial' },
-  { gameId: 10, word: 'COMERCIO',  hint: 'Troca de mercadorias' },
-  { gameId: 10, word: 'EMPRESA',   hint: 'Organização econômica' },
-];
+const SEED_SOLETRA = soletraData.rounds.map((r, idx) => ({
+  id: idx + 1,
+  gameId: 10,
+  word: r.word,
+  hint: r.hint,
+}));
 
 /** Palavras de exemplo para Labirinto (gameId: 2) */
-const SEED_LABIRINTO = [
-  { gameId: 2, word: 'CONVECAO',  hint: 'Associação do comércio local' },
-  { gameId: 2, word: 'COMERCIO',  hint: 'Atividade de compra e venda' },
-  { gameId: 2, word: 'CLIENTE',   hint: 'Quem compra produtos' },
-];
+const SEED_LABIRINTO = labirintoData.words.map((w, idx) => ({
+  id: idx + 1,
+  gameId: 2,
+  word: w.word,
+  hint: w.hint,
+}));
 
 /** Perguntas de exemplo para Quiz (gameId: 3) */
-const SEED_QUIZ = [
-  {
-    gameId: 3,
-    question: 'Qual é o objetivo principal de uma convenção comercial?',
-    answer: 'Promover negócios e networking',
-    options: JSON.stringify([
-      'Promover negócios e networking',
-      'Realizar shows musicais',
-      'Vender ingressos',
-      'Organizar campeonatos',
-    ]),
-  },
-  {
-    gameId: 3,
-    question: 'O que significa CDL?',
-    answer: 'Câmara de Dirigentes Lojistas',
-    options: JSON.stringify([
-      'Câmara de Dirigentes Lojistas',
-      'Centro de Desenvolvimento Local',
-      'Clube dos Líderes',
-      'Conselho de Lojistas',
-    ]),
-  },
-  {
-    gameId: 3,
-    question: 'Qual atividade fortalece o comércio local?',
-    answer: 'Comprar de comerciantes locais',
-    options: JSON.stringify([
-      'Comprar de comerciantes locais',
-      'Importar tudo do exterior',
-      'Evitar promoções',
-      'Fechar lojas',
-    ]),
-  },
-];
+const SEED_QUIZ = quizData.quiz.map((q, idx) => ({
+  id: idx + 1,
+  gameId: 3,
+  question: q.question,
+  answer: q.answer,
+  options: JSON.stringify(q.options),
+}));
 
 /** Configurações padrão dos jogos (Padrão 30s para todos) */
 const SEED_GAME_SETTINGS = [
@@ -159,7 +134,7 @@ export async function runSeed() {
     }
 
     // Migração de ícones do Jogo da Memória: substitui ícones do evento antigo pelos novos padrões
-    const MEMORY_ICONS_MIGRATION_KEY = 'totem_memory_new_icons_v1';
+    const MEMORY_ICONS_MIGRATION_KEY = 'totem_memory_new_icons_v3';
     if (!localStorage.getItem(MEMORY_ICONS_MIGRATION_KEY)) {
       try {
         const words = await dbGetAll('words');
@@ -185,6 +160,45 @@ export async function runSeed() {
         localStorage.setItem(MEMORY_ICONS_MIGRATION_KEY, 'true');
       } catch (err) {
         console.warn('Erro ao migrar ícones padrão do jogo da memória:', err);
+      }
+    }
+
+    // Migração de Conteúdo Neutro: atualiza Forca, Caça-Palavras, Soletra, Labirinto e Quiz com variedade de palavras e perguntas
+    const NEUTRAL_CONTENT_MIGRATION_KEY = 'totem_neutral_content_v3';
+    if (!localStorage.getItem(NEUTRAL_CONTENT_MIGRATION_KEY)) {
+      try {
+        const words = await dbGetAll('words');
+        for (const w of words) {
+          if (Number(w.gameId) === 1 || Number(w.gameId) === 7) {
+            await dbDelete('words', w.id);
+          }
+        }
+        await dbPutMany('words', [
+          ...SEED_WORDS_HANGMAN,
+          ...SEED_WORDS_WORDSEARCH,
+        ]);
+
+        const soletraRounds = await dbGetAll('soletraRounds');
+        for (const s of soletraRounds) {
+          await dbDelete('soletraRounds', s.id);
+        }
+        await dbPutMany('soletraRounds', SEED_SOLETRA);
+
+        const labirintoRounds = await dbGetAll('labirintoRounds');
+        for (const l of labirintoRounds) {
+          await dbDelete('labirintoRounds', l.id);
+        }
+        await dbPutMany('labirintoRounds', SEED_LABIRINTO);
+
+        const quizQuestions = await dbGetAll('quizQuestions');
+        for (const q of quizQuestions) {
+          await dbDelete('quizQuestions', q.id);
+        }
+        await dbPutMany('quizQuestions', SEED_QUIZ);
+
+        localStorage.setItem(NEUTRAL_CONTENT_MIGRATION_KEY, 'true');
+      } catch (err) {
+        console.warn('Erro ao migrar conteúdos neutros para o IndexedDB:', err);
       }
     }
 

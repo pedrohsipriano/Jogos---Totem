@@ -177,6 +177,7 @@ export function Jogos({
 
   const handleScore = (payload = {}) => {
     pendingScoreRef.current = payload;
+    commitPendingScore();
   };
 
   const commitPendingScore = async () => {
@@ -189,12 +190,22 @@ export function Jogos({
 
     setSaving(true);
     try {
+      const basePoints = Number(payload.score ?? payload.points ?? 0);
+      const remaining = Math.max(0, Math.floor(Number(payload.remainingSeconds ?? 0)));
+      const timedOut = Boolean(payload.timedOut);
+      const realPoints = Number(
+        payload.totalScore !== undefined
+          ? payload.totalScore
+          : (basePoints + (timedOut ? 0 : remaining))
+      );
+
       await saveGameScore({
+        name: player.name,
         phone,
         gameCode: selectedGame.code ?? "memory",
-        points: Number(payload.score ?? payload.points ?? 0),
-        remainingSeconds: Number(payload.remainingSeconds ?? 0),
-        timedOut: Boolean(payload.timedOut),
+        points: realPoints,
+        remainingSeconds: remaining,
+        timedOut,
         isTotem: true,
       });
       const remoteRanking = await getRanking().catch(() => []);

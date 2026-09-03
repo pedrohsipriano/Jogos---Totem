@@ -124,7 +124,12 @@ export default function SoletraGame({
                     Resolva a palavra anterior
                   </span>
                 ) : solved ? (
-                  "✓ Palavra encontrada"
+                  <span className="soletra-solved-msg">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" style={{ display: "inline-block", verticalAlign: "middle", marginRight: "6px" }}>
+                      <polyline points="20 6 9 17 4 12"></polyline>
+                    </svg>
+                    Palavra encontrada
+                  </span>
                 ) : isCurrent ? (
                   <span className="soletra-current-hint">
                     {unit.target.dica}
@@ -139,13 +144,7 @@ export default function SoletraGame({
       </div>
 
       {/* ── SLOTS DE ENTRADA DAS LETRAS DIGITADAS ── */}
-      <div
-        className="soletra-input"
-        aria-label="Letras digitadas"
-        style={{
-          gridTemplateColumns: `repeat(${activeWordLength}, minmax(0, 1fr))`,
-        }}
-      >
+      <div className="soletra-input" aria-label="Letras digitadas">
         {Array.from({ length: activeWordLength }).map((_, idx) => {
           const letter = typedChars[idx];
           const colorClass = lastAttemptColors

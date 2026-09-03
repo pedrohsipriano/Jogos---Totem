@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
+  <defs>
+    <linearGradient id="bg-heart" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#4c0519"/>
+      <stop offset="100%" stop-color="#881337"/>
+    </linearGradient>
+    <linearGradient id="heart-fill" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#fda4af"/>
+      <stop offset="40%" stop-color="#f43f5e"/>
+      <stop offset="100%" stop-color="#e11d48"/>
+    </linearGradient>
+    <filter id="shadow-heart" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="8" stdDeviation="10" flood-color="#f43f5e" flood-opacity="0.45"/>
+    </filter>
+  </defs>
+  <rect width="200" height="200" rx="28" fill="url(#bg-heart)"/>
+  <rect x="2" y="2" width="196" height="196" rx="26" fill="none" stroke="rgba(255,255,255,0.15)" stroke-width="2"/>
+  
+  <g filter="url(#shadow-heart)">
+    <path d="M100 152 C100 152, 50 118, 50 82 C50 62, 65 48, 82 48 C92 48, 97 53, 100 58 C103 53, 108 48, 118 48 C135 48, 150 62, 150 82 C150 118, 100 152, 100 152 Z" fill="url(#heart-fill)"/>
+    <!-- Highlight shine -->
+    <path d="M68 64 C64 72, 64 82, 68 90" fill="none" stroke="#ffffff" stroke-width="4" stroke-linecap="round" opacity="0.6"/>
+  </g>
+</svg>

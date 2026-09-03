@@ -7,262 +7,56 @@
   "words": [],
   "quiz": [],
   "rounds": [
-    {
-      "id": "1",
-      "gameId": "3",
-      "word": "PREÇO",
-      "hint": "O valor em dinheiro de um produto",
-      "createdat": "2026-05-05T18:06:07.578Z",
-      "updatedat": "2026-05-05T18:06:07.578Z"
-    },
-    {
-      "id": "2",
-      "gameId": "3",
-      "word": "ESTOQUE",
-      "hint": "Lugar onde as mercadorias ficam guardadas",
-      "createdat": "2026-05-05T18:06:07.733Z",
-      "updatedat": "2026-05-05T18:06:07.733Z"
-    },
-    {
-      "id": "3",
-      "gameId": "3",
-      "word": "PECHINCHA",
-      "hint": "Quando o cliente pede para baixar o valor",
-      "createdat": "2026-05-05T18:06:07.902Z",
-      "updatedat": "2026-05-05T18:06:07.902Z"
-    },
-    {
-      "id": "4",
-      "gameId": "3",
-      "word": "DINHEIRO",
-      "hint": "Notas e moedas usadas para pagar a conta",
-      "createdat": "2026-05-05T18:06:08.084Z",
-      "updatedat": "2026-05-05T18:06:08.084Z"
-    },
-    {
-      "id": "5",
-      "gameId": "3",
-      "word": "ATACADO",
-      "hint": "Venda de mercadorias em grandes quantidades",
-      "createdat": "2026-05-05T18:06:08.251Z",
-      "updatedat": "2026-05-05T18:06:08.251Z"
-    },
-    {
-      "id": "6",
-      "gameId": "3",
-      "word": "SUCESSO",
-      "hint": "O resultado esperado de um bom negócio",
-      "createdat": "2026-05-05T18:06:08.418Z",
-      "updatedat": "2026-05-05T18:06:08.418Z"
-    },
-    {
-      "id": "7",
-      "gameId": "3",
-      "word": "LIQUIDAÇÃO",
-      "hint": "Quando a loja queima o estoque com preços baixos",
-      "createdat": "2026-05-05T18:06:08.605Z",
-      "updatedat": "2026-05-05T18:06:08.605Z"
-    },
-    {
-      "id": "8",
-      "gameId": "3",
-      "word": "PARAÍBA",
-      "hint": "O estado onde o sol nasce primeiro",
-      "createdat": "2026-05-05T18:06:08.779Z",
-      "updatedat": "2026-05-05T18:06:08.779Z"
-    },
-    {
-      "id": "9",
-      "gameId": "3",
-      "word": "DIGITAL",
-      "hint": "O mundo conectado pela internet e dispositivos",
-      "createdat": "2026-05-05T18:06:08.955Z",
-      "updatedat": "2026-05-05T18:06:08.955Z"
-    },
-    {
-      "id": "10",
-      "gameId": "3",
-      "word": "CONEXÃO",
-      "hint": "O que une o lojista ao cliente moderno",
-      "createdat": "2026-05-05T18:06:09.130Z",
-      "updatedat": "2026-05-05T18:06:09.130Z"
-    },
-    {
-      "id": "11",
-      "gameId": "3",
-      "word": "AGILIDADE",
-      "hint": "Rapidez para resolver problemas e vender",
-      "createdat": "2026-05-05T18:06:09.311Z",
-      "updatedat": "2026-05-05T18:06:09.311Z"
-    },
-    {
-      "id": "12",
-      "gameId": "3",
-      "word": "TELA",
-      "hint": "Onde você está tocando para jogar agora",
-      "createdat": "2026-05-05T18:06:09.479Z",
-      "updatedat": "2026-05-05T18:06:09.479Z"
-    },
-    {
-      "id": "13",
-      "gameId": "3",
-      "word": "INOVAÇÃO",
-      "hint": "Criar algo novo e diferente para o mercado",
-      "createdat": "2026-05-05T18:06:09.643Z",
-      "updatedat": "2026-05-05T18:06:09.643Z"
-    },
-    {
-      "id": "14",
-      "gameId": "3",
-      "word": "VIRTUAL",
-      "hint": "Aquilo que existe no ambiente dos computadores",
-      "createdat": "2026-05-05T18:06:09.888Z",
-      "updatedat": "2026-05-05T18:06:09.888Z"
-    },
-    {
-      "id": "15",
-      "gameId": "3",
-      "word": "ITEM",
-      "hint": "Produto único que faz parte de uma lista ou pedido",
-      "createdat": "2026-05-05T18:06:10.067Z",
-      "updatedat": "2026-05-05T18:06:10.067Z"
-    },
-    {
-      "id": "16",
-      "gameId": "3",
-      "word": "CUPOM",
-      "hint": "Código que garante um benefício ou desconto extra",
-      "createdat": "2026-05-05T18:06:10.237Z",
-      "updatedat": "2026-05-05T18:06:10.237Z"
-    },
-    {
-      "id": "17",
-      "gameId": "3",
-      "word": "OFERTA",
-      "hint": "Preço especial ou condição vantajosa por tempo limitado",
-      "createdat": "2026-05-05T18:06:10.418Z",
-      "updatedat": "2026-05-05T18:06:10.418Z"
-    },
-    {
-      "id": "18",
-      "gameId": "3",
-      "word": "CLIENTE",
-      "hint": "A pessoa que compra e consome na sua loja",
-      "createdat": "2026-05-05T18:06:10.604Z",
-      "updatedat": "2026-05-05T18:06:10.604Z"
-    },
-    {
-      "id": "19",
-      "gameId": "3",
-      "word": "ENTREGA",
-      "hint": "O ato de levar o produto até a casa do comprador",
-      "createdat": "2026-05-05T18:06:10.778Z",
-      "updatedat": "2026-05-05T18:06:10.778Z"
-    },
-    {
-      "id": "20",
-      "gameId": "3",
-      "word": "BALCÃO",
-      "hint": "Onde o vendedor e o cliente conversam na loja física",
-      "createdat": "2026-05-05T18:06:10.939Z",
-      "updatedat": "2026-05-05T18:06:10.939Z"
-    },
-    {
-      "id": "21",
-      "gameId": "3",
-      "word": "PEDIDO",
-      "hint": "Solicitação de compra feita pelo cliente",
-      "createdat": "2026-05-05T18:06:11.106Z",
-      "updatedat": "2026-05-05T18:06:11.106Z"
-    },
-    {
-      "id": "22",
-      "gameId": "3",
-      "word": "BOLETO",
-      "hint": "Forma de pagamento por papel ou código de barras",
-      "createdat": "2026-05-05T18:06:11.274Z",
-      "updatedat": "2026-05-05T18:06:11.274Z"
-    },
-    {
-      "id": "23",
-      "gameId": "3",
-      "word": "CARTÃO",
-      "hint": "Objeto de plástico usado para pagar compras no crédito",
-      "createdat": "2026-05-05T18:06:11.440Z",
-      "updatedat": "2026-05-05T18:06:11.440Z"
-    },
-    {
-      "id": "24",
-      "gameId": "3",
-      "word": "BRINDE",
-      "hint": "Presente dado pela loja para agradar o cliente",
-      "createdat": "2026-05-05T18:06:11.621Z",
-      "updatedat": "2026-05-05T18:06:11.621Z"
-    },
-    {
-      "id": "25",
-      "gameId": "3",
-      "word": "COMPRA",
-      "hint": "O ato de adquirir um produto pagando por ele",
-      "createdat": "2026-05-05T18:06:11.778Z",
-      "updatedat": "2026-05-05T18:06:11.778Z"
-    },
-    {
-      "id": "26",
-      "gameId": "3",
-      "word": "CUSTO",
-      "hint": "O valor gasto para produzir ou adquirir um item",
-      "createdat": "2026-05-05T18:06:11.951Z",
-      "updatedat": "2026-05-05T18:06:11.951Z"
-    },
-    {
-      "id": "27",
-      "gameId": "3",
-      "word": "VAREJO",
-      "hint": "Venda direta de produtos para o consumidor final",
-      "createdat": "2026-05-05T18:06:12.112Z",
-      "updatedat": "2026-05-05T18:06:12.112Z"
-    },
-    {
-      "id": "28",
-      "gameId": "3",
-      "word": "PRODUTO",
-      "hint": "Aquilo que está à venda na prateleira",
-      "createdat": "2026-05-05T18:06:12.278Z",
-      "updatedat": "2026-05-05T18:06:12.278Z"
-    },
-    {
-      "id": "29",
-      "gameId": "3",
-      "word": "METAS",
-      "hint": "Objetivos de venda que a equipe precisa bater",
-      "createdat": "2026-05-05T18:06:12.482Z",
-      "updatedat": "2026-05-05T18:06:12.482Z"
-    },
-    {
-      "id": "30",
-      "gameId": "3",
-      "word": "QRCODE",
-      "hint": "Código quadrado que pode ser lido pelo celular para pagar",
-      "createdat": "2026-05-05T18:06:12.661Z",
-      "updatedat": "2026-05-05T18:06:12.661Z"
-    },
-    {
-      "id": "31",
-      "gameId": "3",
-      "word": "REVENDA",
-      "hint": "Comprar um produto para vender novamente ao consumidor",
-      "createdat": "2026-05-05T18:06:12.833Z",
-      "updatedat": "2026-05-05T18:06:12.833Z"
-    },
-    {
-      "id": "32",
-      "gameId": "3",
-      "word": "MIMO",
-      "hint": "Pequeno agrado ou presente enviado para o cliente",
-      "createdat": "2026-05-05T18:06:13.015Z",
-      "updatedat": "2026-05-05T18:06:13.015Z"
-    }
+    { "id": "1", "gameId": "3", "word": "CASA", "hint": "Construção destinada à habitação humana" },
+    { "id": "2", "gameId": "3", "word": "BOLO", "hint": "Alimento doce e macio assado no forno" },
+    { "id": "3", "gameId": "3", "word": "GATO", "hint": "Animal doméstico felino de quatro patas que gosta de miar" },
+    { "id": "4", "gameId": "3", "word": "SAPO", "hint": "Anfíbio conhecido por viver perto da água e dar grandes saltos" },
+    { "id": "5", "gameId": "3", "word": "FOGO", "hint": "Fenômeno de combustão que produz calor e luz" },
+    { "id": "6", "gameId": "3", "word": "FLOR", "hint": "Parte colorida e perfumada das plantas" },
+    { "id": "7", "gameId": "3", "word": "VELA", "hint": "Cilindro de cera com pavio que gera luz ao queimar" },
+    { "id": "8", "gameId": "3", "word": "OURO", "hint": "Metal precioso de cor amarela muito valorizado" },
+    { "id": "9", "gameId": "3", "word": "PRAIA", "hint": "Faixa de areia à beira do mar ou de uma lagoa" },
+    { "id": "10", "gameId": "3", "word": "LIVRO", "hint": "Conjunto de páginas encadernadas com texto para leitura" },
+    { "id": "11", "gameId": "3", "word": "PEIXE", "hint": "Animal vertebrado aquático que respira por brânquias" },
+    { "id": "12", "gameId": "3", "word": "NAVIO", "hint": "Grande embarcação projetada para navegar em mares e oceanos" },
+    { "id": "13", "gameId": "3", "word": "SOLAR", "hint": "Tipo de energia limpa gerada a partir da luz do Sol" },
+    { "id": "14", "gameId": "3", "word": "NUVEM", "hint": "Massa visível de vapor de água acumulada na atmosfera" },
+    { "id": "15", "gameId": "3", "word": "PEDRA", "hint": "Matéria mineral dura e sólida encontrada na natureza" },
+    { "id": "16", "gameId": "3", "word": "CHUVA", "hint": "Água que cai das nuvens em gotas sobre a terra" },
+    { "id": "17", "gameId": "3", "word": "TIGRE", "hint": "Grande felino predador selvagem com pelagem listrada" },
+    { "id": "18", "gameId": "3", "word": "CAMPO", "hint": "Área de terra aberta e plana, frequentemente usada na agricultura" },
+    { "id": "19", "gameId": "3", "word": "BRASIL", "hint": "Maior país da América do Sul e de língua portuguesa" },
+    { "id": "20", "gameId": "3", "word": "JARDIM", "hint": "Espaço ao ar livre cultivado com flores e plantas ornamentais" },
+    { "id": "21", "gameId": "3", "word": "JANELA", "hint": "Abertura na parede para ventilação e iluminação natural" },
+    { "id": "22", "gameId": "3", "word": "CIDADE", "hint": "Área urbana habitada com ruas, comércios e edifícios" },
+    { "id": "23", "gameId": "3", "word": "MUSICA", "hint": "Combinação harmoniosa de sons, ritmo e melodia" },
+    { "id": "24", "gameId": "3", "word": "FOGUETE", "hint": "Veículo espacial impulsionado em alta velocidade para o espaço" },
+    { "id": "25", "gameId": "3", "word": "ESPELHO", "hint": "Superfície reflexiva e polida que mostra nossa imagem" },
+    { "id": "26", "gameId": "3", "word": "BALEIA", "hint": "Maior mamífero vivo do planeta, habitante dos oceanos" },
+    { "id": "27", "gameId": "3", "word": "CORUJA", "hint": "Ave de hábitos noturnos e olhar muito atento" },
+    { "id": "28", "gameId": "3", "word": "CAVALO", "hint": "Animal mamífero herbívoro de grande porte muito ágil" },
+    { "id": "29", "gameId": "3", "word": "VIAGEM", "hint": "Ato de se deslocar para um destino diferente a passeio ou trabalho" },
+    { "id": "30", "gameId": "3", "word": "CINEMA", "hint": "Arte visual e local onde filmes são projetados em tela grande" },
+    { "id": "31", "gameId": "3", "word": "ESTRELA", "hint": "Corpo celeste massivo que emite calor e luz própria no universo" },
+    { "id": "32", "gameId": "3", "word": "PLANETA", "hint": "Corpo celeste esférico que orbita ao redor do Sol" },
+    { "id": "33", "gameId": "3", "word": "FLORESTA", "hint": "Grande ecossistema com densa concentração de árvores" },
+    { "id": "34", "gameId": "3", "word": "GIRAFA", "hint": "Animal mais alto da terra, conhecido por seu longo pescoço" },
+    { "id": "35", "gameId": "3", "word": "OCEANO", "hint": "Vasta e contínua massa de água salgada da Terra" },
+    { "id": "36", "gameId": "3", "word": "DESERTO", "hint": "Região árida caracterizada por poucas chuvas e areia" },
+    { "id": "37", "gameId": "3", "word": "RELÓGIO", "hint": "Instrumento usado para marcar e indicar o tempo" },
+    { "id": "38", "gameId": "3", "word": "TECLADO", "hint": "Periférico com botões de letras e símbolos para computador" },
+    { "id": "39", "gameId": "3", "word": "NATUREZA", "hint": "Conjunto de todos os seres vivos e do mundo natural" },
+    { "id": "40", "gameId": "3", "word": "CACHOEIRA", "hint": "Queda natural de água de um curso fluvial sobre um desnível" },
+    { "id": "41", "gameId": "3", "word": "UNIVERSO", "hint": "A totalidade do espaço cósmico com todas as galáxias e estrelas" },
+    { "id": "42", "gameId": "3", "word": "ELEFANTE", "hint": "O maior animal terrestre, com orelhas grandes e longa tromba" },
+    { "id": "43", "gameId": "3", "word": "BORBOLETA", "hint": "Inseto com asas coloridas que passa pela fase de casulo" },
+    { "id": "44", "gameId": "3", "word": "DIAMANTE", "hint": "Mineral composto de carbono e o material natural mais duro conhecido" },
+    { "id": "45", "gameId": "3", "word": "ASTRONAUTA", "hint": "Pessoa capacitada para pilotar espaçonaves e explorar o cosmos" },
+    { "id": "46", "gameId": "3", "word": "TELESCÓPIO", "hint": "Instrumento óptico que permite observar corpos celestes distantes" },
+    { "id": "47", "gameId": "3", "word": "VELOCIDADE", "hint": "Medida que indica quão rápido um objeto percorre uma distância" },
+    { "id": "48", "gameId": "3", "word": "TECNOLOGIA", "hint": "Conjunto de conhecimentos e técnicas aplicados ao progresso" },
+    { "id": "49", "gameId": "3", "word": "BICICLETA", "hint": "Veículo ecológico de propulsão humana com duas rodas e pedais" },
+    { "id": "50", "gameId": "3", "word": "FOTOGRAFIA", "hint": "Arte de eternizar instantes através da captura da luz" }
   ],
   "alreadyPlayed": false
 }

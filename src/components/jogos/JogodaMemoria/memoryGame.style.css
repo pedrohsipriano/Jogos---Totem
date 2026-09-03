@@ -46,6 +46,10 @@
     overflow: hidden;
 }
 
+.memory-game .card.card-flipped {
+    background-image: none !important;
+}
+
 .memory-game .card-img {
     width: 100%;
     height: 100%;

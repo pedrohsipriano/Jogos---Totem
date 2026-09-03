@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
+  <defs>
+    <linearGradient id="bg-shield" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#064e3b"/>
+      <stop offset="100%" stop-color="#047857"/>
+    </linearGradient>
+    <linearGradient id="shield-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#6ee7b7"/>
+      <stop offset="50%" stop-color="#10b981"/>
+      <stop offset="100%" stop-color="#059669"/>
+    </linearGradient>
+    <filter id="shadow-shield" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="8" stdDeviation="10" flood-color="#10b981" flood-opacity="0.4"/>
+    </filter>
+  </defs>
+  <rect width="200" height="200" rx="28" fill="url(#bg-shield)"/>
+  <rect x="2" y="2" width="196" height="196" rx="26" fill="none" stroke="rgba(255,255,255,0.15)" stroke-width="2"/>
+  
+  <g filter="url(#shadow-shield)">
+    <!-- Outer Shield -->
+    <path d="M100 44 L146 58 C146 102, 132 136, 100 156 C68 136, 54 102, 54 58 Z" fill="url(#shield-grad)"/>
+    <!-- Inner Shield border -->
+    <path d="M100 56 L134 68 C134 100, 122 128, 100 144 C78 128, 66 100, 66 68 Z" fill="none" stroke="#ffffff" stroke-width="2.5" opacity="0.7"/>
+    <!-- Checkmark inside Shield -->
+    <path d="M85 98 L96 109 L118 84" fill="none" stroke="#ffffff" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+</svg>

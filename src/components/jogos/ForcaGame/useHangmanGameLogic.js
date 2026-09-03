@@ -184,6 +184,10 @@ export default function useHangmanGameLogic({
             correctWord: secret,
         };
 
+        finalPayload.score = totalScore;
+        finalPayload.points = totalScore;
+        finalPayload.totalScore = totalScore;
+
         // Dispara a callback de pontuação geral
         onScore?.(finalPayload);
 
@@ -253,6 +257,7 @@ export default function useHangmanGameLogic({
 
         // Estado do jogo
         secret,
+        secretNormalized,
         masked,
         guessed,
         selectedLetters,
