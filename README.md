@@ -4,15 +4,16 @@ Aplicação web interativa em React + Vite projetada especificamente para totens
 
 ---
 
-## 🛠️ Tecnologias Utilizadas
+## Tecnologias Utilizadas
 
 - **Core**: React 19 + Vite 6 (com minificação e empaquetamento único via `vite-plugin-singlefile` se aplicável).
+- **Mobile / Totem Nativo**: Capacitor 8 (Android).
 - **Linter**: ESLint 9.
 - **Servidor de Produção Estático**: Nginx integrado via Docker.
 
 ---
 
-## 🎮 Minijogos Interativos Disponíveis
+## Minijogos Interativos Disponíveis
 
 Todos os jogos foram desenvolvidos em CSS nativo e JS, adaptados para telas de toque:
 - **Omni-Catch**: Jogo dinâmico neon 3x3 no estilo Whac-A-Mole.
@@ -26,7 +27,7 @@ Todos os jogos foram desenvolvidos em CSS nativo e JS, adaptados para telas de t
 
 ---
 
-## 📝 Contrato de Evento: Fim de Jogo (Game End)
+## Contrato de Evento: Fim de Jogo (Game End)
 
 Todos os minijogos chamam um diálogo global e disparam um payload de pontuação padronizado para a API atualizar a pontuação geral do participante.
 
@@ -61,29 +62,36 @@ import("../Dialog/gameEndReporter").then(m => m.reportGameEnd && m.reportGameEnd
 
 ---
 
-## 🚀 Limpeza de Logs e Otimizações
+## Limpeza de Logs e Otimizações
 
 - **Otimização de Logs**: O bundle do Totem em produção está configurado no `vite.config.js` para remover automaticamente todas as chamadas de `console.log(...)` usando o esbuild.
 - **Segurança**: Todas as requisições para a rota `/api/admin/...` realizadas no Totem injetam automaticamente o cabeçalho `x-admin-password` para autenticação baseada em token no backend.
 
 ---
 
-## 💻 Comandos de Execução
+## Comandos de Execução
 
-Execute na pasta `/JogosConvecao - Totem`:
-
-### Executar em Desenvolvimento
+### Executar em Desenvolvimento Web
 ```bash
 npm install
 npm run dev
 ```
 
-### Compilar Build de Produção
+### Compilar Build Web
 ```bash
 npm run build
 ```
 O build estático e compactado será gerado na pasta `dist/` e pronto para ser servido pelo Nginx.
 
+### Sincronizar com o Projeto Android (Capacitor)
+Sempre após instalar dependências ou gerar uma nova build, sincronize os arquivos nativos do Android:
+```bash
+npm run build
+npx cap sync android
+```
+Isso gera e atualiza os arquivos nativos e scripts Gradle do Capacitor (como `cordova.variables.gradle` e os assets web em `android/app/src/main/assets/public`).
+
+---
 
 ## PWA
 O Totem está configurado como um Progressive Web App (PWA) e pode ser instalado nativamente via navegador.
