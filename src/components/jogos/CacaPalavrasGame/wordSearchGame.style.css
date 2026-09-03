@@ -53,10 +53,10 @@
     align-items: center;
     gap: 10px;
     flex-shrink: 0;
-    border-radius: 10px;
-    border: 1px solid var(--Color-5, #F60085);
-    background: transparent;
-    color: #FFF;
+    border-radius: 12px;
+    border: 1.5px solid var(--Color-5, #F60085);
+    background: var(--card-bg, rgba(255, 255, 255, 0.05));
+    color: var(--card-text, #FFF);
     text-align: center;
     font-family: Grift, sans-serif;
     font-size: 40px;
@@ -67,19 +67,23 @@
     touch-action: none;
     -webkit-user-select: none;
     user-select: none;
+    transition: transform 0.1s ease, background 0.15s ease, border-color 0.15s ease;
 }
 
-/* Estado visual durante o arraste de seleção (destaque ciano e leve ampliação) */
+/* Estado visual durante o arraste de seleção */
 .wordsearch-game .ws-cell.selected {
-    border-color: var(--ws-accent-primary);
-    transform: scale(1.05);
+    border-color: var(--accent-strong, #0ea5e9);
+    background: var(--secondary-alpha-50, rgba(14, 165, 233, 0.35));
+    transform: scale(1.06);
 }
 
-/* Estado visual permanente para células que pertencem a palavras encontradas */
+/* Estado visual permanente para células que pertencem a palavras encontradas (REATIVO AO TEMA) */
 .wordsearch-game .ws-cell.found {
-    border-radius: 10px;
-    border: 1px solid rgba(246, 0, 133, 0.50);
-    background: rgba(246, 0, 133, 0.50);
+    border-radius: 12px;
+    border: 2px solid var(--Color-5, #F60085);
+    background: var(--primary-alpha-50, rgba(246, 0, 133, 0.50));
+    color: var(--accent-contrast, #FFF);
+    box-shadow: 0 0 12px var(--primary-alpha-30, rgba(246, 0, 133, 0.3));
 }
 
 /* ── Contêiner e Chips da Lista de Palavras-Alvo ───────────────────────── */
@@ -96,7 +100,8 @@
     padding: 20px 24px;
     box-sizing: border-box;
     border-radius: 20px;
-    border: 1px solid var(--Color-5, #F60085);
+    border: 1.5px solid var(--Color-5, #F60085);
+    background: var(--card-bg, rgba(0, 0, 0, 0.2));
     text-align: center;
 }
 
@@ -108,9 +113,9 @@
     align-items: center;
     gap: 10px;
     border-radius: 16px;
-    background: rgba(0, 0, 0, 0.20);
-    border: 1px solid rgba(255, 255, 255, 0.15);
-    color: #FFF;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: var(--text-primary, #FFF);
     text-align: center;
     font-family: Grift, sans-serif;
     font-size: 32px;
@@ -122,7 +127,7 @@
     transition: all 0.2s ease;
 }
 
-/* Destaque visual para palavras já encontradas*/
+/* Destaque visual para palavras já encontradas (REATIVO AO TEMA) */
 .wordsearch-game .ws-word-chip.done {
     display: inline-flex;
     padding: 14px 22px;
@@ -132,8 +137,8 @@
     border-radius: 16px;
     background: var(--Color-5, #F60085);
     border-color: var(--Color-5, #F60085);
-    color: #FFF;
-    box-shadow: 0 0 15px rgba(246, 0, 133, 0.5);
+    color: var(--accent-contrast, #FFF);
+    box-shadow: 0 0 15px var(--primary-alpha-50, rgba(246, 0, 133, 0.5));
     text-decoration: line-through;
 }
 

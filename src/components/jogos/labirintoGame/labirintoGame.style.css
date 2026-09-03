@@ -106,7 +106,7 @@
     display: grid;
     place-items: center;
     border: 1px solid rgba(255, 255, 255, 0.10);
-    background: rgba(246, 0, 133, 0.10);
+    background: var(--primary-alpha-08, rgba(255, 255, 255, 0.04));
     position: relative;
     z-index: 1;
     touch-action: none;
@@ -119,7 +119,7 @@
 
 /* Célula por onde o jogador já passou */
 .labirinto-panel button.labirinto-cell.trail {
-    background: rgba(246, 0, 133, 0.30);
+    background: var(--primary-alpha-25, rgba(246, 0, 133, 0.25));
     padding: 0;
 }
 
@@ -146,7 +146,8 @@
     height: 100%;
     text-align: center;
     align-items: center;
-    color: #FFF;
+    color: var(--accent-contrast, #FFF);
+    border-radius: 8px;
 }
 
 /* Nós/pontos centrais da trilha (bolinhas nas interseções das células) */
@@ -176,14 +177,15 @@
 
 /* Célula de checkpoint inicial */
 .labirinto-panel button.labirinto-cell.checkpoint .labirinto-cell-letter {
-    color: #07BCEE;
-    text-shadow: 0 0 10px rgba(7, 188, 238, 0.6);
+    color: var(--accent-strong, #07BCEE);
+    text-shadow: 0 0 10px var(--secondary-alpha-50, rgba(7, 188, 238, 0.6));
 }
 
 /* Segmentos da trilha/rastro */
 .labirinto-trail-segment {
     position: absolute;
-    background: rgba(255, 247, 241, 0.60);
+    background: var(--primary-alpha-60, rgba(255, 247, 241, 0.60));
+    box-shadow: 0 0 8px var(--primary-alpha-40, rgba(246, 0, 133, 0.4));
 }
 
 /* Paredes físicas do labirinto */
@@ -217,8 +219,8 @@
     gap: 12px;
     padding: 14px 20px;
     border-radius: 20px;
-    border: 1px solid var(--Color-5, #F60085);
-    background: rgba(2, 18, 41, 0.45);
+    border: 1.5px solid var(--Color-5, #F60085);
+    background: var(--card-bg, rgba(2, 18, 41, 0.45));
     backdrop-filter: blur(8px);
     -webkit-backdrop-filter: blur(8px);
     box-sizing: border-box;
@@ -232,9 +234,9 @@
     justify-content: center;
     align-items: center;
     border-radius: 12px;
-    background: rgba(246, 0, 133, 0.20);
-    border: 1px solid rgba(246, 0, 133, 0.35);
-    color: rgba(255, 255, 255, 0.50);
+    background: var(--primary-alpha-20, rgba(246, 0, 133, 0.20));
+    border: 1px solid var(--primary-alpha-40, rgba(246, 0, 133, 0.35));
+    color: var(--card-text, rgba(255, 255, 255, 0.6));
     text-align: center;
     font-family: Grift, sans-serif;
     font-size: 28px;
@@ -247,8 +249,8 @@
 .labirinto-word-progress-char.done {
     background: var(--Color-5, #F60085);
     border-color: var(--Color-5, #F60085);
-    color: #FFF;
-    box-shadow: 0 0 15px rgba(246, 0, 133, 0.6);
+    color: var(--accent-contrast, #FFF);
+    box-shadow: 0 0 15px var(--primary-alpha-60, rgba(246, 0, 133, 0.6));
 }
 
 /* Letra com erro */
@@ -285,7 +287,7 @@
     align-items: center;
     border-radius: 20px;
     border: 1.5px solid var(--Color-5, #F60085);
-    background: rgba(246, 0, 133, 0.20);
+    background: var(--primary-alpha-20, rgba(246, 0, 133, 0.20));
     color: #FFF;
     text-align: center;
     font-family: Grift, sans-serif;
@@ -300,7 +302,7 @@
 
 .btnLimpar:active:not(:disabled) {
     transform: scale(0.96);
-    background: rgba(246, 0, 133, 0.40);
+    background: var(--primary-alpha-40, rgba(246, 0, 133, 0.40));
 }
 
 .btnLimpar:disabled {

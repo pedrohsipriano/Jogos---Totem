@@ -81,8 +81,8 @@
     justify-content: center;
     align-items: center;
     border-radius: 10px;
-    background: #F6008533;
-    border: 1px solid rgba(246, 0, 133, 0.4);
+    background: var(--primary-alpha-20, rgba(246, 0, 133, 0.2));
+    border: 1px solid var(--primary-alpha-40, rgba(246, 0, 133, 0.4));
     color: #FFF;
     text-align: center;
     font-family: Grift, sans-serif;
@@ -103,18 +103,18 @@
 /* Estado correto: letra acertada pelo jogador */
 .hangman-game .hangman-key.correct,
 .hangman-game .hangman-key.correct:disabled {
-    background: #F60085;
-    border-color: #F60085;
+    background: var(--Color-5, #F60085);
+    border-color: var(--Color-5, #F60085);
     opacity: 1;
-    color: #FFF;
-    box-shadow: 0 0 15px rgba(246, 0, 133, 0.5);
+    color: var(--accent-contrast, #FFF);
+    box-shadow: 0 0 15px var(--primary-alpha-50, rgba(246, 0, 133, 0.5));
 }
 
 /* Estado errado: letra clicada que não faz parte da palavra */
 .hangman-game .hangman-key.wrong,
 .hangman-game .hangman-key.wrong:disabled {
-    background: rgba(246, 0, 133, 0.10);
-    border-color: rgba(246, 0, 133, 0.20);
+    background: var(--primary-alpha-08, rgba(246, 0, 133, 0.10));
+    border-color: var(--primary-alpha-20, rgba(246, 0, 133, 0.20));
     color: rgba(255, 255, 255, 0.35);
     opacity: 0.6;
 }
@@ -128,12 +128,13 @@
     display: flex;
     width: 960px;
     max-width: 95%;
-    padding: 24px 20px;
+    padding: 20px 24px;
     justify-content: center;
     align-items: center;
     align-content: center;
     border-radius: 20px;
-    border: 1px solid var(--Color-5, #F60085);
+    border: 1.5px solid var(--Color-5, #F60085);
+    background: var(--card-bg, rgba(0, 0, 0, 0.2));
     margin: 0 auto 30px auto;
     box-sizing: border-box;
 }
@@ -152,7 +153,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 24px;
+    gap: 20px;
     flex-wrap: wrap;
 }
 
@@ -160,6 +161,12 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
+    transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.vida_icon.spent {
+    opacity: 0.45;
+    transform: scale(0.92);
 }
 
 .vidas_span {
@@ -221,13 +228,14 @@
 
 .selecionada_letter.correct {
     border-radius: 10px;
-    background: #F60085;
-    border: 1px solid #F60085;
+    background: var(--Color-5, #F60085);
+    border: 1px solid var(--Color-5, #F60085);
+    color: var(--accent-contrast, #FFF);
 }
 
 .selecionada_letter.wrong {
     border-radius: 10px;
-    background: rgba(246, 0, 133, 0.20);
-    border: 1px solid rgba(246, 0, 133, 0.35);
+    background: var(--primary-alpha-20, rgba(246, 0, 133, 0.20));
+    border: 1px solid var(--primary-alpha-40, rgba(246, 0, 133, 0.35));
     color: rgba(255, 255, 255, 0.7);
 }

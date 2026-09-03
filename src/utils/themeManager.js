@@ -143,6 +143,34 @@ export function applyTheme(theme = null) {
   root.style.setProperty('--text-primary', text);
   root.style.setProperty('--accent-contrast', btnText);
 
+  // Variáveis calculadas de transparência para efeitos de seleção, acerto e destaque
+  const hexToRgbaStr = (hexColor, alpha) => {
+    let hex = (hexColor || '#f60085').replace('#', '').trim();
+    if (hex.length === 3) hex = hex.split('').map(c => c + c).join('');
+    let r = 246, g = 0, b = 133;
+    if (hex.length === 6) {
+      r = parseInt(hex.substring(0, 2), 16);
+      g = parseInt(hex.substring(2, 4), 16);
+      b = parseInt(hex.substring(4, 6), 16);
+    }
+    return `rgba(${r}, ${g}, ${b}, ${alpha})`;
+  };
+
+  root.style.setProperty('--primary-alpha-08', hexToRgbaStr(primary, 0.08));
+  root.style.setProperty('--primary-alpha-10', hexToRgbaStr(primary, 0.10));
+  root.style.setProperty('--primary-alpha-15', hexToRgbaStr(primary, 0.15));
+  root.style.setProperty('--primary-alpha-20', hexToRgbaStr(primary, 0.20));
+  root.style.setProperty('--primary-alpha-25', hexToRgbaStr(primary, 0.25));
+  root.style.setProperty('--primary-alpha-30', hexToRgbaStr(primary, 0.30));
+  root.style.setProperty('--primary-alpha-40', hexToRgbaStr(primary, 0.40));
+  root.style.setProperty('--primary-alpha-50', hexToRgbaStr(primary, 0.50));
+  root.style.setProperty('--primary-alpha-60', hexToRgbaStr(primary, 0.60));
+  root.style.setProperty('--primary-alpha-70', hexToRgbaStr(primary, 0.70));
+  root.style.setProperty('--primary-alpha-80', hexToRgbaStr(primary, 0.80));
+
+  root.style.setProperty('--secondary-alpha-20', hexToRgbaStr(secondary, 0.20));
+  root.style.setProperty('--secondary-alpha-50', hexToRgbaStr(secondary, 0.50));
+
   // 2. Cards e Telas (distribuído)
   root.style.setProperty('--card-bg', surface);
   root.style.setProperty('--card-border', primary);

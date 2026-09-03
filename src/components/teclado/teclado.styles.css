@@ -87,8 +87,8 @@
 .teclado-key.is-pressed {
     transition: none !important;
     transform: scale(0.95);
-    background: rgba(246, 0, 133, 0.3);
-    text-shadow: 0 0 15px #F60085, 0 0 25px #F60085;
+    background: var(--primary-alpha-30, rgba(246, 0, 133, 0.3));
+    text-shadow: 0 0 15px var(--Color-5, #F60085), 0 0 25px var(--Color-5, #F60085);
 }
 
 /* Teclas numéricas diferenciadas */

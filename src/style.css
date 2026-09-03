@@ -559,8 +559,9 @@ button:disabled {
 }
 
 .admin-summary-card.highlighted {
-    border: 1.5px solid rgba(246, 0, 133, 0.35);
-    background: rgba(246, 0, 133, 0.08);
+    border: 1.5px solid var(--primary-alpha-50, var(--Color-5, #F60085));
+    background: var(--primary-alpha-10, rgba(246, 0, 133, 0.08));
+    box-shadow: 0 0 12px var(--primary-alpha-20, transparent);
 }
 
 /* Botão de perigo/exclusão da Dashboard */

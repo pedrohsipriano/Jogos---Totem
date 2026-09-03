@@ -10,6 +10,7 @@ import { getAdminMenuRecords, getGameRulesVersion, clearAdminPassword, getAdminP
 import { buildGameConfig } from "./utils/gameConfig";
 import LockScreen from "./components/lockScreen/LockScreen.jsx";
 import { LicenseScreen } from "./components/licenseScreen/LicenseScreen.jsx";
+import StartupNotice from "./components/startupNotice/StartupNotice.jsx";
 import { SystemHeader, SystemFooter } from "./components/common/SystemBanner.jsx";
 import { validateLicense, startClockHeartbeat, stopClockHeartbeat } from "./utils/licenseValidator.js";
 import { applyTheme } from "./utils/themeManager.js";
@@ -31,6 +32,9 @@ import { runSeed } from "./lib/db/seeds.js";
 export function App() {
   // Estado da licença (null = verificando)
   const [licenseStatus, setLicenseStatus] = useState(null);
+
+  // Aviso obrigatório de entrada do aplicativo (exibido antes mesmo da senha)
+  const [showStartupNotice, setShowStartupNotice] = useState(true);
 
   // Estado de bloqueio global do Totem (inicia falso; bloqueia apenas se houver senha cadastrada)
   const [isLocked, setIsLocked] = useState(false);
@@ -352,6 +356,18 @@ export function App() {
   // Licença inválida ou expirada — bloqueia completamente
   if (!licenseStatus.valid) {
     return <LicenseScreen status={licenseStatus} />;
+  }
+
+  // Aviso operacional e de licença exibido obrigatoriamente a cada inicialização (antes da senha)
+  if (showStartupNotice) {
+    return (
+      <div className="app-shell">
+        <StartupNotice
+          licenseStatus={licenseStatus}
+          onConfirm={() => setShowStartupNotice(false)}
+        />
+      </div>
+    );
   }
 
   if (isLocked) {

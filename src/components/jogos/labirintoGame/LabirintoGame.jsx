@@ -16,8 +16,37 @@ import { Dialog } from "../../Dialog/Dialog";
  * @param {Object} props.sessionScore — Dados da pontuação da sessão atual (se houver).
  * @param {Function} props.onScore — Callback chamada ao pontuar ou finalizar a partida.
  * @param {Function} props.onRoundComplete — Callback chamada ao completar um round com sucesso.
- * @param {Function} props.onGameOver — Callback chamada quando o jogo termina por esgotamento de tempo.
  */
+function LabirintoPointerIcon({ size = 32 }) {
+  return (
+    <svg
+      width={size}
+      height={size}
+      viewBox="0 0 32 32"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      style={{ filter: "drop-shadow(0 0 6px var(--Color-5, #F60085))" }}
+    >
+      <circle
+        cx="16"
+        cy="16"
+        r="14"
+        fill="var(--primary-alpha-30, rgba(246, 0, 133, 0.3))"
+        stroke="var(--Color-5, #F60085)"
+        strokeWidth="2"
+      />
+      <path
+        d="M16 4L24 23L16 18.5L8 23L16 4Z"
+        fill="var(--Color-5, #F60085)"
+        stroke="#FFFFFF"
+        strokeWidth="1.5"
+        strokeLinejoin="round"
+      />
+      <circle cx="16" cy="15" r="2.5" fill="#FFFFFF" />
+    </svg>
+  );
+}
+
 export default function LabirintoGame({
   data = {},
   config = {},
@@ -211,7 +240,7 @@ export default function LabirintoGame({
                   />
                 ))}
 
-                {/* 2.1. Marca PNG na ponta da trilha (último ponto do rastro) */}
+                {/* 2.1. Marca visual na ponta da trilha (ponteiro de navegação direcional) */}
                 {trail.length > 0 &&
                   (() => {
                     const last = trail[trail.length - 1];
@@ -231,9 +260,7 @@ export default function LabirintoGame({
                               : 0;
 
                     return (
-                      <img
-                        src="/images/carrinho-de-compra-011.png"
-                        alt=""
+                      <div
                         className="labirinto-trail-tip"
                         style={{
                           left: last.c * cellSize + cellSize / 2,
@@ -241,8 +268,13 @@ export default function LabirintoGame({
                           width: tipSize,
                           height: tipSize,
                           transform: `translate(-50%, -50%) rotate(${tipAngle}deg)`,
+                          display: "flex",
+                          alignItems: "center",
+                          justifyContent: "center",
                         }}
-                      />
+                      >
+                        <LabirintoPointerIcon size={tipSize} />
+                      </div>
                     );
                   })()}
 

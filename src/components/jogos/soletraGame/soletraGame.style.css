@@ -10,11 +10,12 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 960px;
-    max-width: 95%;
+    width: 100%;
+    max-width: 58.375rem; /* 934px - Mesma largura padronizada de todos os jogos */
     margin: 0 auto;
     gap: 20px;
     box-sizing: border-box;
+    padding: 0 1rem;
 }
 
 /* ── Alvos de Palavras (Lista de progresso) ────────────────────────────── */
@@ -45,16 +46,16 @@
 
 /* Destaque visual para palavras já encontradas (resolvidas) */
 .soletra-game .soletra-target-row.solved-word {
-    border: 1px solid rgba(246, 0, 133, 0.6);
-    background: rgba(110, 0, 108, 0.35);
+    border: 1px solid var(--primary-alpha-60, rgba(246, 0, 133, 0.6));
+    background: var(--primary-alpha-30, rgba(110, 0, 108, 0.35));
     opacity: 0.85;
 }
 
 /* Destaque visual para a palavra ativa no momento */
 .soletra-game .soletra-target-row.current-word {
     border: 1.5px solid var(--Color-5, #F60085);
-    background: rgba(246, 0, 133, 0.08);
-    box-shadow: 0 0 20px rgba(246, 0, 133, 0.2);
+    background: var(--primary-alpha-08, rgba(246, 0, 133, 0.08));
+    box-shadow: 0 0 20px var(--primary-alpha-20, rgba(246, 0, 133, 0.2));
 }
 
 /* Estado visual para palavras bloqueadas (que aguardam a resolução da atual) */
@@ -85,7 +86,7 @@
 
 .soletra-game .soletra-target-slot.solved {
     border-color: var(--Color-5, #F60085);
-    background: rgba(246, 0, 133, 0.22);
+    background: var(--primary-alpha-20, rgba(246, 0, 133, 0.22));
     color: #FFF;
 }
 
@@ -179,8 +180,8 @@
     min-height: 96px;
     padding: 16px 20px;
     border-radius: 20px;
-    border: 1px solid var(--Color-5, #F60085);
-    background: rgba(2, 18, 41, 0.45);
+    border: 1.5px solid var(--Color-5, #F60085);
+    background: var(--primary-alpha-20, rgba(2, 18, 41, 0.45));
     backdrop-filter: blur(8px);
     -webkit-backdrop-filter: blur(8px);
     box-sizing: border-box;
@@ -209,19 +210,20 @@
 /* Quando tem letra preenchida */
 .soletra-game .soletra-input-slot:not(:empty) {
     border-color: var(--Color-5, #F60085);
-    background: rgba(246, 0, 133, 0.25);
-    box-shadow: 0 0 12px rgba(246, 0, 133, 0.35);
+    background: var(--primary-alpha-25, rgba(246, 0, 133, 0.25));
+    box-shadow: 0 0 12px var(--primary-alpha-30, rgba(246, 0, 133, 0.35));
 }
 
 .soletra-game .soletra-input-slot.correct {
-    background: #F60085;
-    border-color: #F60085;
-    box-shadow: 0 0 15px rgba(246, 0, 133, 0.6);
+    background: var(--Color-5, #F60085);
+    border-color: var(--Color-5, #F60085);
+    color: var(--accent-contrast, #FFF);
+    box-shadow: 0 0 15px var(--primary-alpha-60, rgba(246, 0, 133, 0.6));
 }
 
 .soletra-game .soletra-input-slot.exists {
-    background: rgba(246, 0, 133, 0.50);
-    border-color: rgba(246, 0, 133, 0.7);
+    background: var(--primary-alpha-50, rgba(246, 0, 133, 0.50));
+    border-color: var(--primary-alpha-70, rgba(246, 0, 133, 0.7));
 }
 
 .soletra-game .soletra-input-slot.wrong {
@@ -237,8 +239,8 @@
     gap: 12px 16px;
     padding: 28px 36px;
     border-radius: 20px;
-    border: 1px solid var(--Color-5, #F60085);
-    background: rgba(2, 18, 41, 0.45);
+    border: 1.5px solid var(--Color-5, #F60085);
+    background: var(--primary-alpha-20, rgba(2, 18, 41, 0.45));
     backdrop-filter: blur(8px);
     -webkit-backdrop-filter: blur(8px);
     width: 100%;
@@ -258,8 +260,8 @@
     padding: 10px;
     border-radius: 36px;
     border: 1.5px solid rgba(255, 255, 255, 0.35);
-    background: #F60085;
-    color: #FFF;
+    background: var(--Color-5, #F60085);
+    color: var(--accent-contrast, #FFF);
     text-align: center;
     font-family: Grift, sans-serif;
     font-size: 34px;
@@ -267,7 +269,7 @@
     line-height: 100%;
     cursor: pointer;
     user-select: none;
-    box-shadow: 0 6px 18px rgba(246, 0, 133, 0.35);
+    box-shadow: 0 6px 18px var(--primary-alpha-40, rgba(246, 0, 133, 0.35));
     transition: transform 0.1s ease, box-shadow 0.2s ease, filter 0.2s ease;
     box-sizing: border-box;
 }
@@ -282,12 +284,12 @@
     box-shadow: none;
 }
 
-/* Botão central em destaque na colmeia */
+/* Botão central em destaque na colmeia (LETRA OBRIGATÓRIA - DESTAQUE SECUNDÁRIO DO TEMA) */
 .soletra-game .soletra-hex-btn.center {
-    background: #07BCEE;
+    background: var(--accent-strong, #07BCEE);
     border-color: #FFF;
-    color: #FFF;
-    box-shadow: 0 6px 20px rgba(7, 188, 238, 0.5);
+    color: var(--victory-badge-text, #FFF);
+    box-shadow: 0 6px 20px var(--secondary-alpha-50, rgba(7, 188, 238, 0.5));
 }
 
 .soletra-game .soletra-hex-btn.top {
@@ -344,8 +346,8 @@
     align-items: center;
     border-radius: 20px;
     border: 1.5px solid var(--Color-5, #F60085);
-    background: rgba(246, 0, 133, 0.15);
-    color: #FFF;
+    background: var(--primary-alpha-15, rgba(246, 0, 133, 0.15));
+    color: var(--text-primary, #FFF);
     text-align: center;
     font-family: Grift, sans-serif;
     font-size: 30px;
@@ -359,7 +361,7 @@
 
 .btnApagar:active:not(:disabled) {
     transform: scale(0.96);
-    background: rgba(246, 0, 133, 0.3);
+    background: var(--primary-alpha-30, rgba(246, 0, 133, 0.3));
 }
 
 .btnApagar:disabled {
@@ -376,7 +378,7 @@
     border-radius: 20px;
     border: none;
     background: var(--Color-5, #F60085);
-    color: #FFF;
+    color: var(--accent-contrast, #FFF);
     text-align: center;
     font-family: Grift, sans-serif;
     font-size: 30px;
@@ -384,7 +386,7 @@
     letter-spacing: 1px;
     cursor: pointer;
     user-select: none;
-    box-shadow: 0 6px 20px rgba(246, 0, 133, 0.4);
+    box-shadow: 0 6px 20px var(--primary-alpha-40, rgba(246, 0, 133, 0.4));
     transition: transform 0.1s ease, opacity 0.2s ease;
     box-sizing: border-box;
 }
