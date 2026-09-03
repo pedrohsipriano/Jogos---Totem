@@ -3,82 +3,130 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 2.6rem;
-    margin-top: 5rem;
+    gap: 2.2rem;
+    margin: 3.5rem auto 2.5rem auto;
+    width: 100%;
+    max-width: 58.375rem; /* 934px - Mesma largura exata dos tabuleiros dos jogos */
+    box-sizing: border-box;
+    padding: 0 1rem;
 }
 
 .headerJogoSection.no-margin {
     margin-top: 0;
 }
 
-.pontoTempoSction {
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    gap: 3.75rem;
+/* O título tem exatamente a largura somada dos dois blocos inferiores + gap */
+.headerJogoSection .titulo-sectionSemBackground,
+.headerJogoSection .titulo-sectionBorda,
+.headerJogoSection .titulo-section {
+    width: 100% !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    box-sizing: border-box !important;
+    padding: 1.25rem 2rem !important;
+    border-radius: 1.25rem !important;
+    border: 2px solid var(--Color-5, #F60085) !important;
+    margin: 0 !important;
 }
 
+.headerJogoSection .TituloJogo {
+    color: #FFF;
+    text-align: center;
+    font-family: Grift, sans-serif;
+    font-size: 4.25rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 1.1;
+    letter-spacing: -0.04rem;
+    margin: 0;
+    white-space: nowrap;
+}
+
+/* Container dos dois blocos inferiores */
+.pontoTempoSction {
+    width: 100% !important;
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: stretch !important;
+    justify-content: space-between !important;
+    gap: 2.5rem !important;
+    box-sizing: border-box !important;
+}
+
+/* Bloco 1: Tempo (Esquerda) - MESMO TAMANHO DO BLOCO DE PONTOS */
 .tempoSection {
-    display: flex;
-    padding: 1.25rem;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 0.625rem;
-    flex: 1 0 0;
-    border-radius: 0.9375rem;
-    background: var(--Color-5, #F60085);
+    display: flex !important;
+    flex: 1 1 0 !important;
+    min-width: 0 !important;
+    height: 6.8rem !important;
+    box-sizing: border-box !important;
+    padding: 0.8rem 1.5rem !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+    align-items: center !important;
+    border-radius: 0.9375rem !important;
+    background: var(--Color-5, #F60085) !important;
+    border: 2px solid var(--Color-5, #F60085) !important;
 }
 
 .tempo {
-    color: #FFF;
-    text-align: center;
-    font-family: Grift;
-    font-size: 4.375rem;
-    font-style: normal;
-    font-weight: 700;
-    line-height: 108%;
-    /* 4.725rem */
-    letter-spacing: -0.04813rem;
+    color: #FFF !important;
+    text-align: center !important;
+    font-family: Grift, sans-serif !important;
+    font-size: 3.8rem !important;
+    font-style: normal !important;
+    font-weight: 700 !important;
+    line-height: 1 !important;
+    margin: 0 !important;
+    white-space: nowrap !important;
+    letter-spacing: -0.04rem;
 }
 
+/* Bloco 2: Pontos (Direita) - MESMO TAMANHO EXATO DO BLOCO DE TEMPO */
 .pontuacaoSection {
-    display: flex;
-    padding: 1.25rem;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 0.625rem;
-    flex: 1 0 0;
-    align-self: stretch;
-    border-radius: 0.9375rem;
-    border: 1px solid var(--Color-5, #F60085);
+    display: flex !important;
+    flex: 1 1 0 !important;
+    min-width: 0 !important;
+    height: 6.8rem !important;
+    box-sizing: border-box !important;
+    padding: 0.8rem 1.5rem !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+    align-items: center !important;
+    border-radius: 0.9375rem !important;
+    background: transparent !important;
+    border: 2px solid var(--Color-5, #F60085) !important;
 }
 
 .pontuacao {
-    color: #FFF;
-    text-align: center;
-    font-family: Grift;
-    font-size: 4.375rem;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 108%;
-    /* 4.725rem */
-    letter-spacing: -0.04813rem;
+    color: #FFF !important;
+    text-align: center !important;
+    font-family: Grift, sans-serif !important;
+    font-size: 3.4rem !important;
+    font-style: normal !important;
+    font-weight: 700 !important;
+    line-height: 1 !important;
+    margin: 0 !important;
+    white-space: nowrap !important;
+    letter-spacing: -0.04rem;
 }
 
-.TituloJogo {
-    color: #FFF;
-    text-align: center;
-    font-family: Grift;
-    font-size: 5rem;
-    font-style: normal;
-    font-weight: 700;
-    line-height: 108%;
-    /* 5.4rem */
-    letter-spacing: -0.055rem;
+@media (max-width: 768px) {
+    .headerJogoSection {
+        max-width: 92vw;
+        gap: 1.5rem;
+        margin: 2rem auto;
+    }
+    .headerJogoSection .TituloJogo {
+        font-size: 2.6rem;
+    }
+    .tempoSection, .pontuacaoSection {
+        height: 5.2rem !important;
+    }
+    .tempo, .pontuacao {
+        font-size: 2.1rem !important;
+    }
 }
 
 .headerJogoSubtitle {
