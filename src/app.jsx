@@ -6,7 +6,7 @@ import Ranking from "./pages/Ranking.jsx";
 import AdminHub from "./components/adminHub/AdminHubV2.jsx";
 import Dashboard from "./pages/Dashboard.jsx";
 import { Header } from "./components/header/index.jsx";
-import { getAdminMenuRecords, getGameRulesVersion, clearAdminPassword, getAdminPassword, verifyAdminPassword } from "./lib/appDatabase";
+import { getAdminMenuRecords, getGameRulesVersion, clearAdminPassword, getAdminPassword, verifyAdminPassword, hasAdminPassword } from "./lib/appDatabase";
 import { buildGameConfig } from "./utils/gameConfig";
 import LockScreen from "./components/lockScreen/LockScreen.jsx";
 import { LicenseScreen } from "./components/licenseScreen/LicenseScreen.jsx";
@@ -31,8 +31,8 @@ export function App() {
   // Estado da licença (null = verificando)
   const [licenseStatus, setLicenseStatus] = useState(null);
 
-  // Estado de bloqueio global do Totem
-  const [isLocked, setIsLocked] = useState(true);
+  // Estado de bloqueio global do Totem (inicia falso; bloqueia apenas se houver senha cadastrada)
+  const [isLocked, setIsLocked] = useState(false);
 
   // Estado de navegação
   const [sectionId, setSectionId] = useState(() => {
@@ -45,7 +45,7 @@ export function App() {
     const bootstrap = async () => {
       // 1. Inicializa o banco com dados de exemplo (apenas na 1a abertura)
       await runSeed();
-      // 2. Aplica o tema salvo
+      // 2. Aplica o tema salvo (padrão preto e branco)
       applyTheme();
       // 3. Valida a licença e verifica se o horário do aparelho foi alterado
       const status = await validateLicense();
@@ -64,9 +64,14 @@ export function App() {
     };
   }, []);
 
-  // Validação inicial da senha salva em sessão
+  // Validação inicial da senha salva em sessão (só bloqueia se o operador definiu senha)
   useEffect(() => {
     const checkSavedPassword = async () => {
+      const hasPass = await hasAdminPassword();
+      if (!hasPass) {
+        setIsLocked(false);
+        return;
+      }
       const savedPass = getAdminPassword();
       if (!savedPass) {
         setIsLocked(true);

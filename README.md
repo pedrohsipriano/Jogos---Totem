@@ -121,5 +121,20 @@ node scripts/generate-license.js --id TV-01 --days 30 --fixed
 
 ---
 
+## Controle de Acesso e Senha do Operador
+
+- **Acesso Inicial Livre**: Por padrão, o Totem não exige senha inicial para inicialização ou testes, entrando diretamente no menu de jogos.
+- **Configuração Posterior**: O operador pode cadastrar, alterar ou remover uma senha a qualquer momento acessando o painel administrativo (`AdminHub`) na aba **Segurança**.
+- **Comportamento com Senha**: Quando uma senha é cadastrada, as ações de saída, acesso a configurações no `GameNav` e a inicialização passam a exigir a credencial configurada. Se removida, o acesso volta a ser livre.
+
+---
+
+## Identidade Visual e Tema Padrão
+
+- O aplicativo opera por padrão com tema minimalista **Preto e Branco puro**, com fundo `#000000`, superfícies em tons neutros escuros (`#111111`) e destaques em branco (`#ffffff`), garantindo alto contraste e elegância em telas de alta resolução.
+- É possível personalizar cores, tipografia e planos de fundo através da aba **Personalização** no painel administrativo.
+
+---
+
 ## PWA
 O Totem está configurado como um Progressive Web App (PWA) e pode ser instalado nativamente via navegador.

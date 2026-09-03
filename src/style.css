@@ -10,17 +10,19 @@
 :root {
     /* Fundo principal da aplicação (preto/branco basico) */
     --bg: #000000;
+    --Color: #000000;
     /* Cor de fundo dos cartões e painéis */
     --card: #111111;
     /* Cor para textos secundários e legendas */
-    --muted: #888888;
-    /* Cores de destaque — controláveis pelo themeManager */
+    --muted: #a1a1aa;
+    /* Cores de destaque — padrão Preto e Branco */
     --accent: #ffffff;
-    --accent-strong: #cccccc;
+    --accent-strong: #e4e4e7;
     --Color-5: #ffffff;
-    /* Cor do texto principal (branco/cinza claro) */
+    /* Cor do texto principal (branco) */
     --text: #ffffff;
-    /* Cores de status (sucesso e aviso) */
+    --primary: #ffffff;
+    /* Cores de status */
     --success: #22c55e;
     --warning: #f97316;
     /* Tipografia — controlável pelo themeManager */
@@ -129,10 +131,11 @@ button:disabled {
     cursor: not-allowed;
 }
 
-/* Botão com estilo primário (gradiente azul ciano vibrante) */
+/* Botão com estilo primário (Preto e Branco) */
 .primary {
-    background: linear-gradient(135deg, var(--accent), var(--accent-strong));
-    color: #0b172a;
+    background: #ffffff;
+    color: #000000;
+    font-weight: 600;
 }
 
 /* Botão fantasma (fundo transparente com borda discreta) */
@@ -667,9 +670,9 @@ button:disabled {
 }
 
 .lock-screen-card {
-    background: rgba(2, 18, 41, 0.95);
-    border: 1px solid rgba(7, 188, 238, 0.2);
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6), 0 0 20px rgba(7, 188, 238, 0.15);
+    background: #111111;
+    border: 1px solid #27272a;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.8), 0 0 20px rgba(255, 255, 255, 0.05);
     border-radius: 2rem;
     width: 90%;
     max-width: 460px;
@@ -696,15 +699,15 @@ button:disabled {
 .lock-icon-container {
     width: 70px;
     height: 70px;
-    background: rgba(7, 188, 238, 0.1);
-    border: 1.5px solid rgba(7, 188, 238, 0.3);
+    background: #18181b;
+    border: 1.5px solid #27272a;
     border-radius: 50%;
     display: flex;
     justify-content: center;
     align-items: center;
     margin: 0 auto 20px auto;
-    color: var(--primary, #07bcee);
-    box-shadow: 0 0 15px rgba(7, 188, 238, 0.2);
+    color: #ffffff;
+    box-shadow: none;
 }
 
 .lock-icon {
@@ -743,12 +746,12 @@ button:disabled {
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.05em;
-    color: #94a3b8;
+    color: #a1a1aa;
 }
 
 .lock-screen-form input {
-    background: rgba(15, 23, 42, 0.5);
-    border: 1.5px solid rgba(148, 163, 184, 0.15);
+    background: #09090b;
+    border: 1.5px solid #27272a;
     border-radius: 12px;
     padding: 14px 16px;
     color: #fff;
@@ -758,9 +761,9 @@ button:disabled {
 }
 
 .lock-screen-form input:focus {
-    border-color: var(--primary, #07bcee);
-    box-shadow: 0 0 10px rgba(7, 188, 238, 0.25);
-    background: rgba(15, 23, 42, 0.8);
+    border-color: #ffffff;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.15);
+    background: #18181b;
 }
 
 .lock-screen-error {
@@ -774,8 +777,8 @@ button:disabled {
 }
 
 .btn-unlock {
-    background: linear-gradient(135deg, var(--primary, #07bcee), #0598c2);
-    color: #fff;
+    background: #ffffff;
+    color: #000000;
     border: none;
     border-radius: 12px;
     padding: 14px;
@@ -786,13 +789,13 @@ button:disabled {
     display: flex;
     justify-content: center;
     align-items: center;
-    box-shadow: 0 4px 12px rgba(7, 188, 238, 0.25);
+    box-shadow: 0 4px 12px rgba(255, 255, 255, 0.15);
 }
 
 .btn-unlock:hover:not(:disabled) {
     transform: translateY(-2px);
-    box-shadow: 0 6px 16px rgba(7, 188, 238, 0.4);
-    background: linear-gradient(135deg, #0ac9ff, #0598c2);
+    box-shadow: 0 6px 16px rgba(255, 255, 255, 0.25);
+    background: #e4e4e7;
 }
 
 .btn-unlock:active:not(:disabled) {

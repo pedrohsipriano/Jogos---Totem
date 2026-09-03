@@ -143,9 +143,35 @@ export function LicenseScreen({ status }) {
             {isClockInvalid || isClockTampered
               ? 'Acesse as Configurações do Android, marque "Data e hora automáticas" ou ajuste o horário atual e recarregue.'
               : isExpired
-                ? 'Solicite uma nova chave de licença ao administrador do sistema.'
-                : 'Execute o script de geração de licença e inclua o arquivo no dispositivo.'}
+                ? 'Esta licença expirou. Para renovar o acesso ou obter suporte, contate o responsável pelo e-mail abaixo.'
+                : 'Para ativação de licença ou suporte técnico, entre em contato pelo e-mail abaixo.'}
           </p>
+        </div>
+
+        {/* Informações de Suporte Técnico */}
+        <div
+          style={{
+            width: '100%',
+            background: 'rgba(255, 255, 255, 0.05)',
+            border: '1px solid rgba(255, 255, 255, 0.15)',
+            borderRadius: 12,
+            padding: '14px 18px',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            gap: 10,
+            color: '#e2e8f0',
+            fontSize: 14,
+            boxSizing: 'border-box',
+          }}
+        >
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+            <rect x="2" y="4" width="20" height="16" rx="2" />
+            <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
+          </svg>
+          <span>
+            Suporte: <strong style={{ color: '#ffffff', textDecoration: 'underline' }}>pedrohsipriano00@gmail.com</strong>
+          </span>
         </div>
 
         {/* Ação de Recarga / Tentar Novamente */}
@@ -153,18 +179,18 @@ export function LicenseScreen({ status }) {
           type="button"
           onClick={() => window.location.reload()}
           style={{
-            background: 'linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%)',
-            color: '#ffffff',
+            background: '#ffffff',
+            color: '#000000',
             border: 'none',
             borderRadius: 12,
             padding: '12px 24px',
             fontSize: 14,
-            fontWeight: 600,
+            fontWeight: 700,
             cursor: 'pointer',
             display: 'flex',
             alignItems: 'center',
             gap: 8,
-            boxShadow: '0 4px 14px rgba(59, 130, 246, 0.4)',
+            boxShadow: '0 4px 14px rgba(255, 255, 255, 0.15)',
           }}
         >
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
@@ -173,13 +199,6 @@ export function LicenseScreen({ status }) {
           </svg>
           Verificar Novamente
         </button>
-
-        {/* Código de instrução quando licença é ausente ou expirada */}
-        {!isClockInvalid && !isClockTampered && (
-          <div className="license-code-block">
-            <code>node scripts/generate-license.js --id TV-XX --days 30</code>
-          </div>
-        )}
       </div>
     </div>
   );

@@ -10,6 +10,7 @@ import {
 import "./adminHubV2.style.css";
 import "../personalizacao/personalizacao.style.css";
 import { Personalizacao } from "../personalizacao/Personalizacao.jsx";
+import { AdminSecurity } from "./AdminSecurity.jsx";
 import { CardForm } from "../cardForm/cardForm";
 import GameNav from "../gameNav/GameNav";
 import { CardMenu } from "../cardMenu/CardMenu";
@@ -2426,11 +2427,25 @@ export default function AdminHub({ onBackToMenu, onBackToCadastro, onOpenDashboa
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="10" r="3"/><path d="M7 20.662V19a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v1.662"/></svg>
             Personalização
           </button>
+          <button
+            type="button"
+            className={`admin-tab${activeTab === "seguranca" ? " active" : ""}`}
+            onClick={() => setActiveTab("seguranca")}
+          >
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+            Segurança
+          </button>
         </div>
 
         {loading && activeTab === "dados" && <p className="muted">Carregando registros...</p>}
         {error && activeTab === "dados" && <p className="admin-error">{error}</p>}
       </header>
+
+      {activeTab === "seguranca" && (
+        <div className="admin-sections">
+          <AdminSecurity />
+        </div>
+      )}
 
       {activeTab === "personalizacao" && (
         <div className="admin-sections">

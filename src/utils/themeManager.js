@@ -1,5 +1,5 @@
 /**
- * themeManager.js — Motor de temas visuais do Totem
+ * themeManager.js — Motor de temas visuais do Totem (Padrão Preto e Branco)
  *
  * Persiste no localStorage (chave: totem_theme).
  * Aplica as variáveis CSS no documentElement em tempo real.
@@ -8,46 +8,47 @@
 const STORAGE_KEY = 'totem_theme';
 
 export const AVAILABLE_FONTS = [
-  { value: 'Grift, sans-serif',              label: 'Grift (Padrão)' },
-  { value: 'Arial, Helvetica, sans-serif',   label: 'Arial' },
-  { value: 'Georgia, serif',                 label: 'Georgia' },
-  { value: "'Courier New', monospace",       label: 'Courier New' },
+  { value: 'Grift, sans-serif', label: 'Grift (Padrão)' },
+  { value: 'Arial, Helvetica, sans-serif', label: 'Arial' },
+  { value: 'Georgia, serif', label: 'Georgia' },
+  { value: "'Courier New', monospace", label: 'Courier New' },
   { value: "'Segoe UI', system-ui, sans-serif", label: 'Segoe UI' },
 ];
 
-/** Paleta de cores predefinidas para os pickers */
+/** Paleta de cores para os pickers (iniciando pelos tons neutros) */
 export const COLOR_PALETTE = [
-  '#00112A', '#0ea5e9', '#38bdf8', '#F60085',
-  '#7c3aed', '#10b981', '#f59e0b', '#ef4444',
-  '#14b8a6', '#f97316', '#6366f1', '#ec4899',
-  '#ffffff', '#94a3b8', '#1f2937', '#000000',
+  '#000000', '#18181b', '#27272a', '#71717a',
+  '#a1a1aa', '#e4e4e7', '#f4f4f5', '#ffffff',
+  '#38bdf8', '#0ea5e9', '#10b981', '#f59e0b',
+  '#ef4444', '#7c3aed', '#ec4899', '#F60085',
 ];
 
-/** Tema padrão do sistema */
+/** Tema padrão do sistema: Preto e Branco puro */
 export const DEFAULT_THEME = {
   // Fundo
-  bgMode:        'solid',
-  bgColor:       '#000000',
-  bgColorEnd:    '#000000',
-  bgDirection:   '180deg',     // ângulo do gradiente
-  bgImage:       null,         // base64 da imagem
+  bgMode: 'solid',
+  bgColor: '#000000',
+  bgColorEnd: '#000000',
+  bgDirection: '180deg',
+  bgImage: null,
 
-  // Cores base
-  accent:        '#ffffff',
-  accentStrong:  '#cccccc',
-  color5:        '#ffffff',
+  // Cores base (Preto e Branco)
+  accent: '#ffffff',
+  accentStrong: '#e4e4e7',
+  color5: '#ffffff',
 
   // Tipografia
-  fontFamily:    'Grift, sans-serif',
-  fontSize:      16,           // px
+  fontFamily: 'Grift, sans-serif',
+  fontSize: 16, // px
 };
 
-/** Retorna o tema salvo ou o padrão. */
+/** Retorna o tema salvo ou o padrão preto e branco. */
 export function getTheme() {
   try {
     const raw = localStorage.getItem(STORAGE_KEY);
     if (!raw) return { ...DEFAULT_THEME };
-    return { ...DEFAULT_THEME, ...JSON.parse(raw) };
+    const parsed = JSON.parse(raw);
+    return { ...DEFAULT_THEME, ...parsed };
   } catch {
     return { ...DEFAULT_THEME };
   }
@@ -62,7 +63,7 @@ export function saveTheme(theme) {
   }
 }
 
-/** Reseta o tema para os valores padrão. */
+/** Reseta o tema para os valores padrão preto e branco. */
 export function resetTheme() {
   localStorage.removeItem(STORAGE_KEY);
   applyTheme(DEFAULT_THEME);
@@ -71,16 +72,19 @@ export function resetTheme() {
 
 /** Aplica o tema nas CSS vars do documentElement. */
 export function applyTheme(theme = null) {
-  const t   = theme ?? getTheme();
+  const t = theme ?? getTheme();
   const root = document.documentElement;
 
-  // Cores base
-  root.style.setProperty('--accent',       t.accent       ?? DEFAULT_THEME.accent);
+  // Cores base (Preto e Branco)
+  root.style.setProperty('--accent', t.accent ?? DEFAULT_THEME.accent);
   root.style.setProperty('--accent-strong', t.accentStrong ?? DEFAULT_THEME.accentStrong);
-  root.style.setProperty('--Color-5',      t.color5       ?? DEFAULT_THEME.color5);
+  root.style.setProperty('--Color-5', t.color5 ?? DEFAULT_THEME.color5);
+  root.style.setProperty('--Color', '#000000');
+  root.style.setProperty('--bg', t.bgColor ?? DEFAULT_THEME.bgColor);
+  root.style.setProperty('--primary', t.accent ?? DEFAULT_THEME.accent);
 
   // Tipografia
-  root.style.setProperty('--font-family',  t.fontFamily   ?? DEFAULT_THEME.fontFamily);
+  root.style.setProperty('--font-family', t.fontFamily ?? DEFAULT_THEME.fontFamily);
   root.style.setProperty('--font-size-base', `${t.fontSize ?? DEFAULT_THEME.fontSize}px`);
   document.body.style.fontFamily = t.fontFamily ?? DEFAULT_THEME.fontFamily;
 
@@ -102,10 +106,10 @@ function _applyBackground(t) {
     return;
   }
 
-  // gradient (padrão)
-  const dir   = t.bgDirection ?? DEFAULT_THEME.bgDirection;
-  const start = t.bgColor     ?? DEFAULT_THEME.bgColor;
-  const end   = t.bgColorEnd  ?? DEFAULT_THEME.bgColorEnd;
+  // gradient
+  const dir = t.bgDirection ?? DEFAULT_THEME.bgDirection;
+  const start = t.bgColor ?? DEFAULT_THEME.bgColor;
+  const end = t.bgColorEnd ?? DEFAULT_THEME.bgColorEnd;
   html.style.background = `linear-gradient(${dir}, ${start} 0%, ${end} 100%)`;
   html.style.backgroundAttachment = 'fixed';
 }

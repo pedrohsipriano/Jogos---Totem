@@ -136,47 +136,27 @@
     gap: 10px;
     margin: auto;
     width: 80% !important;
-}
-
-.teclado-numerico-grid .teclado-row {
-    gap: 10px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
 }
 
 .teclado-numerico-grid .teclado-key {
-    flex: 1 !important;
-    height: 80px;
-    min-width: 30px;
-    border-radius: 8px;
-    background: transparent;
-    color: #fff;
-    font-size: 50px;
-    font-weight: 600;
-    cursor: pointer;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    transition: all 0.65s ease;
-    user-select: none;
-    -webkit-user-select: none;
-}
-
-.teclado-numerico-grid .teclado-key:hover,
-.teclado-numerico-grid .teclado-key:focus {
-    background: transparent !important;
-    border-color: transparent !important;
-    box-shadow: none !important;
-    outline: none !important;
+    height: 72px;
+    font-size: 28px;
+    font-weight: 400;
+    border-radius: 12px;
 }
 
 .teclado-numerico-grid .teclado-key:active,
 .teclado-numerico-grid .teclado-key.is-pressed {
     transition: none !important;
     transform: scale(0.95);
-    background: radial-gradient(circle, rgba(246, 0, 133, 0.65) 0%, rgba(246, 0, 133, 0.2) 8%, transparent 50%) !important;
+    background: rgba(255, 255, 255, 0.2) !important;
     border-color: transparent !important;
     box-shadow: none !important;
     outline: none !important;
-    text-shadow: 0 0 10px #F60085, 0 0 20px #F60085, 0 0 40px #F60085 !important;
+    text-shadow: 0 0 10px #ffffff, 0 0 20px #ffffff !important;
 }
 
 .teclado-numerico-grid .teclado-key.key-num {

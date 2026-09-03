@@ -27,16 +27,28 @@ export const getAdminPassword   = ()     => localStorage.getItem(ADMIN_PASS_KEY)
 const REAL_PASS_KEY = 'totem_real_admin_pass';
 
 export async function hasAdminPassword() {
-  return !!localStorage.getItem(REAL_PASS_KEY);
+  const pass = localStorage.getItem(REAL_PASS_KEY);
+  return typeof pass === 'string' && pass.trim().length > 0;
 }
 
 export async function registerAdminPassword(pass) {
-  localStorage.setItem(REAL_PASS_KEY, pass);
+  if (!pass || !pass.trim()) {
+    localStorage.removeItem(REAL_PASS_KEY);
+    clearAdminPassword();
+  } else {
+    localStorage.setItem(REAL_PASS_KEY, pass.trim());
+    setAdminPassword(pass.trim());
+  }
+}
+
+export async function removeAdminPassword() {
+  localStorage.removeItem(REAL_PASS_KEY);
+  clearAdminPassword();
 }
 
 export async function verifyAdminPassword(pass) {
   const realPass = localStorage.getItem(REAL_PASS_KEY);
-  if (!realPass) return false;
+  if (!realPass || !realPass.trim()) return true;
   return pass === realPass;
 }
 

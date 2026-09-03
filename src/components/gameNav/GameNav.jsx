@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from "react";
-import { verifyAdminPassword, setAdminPassword } from "../../lib/appDatabase";
+import { verifyAdminPassword, setAdminPassword, hasAdminPassword } from "../../lib/appDatabase";
 import "./gameNav.style.css";
 
 export function GameNav({
@@ -26,7 +26,14 @@ export function GameNav({
     }
   };
 
-  const promptAndAuthorize = (mensagem, onSuccess) => {
+  const promptAndAuthorize = async (mensagem, onSuccess) => {
+    const hasPass = await hasAdminPassword();
+    if (!hasPass) {
+      blurActiveElement();
+      setOpen(false);
+      onSuccess?.();
+      return;
+    }
     blurActiveElement();
     setPromptPassword("");
     setPromptConfig({ mensagem, onSuccess });
