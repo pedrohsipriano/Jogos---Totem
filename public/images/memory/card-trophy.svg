@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
+  <defs>
+    <linearGradient id="bg-trophy" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#451a03"/>
+      <stop offset="100%" stop-color="#78350f"/>
+    </linearGradient>
+    <linearGradient id="gold" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#fef08a"/>
+      <stop offset="50%" stop-color="#f59e0b"/>
+      <stop offset="100%" stop-color="#b45309"/>
+    </linearGradient>
+    <filter id="shadow-trophy" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="8" stdDeviation="8" flood-color="#000000" flood-opacity="0.5"/>
+    </filter>
+  </defs>
+  <rect width="200" height="200" rx="28" fill="url(#bg-trophy)"/>
+  <rect x="2" y="2" width="196" height="196" rx="26" fill="none" stroke="rgba(255,255,255,0.15)" stroke-width="2"/>
+  
+  <g filter="url(#shadow-trophy)">
+    <!-- Cup Body -->
+    <path d="M68 55 L132 55 C132 85, 122 105, 100 108 C78 105, 68 85, 68 55 Z" fill="url(#gold)"/>
+    <!-- Handles -->
+    <path d="M68 62 C50 62, 46 88, 66 94 C67 86, 68 76, 68 62 Z" fill="url(#gold)"/>
+    <path d="M132 62 C150 62, 154 88, 134 94 C133 86, 132 76, 132 62 Z" fill="url(#gold)"/>
+    <!-- Stem -->
+    <path d="M94 108 L106 108 L108 128 L92 128 Z" fill="url(#gold)"/>
+    <!-- Base -->
+    <rect x="75" y="128" width="50" height="18" rx="4" fill="url(#gold)"/>
+    <!-- Star on Cup -->
+    <polygon points="100,68 103,77 112,77 105,82 108,91 100,86 92,91 95,82 88,77 97,77" fill="#ffffff" opacity="0.9"/>
+  </g>
+</svg>

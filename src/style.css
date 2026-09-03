@@ -71,7 +71,7 @@ body {
     width: 100%;
     min-height: 100vh;
     text-align: center;
-    padding: clamp(12px, 3vw, 60px) clamp(12px, 4vw, 80px) 40px;
+    padding: calc(clamp(12px, 3vw, 60px) + 32px) clamp(12px, 4vw, 80px) calc(40px + 36px);
 }
 
 /* Contêiner flexível para caixas de resultado e feedback */
@@ -120,29 +120,89 @@ span {
     color: var(--muted);
 }
 
-/* Efeito tátil (feedback de clique) ao pressionar o botão */
+/* Feedback e estilo global para botões */
+button {
+    font-family: inherit;
+    cursor: pointer;
+    box-sizing: border-box;
+}
+
 button:active {
     transform: scale(0.98);
 }
 
-/* Estado desativado para botões (bloqueio de interação) */
 button:disabled {
-    opacity: 0.4;
+    opacity: 0.45;
     cursor: not-allowed;
 }
 
-/* Botão com estilo primário (Preto e Branco) */
+/* Botão com estilo primário (Destaque Branco/Alto Contraste) */
 .primary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 10px 20px;
+    border-radius: 10px;
     background: #ffffff;
     color: #000000;
     font-weight: 600;
+    font-size: 14px;
+    border: 1.5px solid #ffffff;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.35);
 }
 
-/* Botão fantasma (fundo transparente com borda discreta) */
+.primary:hover:not(:disabled) {
+    background: #e4e4e7;
+    border-color: #e4e4e7;
+    box-shadow: 0 6px 18px rgba(255, 255, 255, 0.25);
+    transform: translateY(-1px);
+}
+
+/* Botão fantasma (fundo translúcido com borda elegante) */
 .ghost {
-    background: transparent;
-    color: var(--text);
-    border: 1px solid #1f2937;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 9px 18px;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.08);
+    color: #ffffff;
+    border: 1.5px solid rgba(255, 255, 255, 0.22);
+    font-weight: 600;
+    font-size: 13px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+.ghost:hover:not(:disabled) {
+    background: #ffffff;
+    color: #000000;
+    border-color: #ffffff;
+    box-shadow: 0 4px 16px rgba(255, 255, 255, 0.3);
+    transform: translateY(-1px);
+}
+
+/* Botão de ação perigosa / remoção */
+.ghost.btn-danger,
+.ghost.danger,
+.btn-danger {
+    background: rgba(239, 68, 68, 0.15) !important;
+    border: 1.5px solid rgba(239, 68, 68, 0.4) !important;
+    color: #f87171 !important;
+}
+
+.ghost.btn-danger:hover:not(:disabled),
+.ghost.danger:hover:not(:disabled),
+.btn-danger:hover:not(:disabled) {
+    background: #ef4444 !important;
+    border-color: #ef4444 !important;
+    color: #ffffff !important;
+    box-shadow: 0 4px 16px rgba(239, 68, 68, 0.4) !important;
 }
 
 /* Cabeçalho do painel alinhando título e ações/pílulas */
@@ -635,22 +695,8 @@ button:disabled {
     }
 }
 
-/* Tema da Mulher para a página de Cadastro */
 .cadastro-page {
     position: relative;
-}
-
-.cadastro-page.mulher-theme::before {
-    content: "";
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    z-index: -1;
-    pointer-events: none;
-    background: url(/images/bg-mulher.png) center / cover no-repeat, linear-gradient(0deg, #00112A 0%, #00112A 100%);
-    opacity: 0.5;
 }
 
 /* ── Tela de Bloqueio (LockScreen) ────────────────────────────────────────── */
@@ -969,4 +1015,86 @@ button:disabled {
     :root {
         --font-size-base: 20px;
     }
+}
+
+/* ── Cabeçalho e Rodapé Globais do Sistema (Colados nas Bordas) ──── */
+.system-global-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    margin: 0 !important;
+    border-radius: 0 !important;
+    border-top: none !important;
+    border-left: none !important;
+    border-right: none !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 6px 16px;
+    height: 30px;
+    min-height: 30px;
+    font-size: 12px;
+    letter-spacing: 0.5px;
+    color: rgba(255, 255, 255, 0.75);
+    background: rgba(0, 0, 0, 0.75);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    box-sizing: border-box;
+    user-select: none;
+    -webkit-user-select: none;
+    z-index: 1000;
+}
+
+.system-global-header strong,
+.system-global-footer strong {
+    color: #ffffff;
+    font-weight: 600;
+}
+
+.system-global-header a,
+.system-global-footer a {
+    color: #ffffff;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    transition: opacity 0.2s ease;
+}
+
+.system-global-header a:hover,
+.system-global-footer a:hover {
+    opacity: 0.8;
+}
+
+.system-global-footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    margin: 0 !important;
+    border-radius: 0 !important;
+    border-bottom: none !important;
+    border-left: none !important;
+    border-right: none !important;
+    border-top: 1px solid rgba(255, 255, 255, 0.12);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 6px 16px;
+    height: 32px;
+    min-height: 32px;
+    font-size: 12px;
+    letter-spacing: 0.5px;
+    color: rgba(255, 255, 255, 0.75);
+    background: rgba(0, 0, 0, 0.75);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    box-sizing: border-box;
+    user-select: none;
+    -webkit-user-select: none;
+    z-index: 1000;
 }

@@ -795,7 +795,7 @@ export default function useLabirintoLogic({
     const { words = [] } = data;
     const rawGridSize = config.gridSize ?? DEFAULT_GRID_SIZE;
     const gridSize = rawGridSize <= 8 ? 8 : 10; // Clamp de segurança: apenas 8 ou 10
-    const { timeLimitSeconds = 120 } = config;
+    const { timeLimitSeconds = 30 } = config;
     const pointsToWin = Math.max(0, Number(config.pointsToWin ?? 50));
     const labirintoWordLength = config.labirintoWordLength ?? null;
     const labirintoWordLengthIsMin = !!config.labirintoWordLengthIsMin;

@@ -29,7 +29,7 @@ export default function useWordSearchLogic({
 }) {
     // Desestrutura os dados e configurações com valores de fallback padrão
     const { words = [] } = data;
-    const timeLimitSeconds = settings.timeLimitSeconds ?? 120;
+    const timeLimitSeconds = settings.timeLimitSeconds ?? 30;
     const gridSize = settings.gridSize ?? null;
     const maxAttempts = settings.maxAttempts ?? 50;
     const maxWords = settings.wordLimit ?? settings.maxWords ?? null;

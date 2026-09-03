@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { verifyAdminPassword, setAdminPassword, hasAdminPassword, registerAdminPassword } from "../../lib/appDatabase";
+import { SystemHeader, SystemFooter } from "../common/SystemBanner.jsx";
 
 export function LockScreen({ onUnlock }) {
   const [password, setPassword] = useState("");
@@ -45,6 +46,7 @@ export function LockScreen({ onUnlock }) {
 
   return (
     <div className="lock-screen-overlay">
+      <SystemHeader />
       <div className="lock-screen-card">
         <div className="lock-screen-header">
           <div className="lock-icon-container">
@@ -81,6 +83,7 @@ export function LockScreen({ onUnlock }) {
           </button>
         </form>
       </div>
+      <SystemFooter />
     </div>
   );
 }

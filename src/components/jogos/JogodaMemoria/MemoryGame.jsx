@@ -8,6 +8,7 @@ import { HeaderJogo } from "../../headerJogo/HeaderJogo";
 import "./memoryGame.style.css";
 import { wholeSeconds } from "../../../utils/time";
 import { Dialog } from "../../Dialog/Dialog";
+import { getMemoryCardBack } from "../../../utils/themeManager";
 
 /**
  * MemoryGame — Componente de View puro.
@@ -52,6 +53,8 @@ export default function MemoryGame({
     onGameOver,
   });
 
+  const customCardBack = getMemoryCardBack();
+
   return (
     <div className="memory-game panel">
       {/* Cabeçalho: título, subtítulo, tempo e pontos */}
@@ -76,6 +79,16 @@ export default function MemoryGame({
                 key={card.id}
                 // classes condicionais para estilos (virada / combinada)
                 className={`card ${show ? "card-flipped" : ""} ${card.matched ? "card-matched" : ""}`}
+                style={
+                  !show && customCardBack
+                    ? {
+                        backgroundImage: `url("${customCardBack}")`,
+                        backgroundSize: "cover",
+                        backgroundPosition: "center",
+                        backgroundRepeat: "no-repeat",
+                      }
+                    : {}
+                }
                 onClick={() => handleFlip(card.id)}
                 aria-label={`Carta ${card.label}`}
               >

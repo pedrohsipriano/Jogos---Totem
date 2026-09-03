@@ -89,14 +89,22 @@
     gap: 0.625rem;
     align-self: stretch;
     border-radius: 1.875rem;
-    background: var(--accent, #ffffff);
+    background: var(--challenge-btn-bg, var(--accent, #ffffff));
+    border: 2px solid var(--challenge-btn-bg, var(--accent, #ffffff));
     box-shadow: 0 0 21.8px 0 rgba(255, 255, 255, 0.25);
     cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.botaoComecarDesafio:hover:not(:disabled) {
+    filter: brightness(1.1);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 28px rgba(255, 255, 255, 0.35);
 }
 
 .textoBotaoComecarDesafio {
-    color: #000000;
-    font-family: Grift;
+    color: var(--challenge-btn-text, #000000);
+    font-family: Grift, sans-serif;
     font-size: 3.75rem;
     font-style: normal;
     font-weight: 700;

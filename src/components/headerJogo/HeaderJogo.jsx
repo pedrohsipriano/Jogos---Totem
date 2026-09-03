@@ -23,8 +23,6 @@ export function HeaderJogo({
     else timeDisplay = "00";
   }
 
-  const isMulher = (title && title.toLowerCase().includes("mulher")) || gameCode === "wordsearch_mulher" || gameCode === "quiz_mulher";
-
   return (
     <>
       <GameNav
@@ -32,8 +30,7 @@ export function HeaderJogo({
         onBackToMenu={onBackToMenu}
         onBackToCadastro={onBackToCadastro}
       />
-      <section className={`headerJogoSection ${isMulher ? "no-margin" : ""}`}>
-        {isMulher && <img src="/images/CDL Mulher - Branco.png" alt="Logo CDL Mulher" className="header-logo" />}
+      <section className="headerJogoSection">
         <Titulo
           texto={title}
           classe="TituloJogo"

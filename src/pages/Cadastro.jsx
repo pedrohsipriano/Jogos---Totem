@@ -99,7 +99,7 @@ export function Cadastro({
   };
 
   return (
-    <div className={`cadastro-page ${selectedGame?.code === "wordsearch_mulher" || selectedGame?.code === "quiz_mulher" ? "mulher-theme" : ""}`}>
+    <div className="cadastro-page">
       <GameNav
         currentScreen="cadastro"
         onBackToMenu={onBackToMenu}

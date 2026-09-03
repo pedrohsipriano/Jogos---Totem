@@ -1,40 +1,59 @@
 .CardMenu {
     display: flex;
-    width: 28.875rem;
-    height: 13rem;
-    padding: 1.25rem 1.875rem;
+    width: 100%;
+    min-height: 11.5rem;
+    padding: 1.25rem 1.75rem;
+    box-sizing: border-box;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-between;
     align-items: flex-start;
-    border-radius: 1.875rem;
-    gap: 1.375rem;
-    border: 2px solid var(--Color-5, #ffffff);
-    background: linear-gradient(180deg, var(--Color, #000000) 0%, rgba(255, 255, 255, 0.08) 100%);
-    box-shadow: 0 0 14.3px 0 rgba(255, 255, 255, 0.15);
+    border-radius: 1.5rem;
+    gap: 1.25rem;
+    border: 2px solid var(--card-border, #ffffff);
+    background: var(--card-bg, #111111);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5), 0 0 10px rgba(255, 255, 255, 0.1);
+    transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.CardMenu:hover {
+    transform: translateY(-2px);
+    border-color: var(--accent, #ffffff);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6), 0 0 16px rgba(255, 255, 255, 0.2);
 }
 
 .CardMenuAdm {
-    height: 38rem;
+    width: 100%;
+    min-height: 28rem;
+    height: auto;
+    padding: 2rem 2.25rem;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 1.5rem;
 }
 
 .CardMenu-section {
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+    width: 100%;
+    max-width: 960px;
+    margin: 0 auto 3.5rem auto;
+    padding: 0 1.5rem;
     box-sizing: border-box;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    gap: 26px;
-    margin-bottom: 2rem;
+    justify-content: center;
 }
 
 .TituloCard {
-    color: #FFF;
+    color: var(--card-text, #ffffff);
     text-align: start;
-    font-size: 2.1875rem;
+    font-size: 2rem;
     font-style: normal;
     font-weight: 700;
-    line-height: 108%;
-    /* 2.3625rem */
+    line-height: 115%;
     letter-spacing: -0.02406rem;
+    margin: 0;
 }
 
 .formCardMenu {
@@ -128,14 +147,20 @@
     gap: 0.625rem;
     align-self: stretch;
     border-radius: 0.8125rem;
-    border: 1px solid #ffffff;
-    background: #ffffff;
+    border: 1px solid var(--card-btn-bg, #ffffff);
+    background: var(--card-btn-bg, #ffffff);
     box-shadow: 0 0 20px 0 rgba(255, 255, 255, 0.2);
     cursor: pointer;
+    transition: filter 0.2s ease, transform 0.15s ease;
+}
+
+.buttonComeceAJogar:hover {
+    filter: brightness(1.1);
+    transform: translateY(-1px);
 }
 
 .textoComeceAJogar {
-    color: #000000;
+    color: var(--card-btn-text, #000000);
     text-align: center;
     font-size: 1.875rem;
     font-style: normal;

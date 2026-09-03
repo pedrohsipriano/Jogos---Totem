@@ -54,7 +54,7 @@ export function buildDefaultGameConfig(gameCode = "") {
     const base = { ...DEFAULT_GAME_CONFIG };
 
     if (code === "labirinto") base.gridSize = 8;
-    if (code === "wordsearch" || code === "wordsearch_mulher") base.gridSize = 10;
+    if (code === "wordsearch") base.gridSize = 10;
     if (code === "whac") base.gridSize = 12;
 
     return base;

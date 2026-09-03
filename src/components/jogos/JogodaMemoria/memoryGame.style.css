@@ -10,17 +10,20 @@
     --mg-grid-gap: var(--grid-gap, 20px);
 }
 
-/* ── Grade de cartas ───────────────────────────────────────────── */
+/* ── Grade de cartas (Sempre 4 colunas fixas) ───────────────────── */
 .memory-grid {
-    display: flex;
-    padding: 50px 0px;
+    display: grid;
+    grid-template-columns: repeat(4, 173px);
     justify-content: center;
     align-items: center;
-    align-content: center;
-    gap: 47px;
-    flex-wrap: wrap;
+    gap: 28px;
+    padding: 35px;
+    margin: 20px auto 0 auto;
+    width: fit-content;
+    max-width: 100%;
+    box-sizing: border-box;
     border-radius: 20px;
-    border: 1px solid var(--Color-5, #F60085);
+    border: 1px solid var(--Color-5, #ffffff);
 }
 
 /* ── Carta base ────────────────────────────────────────────────── */
@@ -30,20 +33,17 @@
     flex-shrink: 0;
     aspect-ratio: 1/1;
     border-radius: 20px;
-    /* public/ é mapeado para / no servidor estático; use /images/Icons-119.png */
-    background: url("/images/Icons-119.png");
+    /* Imagem da parte de trás (verso das cartas): customizável pelo Admin */
+    background-image: var(--memory-card-back, url("/images/memory/card-back-default.svg"));
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
     border: none;
-}
-
-.memory-game .card {
-    width: 173px;
-    height: 173px;
     display: flex;
     align-items: center;
     justify-content: center;
     padding: 0;
     overflow: hidden;
-    border: none;
 }
 
 .memory-game .card-img {

@@ -163,7 +163,7 @@ export default function useCatchGameLogic({
     onScore,
     onGameOver,
 }) {
-    const { timeLimitSeconds = 90, initialFallTimeSeconds = 10 } = settings;
+    const { timeLimitSeconds = 30, initialFallTimeSeconds = 10 } = settings;
     const pointsToWin = Math.max(0, Number(settings.pointsToWin ?? 50));
 
     // Ajuste vertical da cesta em pixels (positivo = sobe)

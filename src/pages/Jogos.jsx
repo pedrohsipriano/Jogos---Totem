@@ -7,8 +7,6 @@ import CatchGame from "../components/jogos/CestaDeItensGame/CatchGame";
 import WhacGame from "../components/jogos/AperteOPasso/WhacGame";
 import WordSearchGame from "../components/jogos/CacaPalavrasGame/WordSearchGame";
 import SoletraGame from "../components/jogos/soletraGame/SoletraGame";
-import WordSearchGameMulher from "../components/jogos/CacaPalavrasGameMulher/WordSearchGameMulher";
-import QuizGameMulher from "../components/jogos/quizGameMulher/QuizGameMulher";
 import { HeaderJogo } from "../components/headerJogo/HeaderJogo";
 import { getGameContent, getRanking, saveGameScore, getGameRulesVersion } from "../lib/appDatabase";
 import { buildGameConfig } from "../utils/gameConfig";
@@ -42,8 +40,6 @@ export function Jogos({
           case "catch": content = (await import('../data/catch.json')).default; break;
           case "whac": content = (await import('../data/whac.json')).default; break;
           case "wordsearch": content = (await import('../data/wordsearch.json')).default; break;
-          case "wordsearch_mulher": content = (await import('../data/wordsearch_mulher.json')).default; break;
-          case "quiz_mulher": content = (await import('../data/quiz_mulher.json')).default; break;
           case "soletra": content = (await import('../data/soletra.json')).default; break;
           default:
             content = await getGameContent(gameCode).catch((e) => {
@@ -152,21 +148,6 @@ export function Jogos({
           raw: rawData,
         };
       },
-      wordsearch_mulher: () => {
-        const rawWords = Array.isArray(rawData?.words) ? rawData.words : (Array.isArray(rawData) ? rawData : []);
-        return {
-          words: rawWords.map((w) => (typeof w === "string" ? w : w.word)),
-          raw: rawData,
-        };
-      },
-      quiz_mulher: () => ({
-        questions: Array.isArray(rawData?.quiz)
-          ? rawData.quiz
-          : Array.isArray(rawData?.questions)
-            ? rawData.questions
-            : Array.isArray(rawData) ? rawData : [],
-        raw: rawData,
-      }),
       soletra: () => ({
         roundData: rawData,
         raw: rawData,
@@ -310,19 +291,6 @@ export function Jogos({
       case "wordsearch":
         return (
           <WordSearchGame data={{ words: data.words || [] }} {...commonProps} />
-        );
-
-      case "wordsearch_mulher":
-        return (
-          <WordSearchGameMulher data={{ words: data.words || [] }} {...commonProps} />
-        );
-
-      case "quiz_mulher":
-        return (
-          <QuizGameMulher
-            data={{ questions: data.questions || [] }}
-            {...commonProps}
-          />
         );
 
       case "soletra":

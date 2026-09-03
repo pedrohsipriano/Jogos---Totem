@@ -161,17 +161,13 @@ export function CardForm({
           return;
         }
 
-        if (res.exists) {
-          const hasValidName =
-            !!res.name &&
-            String(res.name).trim() !== "" &&
-            String(res.name).trim().toLowerCase() !== "jogador";
-          setIsKnownPhone(hasValidName);
-          setName(res.name || "");
+        if (res && res.exists) {
+          setIsKnownPhone(true);
+          setName(res.name || "Jogador");
         } else {
           setIsKnownPhone(false);
           setName("");
-          // Foca automaticamente no campo de Nome
+          // Foca automaticamente no campo de Nome se for novo cadastro
           setTimeout(() => {
             const nomeInput = document.getElementById("nomeJogador");
             if (nomeInput) nomeInput.focus();
@@ -198,8 +194,8 @@ export function CardForm({
 
   const canPlay =
     !eventClosedMessage &&
-    (phone || "").trim() !== "" &&
-    (name || "").trim() !== "";
+    normalizePhone(phone).length === 11 &&
+    (isKnownPhone || (name || "").trim() !== "");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -391,8 +387,9 @@ export function CardForm({
               animation: "none",
             }}
           >
-            <p>
-              ⚠️ <strong>Atenção:</strong> Você já jogou este jogo!
+            <p style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#f59e0b" strokeWidth="2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+              <strong>Atenção:</strong> Você já jogou este jogo!
             </p>
             <p>O limite é de apenas 1 tentativa por pessoa.</p>
             <button type="button" onClick={() => setShowLimitAlert(false)}>

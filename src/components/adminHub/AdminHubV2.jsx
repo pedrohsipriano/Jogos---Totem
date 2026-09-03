@@ -14,6 +14,11 @@ import { AdminSecurity } from "./AdminSecurity.jsx";
 import { CardForm } from "../cardForm/cardForm";
 import GameNav from "../gameNav/GameNav";
 import { CardMenu } from "../cardMenu/CardMenu";
+import {
+  getMemoryCardBack,
+  setMemoryCardBack,
+  removeMemoryCardBack,
+} from "../../utils/themeManager";
 
 /**
  * Ordem de exibição dos recursos na interface administrativa.
@@ -1385,6 +1390,34 @@ function WordsGameTable({
   onDeleteSelected,
 }) {
   const [search, setSearch] = useState("");
+  const [memorySubTab, setMemorySubTab] = useState("frente"); // "frente" | "verso"
+  const [cardBack, setCardBack] = useState(() => getMemoryCardBack());
+  const [backStatus, setBackStatus] = useState("");
+
+  const handleCardBackUpload = (e) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+    if (file.size > 3 * 1024 * 1024) {
+      alert("A imagem da parte de trás deve ter no máximo 3 MB.");
+      return;
+    }
+    const reader = new FileReader();
+    reader.onload = () => {
+      const dataUrl = reader.result;
+      setCardBack(dataUrl);
+      setMemoryCardBack(dataUrl);
+      setBackStatus("Imagem da parte de trás atualizada com sucesso!");
+      setTimeout(() => setBackStatus(""), 4000);
+    };
+    reader.readAsDataURL(file);
+  };
+
+  const handleCardBackRemove = () => {
+    setCardBack(null);
+    removeMemoryCardBack();
+    setBackStatus("Verso padrão original restaurado.");
+    setTimeout(() => setBackStatus(""), 4000);
+  };
 
   const searchLower = search.trim().toLowerCase();
   const visibleWords = searchLower
@@ -1411,165 +1444,288 @@ function WordsGameTable({
     <section className="admin-section panel">
       <div className="panel-head">
         <div>
-          <p className="eyebrow">Palavras</p>
+          <p className="eyebrow">{isMemoryGame ? "Jogo da Memória" : "Palavras"}</p>
           <h2>{gameLabel}</h2>
         </div>
-        <div className="admin-section-actions">
-          <span className="pill">{visibleWords.length} visíveis</span>
-          <span className="pill">{groupSelectedIds.length} selecionados</span>
-          <button
-            className="ghost"
-            type="button"
-            onClick={() => onSelectAllVisible("words", visibleWords)}
-          >
-            {allVisibleSelected ? "Desmarcar visíveis" : "Selecionar visíveis"}
-          </button>
-          <button
-            className="ghost"
-            type="button"
-            onClick={() => onCreate("words", { gameId: Number(gameId) })}
-          >
-            Novo registro
-          </button>
-        </div>
-      </div>
-
-      <div className="admin-filters">
-        <label className="admin-filter admin-filter-wide">
-          <span>Buscar</span>
-          <input
-            type="search"
-            value={search}
-            placeholder="Palavra ou meta"
-            onChange={(event) => setSearch(event.target.value)}
-          />
-        </label>
-      </div>
-
-      {groupSelectedIds.length > 0 && (
-        <div className="admin-selection-bar">
-          <div className="admin-selection-summary">
-            <span>{groupSelectedIds.length} selecionado(s)</span>
-            <div className="admin-selection-chips">
-              {visibleSelected.slice(0, 6).map((row) => (
-                <span className="admin-selection-chip" key={row.id}>
-                  {row.word ?? `#${row.id}`}
-                </span>
-              ))}
-              {visibleSelected.length > 6 && (
-                <span className="admin-selection-chip">
-                  +{visibleSelected.length - 6}
-                </span>
-              )}
-            </div>
+        {(!isMemoryGame || memorySubTab === "frente") && (
+          <div className="admin-section-actions">
+            <span className="pill">{visibleWords.length} visíveis</span>
+            <span className="pill">{groupSelectedIds.length} selecionados</span>
+            <button
+              className="ghost"
+              type="button"
+              onClick={() => onSelectAllVisible("words", visibleWords)}
+            >
+              {allVisibleSelected ? "Desmarcar visíveis" : "Selecionar visíveis"}
+            </button>
+            <button
+              className="ghost"
+              type="button"
+              onClick={() => onCreate("words", { gameId: Number(gameId) })}
+            >
+              Novo registro
+            </button>
           </div>
+        )}
+      </div>
+
+      {/* Navegação por abas exclusiva para o Jogo da Memória */}
+      {isMemoryGame && (
+        <div style={{ display: "flex", gap: "10px", margin: "14px 0 20px 0", borderBottom: "1px solid rgba(255, 255, 255, 0.1)", paddingBottom: "14px" }}>
           <button
-            className="ghost"
             type="button"
-            onClick={() => onClearSelection("words")}
+            className={memorySubTab === "frente" ? "primary" : "ghost"}
+            onClick={() => setMemorySubTab("frente")}
+            style={{ display: "flex", alignItems: "center", gap: "8px" }}
           >
-            Limpar seleção
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+            Fotos das Cartas (Frente)
           </button>
           <button
-            className="ghost danger"
             type="button"
-            onClick={() => onDeleteSelected("words", groupSelectedIds)}
+            className={memorySubTab === "verso" ? "primary" : "ghost"}
+            onClick={() => setMemorySubTab("verso")}
+            style={{ display: "flex", alignItems: "center", gap: "8px" }}
           >
-            Excluir selecionados
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+            Parte de Trás das Fotos (Verso)
           </button>
         </div>
       )}
 
-      {visibleWords.length === 0 ? (
-        <p className="muted">Nenhum registro encontrado.</p>
-      ) : (
-        <div className="admin-table-wrap">
-          <table className="admin-table">
-            <thead>
-              <tr>
-                <th className="admin-select-head">Selecionar</th>
-                <th>ID</th>
-                {!isMemoryGame && <th>Palavra</th>}
-                {isMemoryGame && <th>Imagem</th>}
-                <th className="admin-actions-head">Ações</th>
-              </tr>
-            </thead>
-            <tbody>
-              {visibleWords.map((row) => {
-                const isSelected = selectedIds.includes(String(row.id));
-                return (
-                  <tr key={row.id} className={isSelected ? "is-selected" : ""}>
-                    <td className="admin-select-cell">
-                      <label className="admin-checkbox-wrap">
-                        <input
-                          type="checkbox"
-                          className="admin-select-checkbox"
-                          checked={isSelected}
-                          onChange={() => onToggleSelection("words", row.id)}
-                          aria-label={`Selecionar registro ${row.id}`}
-                        />
-                        <span
-                          className="admin-checkbox-box"
-                          aria-hidden="true"
-                        />
-                      </label>
-                    </td>
-                    <td>{row.id}</td>
-                    {!isMemoryGame && <td>{row.word ?? "-"}</td>}
-                    {isMemoryGame && (
-                      <td>
-                        {row.imageUrl ? (
-                          <img
-                            src={
-                              row.imageUrl?.startsWith("data:") ||
-                              row.imageUrl?.startsWith("http")
-                                ? row.imageUrl
-                                : row.imageUrl?.length > 100
-                                  ? `data:image/png;base64,${row.imageUrl}`
-                                  : `${import.meta.env.VITE_DB_API_URL || ""}${row.imageUrl?.startsWith("/") ? "" : "/"}${row.imageUrl}`
-                            }
-                            alt="preview"
-                            style={{
-                              width: "40px",
-                              height: "40px",
-                              objectFit: "contain",
-                            }}
-                          />
-                        ) : (
-                          "-"
-                        )}
-                      </td>
-                    )}
-                    <td className="admin-actions-cell">
-                      <div className="admin-row-actions">
-                        <button
-                          className="ghost"
-                          type="button"
-                          onClick={(event) => {
-                            event.stopPropagation();
-                            onEdit("words", row);
-                          }}
-                        >
-                          Editar
-                        </button>
-                        <button
-                          className="ghost danger"
-                          type="button"
-                          onClick={(event) => {
-                            event.stopPropagation();
-                            onDelete("words", row);
-                          }}
-                        >
-                          Excluir
-                        </button>
-                      </div>
-                    </td>
-                  </tr>
-                );
-              })}
-            </tbody>
-          </table>
+      {isMemoryGame && memorySubTab === "verso" ? (
+        /* ABA DE PARTE DE TRÁS DAS FOTOS (VERSO) */
+        <div style={{ display: "flex", flexDirection: "column", gap: "20px", padding: "10px 0" }}>
+          <div>
+            <h3 style={{ margin: "0 0 8px 0", color: "#f8fafc", fontSize: "18px" }}>
+              Personalização da Parte de Trás das Fotos (Verso)
+            </h3>
+            <p style={{ margin: 0, color: "#94a3b8", fontSize: "14px" }}>
+              Adicione ou altere a estampa que aparece no verso de todas as cartas quando viradas para baixo no Jogo da Memória.
+            </p>
+          </div>
+
+          <div style={{
+            display: "flex",
+            flexWrap: "wrap",
+            gap: "30px",
+            alignItems: "center",
+            background: "rgba(0, 0, 0, 0.35)",
+            padding: "24px",
+            borderRadius: "16px",
+            border: "1px dashed rgba(255, 255, 255, 0.2)",
+          }}>
+            {/* Visualizador da Carta com o Verso */}
+            <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "10px" }}>
+              <div
+                style={{
+                  width: "173px",
+                  height: "173px",
+                  borderRadius: "20px",
+                  backgroundImage: cardBack ? `url("${cardBack}")` : 'url("/images/memory/card-back-default.svg")',
+                  backgroundSize: "cover",
+                  backgroundPosition: "center",
+                  backgroundRepeat: "no-repeat",
+                  boxShadow: "0 8px 24px rgba(0, 0, 0, 0.6)",
+                  border: "2px solid rgba(255, 255, 255, 0.25)",
+                }}
+              />
+              <span style={{ fontSize: "13px", color: "#cbd5e1" }}>
+                {cardBack ? "Verso Personalizado Ativo" : "Verso Padrão Original"}
+              </span>
+            </div>
+
+            {/* Controles de Upload e Remoção */}
+            <div style={{ display: "flex", flexDirection: "column", gap: "14px", flex: "1", minWidth: "260px" }}>
+              <label
+                className="primary"
+                style={{
+                  display: "inline-flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  gap: "10px",
+                  cursor: "pointer",
+                  padding: "12px 20px",
+                  borderRadius: "10px",
+                  fontWeight: "600",
+                  width: "fit-content",
+                }}
+              >
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+                Carregar Imagem da Parte de Trás
+                <input
+                  type="file"
+                  accept="image/png, image/jpeg, image/webp, image/svg+xml"
+                  onChange={handleCardBackUpload}
+                  style={{ display: "none" }}
+                />
+              </label>
+
+              {cardBack && (
+                <button
+                  type="button"
+                  className="ghost btn-danger"
+                  onClick={handleCardBackRemove}
+                  style={{ width: "fit-content", display: "inline-flex", alignItems: "center", gap: "8px" }}
+                >
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/><line x1="10" y1="11" x2="10" y2="17"/><line x1="14" y1="11" x2="14" y2="17"/></svg>
+                  Restaurar Verso Padrão
+                </button>
+              )}
+
+              <p style={{ margin: 0, color: "#64748b", fontSize: "13px", lineHeight: "1.4" }}>
+                Formato recomendado: Imagem quadrada (ex: 500x500 px), formato PNG, JPG ou WebP de até 3 MB.
+              </p>
+
+              {backStatus && (
+                <div style={{ color: "#38bdf8", fontWeight: "600", fontSize: "14px" }}>
+                  {backStatus}
+                </div>
+              )}
+            </div>
+          </div>
         </div>
+      ) : (
+        /* ABA DE FOTOS DA FRENTE (CARTAS) */
+        <>
+          <div className="admin-filters">
+            <label className="admin-filter admin-filter-wide">
+              <span>Buscar</span>
+              <input
+                type="search"
+                value={search}
+                placeholder="Palavra ou meta"
+                onChange={(event) => setSearch(event.target.value)}
+              />
+            </label>
+          </div>
+
+          {groupSelectedIds.length > 0 && (
+            <div className="admin-selection-bar">
+              <div className="admin-selection-summary">
+                <span>{groupSelectedIds.length} selecionado(s)</span>
+                <div className="admin-selection-chips">
+                  {visibleSelected.slice(0, 6).map((row) => (
+                    <span className="admin-selection-chip" key={row.id}>
+                      {row.word ?? `#${row.id}`}
+                    </span>
+                  ))}
+                  {visibleSelected.length > 6 && (
+                    <span className="admin-selection-chip">
+                      +{visibleSelected.length - 6}
+                    </span>
+                  )}
+                </div>
+              </div>
+              <button
+                className="ghost"
+                type="button"
+                onClick={() => onClearSelection("words")}
+              >
+                Limpar seleção
+              </button>
+              <button
+                className="ghost danger"
+                type="button"
+                onClick={() => onDeleteSelected("words", groupSelectedIds)}
+              >
+                Excluir selecionados
+              </button>
+            </div>
+          )}
+
+          {visibleWords.length === 0 ? (
+            <p className="muted">Nenhum registro encontrado.</p>
+          ) : (
+            <div className="admin-table-wrap">
+              <table className="admin-table">
+                <thead>
+                  <tr>
+                    <th className="admin-select-head">Selecionar</th>
+                    <th>ID</th>
+                    {!isMemoryGame && <th>Palavra</th>}
+                    {isMemoryGame && <th>Imagem</th>}
+                    <th className="admin-actions-head">Ações</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {visibleWords.map((row) => {
+                    const isSelected = selectedIds.includes(String(row.id));
+                    return (
+                      <tr key={row.id} className={isSelected ? "is-selected" : ""}>
+                        <td className="admin-select-cell">
+                          <label className="admin-checkbox-wrap">
+                            <input
+                              type="checkbox"
+                              className="admin-select-checkbox"
+                              checked={isSelected}
+                              onChange={() => onToggleSelection("words", row.id)}
+                              aria-label={`Selecionar registro ${row.id}`}
+                            />
+                            <span
+                              className="admin-checkbox-box"
+                              aria-hidden="true"
+                            />
+                          </label>
+                        </td>
+                        <td>{row.id}</td>
+                        {!isMemoryGame && <td>{row.word ?? "-"}</td>}
+                        {isMemoryGame && (
+                          <td>
+                            {row.imageUrl ? (
+                              <img
+                                src={
+                                  row.imageUrl?.startsWith("data:") ||
+                                  row.imageUrl?.startsWith("http")
+                                    ? row.imageUrl
+                                    : row.imageUrl?.length > 100
+                                      ? `data:image/png;base64,${row.imageUrl}`
+                                      : `${import.meta.env.VITE_DB_API_URL || ""}${row.imageUrl?.startsWith("/") ? "" : "/"}${row.imageUrl}`
+                                }
+                                alt="preview"
+                                style={{
+                                  width: "40px",
+                                  height: "40px",
+                                  objectFit: "contain",
+                                }}
+                              />
+                            ) : (
+                              "-"
+                            )}
+                          </td>
+                        )}
+                        <td className="admin-actions-cell">
+                          <div className="admin-row-actions">
+                            <button
+                              className="ghost"
+                              type="button"
+                              onClick={(event) => {
+                                event.stopPropagation();
+                                onEdit("words", row);
+                              }}
+                            >
+                              Editar
+                            </button>
+                            <button
+                              className="ghost danger"
+                              type="button"
+                              onClick={(event) => {
+                                event.stopPropagation();
+                                onDelete("words", row);
+                              }}
+                            >
+                              Excluir
+                            </button>
+                          </div>
+                        </td>
+                      </tr>
+                    );
+                  })}
+                </tbody>
+              </table>
+            </div>
+          )}
+        </>
       )}
     </section>
   );
@@ -2468,6 +2624,7 @@ export default function AdminHub({ onBackToMenu, onBackToCadastro, onOpenDashboa
               </div>
               <div className="admin-section-actions">
                 <button className="ghost" type="button" onClick={loadRecords}>
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/></svg>
                   Recarregar
                 </button>
                 <button
@@ -2476,6 +2633,7 @@ export default function AdminHub({ onBackToMenu, onBackToCadastro, onOpenDashboa
                   onClick={async () => await resetAllTimeLimits?.()}
                   disabled={!!gameConfigSaving.globalReset}
                 >
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
                   Aplicar padrão 30s
                 </button>
                 <button
@@ -2484,6 +2642,7 @@ export default function AdminHub({ onBackToMenu, onBackToCadastro, onOpenDashboa
                   onClick={async () => await setLimitAllAttempts?.(1)}
                   disabled={!!gameConfigSaving.globalReset}
                 >
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
                   Travar 1 jogada em todos
                 </button>
                 <button
@@ -2492,6 +2651,7 @@ export default function AdminHub({ onBackToMenu, onBackToCadastro, onOpenDashboa
                   onClick={async () => await setLimitAllAttempts?.(0)}
                   disabled={!!gameConfigSaving.globalReset}
                 >
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 9.9-1"/></svg>
                   Liberar jogadas em todos
                 </button>
               </div>
@@ -2501,7 +2661,7 @@ export default function AdminHub({ onBackToMenu, onBackToCadastro, onOpenDashboa
               <p className="admin-error">{gameConfigError}</p>
             )}
 
-            <div className="admin-summary">
+            <div className="admin-game-rules-grid">
               {(records.games ?? []).map((game) => {
                 const defs = getGameConfigDefs(game.code);
                 if (defs.length === 0) return null;
@@ -2585,6 +2745,7 @@ export default function AdminHub({ onBackToMenu, onBackToCadastro, onOpenDashboa
 
       <div className="panel admin-actions">
         <button className="primary" type="button" onClick={loadRecords}>
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/></svg>
           Atualizar registros
         </button>
       </div>

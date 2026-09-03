@@ -132,16 +132,50 @@ node scripts/generate-license.js --id TV-01 --days 30 --fixed
 ## Identidade Visual e Tema Padrão
 
 - O aplicativo opera por padrão com tema minimalista **Preto e Branco puro**, com fundo `#000000`, superfícies em tons neutros escuros (`#111111`) e destaques em branco (`#ffffff`), garantindo alto contraste e elegância em telas de alta resolução.
-- **Painel de Personalização Completo** (no `AdminHub`):
-  - **Logotipo do Totem**: Permite o upload de arquivos de imagem (PNG, JPG, SVG, WebP) para substituir a marca padrão no cabeçalho de todas as telas em tempo real, com opção de restaurar o logotipo original a qualquer momento.
-  - **Cores 1, 2 e 3**:
-    - **Cor 1**: Destaques principais, botões selecionados e ações.
-    - **Cor 2**: Efeitos hover e bordas ativas.
-    - **Cor 3**: Bordas de cards, títulos e linhas divisórias.
-  - **Plano de Fundo Versátil**:
-    - *Cor Sólida*: Seleção livre via paleta ou seletor de cor hexadecimal.
-    - *Gradiente*: Definição de cor inicial, cor final e direção (vertical, horizontal ou diagonal).
-    - *Imagem de Fundo*: Upload direto de imagem para plano de fundo fixo.
+- **Painel de Personalização em Abas** (no `AdminHub`):
+  - **Aba Logotipo**: 
+    - Por padrão, o Totem opera sem nenhum logotipo fixo (a marca original foi removida).
+    - Permite o upload de logotipo personalizado (PNG transparente, SVG, JPG, WebP) com **limite máximo de 2 MB**.
+    - Slider de ajuste de tamanho visual em tempo real (40px a 160px de altura).
+    - Opção de remover a logo a qualquer momento, mantendo o topo limpo.
+  - **Aba Cards, Botões e Ranking**:
+    - *Cards de Jogos*: Fundo, borda, título e cores do botão "Começar a jogar".
+    - *Botão Principal "Começar o desafio"*: Cores de fundo e do texto para o botão de início de jogo.
+    - *Card do Ranking Total*: Cor de fundo e borda do contêiner do ranking.
+    - *Previews ao Vivo*: Visualização em tempo real de cada componente estilizado.
+  - **Aba Teclado Virtual**:
+    - *Fundo e Borda do Teclado*: Cores da caixa flutuante do teclado virtual.
+    - *Números e Teclas*: Cor dos dígitos e letras.
+    - *Destaque de Foco*: Cor de realce do campo focado ("Digitando em: ...").
+    - *Ações (Limpar / Apagar)*: Cores dos botões "Limpar" e "←".
+    - *Preview Interativo ao Vivo*: Simulação gráfica em tempo real do teclado com as cores aplicadas.
+  - **Aba Fim de Jogo (Vitória/Derrota)**:
+    - *Fundo e Borda da Janela*: Cores da moldura e vidro do modal de resultado.
+    - *Título ("Voce venceu!")*: Cor do cabeçalho de vitória.
+    - *Caixas de Pontuação e Tempo*: Cor de fundo e texto das tags de resultado.
+    - *Botão "Voltar ao Cadastro"*: Cores de fundo e texto do botão principal de encerramento da partida.
+    - *Preview Interativo ao Vivo*: Visualização em tempo real da tela final de jogo.
+  - **Aba Plano de Fundo**:
+    - *Cor Sólida*: Seleção livre via paleta ou seletor hexadecimal.
+    - *Gradiente*: Definição de cor inicial, cor final e controle de direção angular.
+    - *Imagem de Fundo*: Upload de imagem com **limite máximo de 5 MB** (dimensão recomendada: 1080x1920 Full HD vertical).
+  - **Aba Cores Principais**:
+    - *Cor 1*: Destaques principais, botões selecionados e ações.
+    - *Cor 2*: Efeitos hover e bordas ativas.
+    - *Cor 3*: Bordas de cards, títulos e linhas divisórias.
+  - **Aba Tipografia**: Escolha da família tipográfica e tamanho base da fonte.
+- **Regras e Tempo Padrão dos Jogos**:
+  - Todos os jogos do sistema foram unificados para operar no **tempo padrão de 30 segundos**, tanto nas tabelas do IndexedDB quanto nos fallbacks de execução de cada partida.
+  - O operador pode ajustar o tempo individualmente no painel administrativo conforme a necessidade.
+- **Jogo da Memória no Painel Administrativo e Partida**:
+  - *Grade de 4 Colunas Fixas*: O tabuleiro do jogo foi padronizado para exibir estritamente 4 cartas por linha (`repeat(4, 173px)`), expandindo automaticamente o número de linhas conforme a quantidade de pares da partida.
+  - *Novos Ícones Padrão Universais*: Os ícones antigos da convenção anterior foram substituídos por 6 novos ícones vetoriais universais em SVG de alta qualidade (Gamepad, Troféu, Diamante, Foguete, Estrela e Alvo de Precisão), reduzindo o peso do bundle e otimizando a performance do totem.
+  - *Novo Verso Padrão Sofisticado*: O verso das cartas agora utiliza uma estampa geométrica moderna com relevo minimalista (`card-back-default.svg`), substituindo o olho antigo.
+  - *Aba Fotos das Cartas (Frente)*: Gestão das imagens e pares de cartas individuais.
+  - *Aba Parte de Trás das Fotos (Verso)*: Permite o upload de estampa personalizada para o verso das cartas (limite de 3 MB) com visualizador ao vivo e botão de restauração do verso padrão original.
+- **Identificação do Desenvolvedor e Suporte da Licença**:
+  - *Cabeçalho e Rodapé Globais*: Fixados rigorosamente de ponta a ponta (`top: 0` e `bottom: 0`), colados nas bordas superior e inferior da tela sem margem (`margin: 0`) nem cantos arredondados (`border-radius: 0`), com o texto padronizado `desenvolvido por ps.system - contato.pssystem@gmail.com`.
+  - *Suporte e Renovação de Licença*: Na tela de bloqueio por licença expirada ou inválida, o contato oficial para suporte e renovação foi atualizado para `contato.pssystem@gmail.com`.
 
 ---
 

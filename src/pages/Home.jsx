@@ -83,13 +83,15 @@ export function Home({ onSelectGame, onOpenAdmin, onOpenDashboard }) {
     return () => window.removeEventListener("app:adminRecordsChanged", handler);
   }, []);
 
-  const sortedGames = [...games].sort((a, b) => {
-    if (a.code === "memory") return -1;
-    if (b.code === "memory") return 1;
-    return String(a.name ?? a.code ?? "").localeCompare(
-      String(b.name ?? b.code ?? ""),
-    );
-  });
+  const sortedGames = [...games]
+    .filter((g) => g.code !== "quiz_mulher" && g.code !== "wordsearch_mulher")
+    .sort((a, b) => {
+      if (a.code === "memory") return -1;
+      if (b.code === "memory") return 1;
+      return String(a.name ?? a.code ?? "").localeCompare(
+        String(b.name ?? b.code ?? ""),
+      );
+    });
 
   const handleStartGame = (payload = {}) => {
     const gameKey = payload.code ?? payload.id ?? payload.gameId ?? payload;
@@ -121,25 +123,23 @@ export function Home({ onSelectGame, onOpenAdmin, onOpenDashboard }) {
         botao={false}
         background={true}
       />
-      <section className="CardMenu-section">
-        {loading ? (
-          <p>Carregando jogos do banco...</p>
-        ) : (
-          <div className="CardMenu-section">
-            {sortedGames.map((game) => {
-              return (
-                <CardMenu
-                  key={game.id}
-                  gameId={game.id}
-                  title={game.name ?? game.code}
-                  code={game.code}
-                  onStartGame={handleStartGame}
-                />
-              );
-            })}
-          </div>
-        )}
-      </section>
+      {loading ? (
+        <p style={{ textAlign: "center", color: "#94a3b8", padding: "2rem" }}>
+          Carregando jogos do banco...
+        </p>
+      ) : (
+        <section className="CardMenu-section">
+          {sortedGames.map((game) => (
+            <CardMenu
+              key={game.id}
+              gameId={game.id}
+              title={game.name ?? game.code}
+              code={game.code}
+              onStartGame={handleStartGame}
+            />
+          ))}
+        </section>
+      )}
     </>
   );
 }

@@ -67,12 +67,24 @@ export async function verifyAdminPassword(pass) {
 
 export async function getPlayer(phone) {
   const all = await dbGetAll('players');
-  return all.find((p) => p.phone === phone) ?? null;
+  const cleanPhone = String(phone ?? '').replace(/\D/g, '');
+  if (!cleanPhone) return null;
+  return all.find((p) => {
+    const pClean = String(p.phone ?? '').replace(/\D/g, '');
+    return pClean === cleanPhone || p.phone === phone;
+  }) ?? null;
 }
 
 export async function registerPlayer(name, phone) {
   const existing = await getPlayer(phone);
-  if (existing) return existing;
+  if (existing) {
+    if (name && name !== 'Anônimo' && name !== 'Jogador' && existing.name !== name) {
+      const updated = { ...existing, name };
+      await dbPut('players', updated);
+      return updated;
+    }
+    return existing;
+  }
   return dbPut('players', {
     name,
     phone,
@@ -83,19 +95,25 @@ export async function registerPlayer(name, phone) {
 
 export async function checkPlayerPhone(phone, gameCode = null) {
   const player = await getPlayer(phone);
-  if (!player) return { exists: false, attempts: 0 };
+  if (!player) return { exists: false, attempts: 0, name: null };
 
-  // Conta tentativas neste jogo, se informado
+  let attempts = 0;
   if (gameCode) {
     const games = await dbGetAll('games');
     const game  = games.find((g) => g.code === gameCode);
     if (game) {
       const scores = await dbGetByIndex('playerGameScores', 'playerId', player.id);
       const gameScore = scores.find((s) => s.gameId === game.id);
-      return { exists: true, attempts: gameScore?.attempts ?? 0 };
+      attempts = gameScore?.attempts ?? 0;
     }
   }
-  return { exists: true, attempts: 0 };
+
+  return { 
+    exists: true, 
+    attempts, 
+    name: player.name || 'Jogador',
+    player,
+  };
 }
 
 // ─── Pontuações ───────────────────────────────────────────────────────────────
@@ -181,11 +199,9 @@ export async function getGameContent(gameCode) {
   const storeMap = {
     hangman:           'words',
     wordsearch:        'words',
-    wordsearch_mulher: 'words',
     soletra:           'soletraRounds',
     labirinto:         'labirintoRounds',
     quiz:              'quizQuestions',
-    quiz_mulher:       'quizQuestions',
   };
 
   const store = storeMap[gameCode];
@@ -211,7 +227,7 @@ export async function getGameRulesVersion(gameCode) {
 
 export async function getAdminRecords() {
   const [
-    players, games, words, quizQuestions,
+    players, allGames, words, quizQuestions,
     soletraRounds, labirintoRounds,
     playerGameScores, scoreEvents, gameSettings,
   ] = await Promise.all([
@@ -225,6 +241,8 @@ export async function getAdminRecords() {
     dbGetAll('scoreEvents'),
     dbGetAll('gameSettings'),
   ]);
+
+  const games = allGames.filter((g) => g.code !== 'quiz_mulher' && g.code !== 'wordsearch_mulher');
 
   // Popular relações (Game e Player) de forma indexada
   const [
@@ -255,10 +273,11 @@ export async function getAdminRecords() {
 
 /** Retorna jogos + gameSettings para o menu e buildGameConfig. */
 export async function getAdminMenuRecords() {
-  const [games, gameSettings] = await Promise.all([
+  const [allGames, gameSettings] = await Promise.all([
     dbGetAll('games'),
     dbGetAll('gameSettings'),
   ]);
+  const games = allGames.filter((g) => g.code !== 'quiz_mulher' && g.code !== 'wordsearch_mulher');
   return { games, gameSettings };
 }
 

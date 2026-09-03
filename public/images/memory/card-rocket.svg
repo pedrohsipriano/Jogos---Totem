@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
+  <defs>
+    <linearGradient id="bg-rocket" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#3b0764"/>
+      <stop offset="100%" stop-color="#6b21a8"/>
+    </linearGradient>
+    <linearGradient id="rocket-body" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="100%" stop-color="#cbd5e1"/>
+    </linearGradient>
+    <linearGradient id="flame" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#f59e0b"/>
+      <stop offset="100%" stop-color="#ef4444"/>
+    </linearGradient>
+    <filter id="shadow-rocket" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="8" stdDeviation="8" flood-color="#000000" flood-opacity="0.5"/>
+    </filter>
+  </defs>
+  <rect width="200" height="200" rx="28" fill="url(#bg-rocket)"/>
+  <rect x="2" y="2" width="196" height="196" rx="26" fill="none" stroke="rgba(255,255,255,0.15)" stroke-width="2"/>
+  
+  <g filter="url(#shadow-rocket)" transform="rotate(-45 100 100)">
+    <!-- Wings -->
+    <path d="M78 100 L56 126 L78 122 Z" fill="#ec4899"/>
+    <path d="M122 100 L144 126 L122 122 Z" fill="#ec4899"/>
+    <!-- Flame -->
+    <path d="M88 126 Q100 162 100 168 Q100 162 112 126 Z" fill="url(#flame)"/>
+    <!-- Fuselage -->
+    <path d="M100 42 C82 66, 80 96, 80 126 L120 126 C120 96, 118 66, 100 42 Z" fill="url(#rocket-body)"/>
+    <!-- Tip -->
+    <path d="M100 42 C92 56, 88 72, 88 72 L112 72 C112 72, 108 56, 100 42 Z" fill="#ec4899"/>
+    <!-- Porthole -->
+    <circle cx="100" cy="88" r="8" fill="#38bdf8"/>
+    <circle cx="100" cy="88" r="6" fill="#0284c7"/>
+  </g>
+</svg>

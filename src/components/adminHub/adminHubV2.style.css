@@ -71,6 +71,19 @@
     gap: 14px;
 }
 
+/* ── Grade de Regras por Jogo (Cards Centralizados e Espaçados) ─────────── */
+.admin-game-rules-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 2.25rem;
+    width: 100%;
+    max-width: 960px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+    box-sizing: border-box;
+    justify-content: center;
+}
+
 .admin-summary-card {
     border: 1px solid rgba(148, 163, 184, 0.2);
     border-radius: 10px;
@@ -100,12 +113,53 @@
     gap: 12px;
 }
 
-/* Ações no cabeçalho de cada seção (contagem de itens e botões) */
+/* Ações no cabeçalho de cada seção (botões de ação rápidos) */
 .admin-section-actions {
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: 12px;
     flex-wrap: wrap;
+}
+
+.admin-section-actions button,
+.admin-section-actions .ghost {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 10px 18px;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1.5px solid rgba(255, 255, 255, 0.22);
+    color: #ffffff;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.35);
+}
+
+.admin-section-actions button:hover:not(:disabled),
+.admin-section-actions .ghost:hover:not(:disabled) {
+    background: #ffffff;
+    color: #000000;
+    border-color: #ffffff;
+    box-shadow: 0 4px 16px rgba(255, 255, 255, 0.3);
+    transform: translateY(-1px);
+}
+
+.admin-section-actions button:active:not(:disabled),
+.admin-section-actions .ghost:active:not(:disabled) {
+    transform: scale(0.97);
+}
+
+.admin-section-actions button:disabled,
+.admin-section-actions .ghost:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+    background: rgba(255, 255, 255, 0.03);
+    border-color: rgba(255, 255, 255, 0.08);
 }
 
 /* ── Filtros e barra de busca ──────────────────────────────────────────── */

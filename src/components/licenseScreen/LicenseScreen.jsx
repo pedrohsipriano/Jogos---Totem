@@ -1,4 +1,5 @@
 import './licenseScreen.style.css';
+import { SystemHeader, SystemFooter } from '../common/SystemBanner.jsx';
 
 /**
  * LicenseScreen — Tela de bloqueio por licença inválida, expirada ou erro de relógio.
@@ -60,6 +61,7 @@ export function LicenseScreen({ status }) {
 
   return (
     <div className="license-overlay">
+      <SystemHeader />
       <div className="license-card">
         {/* Ícone contextual via SVG inline */}
         <div className="license-icon-wrap">
@@ -148,7 +150,7 @@ export function LicenseScreen({ status }) {
           </p>
         </div>
 
-        {/* Informações de Suporte Técnico */}
+        {/* Informações de Suporte Técnico e Renovação */}
         <div
           style={{
             width: '100%',
@@ -157,20 +159,32 @@ export function LicenseScreen({ status }) {
             borderRadius: 12,
             padding: '14px 18px',
             display: 'flex',
+            flexDirection: 'column',
             alignItems: 'center',
             justifyContent: 'center',
-            gap: 10,
+            gap: 6,
             color: '#e2e8f0',
             fontSize: 14,
             boxSizing: 'border-box',
           }}
         >
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-            <rect x="2" y="4" width="20" height="16" rx="2" />
-            <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
-          </svg>
-          <span>
-            Suporte: <strong style={{ color: '#ffffff', textDecoration: 'underline' }}>pedrohsipriano00@gmail.com</strong>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              <rect x="2" y="4" width="20" height="16" rx="2" />
+              <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
+            </svg>
+            <span>
+              Desenvolvido por <strong>ps.system</strong>
+            </span>
+          </div>
+          <span style={{ fontSize: 13, color: '#94a3b8' }}>
+            Renovação e Suporte:{' '}
+            <a
+              href="mailto:contato.pssystem@gmail.com"
+              style={{ color: '#ffffff', textDecoration: 'underline', fontWeight: 600 }}
+            >
+              contato.pssystem@gmail.com
+            </a>
           </span>
         </div>
 
@@ -200,6 +214,7 @@ export function LicenseScreen({ status }) {
           Verificar Novamente
         </button>
       </div>
+      <SystemFooter />
     </div>
   );
 }

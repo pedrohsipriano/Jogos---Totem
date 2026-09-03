@@ -10,6 +10,7 @@ import { getAdminMenuRecords, getGameRulesVersion, clearAdminPassword, getAdminP
 import { buildGameConfig } from "./utils/gameConfig";
 import LockScreen from "./components/lockScreen/LockScreen.jsx";
 import { LicenseScreen } from "./components/licenseScreen/LicenseScreen.jsx";
+import { SystemHeader, SystemFooter } from "./components/common/SystemBanner.jsx";
 import { validateLicense, startClockHeartbeat, stopClockHeartbeat } from "./utils/licenseValidator.js";
 import { applyTheme } from "./utils/themeManager.js";
 import { runSeed } from "./lib/db/seeds.js";
@@ -367,11 +368,19 @@ export function App() {
   }
 
   if (isLocked) {
-    return <LockScreen onUnlock={() => setIsLocked(false)} />;
+    return (
+      <div className="app-shell">
+        <SystemHeader />
+        <LockScreen onUnlock={() => setIsLocked(false)} />
+        <SystemFooter />
+      </div>
+    );
   }
 
   return (
     <div className="app-shell">
+      <SystemHeader />
+
       {sectionId === "menu" ||
       sectionId === "ranking" ||
       sectionId === "admin" ? (
@@ -436,6 +445,8 @@ export function App() {
           />
         </section>
       )}
+
+      <SystemFooter />
     </div>
   );
 }

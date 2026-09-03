@@ -14,13 +14,15 @@
     gap: 29px;
     flex-shrink: 0;
     border-radius: 10px;
-    border: 1px solid #F60085;
+    border: 1px solid var(--victory-border, #ffffff);
     margin: 0 auto;
-    background: transparent;
+    background: var(--victory-bg, rgba(0, 0, 0, 0.85));
     box-sizing: border-box;
     /* ensure dialog content can scroll when viewport is small */
     max-height: calc(100vh - 48px);
     overflow-y: auto;
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
 }
 
 .pontuacaoTempo {
@@ -30,7 +32,7 @@
     justify-content: space-between;
     align-items: center;
     border-radius: 10px;
-    border: 1px solid var(--Color-5, #F60085);
+    border: 1px solid var(--victory-border, rgba(255, 255, 255, 0.2));
     background-color: rgba(0, 0, 0, 0.5);
     color: #FFF;
     text-align: center;
@@ -57,8 +59,8 @@
     gap: 10px;
     align-self: stretch;
     border-radius: 10px;
-    background: #F60085;
-    color: #FFF;
+    background: var(--victory-btn-bg, #ffffff);
+    color: var(--victory-btn-text, #000000);
     text-align: center;
     font-family: Grift;
     font-size: 50px;
@@ -67,10 +69,17 @@
     line-height: 108%;
     /* 54px */
     letter-spacing: -0.55px;
+    cursor: pointer;
+    border: none;
+    transition: opacity 0.2s ease, transform 0.1s ease;
+}
+
+.voltar-ao-menu:active {
+    transform: scale(0.98);
 }
 
 .pontuacaoSpan {
-    color: #FFF;
+    color: var(--victory-badge-text, #ffffff);
     text-align: center;
     font-family: Grift;
     font-size: 50px;
@@ -86,13 +95,13 @@
     align-items: center;
     gap: 10px;
     border-radius: 10px;
-    background: var(--Color-5, #F60085);
+    background: var(--victory-badge-bg, rgba(255, 255, 255, 0.15));
     box-sizing: border-box;
     min-width: 270px;
 }
 
 .venceu {
-    color: var(--Color-5, #F60085);
+    color: var(--victory-title, #ffffff);
     font-family: Grift;
     font-size: 100px;
     font-style: normal;
