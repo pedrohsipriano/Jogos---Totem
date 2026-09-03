@@ -30,19 +30,15 @@ export function Header({ activeTab = "inicio", onSelect }) {
   }, [activeTab]);
 
   return (
-    <header className={`header-main`}>
+    <header className="header-main">
       <section className="sectionLogo">
         <a href="/">
           <Logo className="logo" />
         </a>
       </section>
-      <section className="sectionBtn" ref={containerRef}>
+      <section className="sectionBtn">
         {menuItems.map((item) => (
-          <div
-            key={item.id}
-            ref={(el) => (buttonsRef.current[item.id] = el)}
-            style={{ display: "inline-block" }}
-          >
+          <div key={item.id} style={{ display: "inline-block" }}>
             <Button
               classe={`botao ${activeTab === item.id ? "active" : ""}`}
               icone={item.icone}
@@ -52,14 +48,6 @@ export function Header({ activeTab = "inicio", onSelect }) {
             />
           </div>
         ))}
-
-        <div
-          className="sombra-neon-deslizante"
-          style={{
-            transform: `translateX(${indicatorStyle.left}px)`,
-            width: `${indicatorStyle.width}px`,
-          }}
-        />
       </section>
 
       <section className="barraSombra"></section>
