@@ -8,18 +8,18 @@
 
 /* Definição das variáveis de cores na raiz do documento (:root) */
 :root {
-    /* Fundo principal da aplicação com gradiente escuro vibrante */
-    --bg: linear-gradient(180deg, #00112A 75.48%, var(--Color-5, #F60085) 100%);
-    /* Cor de fundo dos cartões e painéis (azul escuro/cinza) */
-    --card: #111827;
+    /* Fundo principal da aplicação (preto/branco basico) */
+    --bg: #000000;
+    /* Cor de fundo dos cartões e painéis */
+    --card: #111111;
     /* Cor para textos secundários e legendas */
-    --muted: #94a3b8;
+    --muted: #888888;
     /* Cores de destaque — controláveis pelo themeManager */
-    --accent: #38bdf8;
-    --accent-strong: #0ea5e9;
-    --Color-5: #F60085;
+    --accent: #ffffff;
+    --accent-strong: #cccccc;
+    --Color-5: #ffffff;
     /* Cor do texto principal (branco/cinza claro) */
-    --text: #e2e8f0;
+    --text: #ffffff;
     /* Cores de status (sucesso e aviso) */
     --success: #22c55e;
     --warning: #f97316;
@@ -33,14 +33,14 @@
 /* Otimização de interação para dispositivos móveis (evita zoom de pinça e duplo clique) */
 html {
     touch-action: pan-x pan-y;
-    background: linear-gradient(180deg, #00112A 75.48%, var(--Color-5, #F60085) 100%);
+    background: #000000;
     background-attachment: fixed;
     box-sizing: border-box;
     min-height: 100%;
 }
 
 html.no-html-gradient {
-    background: #00112A;
+    background: #000000;
 }
 
 /* Reset do modelo de caixa para garantir que padding e border não aumentem a largura total */

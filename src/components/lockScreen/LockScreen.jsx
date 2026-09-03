@@ -1,10 +1,15 @@
-import { useState } from "react";
-import { verifyAdminPassword, setAdminPassword } from "../../lib/appDatabase";
+import { useState, useEffect } from "react";
+import { verifyAdminPassword, setAdminPassword, hasAdminPassword, registerAdminPassword } from "../../lib/appDatabase";
 
 export function LockScreen({ onUnlock }) {
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
+  const [isFirstRun, setIsFirstRun] = useState(false);
+
+  useEffect(() => {
+    hasAdminPassword().then(hasPass => setIsFirstRun(!hasPass));
+  }, []);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -17,6 +22,13 @@ export function LockScreen({ onUnlock }) {
     setError("");
 
     try {
+      if (isFirstRun) {
+        await registerAdminPassword(password);
+        setAdminPassword(password);
+        onUnlock();
+        return;
+      }
+
       const isValid = await verifyAdminPassword(password);
       if (isValid) {
         setAdminPassword(password);
@@ -46,11 +58,11 @@ export function LockScreen({ onUnlock }) {
 
         <form onSubmit={handleSubmit} className="lock-screen-form">
           <div className="form-group">
-            <label htmlFor="totem-password">Senha de Ativação</label>
+            <label htmlFor="totem-password">{isFirstRun ? "Criar Senha de Ativação" : "Senha de Ativação"}</label>
             <input
               id="totem-password"
               type="password"
-              placeholder="Digite a senha administrativa..."
+              placeholder={isFirstRun ? "Crie uma senha segura..." : "Digite a senha administrativa..."}
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               disabled={loading}
@@ -64,7 +76,7 @@ export function LockScreen({ onUnlock }) {
             {loading ? (
               <span className="spinner"></span>
             ) : (
-              "Desbloquear Totem"
+              isFirstRun ? "Criar Senha e Desbloquear" : "Desbloquear Totem"
             )}
           </button>
         </form>

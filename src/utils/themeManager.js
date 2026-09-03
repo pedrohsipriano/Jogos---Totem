@@ -26,16 +26,16 @@ export const COLOR_PALETTE = [
 /** Tema padrão do sistema */
 export const DEFAULT_THEME = {
   // Fundo
-  bgMode:        'gradient',   // 'solid' | 'gradient' | 'image'
-  bgColor:       '#00112A',
-  bgColorEnd:    '#F60085',
+  bgMode:        'solid',
+  bgColor:       '#000000',
+  bgColorEnd:    '#000000',
   bgDirection:   '180deg',     // ângulo do gradiente
   bgImage:       null,         // base64 da imagem
 
   // Cores base
-  accent:        '#38bdf8',
-  accentStrong:  '#0ea5e9',
-  color5:        '#F60085',
+  accent:        '#ffffff',
+  accentStrong:  '#cccccc',
+  color5:        '#ffffff',
 
   // Tipografia
   fontFamily:    'Grift, sans-serif',

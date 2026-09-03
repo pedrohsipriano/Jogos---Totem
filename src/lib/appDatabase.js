@@ -24,8 +24,20 @@ export const setAdminPassword   = (pass) => localStorage.setItem(ADMIN_PASS_KEY,
 export const clearAdminPassword = ()     => localStorage.removeItem(ADMIN_PASS_KEY);
 export const getAdminPassword   = ()     => localStorage.getItem(ADMIN_PASS_KEY) ?? '';
 
+const REAL_PASS_KEY = 'totem_real_admin_pass';
+
+export async function hasAdminPassword() {
+  return !!localStorage.getItem(REAL_PASS_KEY);
+}
+
+export async function registerAdminPassword(pass) {
+  localStorage.setItem(REAL_PASS_KEY, pass);
+}
+
 export async function verifyAdminPassword(pass) {
-  return pass === 'omni@2026';
+  const realPass = localStorage.getItem(REAL_PASS_KEY);
+  if (!realPass) return false;
+  return pass === realPass;
 }
 
 // ─── Jogadores ────────────────────────────────────────────────────────────────
