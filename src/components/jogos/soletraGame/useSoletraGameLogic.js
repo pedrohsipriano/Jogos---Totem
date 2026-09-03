@@ -227,7 +227,7 @@ export default function useSoletraGameLogic({
 }) {
     const { roundData = DEFAULT_ROUND_DATA } = data;
     const timeLimitSeconds = settings.timeLimitSeconds ?? 30;
-    const pointsToWin = Math.max(0, Number(settings.pointsToWin ?? 50));
+    const pointsToWin = Math.max(0, Number(settings.pointsToWin ?? 100));
     const wordLimit = settings.soletraWordLimit ?? settings.wordLimit ?? 3;
     const wordLimitIsMin = !!settings.soletraWordLimitIsMin;
 

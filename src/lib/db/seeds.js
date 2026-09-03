@@ -73,30 +73,51 @@ const SEED_QUIZ = quizData.quiz.map((q, idx) => ({
   options: JSON.stringify(q.options),
 }));
 
-/** Configurações padrão dos jogos (Padrão 30s para todos) */
+/** Configurações padrão dos jogos (Modo fácil e 100 pontos para ganhar em todos) */
 const SEED_GAME_SETTINGS = [
+  // 1. Forca (hangman)
   { gameId: 1,  key: 'timeLimitSeconds',        value: 30  },
-  { gameId: 1,  key: 'pointsToWin',             value: 50  },
+  { gameId: 1,  key: 'pointsToWin',             value: 100 },
+  { gameId: 1,  key: 'hangmanWordLength',       value: 5   },
+  { gameId: 1,  key: 'hangmanWordLengthIsMin',  value: 1   },
+
+  // 2. Labirinto (labirinto)
   { gameId: 2,  key: 'timeLimitSeconds',        value: 30  },
   { gameId: 2,  key: 'pointsToWin',             value: 100 },
+  { gameId: 2,  key: 'gridSize',                value: 8   },
+  { gameId: 2,  key: 'labirintoWordLength',     value: 5   },
+  { gameId: 2,  key: 'labirintoWordLengthIsMin', value: 1  },
+
+  // 3. Quiz (quiz)
   { gameId: 3,  key: 'timeLimitSeconds',        value: 30  },
-  { gameId: 3,  key: 'pointsToWin',             value: 50  },
-  { gameId: 3,  key: 'questionLimit',           value: 5   },
+  { gameId: 3,  key: 'pointsToWin',             value: 100 },
+  { gameId: 3,  key: 'questionLimit',           value: 3   },
+
+  // 4. Pega-Itens (catch)
   { gameId: 4,  key: 'timeLimitSeconds',        value: 30  },
-  { gameId: 4,  key: 'pointsToWin',             value: 50  },
+  { gameId: 4,  key: 'pointsToWin',             value: 100 },
+  { gameId: 4,  key: 'initialFallTimeSeconds',  value: 10  },
+
+  // 5. Jogo da Memória (memory)
   { gameId: 5,  key: 'timeLimitSeconds',        value: 30  },
+  { gameId: 5,  key: 'pointsToWin',             value: 100 },
   { gameId: 5,  key: 'pairCount',               value: 6   },
+
+  // 6. Acerte o Alvo (whac)
   { gameId: 6,  key: 'timeLimitSeconds',        value: 30  },
+  { gameId: 6,  key: 'pointsToWin',             value: 100 },
   { gameId: 6,  key: 'gridSize',                value: 12  },
+
+  // 7. Caça-Palavras (wordsearch)
   { gameId: 7,  key: 'timeLimitSeconds',        value: 30  },
+  { gameId: 7,  key: 'pointsToWin',             value: 100 },
   { gameId: 7,  key: 'gridSize',                value: 10  },
-  { gameId: 7,  key: 'wordLimit',               value: 5   },
+  { gameId: 7,  key: 'wordLimit',               value: 3   },
+
+  // 8. Soletra (soletra)
   { gameId: 8,  key: 'timeLimitSeconds',        value: 30  },
-  { gameId: 8,  key: 'questionLimit',           value: 5   },
-  { gameId: 9,  key: 'timeLimitSeconds',        value: 30  },
-  { gameId: 9,  key: 'gridSize',                value: 10  },
-  { gameId: 10, key: 'timeLimitSeconds',        value: 30  },
-  { gameId: 10, key: 'soletraWordLimit',        value: 3   },
+  { gameId: 8,  key: 'pointsToWin',             value: 100 },
+  { gameId: 8,  key: 'soletraWordLimit',        value: 3   },
 ];
 
 /**
@@ -105,7 +126,7 @@ const SEED_GAME_SETTINGS = [
  */
 export async function runSeed() {
   try {
-    const { dbGetAll, dbPut, dbDelete } = await import('./localDB.js');
+    const { dbGetAll, dbPut, dbDelete, dbPutMany } = await import('./localDB.js');
 
     // Limpeza de jogos legados (CDL Mulher) caso já estejam salvos no IndexedDB
     try {
@@ -130,6 +151,42 @@ export async function runSeed() {
         localStorage.setItem(TIME_MIGRATION_KEY, 'true');
       } catch (err) {
         console.warn('Erro ao padronizar tempos dos jogos para 30s:', err);
+      }
+    }
+
+    // Migração de Modo Fácil: 100 pts para ganhar, 6 pares na memória, 3 palavras no caça-palavras e soletra, 5 min na forca e labirinto
+    const EASY_DEFAULTS_MIGRATION_KEY = 'totem_easy_defaults_v2';
+    if (!localStorage.getItem(EASY_DEFAULTS_MIGRATION_KEY)) {
+      try {
+        const games = await dbGetAll('games');
+        const gameByCode = new Map(games.map(g => [g.code, g.id]));
+        const settings = await dbGetAll('gameSettings');
+
+        const upsertSetting = async (gameId, key, value) => {
+          if (!gameId) return;
+          const existing = settings.find(s => Number(s.gameId) === Number(gameId) && s.key === key);
+          if (existing) {
+            await dbPut('gameSettings', { ...existing, value });
+          } else {
+            await dbPut('gameSettings', { gameId: Number(gameId), key, value });
+          }
+        };
+
+        for (const g of games) {
+          await upsertSetting(g.id, 'pointsToWin', 100);
+        }
+
+        await upsertSetting(gameByCode.get('memory'), 'pairCount', 6);
+        await upsertSetting(gameByCode.get('wordsearch'), 'wordLimit', 3);
+        await upsertSetting(gameByCode.get('soletra'), 'soletraWordLimit', 3);
+        await upsertSetting(gameByCode.get('hangman'), 'hangmanWordLength', 5);
+        await upsertSetting(gameByCode.get('hangman'), 'hangmanWordLengthIsMin', 1);
+        await upsertSetting(gameByCode.get('labirinto'), 'labirintoWordLength', 5);
+        await upsertSetting(gameByCode.get('labirinto'), 'labirintoWordLengthIsMin', 1);
+
+        localStorage.setItem(EASY_DEFAULTS_MIGRATION_KEY, 'true');
+      } catch (err) {
+        console.warn('Erro ao aplicar configurações de modo fácil no IndexedDB:', err);
       }
     }
 

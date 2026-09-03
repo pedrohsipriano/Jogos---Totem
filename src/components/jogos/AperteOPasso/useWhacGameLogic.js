@@ -62,7 +62,7 @@ export default function useWhacGameLogic({
         1,
         toFiniteNumber(settings.timeLimitSeconds, 30),
     );
-    const pointsToWin = Math.max(0, Number(settings.pointsToWin ?? 50));
+    const pointsToWin = Math.max(0, Number(settings.pointsToWin ?? 100));
     const gridSize = Math.max(1, Math.floor(toFiniteNumber(settings.gridSize, GRID_SIZE)));
 
     // ─── ESTADOS REATIVOS DO JOGO (Para renderização na View) ────────

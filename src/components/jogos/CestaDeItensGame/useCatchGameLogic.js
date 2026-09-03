@@ -164,7 +164,7 @@ export default function useCatchGameLogic({
     onGameOver,
 }) {
     const { timeLimitSeconds = 30, initialFallTimeSeconds = 10 } = settings;
-    const pointsToWin = Math.max(0, Number(settings.pointsToWin ?? 50));
+    const pointsToWin = Math.max(0, Number(settings.pointsToWin ?? 100));
 
     // Ajuste vertical da cesta em pixels (positivo = sobe)
     const BASKET_Y_NUDGE = 20;

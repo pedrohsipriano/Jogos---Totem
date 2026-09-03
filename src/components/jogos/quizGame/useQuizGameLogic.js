@@ -63,7 +63,7 @@ export default function useQuizGameLogic({
         timeLimitSeconds = 30,
         questionLimit = null,
     } = settings;
-    const pointsToWin = Math.max(0, Number(settings.pointsToWin ?? 50));
+    const pointsToWin = Math.max(0, Number(settings.pointsToWin ?? 100));
 
     // ─── Dados sanitizados ───────────────────────────────────────────
     const sanitizedQuestions = useMemo(

@@ -31,7 +31,7 @@ export default function useHangmanGameLogic({
 }) {
     const { words = [] } = data;
     const timeLimitSeconds = config.timeLimitSeconds ?? 30;
-    const pointsToWin = Math.max(0, Number(config.pointsToWin ?? 50));
+    const pointsToWin = Math.max(0, Number(config.pointsToWin ?? 100));
     const maxLives = config.maxLives ?? config.maxAttempts ?? DEFAULT_MAX_LIVES;
     const hangmanWordLength = config.hangmanWordLength ?? null;
     const hangmanWordLengthIsMin = !!config.hangmanWordLengthIsMin;

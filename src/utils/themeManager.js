@@ -23,60 +23,42 @@ export const COLOR_PALETTE = [
   '#ef4444', '#7c3aed', '#ec4899', '#F60085',
 ];
 
-const THEME_VERSION_KEY = 'totem_theme_v4_nologo';
+/** Calcula contraste (preto ou branco) para manter legibilidade em botões */
+export function getContrastColor(hexColor) {
+  if (!hexColor || typeof hexColor !== 'string') return '#000000';
+  let hex = hexColor.replace('#', '').trim();
+  if (hex.length === 3) {
+    hex = hex.split('').map((c) => c + c).join('');
+  }
+  if (hex.length !== 6) return '#000000';
+  const r = parseInt(hex.substring(0, 2), 16);
+  const g = parseInt(hex.substring(2, 4), 16);
+  const b = parseInt(hex.substring(4, 6), 16);
+  const yiq = (r * 299 + g * 587 + b * 114) / 1000;
+  return yiq >= 128 ? '#000000' : '#ffffff';
+}
 
-/** Tema padrão do sistema: Preto e Branco puro sem nenhum logotipo */
+/** Tema padrão do sistema: 5 cores principais distribuídas pelo sistema */
 export const DEFAULT_THEME = {
-  // Fundo
+  // ── As 5 Cores Principais do Sistema ─────────────────────────────────────────
+  bgColor: '#000000',       // 1. Plano de Fundo (Fundo da tela / Totem)
+  cardBg: '#111111',        // 2. Cards e Telas (Fundo de cards, ranking, modais e teclado)
+  color5: '#ffffff',        // 3. Destaque Principal (Bordas neon, botões de início e acentos)
+  accentStrong: '#e4e4e7',  // 4. Cor Secundária / Ações (Hover, botões secundários, foco)
+  textColor: '#ffffff',     // 5. Cor do Texto (Títulos, números do teclado, textos gerais)
+
+  // Configurações complementares de fundo
   bgMode: 'solid',
-  bgColor: '#000000',
   bgColorEnd: '#000000',
   bgDirection: '180deg',
   bgImage: null,
 
-  // Cores base (1, 2, 3)
-  accent: '#ffffff',       // Cor 1: Principal (Botões e destaques primários)
-  accentStrong: '#e4e4e7', // Cor 2: Secundária (Hover e bordas ativas)
-  color5: '#ffffff',       // Cor 3: Complementar (Bordas de cards e títulos)
-
-  // Personalização dos Cards de Jogos
-  cardBg: '#111111',       // Fundo do card
-  cardBorder: '#ffffff',   // Borda do card
-  cardText: '#ffffff',     // Título e textos do card
-  cardBtnBg: '#ffffff',    // Fundo do botão Começar
-  cardBtnText: '#000000',  // Texto do botão Começar
-
-  // Personalização do Ranking
-  rankingBg: '#111111',     // Fundo do card de ranking
-  rankingBorder: '#ffffff', // Borda do card e tabela do ranking
-  rankingText: '#ffffff',   // Textos e títulos do ranking
-
-  // Personalização do Botão Começar o Desafio
-  challengeBtnBg: '#ffffff',   // Fundo do botão Começar o desafio
-  challengeBtnText: '#000000', // Texto do botão Começar o desafio
-
-  // Logotipo customizado (base64 ou URL) e altura em px
+  // Logotipo customizado
   customLogo: null,
   logoHeight: 80, // px
 
   // Parte de trás das fotos/cartas do Jogo da Memória
   memoryCardBack: null,
-
-  // Personalização do Teclado Virtual
-  keyboardBg: 'rgba(2, 18, 41, 0.75)',       // Fundo do teclado
-  keyboardBorder: 'rgba(255, 255, 255, 0.2)', // Borda do teclado
-  keyboardText: '#ffffff',                   // Cor das teclas / números
-  keyboardFocus: '#07BCEE',                  // Cor de destaque "Digitando em: ..."
-  keyboardActionColor: '#ef4444',            // Cor dos botões "Limpar" e "←"
-
-  // Personalização da Tela de Vitória / Fim de Jogo (Modal de Resultado)
-  victoryBg: 'rgba(0, 0, 0, 0.85)',           // Fundo da janela de vitória
-  victoryBorder: '#ffffff',                   // Borda da janela e caixas
-  victoryTitle: '#ffffff',                    // Cor do título "Voce venceu!"
-  victoryBadgeBg: 'rgba(255, 255, 255, 0.15)', // Fundo das tags de pontuação e tempo
-  victoryBadgeText: '#ffffff',                // Texto das tags de pontuação e tempo
-  victoryBtnBg: '#ffffff',                    // Fundo do botão "Voltar ao Cadastro"
-  victoryBtnText: '#000000',                  // Texto do botão "Voltar ao Cadastro"
 
   // Tipografia
   fontFamily: 'Grift, sans-serif',
@@ -138,29 +120,56 @@ export function applyTheme(theme = null) {
   const t = theme ?? getTheme();
   const root = document.documentElement;
 
-  // Cores base (Preto e Branco)
-  root.style.setProperty('--accent', t.accent ?? DEFAULT_THEME.accent);
-  root.style.setProperty('--accent-strong', t.accentStrong ?? DEFAULT_THEME.accentStrong);
-  root.style.setProperty('--Color-5', t.color5 ?? DEFAULT_THEME.color5);
-  root.style.setProperty('--Color', '#000000');
-  root.style.setProperty('--bg', t.bgColor ?? DEFAULT_THEME.bgColor);
-  root.style.setProperty('--primary', t.accent ?? DEFAULT_THEME.accent);
+  // Extrai as 5 cores principais (com fallback retrocompatível)
+  const bg = t.bgColor ?? DEFAULT_THEME.bgColor;
+  const surface = t.cardBg ?? DEFAULT_THEME.cardBg;
+  const primary = t.color5 ?? t.accent ?? DEFAULT_THEME.color5;
+  const secondary = t.accentStrong ?? DEFAULT_THEME.accentStrong;
+  const text = t.textColor ?? t.cardText ?? DEFAULT_THEME.textColor;
 
-  // Cores customizadas dos Cards
-  root.style.setProperty('--card-bg', t.cardBg ?? DEFAULT_THEME.cardBg);
-  root.style.setProperty('--card-border', t.cardBorder ?? DEFAULT_THEME.cardBorder);
-  root.style.setProperty('--card-text', t.cardText ?? DEFAULT_THEME.cardText);
-  root.style.setProperty('--card-btn-bg', t.cardBtnBg ?? DEFAULT_THEME.cardBtnBg);
-  root.style.setProperty('--card-btn-text', t.cardBtnText ?? DEFAULT_THEME.cardBtnText);
+  // Contraste automático para texto em botões com fundo colorido
+  const btnText = getContrastColor(primary);
 
-  // Cores customizadas do Ranking
-  root.style.setProperty('--ranking-bg', t.rankingBg ?? t.cardBg ?? DEFAULT_THEME.rankingBg);
-  root.style.setProperty('--ranking-border', t.rankingBorder ?? t.cardBorder ?? DEFAULT_THEME.rankingBorder);
-  root.style.setProperty('--ranking-text', t.rankingText ?? t.cardText ?? DEFAULT_THEME.rankingText);
+  // 1. Variáveis Base / Raiz
+  root.style.setProperty('--bg', bg);
+  root.style.setProperty('--Color', bg);
+  root.style.setProperty('--Color-5', primary);
+  root.style.setProperty('--accent', primary);
+  root.style.setProperty('--primary', primary);
+  root.style.setProperty('--accent-strong', secondary);
+  root.style.setProperty('--text-primary', text);
 
-  // Cores do botão Começar o Desafio
-  root.style.setProperty('--challenge-btn-bg', t.challengeBtnBg ?? DEFAULT_THEME.challengeBtnBg);
-  root.style.setProperty('--challenge-btn-text', t.challengeBtnText ?? DEFAULT_THEME.challengeBtnText);
+  // 2. Cards e Telas (distribuído)
+  root.style.setProperty('--card-bg', surface);
+  root.style.setProperty('--card-border', primary);
+  root.style.setProperty('--card-text', text);
+  root.style.setProperty('--card-btn-bg', primary);
+  root.style.setProperty('--card-btn-text', btnText);
+
+  // 3. Ranking (distribuído)
+  root.style.setProperty('--ranking-bg', surface);
+  root.style.setProperty('--ranking-border', primary);
+  root.style.setProperty('--ranking-text', text);
+
+  // 4. Botão Começar o Desafio (distribuído)
+  root.style.setProperty('--challenge-btn-bg', primary);
+  root.style.setProperty('--challenge-btn-text', btnText);
+
+  // 5. Teclado Virtual (distribuído)
+  root.style.setProperty('--keyboard-bg', surface);
+  root.style.setProperty('--keyboard-border', primary);
+  root.style.setProperty('--keyboard-text', text);
+  root.style.setProperty('--keyboard-focus', secondary);
+  root.style.setProperty('--keyboard-action-color', secondary);
+
+  // 6. Tela de Vitória / Fim de Jogo (distribuído)
+  root.style.setProperty('--victory-bg', surface);
+  root.style.setProperty('--victory-border', primary);
+  root.style.setProperty('--victory-title', text);
+  root.style.setProperty('--victory-badge-bg', secondary);
+  root.style.setProperty('--victory-badge-text', getContrastColor(secondary));
+  root.style.setProperty('--victory-btn-bg', primary);
+  root.style.setProperty('--victory-btn-text', btnText);
 
   // Parte de trás das fotos/cartas do Jogo da Memória
   if (t.memoryCardBack) {
@@ -168,22 +177,6 @@ export function applyTheme(theme = null) {
   } else {
     root.style.removeProperty('--memory-card-back');
   }
-
-  // Cores do Teclado Virtual
-  root.style.setProperty('--keyboard-bg', t.keyboardBg ?? DEFAULT_THEME.keyboardBg);
-  root.style.setProperty('--keyboard-border', t.keyboardBorder ?? DEFAULT_THEME.keyboardBorder);
-  root.style.setProperty('--keyboard-text', t.keyboardText ?? DEFAULT_THEME.keyboardText);
-  root.style.setProperty('--keyboard-focus', t.keyboardFocus ?? DEFAULT_THEME.keyboardFocus);
-  root.style.setProperty('--keyboard-action-color', t.keyboardActionColor ?? DEFAULT_THEME.keyboardActionColor);
-
-  // Cores da Tela de Vitória / Fim de Jogo
-  root.style.setProperty('--victory-bg', t.victoryBg ?? DEFAULT_THEME.victoryBg);
-  root.style.setProperty('--victory-border', t.victoryBorder ?? DEFAULT_THEME.victoryBorder);
-  root.style.setProperty('--victory-title', t.victoryTitle ?? DEFAULT_THEME.victoryTitle);
-  root.style.setProperty('--victory-badge-bg', t.victoryBadgeBg ?? DEFAULT_THEME.victoryBadgeBg);
-  root.style.setProperty('--victory-badge-text', t.victoryBadgeText ?? DEFAULT_THEME.victoryBadgeText);
-  root.style.setProperty('--victory-btn-bg', t.victoryBtnBg ?? DEFAULT_THEME.victoryBtnBg);
-  root.style.setProperty('--victory-btn-text', t.victoryBtnText ?? DEFAULT_THEME.victoryBtnText);
 
   // Tipografia
   root.style.setProperty('--font-family', t.fontFamily ?? DEFAULT_THEME.fontFamily);

@@ -296,10 +296,10 @@ const GAME_CONFIG_DEFS = [
     key: "pointsToWin",
     label: "Pontos para ganhar",
     type: "number",
-    min: 0,
+    min: 10,
     max: 1000,
     step: 10,
-    defaultValue: 50,
+    defaultValue: 100,
     games: "all",
   },
   {
@@ -343,7 +343,7 @@ const GAME_CONFIG_DEFS = [
     min: 1,
     max: 50,
     step: 1,
-    defaultValue: 5,
+    defaultValue: 3,
     games: ["wordsearch"],
   },
   {
@@ -375,7 +375,7 @@ const GAME_CONFIG_DEFS = [
     key: "labirintoWordLengthIsMin",
     label: "Quantidade minima",
     type: "checkbox",
-    defaultValue: 0,
+    defaultValue: 1,
     games: ["labirinto"],
   },
   {
@@ -419,7 +419,7 @@ const GAME_CONFIG_DEFS = [
     key: "hangmanWordLengthIsMin",
     label: "Quantidade minima",
     type: "checkbox",
-    defaultValue: 0,
+    defaultValue: 1,
     games: ["hangman"],
   },
 ];

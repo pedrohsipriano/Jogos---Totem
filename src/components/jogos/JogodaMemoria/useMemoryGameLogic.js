@@ -30,7 +30,7 @@ export default function useMemoryGameLogic({
         pairCount = null,
         seed = null,
     } = config;
-    const pointsToWin = Math.max(0, Number(config.pointsToWin ?? 50));
+    const pointsToWin = Math.max(0, Number(config.pointsToWin ?? 100));
 
     const noSymbols = symbols.length === 0;
     const previewTimer = useRef(null);

@@ -83,7 +83,7 @@ export default function useWordSearchLogic({
     }, [upperWords, computedSize, maxWords, wordLimitIsMin]);
 
     const noWords = wordsFitting.length === 0;
-    const pointsToWin = Math.max(0, Number(settings.pointsToWin ?? 50));
+    const pointsToWin = Math.max(0, Number(settings.pointsToWin ?? 100));
 
     // Chave auxiliar para forçar a remontagem interna do gerador caso necessário
     const [generationKey, setGenerationKey] = useState(0);
