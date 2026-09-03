@@ -19,12 +19,23 @@ import { buildGameConfig } from '../utils/gameConfig.js';
 // ─── Autenticação Admin ───────────────────────────────────────────────────────
 
 const ADMIN_PASS_KEY = 'totem_admin_pass';
+const REAL_PASS_KEY = 'totem_real_admin_pass';
+const PASS_VERSION_KEY = 'totem_pass_v3_clean';
+
+// Rotina de migração: limpa senhas antigas residuais no primeiro carregamento desta versão
+(function ensureCleanPasswordStartup() {
+  try {
+    if (!localStorage.getItem(PASS_VERSION_KEY)) {
+      localStorage.removeItem(REAL_PASS_KEY);
+      localStorage.removeItem(ADMIN_PASS_KEY);
+      localStorage.setItem(PASS_VERSION_KEY, 'true');
+    }
+  } catch {}
+})();
 
 export const setAdminPassword   = (pass) => localStorage.setItem(ADMIN_PASS_KEY, pass);
 export const clearAdminPassword = ()     => localStorage.removeItem(ADMIN_PASS_KEY);
 export const getAdminPassword   = ()     => localStorage.getItem(ADMIN_PASS_KEY) ?? '';
-
-const REAL_PASS_KEY = 'totem_real_admin_pass';
 
 export async function hasAdminPassword() {
   const pass = localStorage.getItem(REAL_PASS_KEY);
@@ -364,40 +375,105 @@ export async function uploadImages(files) {
 // ─── Dashboard ────────────────────────────────────────────────────────────────
 
 export async function getDashboardStats() {
-  const [players, games, scoreEvents, playerGameScores] = await Promise.all([
+  const [
+    players,
+    games,
+    words,
+    quizQuestions,
+    soletraRounds,
+    scoreEvents,
+    playerGameScores,
+  ] = await Promise.all([
     dbGetAll('players'),
     dbGetAll('games'),
+    dbGetAll('words'),
+    dbGetAll('quizQuestions'),
+    dbGetAll('soletraRounds'),
     dbGetAll('scoreEvents'),
     dbGetAll('playerGameScores'),
   ]);
 
-  const totalPlayers    = players.length;
-  const totalGames      = games.length;
-  const totalPlaySessions = scoreEvents.length;
+  // Lista padrão de jogos para garantir exibição mesmo sem cadastro prévio
+  const ALL_GAME_DEFAULTS = [
+    { id: 1, code: 'Forca', name: 'Jogo da Forca' },
+    { id: 2, code: 'Quiz', name: 'Quiz' },
+    { id: 3, code: 'JogodaMemoria', name: 'Jogo da Memória' },
+    { id: 4, code: 'AperteOPasso', name: 'Aperte o Passo' },
+    { id: 5, code: 'CestaDeItens', name: 'Cesta de Itens' },
+    { id: 6, code: 'CacaPalavras', name: 'Caça-Palavras' },
+    { id: 7, code: 'Labirinto', name: 'Labirinto' },
+    { id: 8, code: 'Soletra', name: 'Soletrando' },
+  ];
+
+  const activeGames = (games && games.length > 0) ? games : ALL_GAME_DEFAULTS;
+
+  // Mapa de jogadores por id para busca rápida do nome
+  const playerMap = new Map();
+  players.forEach((p) => playerMap.set(p.id, p.name || 'Jogador'));
+
+  // Contagens gerais
+  const totalPlayedAll = scoreEvents.length;
+  const counts = {
+    players: players.length,
+    games: activeGames.length,
+    words: words.length,
+    quizQuestions: quizQuestions.length,
+    soletraRounds: soletraRounds.length,
+    totalPlayedAll,
+  };
 
   // Estatísticas por jogo
-  const gameStats = games.map((game) => {
-    const gameSessions = scoreEvents.filter((e) => e.gameId === game.id);
-    const gameScores   = playerGameScores.filter((s) => s.gameId === game.id);
-    const totalPoints  = gameSessions.reduce((acc, e) => acc + (e.points ?? 0), 0);
-    const avgPoints    = gameSessions.length > 0 ? Math.round(totalPoints / gameSessions.length) : 0;
+  const stats = activeGames.map((game) => {
+    const gameEvents = scoreEvents.filter(
+      (e) => e.gameId === game.id || e.gameCode === game.code
+    );
+    const totalPlayed = gameEvents.length;
+    const wins = gameEvents.filter((e) => (e.points ?? 0) > 0).length;
+    const defeats = Math.max(0, totalPlayed - wins);
+    const trend = wins >= defeats ? 'ganhando' : 'perdendo';
+
+    // Top 3 pontuadores
+    const gameScores = playerGameScores
+      .filter((s) => s.gameId === game.id || s.gameCode === game.code)
+      .map((s) => ({
+        name: playerMap.get(s.playerId) || s.playerName || 'Jogador',
+        points: s.points ?? 0,
+      }))
+      .sort((a, b) => b.points - a.points)
+      .slice(0, 3);
 
     return {
-      gameId:     game.id,
-      gameName:   game.name,
-      gameCode:   game.code,
-      sessions:   gameSessions.length,
-      uniquePlayers: gameScores.length,
-      avgPoints,
-      totalPoints,
+      gameId: game.id || game.code,
+      gameCode: game.code,
+      gameName: game.name || game.code,
+      totalPlayed,
+      wins,
+      defeats,
+      trend,
+      top3: gameScores,
     };
   });
 
+  // Configuração e contagem de brindes
+  let giftsConfig = { totalGifts: 50, giftMode: 'multiple' };
+  try {
+    const rawGifts = localStorage.getItem('totem_gifts_config');
+    if (rawGifts) giftsConfig = { ...giftsConfig, ...JSON.parse(rawGifts) };
+  } catch {}
+
+  const totalWins = scoreEvents.filter((e) => (e.points ?? 0) > 0).length;
+  const giftsGiven = Math.min(Number(giftsConfig.totalGifts) || 0, totalWins);
+
+  const gifts = {
+    totalGifts: Number(giftsConfig.totalGifts) || 0,
+    giftsGiven,
+    giftMode: giftsConfig.giftMode || 'multiple',
+  };
+
   return {
-    totalPlayers,
-    totalGames,
-    totalPlaySessions,
-    gameStats,
+    counts,
+    stats,
+    gifts,
   };
 }
 
@@ -415,10 +491,21 @@ export async function resetDashboardStats() {
   return { ok: true };
 }
 
+export async function updateGiftsConfig(config) {
+  try {
+    const raw = localStorage.getItem('totem_gifts_config');
+    const existing = raw ? JSON.parse(raw) : {};
+    const updated = { ...existing, ...config };
+    localStorage.setItem('totem_gifts_config', JSON.stringify(updated));
+    return { ok: true };
+  } catch {
+    return { ok: false };
+  }
+}
+
 // ─── Compat — métodos legados ─────────────────────────────────────────────────
 
 export async function loadAppDatabase()  { return { database: {}, isRemote: false }; }
 export async function saveAppDatabase()  { return {}; }
 export async function deleteAppDatabase(){ return {}; }
-export async function updateGiftsConfig(){ return { ok: true }; }
 export const getSeedDatabase = ()        => ({});

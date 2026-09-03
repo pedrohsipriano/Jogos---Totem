@@ -23,6 +23,8 @@ export const COLOR_PALETTE = [
   '#ef4444', '#7c3aed', '#ec4899', '#F60085',
 ];
 
+const THEME_VERSION_KEY = 'totem_theme_v3_bw';
+
 /** Tema padrão do sistema: Preto e Branco puro */
 export const DEFAULT_THEME = {
   // Fundo
@@ -32,15 +34,31 @@ export const DEFAULT_THEME = {
   bgDirection: '180deg',
   bgImage: null,
 
-  // Cores base (Preto e Branco)
-  accent: '#ffffff',
-  accentStrong: '#e4e4e7',
-  color5: '#ffffff',
+  // Cores base (1, 2, 3)
+  accent: '#ffffff',       // Cor 1: Principal (Botões e destaques primários)
+  accentStrong: '#e4e4e7', // Cor 2: Secundária (Hover e bordas ativas)
+  color5: '#ffffff',       // Cor 3: Complementar (Bordas de cards e títulos)
+
+  // Logotipo customizado (base64 ou URL)
+  customLogo: null,
 
   // Tipografia
   fontFamily: 'Grift, sans-serif',
   fontSize: 16, // px
 };
+
+// Limpeza de tema legado (caso o totem tenha cores antigas salvas)
+(function ensureCleanThemeStartup() {
+  try {
+    if (!localStorage.getItem(THEME_VERSION_KEY)) {
+      const raw = localStorage.getItem(STORAGE_KEY);
+      if (raw && (raw.includes('F60085') || raw.includes('021229') || raw.includes('07bcee'))) {
+        localStorage.removeItem(STORAGE_KEY);
+      }
+      localStorage.setItem(THEME_VERSION_KEY, 'true');
+    }
+  } catch {}
+})();
 
 /** Retorna o tema salvo ou o padrão preto e branco. */
 export function getTheme() {
@@ -58,6 +76,7 @@ export function getTheme() {
 export function saveTheme(theme) {
   try {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(theme));
+    window.dispatchEvent(new CustomEvent('totem_theme_changed', { detail: theme }));
   } catch {
     /* sem espaço no storage — silencioso */
   }
@@ -67,6 +86,7 @@ export function saveTheme(theme) {
 export function resetTheme() {
   localStorage.removeItem(STORAGE_KEY);
   applyTheme(DEFAULT_THEME);
+  window.dispatchEvent(new CustomEvent('totem_theme_changed', { detail: DEFAULT_THEME }));
   return { ...DEFAULT_THEME };
 }
 

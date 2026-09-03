@@ -140,7 +140,14 @@ export function Dashboard({ onBackToMenu, onBackToCadastro, onOpenAdmin }) {
         {data?.stats && data.stats.length > 0 && (
           <div className="engagement-panel panel">
             <div className="panel-head">
-              <h3>📊 Popularidade dos Jogos (Engajamento)</h3>
+              <h3>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" style={{ marginRight: 8, verticalAlign: "middle" }}>
+                  <line x1="18" y1="20" x2="18" y2="10" />
+                  <line x1="12" y1="20" x2="12" y2="4" />
+                  <line x1="6" y1="20" x2="6" y2="14" />
+                </svg>
+                Popularidade dos Jogos (Engajamento)
+              </h3>
             </div>
             <div className="engagement-bars-container">
               {(() => {
@@ -178,7 +185,16 @@ export function Dashboard({ onBackToMenu, onBackToCadastro, onOpenAdmin }) {
         {data?.gifts && (
           <div className="panel dashboard-gifts-panel">
             <div className="panel-head">
-              <h3>🎁 Controle de Brindes</h3>
+              <h3>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" style={{ marginRight: 8, verticalAlign: "middle" }}>
+                  <polyline points="20 12 20 22 4 22 4 12" />
+                  <rect x="2" y="7" width="20" height="5" />
+                  <line x1="12" y1="22" x2="12" y2="7" />
+                  <path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z" />
+                  <path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z" />
+                </svg>
+                Controle de Brindes
+              </h3>
             </div>
             <div className="dashboard-gifts-content">
               <div className="dashboard-gifts-stats-col">
@@ -244,8 +260,8 @@ export function Dashboard({ onBackToMenu, onBackToCadastro, onOpenAdmin }) {
                   <h3>{game.gameName}</h3>
                   <span className={`game-trend-badge ${game.trend}`}>
                     {game.trend === "ganhando"
-                      ? "Ganhando mais 📈"
-                      : "Perdendo mais 📉"}
+                      ? "Ganhando mais"
+                      : "Perdendo mais"}
                   </span>
                 </div>
 
@@ -289,7 +305,17 @@ export function Dashboard({ onBackToMenu, onBackToCadastro, onOpenAdmin }) {
                 </div>
 
                 <div className="game-top-players">
-                  <h4>🏆 Maiores Pontuadores (Top 3)</h4>
+                  <h4>
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" style={{ marginRight: 6, verticalAlign: "middle" }}>
+                      <path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6" />
+                      <path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18" />
+                      <path d="M4 22h16" />
+                      <path d="M10 14.66V17c0 .55-.45 1-1 1H7" />
+                      <path d="M14 14.66V17c0 .55.45 1 1 1h2" />
+                      <path d="M18 2H6v7a6 6 0 0 0 12 0V2z" />
+                    </svg>
+                    Maiores Pontuadores (Top 3)
+                  </h4>
                   {game.top3.length === 0 ? (
                     <p className="muted-small">
                       Nenhuma pontuação registrada neste jogo.
@@ -302,7 +328,7 @@ export function Dashboard({ onBackToMenu, onBackToCadastro, onOpenAdmin }) {
                           className={`top-player-item position-${idx + 1}`}
                         >
                           <span className="player-rank">
-                            {idx === 0 ? "🥇" : idx === 1 ? "🥈" : "🥉"}
+                            {idx === 0 ? "1º" : idx === 1 ? "2º" : "3º"}
                           </span>
                           <span className="player-name">{player.name}</span>
                           <span className="player-points">

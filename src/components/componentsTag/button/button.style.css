@@ -7,11 +7,12 @@
     gap: 0.625rem;
     flex-shrink: 0;
     border-radius: 0.625rem;
-    border: 1px solid var(--Color-5, #F60085);
-    color: var(--Color-5, #F60085);
+    border: 1px solid var(--Color-5, #ffffff);
+    color: var(--Color-5, #ffffff);
     background: transparent;
     position: relative;
     z-index: 2;
+    transition: all 0.25s ease;
 }
 
 .botao svg {
@@ -30,8 +31,8 @@
 }
 
 .botao:hover {
-    background: rgba(246, 0, 133, 0.8);
-    box-shadow: 0 0 44.3px 0 var(--Color-5, #F60085);
+    background: rgba(255, 255, 255, 0.15);
+    box-shadow: 0 0 20px 0 var(--Color-5, rgba(255, 255, 255, 0.3));
     border: 1px solid #FFF;
     color: #FFF;
 }
@@ -50,7 +51,7 @@
     left: -125px;
     height: 15rem;
     width: 30rem !important;
-    background: linear-gradient(to bottom right, #F60085 0%, #021229 50%) bottom right / 50% 50% no-repeat, linear-gradient(to bottom left, #F60085 0%, #021229 50%) bottom left / 50% 50% no-repeat, linear-gradient(to top left, #F60085 0%, #021229 50%) top left / 50% 50% no-repeat, linear-gradient(to top right, #F60085 0%, #021229 50%) top right / 50% 50% no-repeat;
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0.22) 0%, rgba(255, 255, 255, 0.06) 40%, transparent 80%);
     transition: transform 0.4s cubic-bezier(0.23, 1, 0.32, 1), width 0.4s ease;
     pointer-events: none;
     clip-path: polygon(0% 50%, 50% 0%, 100% 50%);
@@ -63,11 +64,19 @@
 
 /* Quando o botão estiver selecionado, ele assume o visual de destaque */
 .botao.active {
-    background: rgba(246, 0, 133, 1);
-    /* Opacidade total para o ativo */
-    box-shadow: 0 0 44.3px 0 var(--Color-5, #F60085);
-    border: 1px solid #FFF;
-    color: #FFF;
+    background: var(--accent, #ffffff);
+    box-shadow: 0 0 25px 0 rgba(255, 255, 255, 0.35);
+    border: 1px solid #ffffff;
+    color: #000000;
+}
+
+.botao.active .textoBotao {
+    color: #000000 !important;
+}
+
+.botao.active svg,
+.botao.active svg path {
+    fill: #000000 !important;
 }
 
 .botaoComecarDesafio {
@@ -80,12 +89,13 @@
     gap: 0.625rem;
     align-self: stretch;
     border-radius: 1.875rem;
-    background: #F60085;
-    box-shadow: 0 0 21.8px 0 #F60085;
+    background: var(--accent, #ffffff);
+    box-shadow: 0 0 21.8px 0 rgba(255, 255, 255, 0.25);
+    cursor: pointer;
 }
 
 .textoBotaoComecarDesafio {
-    color: #FFF;
+    color: #000000;
     font-family: Grift;
     font-size: 3.75rem;
     font-style: normal;

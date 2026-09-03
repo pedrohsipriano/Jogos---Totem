@@ -269,7 +269,10 @@ export async function validateLicense() {
         return { ...BASE_RESULT, id, invalid: true, timeSource };
       }
 
-      const storageKey = `${STORAGE_PREFIX}${id}`;
+      // Chave de armazenamento vinculada ao ID do Totem e ao hash da licença atual.
+      // Isso garante que ao gerar uma nova licença (renovação de dias ou novo prazo),
+      // o app ativa a nova licença em vez de ficar preso ao registro da licença anterior.
+      const storageKey = `${STORAGE_PREFIX}${id}_${hash.slice(0, 16)}`;
       let activationData = null;
 
       try {
@@ -283,7 +286,7 @@ export async function validateLicense() {
 
       if (activationData?.activatedAt && activationData?.expireAt && activationData?.signature) {
         // Valida a integridade dos dados de ativação locais
-        const expectedSig = await sha256hex(`${id}|${activationData.activatedAt}|${activationData.expireAt}|${SECRET}`);
+        const expectedSig = await sha256hex(`${id}|${hash}|${activationData.activatedAt}|${activationData.expireAt}|${SECRET}`);
         if (activationData.signature === expectedSig) {
           activatedAtISO = activationData.activatedAt;
           expireAtISO = activationData.expireAt;
@@ -292,7 +295,7 @@ export async function validateLicense() {
           return { ...BASE_RESULT, id, invalid: true, timeSource };
         }
       } else {
-        // Primeira ativação no Totem
+        // Primeira ativação desta nova licença no Totem!
         const durationMs = durationMinutes > 0
           ? durationMinutes * 60 * 1000
           : durationDays * 24 * 60 * 60 * 1000;
@@ -301,9 +304,10 @@ export async function validateLicense() {
         expireMs = trustedTime + durationMs;
         expireAtISO = new Date(expireMs).toISOString();
 
-        const signature = await sha256hex(`${id}|${activatedAtISO}|${expireAtISO}|${SECRET}`);
+        const signature = await sha256hex(`${id}|${hash}|${activatedAtISO}|${expireAtISO}|${SECRET}`);
         const toSave = {
           id,
+          licenseHash: hash,
           activatedAt: activatedAtISO,
           expireAt: expireAtISO,
           durationDays,

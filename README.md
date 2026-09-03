@@ -132,7 +132,16 @@ node scripts/generate-license.js --id TV-01 --days 30 --fixed
 ## Identidade Visual e Tema Padrão
 
 - O aplicativo opera por padrão com tema minimalista **Preto e Branco puro**, com fundo `#000000`, superfícies em tons neutros escuros (`#111111`) e destaques em branco (`#ffffff`), garantindo alto contraste e elegância em telas de alta resolução.
-- É possível personalizar cores, tipografia e planos de fundo através da aba **Personalização** no painel administrativo.
+- **Painel de Personalização Completo** (no `AdminHub`):
+  - **Logotipo do Totem**: Permite o upload de arquivos de imagem (PNG, JPG, SVG, WebP) para substituir a marca padrão no cabeçalho de todas as telas em tempo real, com opção de restaurar o logotipo original a qualquer momento.
+  - **Cores 1, 2 e 3**:
+    - **Cor 1**: Destaques principais, botões selecionados e ações.
+    - **Cor 2**: Efeitos hover e bordas ativas.
+    - **Cor 3**: Bordas de cards, títulos e linhas divisórias.
+  - **Plano de Fundo Versátil**:
+    - *Cor Sólida*: Seleção livre via paleta ou seletor de cor hexadecimal.
+    - *Gradiente*: Definição de cor inicial, cor final e direção (vertical, horizontal ou diagonal).
+    - *Imagem de Fundo*: Upload direto de imagem para plano de fundo fixo.
 
 ---
 

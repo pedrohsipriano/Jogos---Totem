@@ -62,9 +62,10 @@ function ColorPicker({ label, value, onChange }) {
 }
 
 export function Personalizacao() {
-  const [theme,   setThemeState] = useState(() => getTheme());
-  const [saved,   setSaved]      = useState(false);
-  const [imgError, setImgError]  = useState('');
+  const [theme,     setThemeState] = useState(() => getTheme());
+  const [saved,     setSaved]      = useState(false);
+  const [imgError,  setImgError]   = useState('');
+  const [logoError, setLogoError]  = useState('');
 
   const update = useCallback((key, value) => {
     setThemeState((prev) => {
@@ -86,6 +87,24 @@ export function Personalizacao() {
     const def = resetTheme();
     setThemeState(def);
     setSaved(false);
+  };
+
+  const handleLogoUpload = (e) => {
+    setLogoError('');
+    const file = e.target.files?.[0];
+    if (!file) return;
+
+    if (file.size > 5 * 1024 * 1024) {
+      setLogoError('Imagem muito grande. Máximo: 5 MB.');
+      return;
+    }
+
+    const reader = new FileReader();
+    reader.onload = (ev) => {
+      update('customLogo', ev.target.result);
+    };
+    reader.onerror = () => setLogoError('Erro ao carregar o logotipo.');
+    reader.readAsDataURL(file);
   };
 
   const handleImageUpload = (e) => {
@@ -112,7 +131,7 @@ export function Personalizacao() {
       <div className="personalizacao-header">
         <div>
           <p className="eyebrow">Aparência</p>
-          <h2>Personalização</h2>
+          <h2>Personalização Visual</h2>
         </div>
         <div className="personalizacao-actions">
           <button type="button" className="ghost" onClick={handleReset}>
@@ -128,18 +147,98 @@ export function Personalizacao() {
         </div>
       </div>
 
-      {/* ── Fundo ─────────────────────────────────────────────── */}
+      {/* ── Logotipo do Totem ───────────────────────────────────── */}
+      <section className="theme-section">
+        <h3 className="theme-section-title">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+          Logotipo do Totem
+        </h3>
+
+        <div className="theme-image-field">
+          <label className="theme-img-upload-label">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+            Carregar Novo Logotipo
+            <input
+              type="file"
+              accept="image/png,image/jpeg,image/svg+xml,image/webp"
+              onChange={handleLogoUpload}
+              style={{ display: 'none' }}
+            />
+          </label>
+          {logoError && <p className="theme-error">{logoError}</p>}
+          
+          <div style={{ display: 'flex', alignItems: 'center', gap: 20, flexWrap: 'wrap', marginTop: 10 }}>
+            <div style={{
+              background: '#09090b',
+              border: '1.5px solid rgba(255, 255, 255, 0.15)',
+              borderRadius: 12,
+              padding: 16,
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              minWidth: 160,
+              minHeight: 80,
+            }}>
+              <img 
+                src={theme.customLogo || '/images/logo.png'} 
+                alt="Logo Atual" 
+                style={{ maxHeight: 60, maxWidth: 220, objectFit: 'contain' }}
+              />
+            </div>
+
+            {theme.customLogo && (
+              <button
+                type="button"
+                className="theme-img-remove"
+                style={{ position: 'static' }}
+                onClick={() => update('customLogo', null)}
+              >
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                Restaurar Logotipo Original
+              </button>
+            )}
+          </div>
+        </div>
+      </section>
+
+      {/* ── Cores Base (Cores 1, 2 e 3) ────────────────────────── */}
+      <section className="theme-section">
+        <h3 className="theme-section-title">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="12" cy="12" r="10"/><path d="M12 2a10 10 0 0 1 10 10"/></svg>
+          Cores Principais (Cores 1, 2 e 3)
+        </h3>
+
+        <div className="theme-colors-grid">
+          <ColorPicker
+            label="Cor 1 (Principal: botões ativos, destaques e ações)"
+            value={theme.accent}
+            onChange={(c) => update('accent', c)}
+          />
+          <ColorPicker
+            label="Cor 2 (Secundária: hover e bordas com foco)"
+            value={theme.accentStrong}
+            onChange={(c) => update('accentStrong', c)}
+          />
+          <ColorPicker
+            label="Cor 3 (Complementar: bordas de cards, títulos e linhas)"
+            value={theme.color5}
+            onChange={(c) => update('color5', c)}
+          />
+        </div>
+      </section>
+
+      {/* ── Plano de Fundo (Cores, Gradiente ou Imagem) ───────────── */}
       <section className="theme-section">
         <h3 className="theme-section-title">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
-          Plano de Fundo
+          Plano de Fundo (Cor Sólida, Gradiente ou Imagem)
         </h3>
 
         <div className="theme-bg-mode-tabs">
           {[
             { v: 'solid',    l: 'Cor Sólida' },
             { v: 'gradient', l: 'Gradiente' },
-            { v: 'image',    l: 'Imagem' },
+            { v: 'image',    l: 'Imagem de Fundo' },
           ].map(({ v, l }) => (
             <button
               key={v}
@@ -154,7 +253,7 @@ export function Personalizacao() {
 
         {theme.bgMode === 'solid' && (
           <ColorPicker
-            label="Cor de fundo"
+            label="Cor de Fundo Sólida"
             value={theme.bgColor}
             onChange={(c) => update('bgColor', c)}
           />
@@ -163,17 +262,17 @@ export function Personalizacao() {
         {theme.bgMode === 'gradient' && (
           <div className="theme-gradient-fields">
             <ColorPicker
-              label="Cor inicial"
+              label="Cor Inicial do Gradiente"
               value={theme.bgColor}
               onChange={(c) => update('bgColor', c)}
             />
             <ColorPicker
-              label="Cor final"
+              label="Cor Final do Gradiente"
               value={theme.bgColorEnd}
               onChange={(c) => update('bgColorEnd', c)}
             />
             <div className="theme-field">
-              <span className="theme-field-label">Direção</span>
+              <span className="theme-field-label">Direção do Gradiente</span>
               <select
                 className="theme-select"
                 value={theme.bgDirection ?? '180deg'}
@@ -191,7 +290,7 @@ export function Personalizacao() {
           <div className="theme-image-field">
             <label className="theme-img-upload-label">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
-              Selecionar imagem
+              Selecionar Imagem de Fundo
               <input
                 type="file"
                 accept="image/jpeg,image/png,image/webp"
@@ -206,41 +305,15 @@ export function Personalizacao() {
                 <button
                   type="button"
                   className="theme-img-remove"
-                  onClick={() => { update('bgImage', null); update('bgMode', 'gradient'); }}
+                  onClick={() => { update('bgImage', null); update('bgMode', 'solid'); }}
                 >
                   <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
-                  Remover
+                  Remover Imagem
                 </button>
               </div>
             )}
           </div>
         )}
-      </section>
-
-      {/* ── Cores Base ────────────────────────────────────────── */}
-      <section className="theme-section">
-        <h3 className="theme-section-title">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="12" cy="12" r="10"/><path d="M12 2a10 10 0 0 1 10 10"/></svg>
-          Cores Base
-        </h3>
-
-        <div className="theme-colors-grid">
-          <ColorPicker
-            label="Cor Base 1 (destaques / botões)"
-            value={theme.accent}
-            onChange={(c) => update('accent', c)}
-          />
-          <ColorPicker
-            label="Cor Base 2 (hover / bordas ativas)"
-            value={theme.accentStrong}
-            onChange={(c) => update('accentStrong', c)}
-          />
-          <ColorPicker
-            label="Cor Base 3 (destaque secundário)"
-            value={theme.color5}
-            onChange={(c) => update('color5', c)}
-          />
-        </div>
       </section>
 
       {/* ── Tipografia ────────────────────────────────────────── */}

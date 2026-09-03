@@ -106,7 +106,7 @@ export function GameNav({
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
         >
-          <circle cx="12" cy="12" r="10" fill="#F60085" />
+          <circle cx="12" cy="12" r="10" fill="var(--accent, #ffffff)" />
         </svg>
       </button>
 
@@ -250,7 +250,7 @@ export function GameNav({
               <button 
                 type="submit"
                 style={{ 
-                  padding: "12px 24px", background: "#F60085", color: "#fff", 
+                  padding: "12px 24px", background: "#ffffff", color: "#000000", 
                   border: "none", borderRadius: "8px", cursor: "pointer",
                   fontSize: "1rem", fontWeight: "bold"
                 }}
